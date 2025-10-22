@@ -8,14 +8,16 @@ function CreateBatomBox() {
 
     const [newBattom,setNewBattom] = useState();
   
+    const [selectedColor,setSelectedColor] = useState<string | undefined>(undefined);
     const [smell,setSmell] = useState<string>();
     const [type,setType] = useState<TypesForBatom>();
+    
 
   return (
     <div>
-        <ColorsSelection/>
+        <ColorsSelection setSelectedColor={setSelectedColor}/>
          <label>
-            type:
+            type:{selectedColor}
             <select>
                 <option value="matte">Matte</option>
                 <option value="gloss">Gloss</option>
