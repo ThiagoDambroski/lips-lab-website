@@ -1,15 +1,24 @@
-import React, { useMemo, useState, type ChangeEvent } from 'react';
+import React, { useEffect, useMemo, useState, type ChangeEvent } from 'react';
+import FristStep from './Steps/FristStep';
+import SecondStep from './Steps/SecondStep';
 
 type ColorsSelectionProps = {
-  setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>,
+  step: number,
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
-function ColorsSelection({setSelectedColor}:ColorsSelectionProps) {
+function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
  
-  const allColors: string[] = ['#ff0000', '#0000ff', '#00ff00', '#ffff00', '#ff00ff', '#00ffff'];
-  const [step, setStep] = useState<number>(0);
+  const allColors: string[] = ['#4D1D25', '#D13C72', '#9B243C', 
+    '#6D1718', '#E85D70', '#A42324','#C23210','#DF4728','#E8CA6C','#AA1B11',
+    '#6F2C16','#D3571C','#4B301B','#53150B','#4E3320','#130201','#0D2B4A',
+    '#C96D10','#B48A22','#0A0A4D','#FCFBF9'];
+
   const [selected, setSelected] = useState<string[]>([]);
   const [weights, setWeights] = useState<Record<string, number>>({});
+
+  
 
 
   const toggleColor = (hex: string) => {
@@ -23,16 +32,19 @@ function ColorsSelection({setSelectedColor}:ColorsSelectionProps) {
         return prev.filter((c) => c !== hex);
       }
       if (prev.length >= 4) return prev; // limit 4
+      
       setWeights((w) => ({ ...w, [hex]: 100 }));
       return [...prev, hex];
     });
+   
   };
 
+  useEffect(() => {
+  if (selected.length === 0) setStep(0);
+  }, [selected.length]);
+
   
-  const onWeightChange = (hex: string) => (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Math.max(0, Math.min(100, Number(e.target.value) || 0));
-    setWeights((w) => ({ ...w, [hex]: value }));
-  };
+ 
 
   const hexToRgb = (hex: string) => {
     const c = hex.replace('#', '');
@@ -49,8 +61,11 @@ function ColorsSelection({setSelectedColor}:ColorsSelectionProps) {
       })
       .join('');
 
-  const mixedColor = useMemo(() => {
-    if (selected.length === 0) return '#ffffff';
+  useMemo(() => {
+    if (selected.length === 0) {
+      setSelectedColor('#ffffff')
+      return '#ffffff'
+    };
     const raw = selected.map((hex) => ({ hex, w: weights[hex] ?? 0 }));
     const sum = raw.reduce((acc, { w }) => acc + w, 0);
     const normalized = sum > 0 ? raw.map((x) => ({ ...x, w: x.w / sum })) : raw.map((x) => ({ ...x, w: 1 / raw.length }));
@@ -72,84 +87,28 @@ function ColorsSelection({setSelectedColor}:ColorsSelectionProps) {
   return (
     <div >
 
-      <div
-        style={{
-          width: '100%',
-          height: 120,
-          borderRadius: 12,
-          border: '1px solid #ccc',
-          backgroundColor: mixedColor,
-          marginBottom: 16,
-        }}
-        aria-label="Mixed color preview"
-      />
-
       
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <button onClick={() => setStep(0)} disabled={step === 0}>
-          Step 0 – Choose colors
-        </button>
-        <button onClick={() => setStep(1)} disabled={selected.length === 0 || step === 1}>
-          Step 1 – Adjust intensities
-        </button>
-      </div>
 
       
       {step === 0 && (
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {allColors.map((c) => {
-            const active = selected.includes(c);
-            return (
-              <button
-                key={c}
-                onClick={() => toggleColor(c)}
-                style={{
-                  width: 48,
-                  height: 48,
-                  backgroundColor: c,
-                  border: active ? '3px solid black' : '1px solid #ccc',
-                  borderRadius: 8,
-                  cursor: 'pointer',
-                }}
-                aria-pressed={active}
-                aria-label={`Select color ${c}`}
-              />
-            );
-          })}
-        </div>
+        <FristStep
+        allColors={allColors}
+        selected={selected}
+        toggleColor={toggleColor}
+        />
       )}
 
       {step === 1 && (
-        <div style={{ display: 'grid', gap: 12 }}>
-          {selected.map((c) => (
-            <div key={c} style={{ display: 'grid', gap: 6 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div
-                  style={{
-                    width: 24,
-                    height: 24,
-                    backgroundColor: c,
-                    border: '1px solid #ccc',
-                    borderRadius: 6,
-                  }}
-                  aria-label={`Swatch ${c}`}
-                />
-                
-                <span style={{ marginLeft: 'auto' }}>{weights[c] ?? 0}%</span>
-              </div>
-              <input
-                type="range"
-                min={0}
-                max={100}
-                step={1}
-                value={weights[c] ?? 0}
-                onChange={onWeightChange(c)}
-                aria-label={`Intensity for ${c}`}
-              />
-            </div>
-          ))}
-        </div>
+        <SecondStep
+          selected={selected}
+          weights={weights}
+          setWeights={setWeights}
+          toggleColor={toggleColor}
+        />
       )}
+
+      
+
     </div>
   );
 }
