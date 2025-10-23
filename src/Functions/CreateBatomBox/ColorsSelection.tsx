@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState, type ChangeEvent } from 'react';
 import FristStep from './Steps/FristStep';
 import SecondStep from './Steps/SecondStep';
+import { useApp } from '../../Contexts/AppProvider';
 
 type ColorsSelectionProps = {
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>,
@@ -10,10 +11,9 @@ type ColorsSelectionProps = {
 
 function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
  
-  const allColors: string[] = ['#4D1D25', '#D13C72', '#9B243C', 
-    '#6D1718', '#E85D70', '#A42324','#C23210','#DF4728','#E8CA6C','#AA1B11',
-    '#6F2C16','#D3571C','#4B301B','#53150B','#4E3320','#130201','#0D2B4A',
-    '#C96D10','#B48A22','#0A0A4D','#FCFBF9'];
+
+
+  const {allColors} = useApp()
 
   const [selected, setSelected] = useState<string[]>([]);
   const [weights, setWeights] = useState<Record<string, number>>({});
