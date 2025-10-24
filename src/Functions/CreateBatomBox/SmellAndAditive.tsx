@@ -1,96 +1,40 @@
 import React from 'react'
-import type { SmelltOptions } from './Types';
+import type { AdditivesOptions, SmelltOptions } from './Types';
+import { useApp } from '../../Contexts/AppProvider';
 
 type SmellAndAditivePros = {
-    step:number
+    step:number,
+    smell:SmelltOptions,
+    setSmell:React.Dispatch<React.SetStateAction<SmelltOptions>>,
+    aditive:AdditivesOptions,
+    setAditive:React.Dispatch<React.SetStateAction<AdditivesOptions>>
 }
 
-function SmellAndAditive({step}:SmellAndAditivePros) {
+function SmellAndAditive({step,smell,setSmell,aditive,setAditive}:SmellAndAditivePros) {
 
-  const SMELL_OPTIONS: { id: SmelltOptions; name: string; description: string }[] = [
-  {
-    id: "none",
-    name: "Sem fragrância",
-    description: "Versão neutra, sem adição de aroma.",
-  },
-  {
-    id: "doce-de-cenoura",
-    name: "Doce de Cenoura",
-    description:
-      "Aroma quente e reconfortante, com notas suaves de especiarias e baunilha.",
-  },
-  {
-    id: "cereja-doce",
-    name: "Cereja Doce",
-    description: "Frutado e vibrante, com toque gourmand e feminino.",
-  },
-  {
-    id: "canela-e-acucar",
-    name: "Canela e Açúcar",
-    description:
-      "Doce e envolvente, com aquele aroma acolhedor típico de inverno.",
-  },
-  {
-    id: "caramelo-brulee",
-    name: "Caramelo Brûlée",
-    description: "Cremoso e sofisticado — mistura de baunilha e açúcar tostado.",
-  },
-  {
-    id: "avela-cremosa",
-    name: "Avelã Cremosa",
-    description: "Notas suaves e doces, com toque amendoados irresistível.",
-  },
-  {
-    id: "coco-tropical",
-    name: "Coco Tropical",
-    description:
-      "Fresco e exótico, com um leve toque cítrico de lima.",
-  },
-  {
-    id: "flor-de-mimosa",
-    name: "Flor de Mimosa",
-    description:
-      "Floral, delicado e elegante — uma fragrância leve e feminina.",
-  },
-  {
-    id: "menta-fresca",
-    name: "Menta Fresca",
-    description:
-      "Refrescante e limpa, ideal para quem adora sensação de frescor nos lábios.",
-  },
-  {
-    id: "pessego-doce",
-    name: "Pêssego Doce",
-    description:
-      "Frutado e suave, com aquele toque de verão e leveza.",
-  },
-  {
-    id: "champanhe-rose",
-    name: "Champanhe Rosé",
-    description:
-      "Elegante e festivo, com notas frutadas e cintilantes.",
-  },
-  {
-    id: "framboesa-chocolate",
-    name: "Framboesa & Chocolate",
-    description:
-      "Irresistivelmente doce e sensual — mistura perfeita entre fruta e tentação.",
-  },
-  {
-    id: "licor-de-anis",
-    name: "Licor de Anis",
-    description:
-      "Aroma marcante e sofisticado, levemente doce e exótico.",
-  },
-  ];
+  const {smellOptions,additiveOptions} = useApp()
 
   return (
     <div>
         {step === 4 && 
         <>
-        teste
+          {smellOptions.map((s) => 
+          <li key={s.id} style={{backgroundColor: s.id === smell ? "green" : ""} } onClick={() => setSmell(s.id)}>
+            {s.name}
+            <p>{s.description}</p>
+          </li>)}
         </>
         }
+        {step === 5 && 
+        <>
+          {additiveOptions.map((a) => 
+          <li key={a.id} style={{backgroundColor: a.id === aditive ? "green" : ""} } onClick={() => setAditive(a.id)}>
+            {a.name}
+            <p>{a.description}</p>
+          </li>
+        )}
+
+        </>}
     </div>
   )
 }

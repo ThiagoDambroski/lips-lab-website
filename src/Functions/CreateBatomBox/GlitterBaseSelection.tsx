@@ -1,5 +1,5 @@
 import React from "react";
-import type { GlittersOptions } from "./Types";
+import type { BaseOptions, GlittersOptions } from "./Types";
 import { useApp } from "../../Contexts/AppProvider";
 
 type GlitterBaseType = {
@@ -7,8 +7,8 @@ type GlitterBaseType = {
   glitterSelected: GlittersOptions;
   setGlitterSelected: React.Dispatch<React.SetStateAction<GlittersOptions>>;
   type: string;
-  baseSelected: string;
-  setBaseSelected: React.Dispatch<React.SetStateAction<string>>;
+  baseSelected: BaseOptions;
+  setBaseSelected: React.Dispatch<React.SetStateAction<BaseOptions>>;
 };
 
 function GlitterBaseSelection({

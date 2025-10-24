@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
-import type { GlittersOptions, SmelltOptions } from '../Functions/CreateBatomBox/Types';
+import type { AdditivesOptions, BaseOptions, EyeColorOptions, GlittersOptions, HairColorOptions, SkinToneOptions, SmelltOptions } from '../Functions/CreateBatomBox/Types';
 
 
 
@@ -9,9 +9,14 @@ type AppContextType = {
     allColors:string[],
     glitterOptions: GlittersOptions[],
     dustOptions: GlittersOptions[],
-    baseBatom: {id:string,name:string,description:string}[],
-    baseGloss: {id:string,name:string,description:string}[],
-    smellOptions: {id:SmelltOptions,name:string,description:string}[];
+    baseBatom: {id:BaseOptions,name:string,description:string}[],
+    baseGloss: {id:BaseOptions,name:string,description:string}[],
+    smellOptions: {id:SmelltOptions,name:string,description:string}[],
+    additiveOptions: { 
+    id: AdditivesOptions; 
+    name: string; 
+    description: string; 
+    }[];
 }
 
 type appProviderProps = {
@@ -37,11 +42,11 @@ function AppProvider({children}:appProviderProps) {
         "arco-iris",
       ];
     const dustOptions: GlittersOptions[] = [
-        "brilho intenso",
-        "po dourado",
+        "brilho-intenso",
+        "po-dourado",
         "po diamante",
     ];
-    const baseBatom = [
+    const baseBatom: {id:BaseOptions,name:string,description:string}[] = [
     {
       id: "cream",
       name: "Base Cremosa (Cream Base)",
@@ -74,7 +79,7 @@ function AppProvider({children}:appProviderProps) {
     },
     ];
 
-    const baseGloss = [
+    const baseGloss: {id:BaseOptions,name:string,description:string}[] = [
     {
       id: "classic",
       name: "Lip Gloss (Clássico)",
@@ -182,6 +187,79 @@ function AppProvider({children}:appProviderProps) {
       "Aroma marcante e sofisticado, levemente doce e exótico.",
   },
   ]
+  const additiveOptions: { 
+    id: AdditivesOptions; 
+    name: string; 
+    description: string; 
+  }[] = [
+    {
+      id: "none",
+      name: "Sem aditivo",
+      description: "Versão pura, sem aditivos adicionais.",
+    },
+    {
+      id: "brilho-hidratacao",
+      name: "✨ Aditivo de Brilho e Hidratação",
+      description:
+        "Melhora a textura do batom ou gloss, tornando-o mais cremoso, luminoso e confortável nos lábios.",
+    },
+    {
+      id: "efeito-volume",
+      name: "💋 Efeito Volume (Lip Plumper)",
+      description:
+        "Proporciona um efeito de lábios mais preenchidos e hidratados.",
+    },
+    {
+      id: "aditivo-hidratante",
+      name: "💧 Aditivo Hidratante",
+      description:
+        "Rico em antioxidantes, aumenta a hidratação e deixa os lábios suaves e nutridos.",
+    },
+    {
+      id: "complexo-multifloral",
+      name: "🌸 Complexo Multifloral",
+      description:
+        "Suaviza a pele, estimula o colágeno e ajuda a combater o envelhecimento.",
+    },
+    {
+      id: "protecao-solar",
+      name: "🌞 Proteção Solar (SPF)",
+      description:
+        "Adiciona fator de proteção solar, ajudando a proteger os lábios da exposição ao sol.",
+    },
+    {
+      id: "textura-sedosa",
+      name: "🪶 Textura Sedosa (Silkening)",
+      description:
+        "Cria um acabamento mais macio, leve e aveludado.",
+    },
+  ];
+
+    const EYE_COLOR_OPTIONS: { id: EyeColorOptions; label: string }[] = [
+      { id: "azul", label: "Azul" },
+      { id: "verde", label: "Verde" },
+      { id: "verde-cinza", label: "Verde / Cinza" },
+      { id: "castanho", label: "Castanho" },
+      { id: "preto-castanho-escuro", label: "Preto / Castanho escuro" },
+    ];
+
+   const SKIN_TONE_OPTIONS: { id: SkinToneOptions; label: string }[] = [
+      { id: "muito-claro", label: "Muito claro" },
+      { id: "rosado", label: "Rosado" },
+      { id: "oliva", label: "Oliva" },
+      { id: "ambar", label: "Âmbar" },
+      { id: "escuro", label: "Escuro" },
+      { id: "muito-escuro", label: "Muito escuro" },
+    ];
+
+    const HAIR_COLOR_OPTIONS: { id: HairColorOptions; label: string }[] = [
+    { id: "preto", label: "Preto" },
+    { id: "castanho-escuro", label: "Castanho escuro" },
+    { id: "castanho-claro", label: "Castanho claro" },
+    { id: "cinzento", label: "Cinzento" },
+    { id: "loiro", label: "Loiro" },
+    { id: "ruivo", label: "Ruivo" },
+  ];
 
 
 
@@ -190,7 +268,7 @@ function AppProvider({children}:appProviderProps) {
     }
 
   return (
-    <AppContext.Provider value={{lightBox,toggleLightBox,allColors,glitterOptions,dustOptions,baseBatom,baseGloss,smellOptions}}>
+    <AppContext.Provider value={{lightBox,toggleLightBox,allColors,glitterOptions,dustOptions,baseBatom,baseGloss,smellOptions,additiveOptions}}>
         {children}
     </AppContext.Provider>
   )
