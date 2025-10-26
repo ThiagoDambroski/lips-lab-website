@@ -58,6 +58,7 @@ export type SmelltOptions =
 
   //choose for u
   export type EyeColorOptions =
+  undefined
   | "azul"
   | "verde"
   | "verde-cinza"
@@ -66,6 +67,7 @@ export type SmelltOptions =
 
 
   export type SkinToneOptions =
+  undefined
   | "muito-claro"
   | "rosado"
   | "oliva"
@@ -74,6 +76,7 @@ export type SmelltOptions =
   | "muito-escuro";
 
   export type HairColorOptions =
+  undefined
   | "preto"
   | "castanho-escuro"
   | "castanho-claro"

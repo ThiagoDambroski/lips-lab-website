@@ -16,7 +16,10 @@ type AppContextType = {
     id: AdditivesOptions; 
     name: string; 
     description: string; 
-    }[];
+    }[],
+    eyesOptions: { id: EyeColorOptions; name: string }[],
+    skinOptions: { id: SkinToneOptions; name: string }[],
+    hairOptions: { id: HairColorOptions; name: string }[];
 }
 
 type appProviderProps = {
@@ -235,30 +238,30 @@ function AppProvider({children}:appProviderProps) {
     },
   ];
 
-    const EYE_COLOR_OPTIONS: { id: EyeColorOptions; label: string }[] = [
-      { id: "azul", label: "Azul" },
-      { id: "verde", label: "Verde" },
-      { id: "verde-cinza", label: "Verde / Cinza" },
-      { id: "castanho", label: "Castanho" },
-      { id: "preto-castanho-escuro", label: "Preto / Castanho escuro" },
+    const eyesOptions: { id: EyeColorOptions; name: string }[] = [
+      { id: "azul", name: "Azul" },
+      { id: "verde", name: "Verde" },
+      { id: "verde-cinza", name: "Verde / Cinza" },
+      { id: "castanho", name: "Castanho" },
+      { id: "preto-castanho-escuro", name: "Preto / Castanho escuro" },
     ];
 
-   const SKIN_TONE_OPTIONS: { id: SkinToneOptions; label: string }[] = [
-      { id: "muito-claro", label: "Muito claro" },
-      { id: "rosado", label: "Rosado" },
-      { id: "oliva", label: "Oliva" },
-      { id: "ambar", label: "Âmbar" },
-      { id: "escuro", label: "Escuro" },
-      { id: "muito-escuro", label: "Muito escuro" },
+   const skinOptions: { id: SkinToneOptions; name: string }[] = [
+      { id: "muito-claro", name: "Muito claro" },
+      { id: "rosado", name: "Rosado" },
+      { id: "oliva", name: "Oliva" },
+      { id: "ambar", name: "Âmbar" },
+      { id: "escuro", name: "Escuro" },
+      { id: "muito-escuro", name: "Muito escuro" },
     ];
 
-    const HAIR_COLOR_OPTIONS: { id: HairColorOptions; label: string }[] = [
-    { id: "preto", label: "Preto" },
-    { id: "castanho-escuro", label: "Castanho escuro" },
-    { id: "castanho-claro", label: "Castanho claro" },
-    { id: "cinzento", label: "Cinzento" },
-    { id: "loiro", label: "Loiro" },
-    { id: "ruivo", label: "Ruivo" },
+    const hairOptions: { id: HairColorOptions; name: string }[] = [
+    { id: "preto", name: "Preto" },
+    { id: "castanho-escuro", name: "Castanho escuro" },
+    { id: "castanho-claro", name: "Castanho claro" },
+    { id: "cinzento", name: "Cinzento" },
+    { id: "loiro", name: "Loiro" },
+    { id: "ruivo", name: "Ruivo" },
   ];
 
 
@@ -268,7 +271,8 @@ function AppProvider({children}:appProviderProps) {
     }
 
   return (
-    <AppContext.Provider value={{lightBox,toggleLightBox,allColors,glitterOptions,dustOptions,baseBatom,baseGloss,smellOptions,additiveOptions}}>
+    <AppContext.Provider value={{lightBox,toggleLightBox,allColors,glitterOptions,dustOptions,baseBatom,baseGloss,
+    smellOptions,additiveOptions,eyesOptions,skinOptions,hairOptions}}>
         {children}
     </AppContext.Provider>
   )

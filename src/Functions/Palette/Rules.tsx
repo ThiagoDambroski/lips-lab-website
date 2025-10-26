@@ -1,4 +1,4 @@
-// rules.ts – mapeia (cabelo×pele×olhos) → paleta do PDF
+
 import type { EyeColorOptions, HairColorOptions, SkinToneOptions, Palette } from "../CreateBatomBox/Types";
 import { PAL_A, PAL_B, PAL_C, PAL_D, PAL_E, PAL_F, PAL_G, PAL_H } from "./Pallete";
 

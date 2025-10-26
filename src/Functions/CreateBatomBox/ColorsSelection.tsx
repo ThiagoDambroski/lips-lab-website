@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState, type ChangeEvent } from 'react';
 import FristStep from './Steps/FristStep';
 import SecondStep from './Steps/SecondStep';
 import { useApp } from '../../Contexts/AppProvider';
+import AutomaticColors from './automatic/AutomaticColors';
 
 type ColorsSelectionProps = {
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>,
@@ -17,6 +18,7 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
 
   const [selected, setSelected] = useState<string[]>([]);
   const [weights, setWeights] = useState<Record<string, number>>({});
+  const [doItYourSelf,setDoItYourSelf] = useState<Boolean | undefined>()
 
   
 
@@ -87,26 +89,45 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
   return (
     <div >
 
+      {doItYourSelf === undefined &&
+        <>
+          <div onClick={() => setDoItYourSelf(true)}>
+            Escolha vc
+          </div>
+          <div onClick={() => setDoItYourSelf(false)}>
+            Escolha automatica
+          </div>
+        </>
+        
+      }
       
-
-      
-      {step === 0 && (
-        <FristStep
-        allColors={allColors}
-        selected={selected}
-        toggleColor={toggleColor}
-        />
-      )}
-
-      {step === 1 && (
-        <SecondStep
+      {doItYourSelf === true &&
+      <>
+        {step === 0 && (
+          <FristStep
+          allColors={allColors}
           selected={selected}
-          weights={weights}
-          setWeights={setWeights}
           toggleColor={toggleColor}
-        />
-      )}
+          />
+        )}
 
+        {step === 1 && (
+          <SecondStep
+            selected={selected}
+            weights={weights}
+            setWeights={setWeights}
+            toggleColor={toggleColor}
+          />
+        )}
+
+      </>}
+      {doItYourSelf === false && 
+        <>
+          <AutomaticColors/>
+        </>
+      }
+      
+      
       
 
     </div>

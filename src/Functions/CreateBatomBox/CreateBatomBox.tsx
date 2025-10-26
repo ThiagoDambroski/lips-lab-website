@@ -12,6 +12,7 @@ function CreateBatomBox() {
     const [newProduct,setNewProduct] = useState<productType >(null);
 
     const [type,setType] = useState<TypesOptions>(undefined);
+    const [automaticChoice,setAutomaticChoice] = useState<boolean>()
     
     const [selectedColor,setSelectedColor] = useState<string | undefined>(undefined);
     const [glitterSelected,setGlitterSelected] = useState<GlittersOptions>("none")
