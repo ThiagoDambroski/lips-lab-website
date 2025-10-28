@@ -123,7 +123,7 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
       </>}
       {doItYourSelf === false && 
         <>
-          <AutomaticColors/>
+          <AutomaticColors toggleColor={toggleColor} selected = {selected} setSelected={setSelected}/>
         </>
       }
       

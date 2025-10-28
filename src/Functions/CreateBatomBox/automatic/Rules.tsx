@@ -1,5 +1,5 @@
 
-import type { EyeColorOptions, HairColorOptions, SkinToneOptions, Palette } from "../CreateBatomBox/Types";
+import type { EyeColorOptions, HairColorOptions, SkinToneOptions, Palette } from "../Types";
 import { PAL_A, PAL_B, PAL_C, PAL_D, PAL_E, PAL_F, PAL_G, PAL_H } from "./Pallete";
 
 /**
@@ -16,7 +16,7 @@ export function getPaletteFor(
   skin: SkinToneOptions,
   eyes: EyeColorOptions
 ): Palette {
-  // helpers
+  
   const coldEyes = eyes === "azul" || eyes === "verde" || eyes === "verde-cinza";
   const lightSkin = skin === "muito-claro" || skin === "rosado";
   const deepSkin = skin === "escuro" || skin === "muito-escuro";
@@ -27,19 +27,19 @@ export function getPaletteFor(
       return coldEyes ? PAL_A : PAL_B;
 
     case "castanho-claro":
-      // olhos frios → C; olhos quentes → D
+  
       return coldEyes ? PAL_C : PAL_D;
 
     case "loiro":
-      // loiro aparece muito com D; olhos bem frios podem puxar A (PDF mostra A/D repetindo). :contentReference[oaicite:10]{index=10}
+      
       return coldEyes ? PAL_D : PAL_D;
 
     case "ruivo":
-      // peles claras/rosadas → E; peles mais quentes/oliva/âmbar → F
+      
       return lightSkin ? PAL_E : PAL_F;
 
     case "cinzento":
-      // pele âmbar/oliva → G; peles mais profundas → H
+      
       return deepSkin ? PAL_H : PAL_G;
 
     default:

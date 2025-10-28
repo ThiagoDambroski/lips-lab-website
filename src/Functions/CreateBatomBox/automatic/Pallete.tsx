@@ -1,4 +1,4 @@
-import type { Palette } from "../CreateBatomBox/Types";
+import type { Palette } from "../Types";
 
 // palettes.ts – paletas (6 tons) exatamente como no PDF
 export const PAL_A: Palette = {
