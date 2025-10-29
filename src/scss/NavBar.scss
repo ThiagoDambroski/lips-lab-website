@@ -1,0 +1,40 @@
+
+nav{
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    ul{
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        align-items: self-end;
+        justify-content: space-between;
+        gap: 10px;
+        li{
+            list-style: none;
+            img{
+                padding-left: 15px;
+                width: 25%;
+            }
+        }
+        div{
+            display: flex;
+            gap: 15px;
+            li{
+                font-size: 18px;
+                text-transform: uppercase;
+                color: white;
+                a{
+                    text-decoration: none;
+                    color: white;
+                    &:visited{
+                        color: white;
+                    }
+                }
+                
+                
+            }
+        }
+        
+    }
+}

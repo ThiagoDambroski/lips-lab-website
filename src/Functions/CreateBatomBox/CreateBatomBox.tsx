@@ -65,7 +65,7 @@ function CreateBatomBox() {
             }}
             aria-label="Mixed color preview"
           />
-
+            <h2 >step for fonts</h2>
             
             <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
               <button onClick={() => setStep(0)} disabled={step === 0}>

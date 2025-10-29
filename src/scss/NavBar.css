@@ -1,0 +1,52 @@
+nav {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
+nav ul {
+  width: 100%;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: self-end;
+      -ms-flex-align: self-end;
+          align-items: self-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 10px;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li img {
+  padding-left: 15px;
+  width: 25%;
+}
+
+nav ul div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul div li {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+}
+
+nav ul div li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav ul div li a:visited {
+  color: white;
+}
+/*# sourceMappingURL=NavBar.css.map */

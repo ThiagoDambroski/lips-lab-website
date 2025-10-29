@@ -1,0 +1,47 @@
+$background-color:#f9d1dc;
+
+.open-page-section{
+    min-height: 100vh;
+    background-color:$background-color;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    .open-page-info{
+        display: flex;
+        width: 55%;
+        flex-direction: column;
+        padding-top: 15%;
+        padding-bottom: 20px;
+        align-items: center;
+        justify-content: space-between;
+
+        button{
+            font-size: 25px;
+            font-style: italic;
+            background-color: #c41123;
+            color: white;
+            border: 0px;
+            padding: 25px 10px 25px 10px;
+            width: fit-content;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            p{
+            
+            font-size: 20px;
+            max-width: 60%;
+            text-align: center;
+            color: #e45397;
+            }
+            p:nth-of-type(2){
+                max-width: 50%;
+                
+            }
+        }
+        
+    }
+}
