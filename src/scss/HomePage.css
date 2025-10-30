@@ -66,4 +66,78 @@
 .open-page-section .open-page-info div p:nth-of-type(2) {
   max-width: 50%;
 }
+
+.rolling-card {
+  background-color: #c41123;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0px;
+}
+
+.gloss-bakcground {
+  margin-left: -1rem;
+  margin-top: -5px;
+  width: 105vw;
+  margin-bottom: 4rem;
+}
+
+.experiencie-libs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.experiencie-libs .experiencie-libs-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 3rem;
+}
+
+.experiencie-libs .experiencie-libs-intro h2 {
+  padding-left: 25px;
+  font-size: 4rem;
+  color: #e45397;
+}
+
+.experiencie-libs .experiencie-libs-intro button {
+  width: 35%;
+  display: inline-block;
+  padding: 8px 24px;
+  border: 3px dashed #e45397;
+  border-radius: 50px;
+  background-color: #fff;
+  color: #e45397;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.experiencie-libs .experiencie-libs-intro button:hover {
+  background-color: #ffe4ef;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.experiencie-libs .experiencie-libs-intro button:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
 /*# sourceMappingURL=HomePage.css.map */

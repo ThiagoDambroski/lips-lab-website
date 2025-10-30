@@ -1,4 +1,5 @@
 $background-color:#f9d1dc;
+$pink-libs-color:#e45397;
 
 .open-page-section{
     min-height: 100vh;
@@ -44,4 +45,65 @@ $background-color:#f9d1dc;
         }
         
     }
+}
+
+.rolling-card {
+  background-color: #c41123;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  height: 50px;
+  display: flex;
+
+  align-items: center;
+  margin: 0px;
+}
+
+.gloss-bakcground{
+    margin-left: -1rem;
+    margin-top: -5px;
+    width: 105vw;
+    margin-bottom: 4rem;
+}
+
+.experiencie-libs{
+    display: flex;
+    
+    .experiencie-libs-intro{
+        
+        display: flex;
+        flex-direction: column;
+        padding-left: 3rem;
+        h2{
+            padding-left: 25px;
+            font-size: 4rem;
+            color: $pink-libs-color;
+        }
+        button{
+            width: 35%;
+            display: inline-block;
+            padding: 8px 24px;
+            border: 3px dashed $pink-libs-color; 
+            border-radius: 50px;
+            background-color: #fff;
+            color: $pink-libs-color;
+            font-size: 30px;
+            font-style: italic;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #ffe4ef; 
+                transform: scale(1.05);
+            }
+
+            &:active {
+                transform: scale(0.98);
+            }
+        }
+    }
+    
 }
