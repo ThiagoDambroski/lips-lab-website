@@ -38,3 +38,21 @@ nav{
         
     }
 }
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    padding-bottom: 1rem;
+    min-height: 25vh;
+    background-color: #e45397;
+    div{
+        display: flex;
+        justify-content: space-between;
+    }
+    p{
+        align-self: center;
+        color: white;
+    }
+}

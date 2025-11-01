@@ -4,6 +4,4 @@
     box-sizing: border-box;
 }
 
-body{
-    overflow-x: hidden;
-}
+html, body { overflow-x: hidden; }   /* safety net */

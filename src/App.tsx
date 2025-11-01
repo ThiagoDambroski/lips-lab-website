@@ -5,6 +5,7 @@ import OnlineExperiencie from './OnlineExperiencie/OnlineExperiencie';
 import ReserveNow from './ReserveNow/ReserveNow';
 import { Routes, Route } from 'react-router-dom';
 import AppProvider from './Contexts/AppProvider';
+import Footer from './footer/Footer';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Route path='/faq' element={<Faq/>}/>
         </Routes>
       </AppProvider>
+      <Footer/>
       
     </>
   )
