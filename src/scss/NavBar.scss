@@ -1,5 +1,5 @@
 
-nav{
+.nav-1{
     position: absolute;
     top: 30px;
     width: 100%;
@@ -38,7 +38,57 @@ nav{
         
     }
 }
-
+.nav-2{
+    background-color: #f9d1dc;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    top: 30px;
+    align-self: center;
+    justify-self: center;
+    width: 80%;
+    border-radius: 50px;
+    ul{
+        width: 100%;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr;
+        gap: 10px;
+        li{
+            width: fit-content;
+            list-style: none;
+            img{
+                padding-left: 15px;
+                width: 50%;
+                filter: brightness(0) saturate(100%) invert(17%) sepia(96%) saturate(7486%) hue-rotate(342deg) brightness(93%) contrast(96%);
+                
+            }
+        }
+        div{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-weight: 600;
+            li{
+                font-size: 12px;
+                text-transform: uppercase;
+                color: #c41123;
+                a{
+                    text-decoration: none;
+                    color: #c41123;
+                    &:visited{
+                        color: #c41123;
+                    }
+                }
+                
+                
+            }
+        }
+        .icon-nav-2{
+            justify-content: end;
+        }
+        
+    }
+}
 
 footer{
     display: flex;
@@ -47,12 +97,34 @@ footer{
     padding-bottom: 1rem;
     min-height: 25vh;
     background-color: #e45397;
-    div{
+    .footer-div{
         display: flex;
         justify-content: space-between;
+        ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            li{
+                color: white;
+                font-size: 15px;
+            }
+        }
     }
     p{
         align-self: center;
         color: white;
+    }
+    .footer-social{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        gap:10px;
+        a{
+            text-decoration: none;
+            &:visited{
+                color: white;
+            }
+        }
     }
 }

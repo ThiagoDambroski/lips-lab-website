@@ -1,10 +1,10 @@
-nav {
+.nav-1 {
   position: absolute;
   top: 30px;
   width: 100%;
 }
 
-nav ul {
+.nav-1 ul {
   width: 100%;
   padding: 20px;
   display: -webkit-box;
@@ -19,35 +19,105 @@ nav ul {
   gap: 10px;
 }
 
-nav ul li {
+.nav-1 ul li {
   list-style: none;
 }
 
-nav ul li img {
+.nav-1 ul li img {
   padding-left: 15px;
   width: 25%;
 }
 
-nav ul div {
+.nav-1 ul div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 15px;
 }
 
-nav ul div li {
+.nav-1 ul div li {
   font-size: 18px;
   text-transform: uppercase;
   color: white;
 }
 
-nav ul div li a {
+.nav-1 ul div li a {
   text-decoration: none;
   color: white;
 }
 
-nav ul div li a:visited {
+.nav-1 ul div li a:visited {
   color: white;
+}
+
+.nav-2 {
+  background-color: #f9d1dc;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  top: 30px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 80%;
+  border-radius: 50px;
+}
+
+.nav-2 ul {
+  width: 100%;
+  padding: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1.5fr 1fr;
+      grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 10px;
+}
+
+.nav-2 ul li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  list-style: none;
+}
+
+.nav-2 ul li img {
+  padding-left: 15px;
+  width: 50%;
+  -webkit-filter: brightness(0) saturate(100%) invert(17%) sepia(96%) saturate(7486%) hue-rotate(342deg) brightness(93%) contrast(96%);
+          filter: brightness(0) saturate(100%) invert(17%) sepia(96%) saturate(7486%) hue-rotate(342deg) brightness(93%) contrast(96%);
+}
+
+.nav-2 ul div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+}
+
+.nav-2 ul div li {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #c41123;
+}
+
+.nav-2 ul div li a {
+  text-decoration: none;
+  color: #c41123;
+}
+
+.nav-2 ul div li a:visited {
+  color: #c41123;
+}
+
+.nav-2 ul .icon-nav-2 {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
 }
 
 footer {
@@ -64,7 +134,7 @@ footer {
   background-color: #e45397;
 }
 
-footer div {
+footer .footer-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,10 +143,47 @@ footer div {
           justify-content: space-between;
 }
 
+footer .footer-div ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+
+footer .footer-div ul li {
+  color: white;
+  font-size: 15px;
+}
+
 footer p {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  color: white;
+}
+
+footer .footer-social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+  gap: 10px;
+}
+
+footer .footer-social a {
+  text-decoration: none;
+}
+
+footer .footer-social a:visited {
   color: white;
 }
 /*# sourceMappingURL=NavBar.css.map */

@@ -5,21 +5,21 @@ import logo from "../assets/logo.png"
 function Footer() {
   return (
     <footer>
-        <div>
+        <div className='footer-div'>
             <img src={logo} alt="logo" />
-            <div>
+            
                 <ul>
                     <li>reserva agora</li>
                     <li>experiência online</li>
                     <li>perquntas frequentes</li>
                 </ul>
-                <div>
+                <div className='footer-social'>
                     <span>SOCIAL</span>
                     <a href="">@lipslab.pt</a>
                     <span>CONTACTO</span>
                     <a href="">lipslab.co@gmail.com</a>
                 </div>
-            </div>
+            
         </div>
         <p>© 2025 lips lab. All rights reserverd.</p>
     </footer>
