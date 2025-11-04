@@ -1,4 +1,118 @@
 .reserve-now .reserve-now-intro {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reserve-now .reserve-now-intro div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 20px;
+  gap: 10px;
+}
+
+.reserve-now .reserve-now-intro div h2 {
+  font-size: 40px;
+  color: #e45397;
+}
+
+.reserve-now .reserve-now-intro div button {
+  background-color: #f9d1dc;
+  border: 0px;
+  padding: 2rem;
+  border-radius: 50px;
+  width: 80%;
+  font-size: 30px;
+  color: white;
+}
+
+.reserve-now .reserve-now-display {
+  padding-top: 2rem;
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+}
+
+.reserve-now .reserve-now-display .reserve-now-display-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.reserve-now .reserve-now-display .reserve-now-display-flex img {
+  width: 70%;
+}
+
+.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div {
+  margin-bottom: 2rem;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  background-color: #ffd3dd;
+  margin-left: 20px;
+  min-height: 40vh;
+  padding: 1rem;
+  border-radius: 50px;
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div h3 {
+  padding-left: 20px;
+  color: #c41123;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div p {
+  color: white;
+  white-space: pre-line;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div button {
+  width: 40%;
+  background-color: #c41123;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  padding: 1rem;
+  color: white;
+}
+
+.reserve-now .reserve-now-display .img-bck-colors {
+  width: 100%;
+  max-height: 80%;
 }
 /*# sourceMappingURL=reserverNow.css.map */

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .open-page-section {
   min-height: 100vh;
   background-color: #f9d1dc;
@@ -400,22 +399,18 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  /* cada metade igual */
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  /* centraliza o conteúdo */
   gap: 20px;
-  /* 🔥 remove qualquer espaço entre imagem e texto */
   padding: 2rem 0;
 }
 
 .home-about-us .home-about-us-explore img {
   width: 100%;
-  /* 🔥 ocupa 100% da coluna */
   height: 100%;
   max-height: 500px;
   -o-object-fit: cover;
@@ -428,7 +423,6 @@
 .home-about-us .home-about-us-explore div {
   background-color: #ffd3dd;
   border-radius: 80px;
-  /* arredonda só o lado direito */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

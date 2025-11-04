@@ -1,5 +1,86 @@
 .reserve-now{
     .reserve-now-intro{
         min-height: 100vh;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-right: 20px;
+            gap: 10px;
+            h2{
+                font-size: 40px;
+                color: #e45397;
+            }
+            button{
+                background-color: #f9d1dc;
+                border: 0px;
+                padding: 2rem;
+                border-radius: 50px;
+                width: 80%;
+                font-size: 30px;
+                color: white;
+
+
+            }
+        }
+        
+
+    }
+    .reserve-now-display{
+        padding-top: 2rem;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1rem;
+        .reserve-now-display-flex{
+            display: flex;
+            flex-direction: column;
+            img{
+                width: 70%;
+            }
+            .reserve-now-display-div{
+                margin-bottom: 2rem;
+                max-width: fit-content;
+                background-color: #ffd3dd;
+                margin-left: 20px;
+                min-height: 40vh;
+                padding: 1rem;
+                border-radius: 50px;
+                padding-top: 4rem;
+                padding-bottom: 3rem;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                h3{
+                    padding-left: 20px;
+                    color: #c41123;
+                    font-size: 30px;
+                    font-weight: 400;
+                }
+                p{
+                    color: white;
+                    white-space: pre-line;
+                    font-size: 18px;
+                    margin-bottom: 25px;
+                }
+                button{
+                    width: 40%;
+                    background-color: #c41123;
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 18px;
+                    padding: 1rem;
+                    color: white;
+                }
+            }
+        }
+        .img-bck-colors{
+            width: 100%;
+            max-height: 80%;
+        }
+        
     }
 }
