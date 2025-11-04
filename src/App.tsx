@@ -6,6 +6,7 @@ import ReserveNow from './ReserveNow/ReserveNow';
 import { Routes, Route } from 'react-router-dom';
 import AppProvider from './Contexts/AppProvider';
 import Footer from './footer/Footer';
+import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path='/reserve' element={<ReserveNow/>}/>
             <Route path='/create' element = {<OnlineExperiencie/>}/>
             <Route path='/faq' element={<Faq/>}/>
+            <Route path='experiencie' element={<ExperiencieAndPrice/>}/>
         </Routes>
       </AppProvider>
       <Footer/>

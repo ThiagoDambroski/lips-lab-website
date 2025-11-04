@@ -42,12 +42,15 @@
 }
 
 .reserve-now .reserve-now-display {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), to(#ffd3dd));
+  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd 100%);
   padding-top: 2rem;
-  min-height: 100vh;
   display: -ms-grid;
   display: grid;
+  gap: 10px;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+  max-height: 170vh;
   padding: 1rem;
 }
 
@@ -59,24 +62,25 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 .reserve-now .reserve-now-display .reserve-now-display-flex img {
-  width: 70%;
+  position: absolute;
+  width: 80%;
+  top: 75vh;
+  left: -100px;
 }
 
 .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div {
   margin-bottom: 2rem;
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
   background-color: #ffd3dd;
   margin-left: 20px;
   min-height: 40vh;
   padding: 1rem;
   border-radius: 50px;
   padding-top: 4rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,14 +94,14 @@
 .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div h3 {
   padding-left: 20px;
   color: #c41123;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 400;
 }
 
 .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div p {
   color: white;
   white-space: pre-line;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 25px;
 }
 
