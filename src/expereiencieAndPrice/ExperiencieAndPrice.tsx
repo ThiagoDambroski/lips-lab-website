@@ -3,6 +3,34 @@ import Navbar from '../Navbar/navbar'
 import logo from "../assets/logo.png"
 import "../scss/ExperiencieAndPrice.css"
 import CurvedRibbon from '../ReserveNow/CurvedRibbon'
+import ProductCarousel from '../ReserveNow/ProductCarouselProps'
+
+export type ProductItem = {
+  id: string | number;
+  title: string;
+  price: number | string; 
+  imageUrl: string;
+  alt?: string;
+};
+
+const products: ProductItem[] = [
+  {
+    id: 1,
+    title: "GLOSS LABIAL",
+    price: "55€",
+    imageUrl: "/images/gloss.png",
+    alt: "Gloss labial rosa",
+  },
+  {
+    id: 2,
+    title: "BATOM",
+    price: "55€",
+    imageUrl: "/images/batom.png",
+    alt: "Batom branco com tampa rosa",
+  },
+  // add as many as you need...
+];
+
 
 function ExperiencieAndPrice() {
   return (
@@ -61,6 +89,55 @@ function ExperiencieAndPrice() {
           </div>
         </section>
         <CurvedRibbon/>
+        <ProductCarousel
+          items={products}
+          initialIndex={0}
+          autoplayMs={0} // set e.g. 4000 to enable autoplay
+          onIndexChange={(i) => console.log("slide:", i)}
+        />
+        <section className='whats-include-section'>
+            <h1>O QUE ESTÁ INCLUSO?</h1>
+            <div className='whats-include-div'>
+                  <ul>
+                    <li>
+                      <h3>Criação personalizada de batom ou gloss labial </h3>
+                      <p>Define o acabamento, o aroma e a cor perfeita, com a orientação de uma especialista </p>
+                    </li>
+                    <li>
+                      <h3>Criação no laboratório Lips Lab </h3>
+                      <p>veste a bata e torna-te criadora do teu próprio batom ou gloss labial
+                        no laboratório lips lab, és tu quem faz tudo
+                      </p>
+                    </li>
+                    <li>
+                      <h3>Bebida de boas-vindas </h3>
+                      <p>para desfrutares durante a experiência </p>
+                    </li>
+                    <li>
+                      <h3>Personalização exclusiva </h3>
+                      <p>grava o teu nome, símbolo ou palavra favorita na embalagem do produto </p>
+                    </li>
+                    <li>
+                      <h3>Charms decorativos </h3>
+                      <p>pequenos detalhes que tornam a tua criação ainda mais especial </p>
+                    </li>
+                    <li>
+                      <h3>Oferta especial (mistério) </h3>
+                      <p>uma surpresa preparada pela nossa equipa para tornar o momento inesquecível</p>
+                    </li>
+                    <li>
+                      <h3>Introdução à coloração pessoal</h3>
+                      <p>Descobre, com base na tua cor de pele, cabelo e olhos, 
+                        a cartela de tons que mais harmoniza com a tua beleza natural e valoriza os teus traços</p>
+                    </li>
+                  </ul>
+                  <h1>logo</h1>
+                  <h1>img1</h1>
+                  <h1>img2</h1>
+            </div>
+
+          <button>RESERVA AGORA!</button>
+        </section>
      </main>
     </>
   )

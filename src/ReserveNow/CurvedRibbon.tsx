@@ -19,7 +19,7 @@ export default function CurvedText({
   lineGap = 34,
   repeatCount = 20,
 }: Props) {
-  // curve path (no fill/stroke -> no background)
+ 
   const baseY = height * 0.65;
   const d = `
     M 0 ${baseY}
@@ -37,18 +37,17 @@ export default function CurvedText({
     <svg viewBox={`0 0 ${width} ${height}`} width="100%" aria-label="Curved text">
       <defs>
         <path id="curve-1" d={d} />
-        {/* same curve, shifted down by lineGap */}
         <path id="curve-2" d={d} transform={`translate(0, ${lineGap})`} />
       </defs>
 
-      {/* line 1 */}
+      
       <text fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
         <textPath href="#curve-1" startOffset="0%">
           {repeat(text, repeatCount)}
         </textPath>
       </text>
 
-      {/* line 2 */}
+      
       <text fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
         <textPath href="#curve-2" startOffset="0%">
           {repeat(text, repeatCount)}
