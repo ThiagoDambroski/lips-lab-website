@@ -4,6 +4,11 @@ import logo from "../assets/logo.png"
 import "../scss/ExperiencieAndPrice.css"
 import CurvedRibbon from '../ReserveNow/CurvedRibbon'
 import ProductCarousel from '../ReserveNow/ProductCarouselProps'
+import libsBackground from "../assets/libs back.png"
+import upGloss from "../assets/up-gloss.png"
+import donwGloss from '../assets/down-gloss.png'
+import libs from "../assets/libs-display.png"
+
 
 export type ProductItem = {
   id: string | number;
@@ -28,7 +33,7 @@ const products: ProductItem[] = [
     imageUrl: "/images/batom.png",
     alt: "Batom branco com tampa rosa",
   },
-  // add as many as you need...
+  
 ];
 
 
@@ -42,41 +47,63 @@ function ExperiencieAndPrice() {
           <div className='how-it-works-div'>
             <ul>
               <li>
-                <span>logo</span>
+                  <div className="step-badge">
+                    <img src={libs} alt="" aria-hidden="true" />
+                    <span className="step-number">1</span>
+                  </div>
                 <span>Escolhe a tua base e acabamento</span>
                 <p>Decide se queres um  batom cremoso, mate, liquido ou um gloss labial brilhante</p>
               </li>
               <li>
-                <span>logo</span>
+                 <div className="step-badge">
+                    <img src={libs} alt="" aria-hidden="true" />
+                    <span className="step-number">2</span>
+                  </div>
                 <span>Cria a tua cor e o glitter</span>
                 <p>Mistura pigmentos e descobre o tom que melhor reflete a tua personalidade</p>
               </li>
               <li>
+                 <div className="step-badge">
+                    <img src={libs} alt="" aria-hidden="true" />
+                    <span className="step-number">3</span>
+                  </div>
                 <span>Escolhe o teu aroma favorito</span>
                 <p> Dá ao teu batom uma assinatura sensorial única, escolhe o aroma que combina contigo</p>
               </li>
               <li>
-                <span>logo</span>
+                 <div className="step-badge">
+                    <img src={libs} alt="" aria-hidden="true" />
+                    <span className="step-number">4</span>
+                  </div>
                 <span>Adiciona os teus aditivos</span>
                 <p> Personaliza a fórmula do teu batom com os aditivos naturais disponíveis na experiência</p>
               </li>
               <li>
-                <span>logo</span>
+                 <div className="step-badge">
+                    <img src={libs} alt="" aria-hidden="true" />
+                    <span className="step-number">5</span>
+                  </div>
                 <span>Personaliza a embalagem</span>
                 <p>Grava um nome, uma palavra ou símbolo</p>
               </li>
               <li>
-                <span>logo</span>
+                 <div className="step-badge">
+                    <img src={libs} alt="" aria-hidden="true" />
+                    <span className="step-number">6</span>
+                  </div>
                 <span>Escolhe o teu charm</span>
                 <p>Dá o toque final perfeito  com os nossos charms  decorativos exclusivos</p>
               </li>
               <li>
-                <span>logo</span>
+                 <div className="step-badge">
+                    <img src={libs} alt="" aria-hidden="true" />
+                    <span className="step-number">7</span>
+                  </div>
                 <span>Escolhe o teu aroma favorito</span>
                 <p>No final, sais da Lips Lab com o teu batom ou gloss labial personalizado criado por ti</p>
               </li>
             </ul>
-            <div>
+            <div className='how-it-works-section-div'>
               <img src={logo} alt="Logo lips labs" />
               <p>
                 {`Vive uma experiência única onde a beleza se transforma em ciência e criatividade
@@ -97,7 +124,8 @@ function ExperiencieAndPrice() {
         />
         <section className='whats-include-section'>
             <h1>O QUE ESTÁ INCLUSO?</h1>
-            <div className='whats-include-div'>
+            <div className='whats-include-background'  style={{ backgroundImage: `url(${libsBackground})` }}>
+              <div className='whats-include-div'>
                   <ul>
                     <li>
                       <h3>Criação personalizada de batom ou gloss labial </h3>
@@ -131,12 +159,14 @@ function ExperiencieAndPrice() {
                         a cartela de tons que mais harmoniza com a tua beleza natural e valoriza os teus traços</p>
                     </li>
                   </ul>
-                  <h1>logo</h1>
-                  <h1>img1</h1>
-                  <h1>img2</h1>
+                  <img src={logo} alt="Libs lab logo" />
+                  
             </div>
-
-          <button>RESERVA AGORA!</button>
+            <img src={upGloss} alt="" className='up-gloss'/>
+            <img src={donwGloss} alt="" className='down-gloss'/>
+            <button>RESERVA AGORA!</button>
+          </div>
+            
         </section>
      </main>
     </>

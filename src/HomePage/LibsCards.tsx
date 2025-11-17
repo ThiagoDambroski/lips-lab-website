@@ -21,10 +21,10 @@ export default function LibsCards({ number }: LibsCardsType) {
 
   return (
     <article className="libs-card" role="listitem" aria-label={`Passo ${number}`}>
-       <div className="libs-badge">
-        <img src={libs} alt="" aria-hidden="true" />
-        <span className="libs-card__badge">{number}</span>
-      </div>
+        <div className="libs-badge">
+          <img src={libs} alt="" aria-hidden="true" />
+          <span className="libs-card__badge">{number}</span>
+        </div>
       
       
       <h3 className="libs-card__title">{step.title}</h3>

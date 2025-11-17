@@ -1,0 +1,134 @@
+.online-how-it-works-section {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 3rem;
+}
+
+.online-how-it-works-section h1 {
+  padding-left: 3rem;
+  width: 80%;
+  font-size: 60px;
+  font-weight: lighter;
+  color: #e45397;
+  text-transform: uppercase;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div img {
+  width: 55%;
+  max-height: 130vh;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul {
+  position: absolute;
+  right: 0px;
+  list-style: none;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 55%;
+  top: 10%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul h2 {
+  color: #c41123;
+  font-size: 50px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul li {
+  background-color: #ffd3dd;
+  padding: 1rem;
+  position: relative;
+  border-radius: 50px;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul li .step-badge {
+  position: absolute;
+  display: inline-block;
+  top: -20px;
+  left: 30px;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul li .step-badge img {
+  position: relative;
+  display: block;
+  width: 80px;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul li .step-number {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -65%);
+          transform: translate(-50%, -65%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+  background: none;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul li span {
+  font-size: 18px;
+}
+
+.online-how-it-works-section .online-how-it-works-section-div ul li p {
+  font-size: 15px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.online-buy-section {
+  min-height: 100vh;
+  padding: 3rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), to(#ffd3dd8f));
+  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd8f 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.online-buy-section button {
+  background-color: #ffd3dd;
+  color: #c41123;
+  border: none;
+  border-radius: 50px;
+  padding: 1.5rem;
+  font-size: 60px;
+  width: 40%;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.online-buy-section p {
+  font-size: 30px;
+  color: #e45397;
+  padding-left: 4rem;
+}
+/*# sourceMappingURL=OnlineExperiencie.css.map */

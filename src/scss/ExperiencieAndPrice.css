@@ -13,8 +13,9 @@
 .how-it-works-section h1 {
   padding-left: 1rem;
   color: #e45397;
-  font-size: 50px;
+  font-size: 80px;
   font-weight: lighter;
+  padding-bottom: 1rem;
 }
 
 .how-it-works-section .how-it-works-div {
@@ -35,13 +36,40 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 10px;
+  gap: 30px;
 }
 
 .how-it-works-section .how-it-works-div ul li {
   background-color: #ffd3dd;
   padding: 1rem;
+  position: relative;
   border-radius: 50px;
+}
+
+.how-it-works-section .how-it-works-div ul li .step-badge {
+  position: absolute;
+  display: inline-block;
+  top: -20px;
+  left: 30px;
+}
+
+.how-it-works-section .how-it-works-div ul li .step-badge img {
+  position: relative;
+  display: block;
+  width: 80px;
+}
+
+.how-it-works-section .how-it-works-div ul li .step-number {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -65%);
+          transform: translate(-50%, -65%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+  background: none;
 }
 
 .how-it-works-section .how-it-works-div ul li span {
@@ -54,7 +82,7 @@
   font-style: italic;
 }
 
-.how-it-works-section .how-it-works-div div {
+.how-it-works-section .how-it-works-div .how-it-works-section-div {
   background-color: #c41123;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -73,7 +101,7 @@
   padding: 2rem;
 }
 
-.how-it-works-section .how-it-works-div div img {
+.how-it-works-section .how-it-works-div .how-it-works-section-div img {
   -ms-flex-item-align: end;
       -ms-grid-row-align: end;
       align-self: end;
@@ -82,10 +110,139 @@
   justify-self: flex-end;
 }
 
-.how-it-works-section .how-it-works-div div p {
+.how-it-works-section .how-it-works-div .how-it-works-section-div p {
   font-size: 27px;
   color: white;
   max-width: 100%;
   white-space: pre-line;
+}
+
+.whats-include-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  padding-bottom: 2rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), color-stop(70%, #ffd3dd));
+  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd 70%);
+}
+
+.whats-include-section h1 {
+  font-size: 70px;
+  color: #c41123;
+}
+
+.whats-include-section .whats-include-background {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+  position: relative;
+}
+
+.whats-include-section .whats-include-background .up-gloss {
+  width: 25%;
+  position: absolute;
+  right: -130px;
+  z-index: 10;
+}
+
+.whats-include-section .whats-include-background .down-gloss {
+  width: 20%;
+  position: absolute;
+  right: -100px;
+  bottom: 0px;
+}
+
+.whats-include-section .whats-include-background .whats-include-div {
+  padding: 2rem 0rem 2rem 0rem;
+  background-color: #ffd3dd;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+.whats-include-section .whats-include-background .whats-include-div ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 35px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.whats-include-section .whats-include-background .whats-include-div ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.whats-include-section .whats-include-background .whats-include-div ul li h3 {
+  font-weight: lighter;
+}
+
+.whats-include-section .whats-include-background .whats-include-div ul li p {
+  text-align: center;
+  width: 80%;
+}
+
+.whats-include-section .whats-include-background .whats-include-div img {
+  width: 50%;
+}
+
+.whats-include-section .whats-include-background button {
+  background-color: #ffd3dd;
+  border: none;
+  padding: 2rem;
+  color: #c41123;
+  width: 35%;
+  font-size: 30px;
+  border-radius: 50px;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 /*# sourceMappingURL=ExperiencieAndPrice.css.map */

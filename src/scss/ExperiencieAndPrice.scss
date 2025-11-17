@@ -6,8 +6,9 @@
     h1{
         padding-left: 1rem;
         color: #e45397;
-        font-size: 50px;
+        font-size: 80px;
         font-weight: lighter;
+        padding-bottom: 1rem;
     }
     .how-it-works-div{
         display: grid;
@@ -18,12 +19,43 @@
             color: white;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 30px;
+            
             li{
                 background-color: #ffd3dd;
                 padding: 1rem;
+                position: relative;
                 border-radius: 50px;
-                
+                .step-badge {
+                        position: absolute;
+                        display: inline-block;
+                        top: -20px;
+                        left: 30px;
+                    }
+
+                        
+                    .step-badge img {
+                        
+                        position: relative;
+                        display: block;
+                        width: 80px;
+                     
+                        
+                    }
+
+                       
+                    .step-number {
+                        position: absolute;
+                        top: 60%;
+                        left: 50%;
+                        transform: translate(-50%, -65%);  
+                        color: #fff;
+                        font-weight: 700;
+                        font-size: 1.4rem;
+                        line-height: 1;
+                        
+                        background: none;
+                    }
                 span{
                     font-size: 18px;
                 }
@@ -35,7 +67,7 @@
             }
 
         }
-        div{
+        .how-it-works-section-div{
             background-color: #c41123;
             width: fit-content;
             border-radius: 50px 0px 0px 50px;
@@ -57,6 +89,98 @@
                 max-width: 100%;
                 white-space: pre-line;
             }
+        }
+    }
+    
+    
+}
+
+.whats-include-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 2rem;
+    background: linear-gradient(
+            180deg,
+            transparent 0%,      // fully transparent at the top
+            transparent 20%,     // keeps the top clear for a bit
+            #ffe7eb 40%,         // starts fading into light pink
+            #ffd3dd 70%         // finishes with deeper pink
+        );
+     h1{
+        font-size: 70px;
+        color: #c41123;
+        }
+    .whats-include-background{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background-repeat: repeat;         
+        background-size: auto;            
+        background-position: top left;  
+        position: relative;
+        
+        .up-gloss{
+            width: 25%;
+            position: absolute;
+            right: -130px;
+            z-index: 10;
+        }
+        .down-gloss{
+            width: 20%;
+            position: absolute;
+            right: -100px;
+            bottom: 0px;
+        }
+        .whats-include-div{
+            
+            padding: 2rem 0rem 2rem 0rem;
+            background-color: #ffd3dd;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            ul{
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 35px;
+                color: white;
+                text-transform: uppercase;
+                li{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    
+
+                    h3{font-weight: lighter;}
+                    p{
+                        text-align: center;
+                        width: 80%;
+                    }
+                }
+                
+            }
+            img{
+                width: 50%;
+                
+            }
+        }
+        button{
+            background-color: #ffd3dd;
+            border: none;
+            padding: 2rem;
+            color: #c41123;
+            width: 35%;
+            font-size: 30px;
+            border-radius: 50px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
         }
     }
     
