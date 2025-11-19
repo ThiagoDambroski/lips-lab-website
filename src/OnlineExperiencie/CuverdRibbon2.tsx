@@ -12,14 +12,14 @@ type Props = {
 export default function CurvedText({
   text = "AGORA É CONTIGO!",
   width = 1200,
-  height = 260,
+  height = 210,
   fontSize = 36,
   color = "#c41123",
   repeatCount = 20,
 }: Props) {
   // linha base “virtual”
   const baseY = height * 0.7;
-  const curveHeight = 40; // intensidade da curvatura
+  const curveHeight = 45; // intensidade da curvatura
 
   // curva: sobe bastante à esquerda, achata no meio e desce SUAVEMENTE à direita
   const d = `

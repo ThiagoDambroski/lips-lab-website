@@ -101,9 +101,9 @@
 
 .online-buy-section {
   min-height: 100vh;
-  padding: 3rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), to(#ffd3dd8f));
-  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd8f 100%);
+  padding: 0rem 3rem 3rem 3rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(10%, transparent), color-stop(40%, #ffe7eb), to(#ffd3dd8f));
+  background: linear-gradient(180deg, transparent 0%, transparent 10%, #ffe7eb 40%, #ffd3dd8f 100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -126,9 +126,60 @@
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.online-buy-section p {
+.online-buy-section .online-buy-p {
   font-size: 30px;
   color: #e45397;
   padding-left: 4rem;
+}
+
+.online-buy-section .online-buy-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+  padding-bottom: 5rem;
+}
+
+.online-buy-section .online-buy-container .online-buy-card {
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  border-radius: 50px;
+  background-color: #dddddd;
+}
+
+.online-buy-section .online-buy-container .online-buy-card img {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  height: 50vh;
+}
+
+.online-buy-section .online-buy-container .online-buy-card h3 {
+  color: #c41123;
+}
+
+.online-buy-section .online-buy-container .online-buy-card p {
+  color: #c41123;
+}
+
+.online-buy-section .online-buy-container .online-buy-card span {
+  color: #c41123;
+  font-size: 25px;
+  font-weight: bolder;
 }
 /*# sourceMappingURL=OnlineExperiencie.css.map */

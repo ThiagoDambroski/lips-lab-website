@@ -5,6 +5,8 @@ import kiss from "../assets/kissing-batom.png"
 import Navbar from '../Navbar/navbar'
 import libs from "../assets/libs-display.png"
 import CuverdRibbon2 from "../OnlineExperiencie/CuverdRibbon2"
+import gloss from "../assets/gloss.png"
+import batom from "../assets/batom.png"
 
 function OnlineExperiencie() {
   
@@ -84,13 +86,19 @@ function OnlineExperiencie() {
           <button>
             COMEÇAR!
           </button>
-          <p>Experimenta criar o teu batom personalizado sem sair de casa!</p>
-          <div>
-            <div>
-
+          <p className='online-buy-p'>Experimenta criar o teu batom personalizado sem sair de casa!</p>
+          <div className='online-buy-container'>
+            <div className='online-buy-card'>
+              <img src={gloss} alt="libs labs gloss" />
+              <h3>GLOSS LABIAL</h3>
+              <p>cria teu gloss lábial do zero!</p>
+              <span>29€</span>
             </div>
-            <div>
-              
+            <div className='online-buy-card'>
+              <img src={batom} alt="libs labs batom" />
+              <h3>BATOM</h3>
+              <p>cria teu batom do zero!</p>
+              <span>29€</span>
             </div>
           </div>
         </section>

@@ -86,11 +86,11 @@
 
 .online-buy-section{
     min-height: 100vh;
-    padding: 3rem;
+    padding: 0rem 3rem 3rem 3rem;
     background: linear-gradient(
             180deg,
             transparent 0%,      // fully transparent at the top
-            transparent 20%,     // keeps the top clear for a bit
+            transparent 10%,     // keeps the top clear for a bit
             #ffe7eb 40%,         // starts fading into light pink
             #ffd3dd8f 100%         // finishes with deeper pink
     );
@@ -108,10 +108,42 @@
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 
     }
-    p{
+    .online-buy-p{
         font-size: 30px;
         color: #e45397;
         padding-left: 4rem;
 
+    }
+
+    .online-buy-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        padding-bottom: 5rem;
+        .online-buy-card{
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            border-radius: 50px;
+            background-color: #dddddd;
+            img{
+                align-self: center;
+                justify-self: center;
+                height: 50vh;
+            }
+            h3{
+                color: #c41123;
+            }
+            p{
+                color: #c41123;
+            }
+            span{
+                color: #c41123;
+                font-size: 25px;
+                font-weight: bolder;
+            }
+        }
     }
 }

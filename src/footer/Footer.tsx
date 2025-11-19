@@ -1,6 +1,7 @@
 import React from 'react'
 import "../scss/NavBar.css"
 import logo from "../assets/logo.png"
+import { NavLink } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -11,7 +12,7 @@ function Footer() {
                 <ul>
                     <li>reserva agora</li>
                     <li>experiência online</li>
-                    <li>perquntas frequentes</li>
+                    <li><NavLink to = "/faq">perquntas frequentes</NavLink></li>
                 </ul>
                 <div className='footer-social'>
                     <span>SOCIAL</span>

@@ -1,0 +1,196 @@
+.faq-intro {
+  padding-left: 2rem;
+}
+
+.faq-intro h1 {
+  font-size: 5rem;
+  color: #e45397;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.faq-intro p {
+  max-width: 30%;
+  font-size: 0.8rem;
+  color: #e45397;
+}
+
+.faq-question {
+  padding: 2rem;
+  background-color: #f9d1dc;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.50fr 0.55fr;
+      grid-template-columns: 0.50fr 0.55fr;
+}
+
+.faq-question img {
+  width: 90%;
+  max-height: 600px;
+}
+
+.faq-question .faq-question-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.faq-question .faq-question-container h3 {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: white;
+  font-style: italic;
+}
+
+.faq-question .faq-question-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.faq-item {
+  padding: 1rem 0;
+  border-bottom: 3px solid white;
+}
+
+.faq-item:first-of-type {
+  border-top: 3px solid white;
+}
+
+.faq-item.is-open .faq-toggle {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.faq-question-header {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-question-header p {
+  color: #c41123;
+  margin: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 1rem;
+}
+
+.faq-toggle {
+  color: #c41123;
+  font-size: 1.6rem;
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.25s ease;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+  line-height: 1;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transform: translateY(-6px);
+          transform: translateY(-6px);
+  -webkit-transition: max-height 0.35s ease, opacity 0.35s ease, -webkit-transform 0.35s ease;
+  transition: max-height 0.35s ease, opacity 0.35s ease, -webkit-transform 0.35s ease;
+  transition: max-height 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+  transition: max-height 0.35s ease, opacity 0.35s ease, transform 0.35s ease, -webkit-transform 0.35s ease;
+}
+
+.faq-answer ol {
+  padding-left: 1.2rem;
+  margin-top: 0.6rem;
+  list-style: disc;
+  color: #c41123;
+}
+
+.faq-answer li {
+  margin-bottom: 0.2rem;
+}
+
+.faq-answer.is-open {
+  max-height: 500px;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.faq-still-questions {
+  min-height: 70vh;
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+}
+
+.faq-still-questions div {
+  width: 100%;
+  min-height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(60%, transparent), color-stop(90%, #ffd3dd8f));
+  background: linear-gradient(180deg, transparent 0%, transparent 60%, #ffd3dd8f 90%);
+}
+
+.faq-still-questions div h1 {
+  color: #c41123;
+  font-size: 3rem;
+}
+
+.faq-still-questions div button {
+  border: none;
+  border-radius: 50px;
+  padding: 2rem;
+  width: 50%;
+  background-color: #f9d1dc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.faq-still-questions div button p {
+  color: white;
+  font-size: 1rem;
+}
+
+.faq-still-questions div button span {
+  font-size: 2rem;
+  color: white;
+}
+/*# sourceMappingURL=Faq.css.map */

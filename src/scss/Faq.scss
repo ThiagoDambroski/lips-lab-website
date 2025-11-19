@@ -1,0 +1,168 @@
+.faq {
+  
+}
+
+.faq-intro {
+  padding-left: 2rem;
+
+  h1 {
+    font-size: 5rem;
+    color: #e45397;
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    max-width: 30%;
+    
+    font-size: 0.8rem;
+    color: #e45397;
+  }
+}
+
+.faq-question {
+    padding: 2rem;
+  background-color: #f9d1dc;
+  display: grid;
+  grid-template-columns: 0.50fr 0.55fr;
+  
+  img{
+    width: 90%;
+    max-height: 600px
+  }
+  .faq-question-container{
+    display: flex;
+    flex-direction: column;
+    h3 {
+        align-self: flex-end;
+        margin-bottom: 1.5rem;
+        font-size: 2.5rem;
+        color: white;
+        font-style: italic;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+  }
+  
+}
+
+.faq-item {
+  padding: 1rem 0;
+  
+  &:first-of-type {
+    border-top: 3px solid white;
+  }
+  border-bottom: 3px solid white;
+
+  &.is-open .faq-toggle {
+    transform: rotate(45deg);
+  }
+}
+
+.faq-question-header {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+
+  p {
+    color: #c41123;
+    margin: 0;
+    flex: 1;
+    font-size: 1rem;
+  }
+}
+
+.faq-toggle {
+color: #c41123;
+  font-size: 1.6rem;
+  display: inline-block;
+  transition: transform 0.25s ease;
+  line-height: 1;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
+
+  ol {
+    padding-left: 1.2rem;
+    margin-top: 0.6rem;
+    list-style: disc;
+    color: #c41123;
+  }
+
+  li {
+    margin-bottom: 0.2rem;
+    
+  }
+}
+
+.faq-answer.is-open {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.faq-still-questions{
+    min-height: 70vh;
+    
+    
+    background-repeat: repeat;         
+    background-size: auto;            
+    background-position: top left;  
+    div{
+        width: 100%;
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background: linear-gradient(
+            180deg,
+            transparent 0%,      // fully transparent at the top
+            transparent 60%,     // keeps the top clear for a bit
+            
+            #ffd3dd8f 90%         // finishes with deeper pink
+        );
+        h1{
+            color: #c41123;
+            font-size: 3rem;
+        }
+        button{
+            border: none;
+            border-radius: 50px;
+            padding: 2rem;
+            width: 50%;
+            background-color: #f9d1dc;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+            p{
+                color: white;
+                font-size: 1rem;
+            }
+            span{
+                font-size: 2rem;
+                color: white;
+            }
+        }
+    }
+}
