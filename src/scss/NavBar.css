@@ -23,7 +23,8 @@
   list-style: none;
 }
 
-.nav-1 ul li img {
+.nav-1 ul li .nav-logo {
+  padding-top: 10px;
   padding-left: 15px;
   width: 25%;
 }
@@ -81,7 +82,7 @@
   list-style: none;
 }
 
-.nav-2 ul li img {
+.nav-2 ul li .nav-logo {
   padding-left: 15px;
   width: 50%;
   -webkit-filter: brightness(0) saturate(100%) invert(17%) sepia(96%) saturate(7486%) hue-rotate(342deg) brightness(93%) contrast(96%);
@@ -158,6 +159,15 @@ footer .footer-div ul {
 footer .footer-div ul li {
   color: white;
   font-size: 15px;
+}
+
+footer .footer-div ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer .footer-div ul li a:visited {
+  color: white;
 }
 
 footer p {

@@ -12,7 +12,8 @@
         gap: 10px;
         li{
             list-style: none;
-            img{
+            .nav-logo{
+                padding-top: 10px;
                 padding-left: 15px;
                 width: 25%;
             }
@@ -34,6 +35,7 @@
                 
                 
             }
+            .nav-icon-img{}
         }
         
     }
@@ -56,7 +58,7 @@
         li{
             width: fit-content;
             list-style: none;
-            img{
+            .nav-logo{
                 padding-left: 15px;
                 width: 50%;
                 filter: brightness(0) saturate(100%) invert(17%) sepia(96%) saturate(7486%) hue-rotate(342deg) brightness(93%) contrast(96%);
@@ -106,6 +108,13 @@ footer{
             flex-direction: column;
             gap: 10px;
             li{
+                a{
+                    color: white;
+                    text-decoration: none;
+                    &:visited{
+                        color: white;
+                    }
+                }
                 color: white;
                 font-size: 15px;
             }

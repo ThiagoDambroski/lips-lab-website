@@ -5,3 +5,10 @@
 }
 
 html, body { overflow-x: hidden; }   /* safety net */
+
+
+.rolling-card-2{
+    padding: 0.5rem;
+    background-color: #e55498;
+    color: white;
+}

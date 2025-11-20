@@ -7,12 +7,20 @@ import { Routes, Route } from 'react-router-dom';
 import AppProvider from './Contexts/AppProvider';
 import Footer from './footer/Footer';
 import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
+import Marquee from 'react-fast-marquee';
 
 function App() {
 
   return (
     <>
-      
+      <Marquee
+          gradient={false}       // remove fade nas bordas
+          speed={100}             // controla a velocidade
+          pauseOnHover={false}    // pausa com o rato em cima
+          className="rolling-card-2"
+        >
+          PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp;  PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp;
+        </Marquee>
       <AppProvider>
         <Routes>
             <Route path='/' element ={<HomePage/>}/>
