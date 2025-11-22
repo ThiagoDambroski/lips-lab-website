@@ -1,6 +1,6 @@
 .reserve-now{
     .reserve-now-intro{
-        min-height: 100vh;
+        min-height: 120vh;
         display: flex;
         justify-content: end;
         align-items: center;
@@ -9,10 +9,12 @@
             flex-direction: column;
             align-items: center;
             padding-right: 20px;
-            gap: 10px;
+            gap: 5rem;
             h2{
-                font-size: 40px;
+                font-family: "ApercuPro";
+                font-size: 50px;
                 color: #e45397;
+                font-style: italic;
             }
             button{
                 background-color: #f9d1dc;
@@ -22,6 +24,7 @@
                 width: 80%;
                 font-size: 30px;
                 color: white;
+                box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 
 
             }
@@ -68,18 +71,24 @@
                 flex-direction: column;
                 gap: 20px;
                 h3{
+                    font-family: "ApercuPro"; 
                     padding-left: 20px;
                     color: #c41123;
-                    font-size: 35px;
-                    font-weight: 400;
+                    font-size: 40px;
+                    font-weight: 500;
                 }
                 p{
                     color: white;
                     white-space: pre-line;
                     font-size: 20px;
                     margin-bottom: 25px;
+                    font-family: "IvyPresto";
+                    font-weight: bold;
                 }
                 button{
+                    font-family: "IvyPresto";
+                    font-style: italic;
+                    font-weight: bold;
                     width: 40%;
                     background-color: #c41123;
                     border: none;

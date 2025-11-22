@@ -1,5 +1,5 @@
 .reserve-now .reserve-now-intro {
-  min-height: 100vh;
+  min-height: 120vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,12 +23,14 @@
       -ms-flex-align: center;
           align-items: center;
   padding-right: 20px;
-  gap: 10px;
+  gap: 5rem;
 }
 
 .reserve-now .reserve-now-intro div h2 {
-  font-size: 40px;
+  font-family: "ApercuPro";
+  font-size: 50px;
   color: #e45397;
+  font-style: italic;
 }
 
 .reserve-now .reserve-now-intro div button {
@@ -39,6 +41,8 @@
   width: 80%;
   font-size: 30px;
   color: white;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .reserve-now .reserve-now-display {
@@ -92,10 +96,11 @@
 }
 
 .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div h3 {
+  font-family: "ApercuPro";
   padding-left: 20px;
   color: #c41123;
-  font-size: 35px;
-  font-weight: 400;
+  font-size: 40px;
+  font-weight: 500;
 }
 
 .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div p {
@@ -103,9 +108,14 @@
   white-space: pre-line;
   font-size: 20px;
   margin-bottom: 25px;
+  font-family: "IvyPresto";
+  font-weight: bold;
 }
 
 .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div button {
+  font-family: "IvyPresto";
+  font-style: italic;
+  font-weight: bold;
   width: 40%;
   background-color: #c41123;
   border: none;

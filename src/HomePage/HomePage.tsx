@@ -16,6 +16,7 @@ import paraba_icon from "../assets/paraba.svg"
 import background_venha_ate_nos from "../assets/background-venha-ate-nos.png"
 import image_woman from "../assets/image-woman-home-page.png"
 import  Navbar from "../Navbar/navbar"
+import backLibs from "../assets/libs back.png"
 
 
 function HomePage() {
@@ -32,12 +33,13 @@ function HomePage() {
             <div className="open-page-info">
               <button>MARCA JÁ TUA EXPERIÊNCIA!</button>
               <div>
-                <p>A experiência convida-te a entrar no laboratório e viver 
-                todo o processo de criação, desde a cor até à embalagem
+                <p>Entra no nosso laboratório e cria o teu batom ou gloss labial. 
+                  Vive toda a experiência da criação, 
+                  
                 </p>
                 <p>
-                  Na Lips Lab, crias o teu próprio batom, 
-                  de forma única e totalmente personalizada
+                  desde a fórmula até à embalagem.
+                  Na Lips Lab, crias um batom ou gloss único, totalmente personalizado, tudo feito por ti!
                 </p>
               </div>
               
@@ -106,14 +108,16 @@ function HomePage() {
           <button>EXPERIÊNCIA ONLINE!</button>
 
         </section>
-        <section className="home-about-us">
+        <section className="home-about-us" style={{ backgroundImage: `url(${backLibs})` }}>
           <div className="home-about-us-about">
             <button>SOBRE NÓS</button>
-            <p> {`A Lips Lab é a primeira loja em Portugal dedicada à criação personalizada de batons e glosses labiais.
-                Um conceito pioneiro que combina inovação, personalização e exclusividade.
+            <p> {`A LIPS LAB É A PRIMEIRA LOJA EM PORTUGAL, 
 
-                Tudo o que criamos é vegan, não testado em animais e livre de parabenos,porque acreditamos numa beleza responsável e consciente.
-                Na Lips Lab, cada cor conta uma história — a tua`}
+                  onde entras num verdadeiro laboratório e crias o teu próprio batom ou gloss, passo a passo e totalmente à tua medida. 
+
+                  Da fórmula à embalagem tudo feito por ti! Aqui escolhes a base, defines a cor, adicionas aroma e aditivos, e finalizas com uma embalagem personalizada.
+
+                  Todo o processo é feito de forma responsável: fórmulas vegan, cruelty-free, sem glúten e desenvolvidas em Portugal.`}
             </p>
           </div>
           <div className="home-about-us-explore">

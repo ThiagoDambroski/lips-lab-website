@@ -106,11 +106,11 @@ function ExperiencieAndPrice() {
             <div className='how-it-works-section-div'>
               <img src={logo} alt="Logo lips labs" />
               <p>
-                {`Vive uma experiência única onde a beleza se transforma em ciência e criatividade
-                  Na Lips Lab, és convidada a vestir a bata e entrar no laboratório, um espaço inspirador 
-                  onde vais misturar pigmentos, escolher aromas e transformar ideias em cor.
-                  Cria o teu próprio batom ou gloss labial, totalmente à tua medida, 
-                  com a orientação de uma profissional dedicada`}
+                {`Cria o teu próprio batom ou gloss labial, totalmente à tua medida, com a orientação dedicada de uma profissional que te acompanha em cada passo da experiência.
+
+                  Na Lips Lab, és convidada a vestir a bata e a entrar no nosso laboratório, um espaço inspirador onde misturas pigmentos, escolhes aromas e transformas ideias em cor.
+
+                  Vive uma experiência única, onde a beleza se encontra com a ciência e a criatividade.`}
               </p>
             </div>
           </div>

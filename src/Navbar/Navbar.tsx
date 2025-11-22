@@ -26,11 +26,40 @@ function navbar({css = 0}:NavbarProps) {
       <ul>
         <li><NavLink to = "/"><img src={logo} alt="Logo" className="nav-logo" /></NavLink></li>
         <div>
-          <li><NavLink to = "/reserve">Reserva Agora</NavLink></li>
-          <li><NavLink to = "/experiencie">Experiência e Preços</NavLink></li>
-          <li><NavLink to = "/create">Experiência Online</NavLink></li>
-          {/*<li><NavLink to = "/faq">Perguntas Frequentes</NavLink></li>*/}
+          <li>
+            <NavLink
+              to="/reserve"
+              className={({ isActive }: { isActive: boolean }) =>
+                isActive ? "active" : ""
+              }
+            >
+              Reserva Agora
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/experiencie"
+              className={({ isActive }: { isActive: boolean }) =>
+                isActive ? "active" : ""
+              }
+            >
+              Experiência e Preços
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/create"
+              className={({ isActive }: { isActive: boolean }) =>
+                isActive ? "active" : ""
+              }
+            >
+              Experiência Online
+            </NavLink>
+          </li>
         </div>
+
         <div className={css === 0 ? "" : "icon-nav-2"}>
           <img src={css === 0 ? whitePin : redPin} alt="" className="nav-icon-img"/>
           <img src={css === 0 ? whiteShop: redShop} alt="" className="nav-icon-img"/>
