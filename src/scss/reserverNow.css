@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .reserve-now .reserve-now-intro {
   min-height: 120vh;
   display: -webkit-box;
@@ -154,5 +155,46 @@
 .reserve-now .reserve-now-display .img-bck-colors {
   width: 100%;
   max-height: 80%;
+}
+
+/* ================================
+   RESPONSIVE ADJUSTMENTS (DESKTOP / TABLET)
+   – only additions, no changes to existing styles
+   – phones (< 768px) intentionally left out
+================================ */
+@media (min-width: 1500px) {
+  .reserve-now .reserve-now-intro div {
+    padding-bottom: 4rem;
+  }
+  .reserve-now .reserve-now-intro div h2 {
+    font-size: 4rem;
+  }
+  .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div p {
+    font-size: 23px;
+  }
+  .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div button {
+    font-size: 25px;
+  }
+}
+
+/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+@media (max-width: 1400px) and (min-width: 1100px) {
+  .reserve-now .reserve-now-intro div h2 {
+    font-size: 2.3rem;
+  }
+  .reserve-now .reserve-now-intro div button {
+    width: 70%;
+    padding: 1.4rem;
+    font-size: 20px;
+  }
+  .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div h3 {
+    font-size: 30px;
+  }
+  .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div p {
+    font-size: 18px;
+  }
+  .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div button {
+    font-size: 15px;
+  }
 }
 /*# sourceMappingURL=reserverNow.css.map */

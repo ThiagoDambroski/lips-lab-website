@@ -130,3 +130,60 @@
 }
 
 
+/* ================================
+   RESPONSIVE ADJUSTMENTS (DESKTOP / TABLET)
+   – only additions, no changes to existing styles
+   – phones (< 768px) intentionally left out
+================================ */
+
+$desktop-xl: 1500px;
+$laptop-max: 1400px; 
+$laptop-min: 1100px;
+$tablet-min: 768px;  
+
+
+@media (min-width: $desktop-xl) {
+    .reserve-now .reserve-now-intro div {
+        padding-bottom: 4rem;
+        h2{
+            font-size: 4rem;
+        }
+    }
+
+    .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div {
+        p{
+            font-size: 23px;
+        }
+        button{
+            font-size: 25px;
+        }
+
+    }
+}
+
+/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+  .reserve-now .reserve-now-intro div {
+        
+        h2{
+            font-size: 2.3rem;
+        }
+        button{
+            width: 70%;
+            padding: 1.4rem;
+            font-size: 20px;
+        }
+    }
+
+    .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div{
+        h3{
+            font-size: 30px;
+        }
+        p{
+            font-size: 18px;
+        }
+        button{
+            font-size: 15px;
+        }
+    }
+}

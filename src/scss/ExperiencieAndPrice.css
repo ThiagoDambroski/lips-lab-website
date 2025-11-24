@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ----- ApercuPro Bold ----- */
 @font-face {
   font-family: "ApercuPro";
@@ -340,5 +341,56 @@
           transform: scale(1.04);
   -webkit-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
           box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ================================
+   RESPONSIVE ADJUSTMENTS (DESKTOP / TABLET)
+   – only additions, no changes to existing styles
+   – phones (< 768px) intentionally left out
+================================ */
+@media (min-width: 1500px) {
+  .reserve-now .reserve-now-intro div {
+    padding-bottom: 4rem;
+  }
+  .reserve-now .reserve-now-intro div h2 {
+    font-size: 4rem;
+  }
+  .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div p {
+    font-size: 23px;
+  }
+  .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div button {
+    font-size: 25px;
+  }
+}
+
+/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+@media (max-width: 1400px) and (min-width: 1100px) {
+  .how-it-works-section h1 {
+    font-size: 70px;
+  }
+  .how-it-works-section .how-it-works-div ul li .step-badge img {
+    width: 75px;
+  }
+  .how-it-works-section .how-it-works-div ul li .step-number {
+    font-size: 1.2rem;
+  }
+  .how-it-works-section .how-it-works-div ul li span {
+    left: 25%;
+  }
+  .how-it-works-section .how-it-works-div .how-it-works-section-div p {
+    font-size: 25px;
+  }
+  .whats-include-section .whats-include-background .up-gloss {
+    top: 30%;
+  }
+  .whats-include-section .whats-include-background .whats-include-div img {
+    width: 40%;
+  }
+  .whats-include-section .whats-include-background button {
+    font-size: 30px;
+  }
+  .whats-include-section h1 {
+    font-size: 60px;
+  }
 }
 /*# sourceMappingURL=ExperiencieAndPrice.css.map */

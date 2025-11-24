@@ -479,3 +479,106 @@ $pink-libs-color:#e45397;
 
 
 }
+
+/* ==========================================================
+   LARGE DESKTOP RESPONSIVE FIXES
+   (keeps full-width design, prevents stretching)
+   Only additions — no changes to your existing rules
+   Applies to screens > 1500px
+========================================================== */
+
+@media (min-width: 1500px) {
+
+  /* -------------------------------------------------------
+     HERO SECTION (OPEN PAGE)
+  ------------------------------------------------------- */
+  .open-page-section {
+    padding-inline: 5vw;               // add breathing room on sides
+  }
+
+  .open-page-section .open-page-info p {
+    max-width: 70%;                    // avoid extremely long lines
+    font-size: clamp(18px, 1.2vw, 22px);
+  }
+
+  .open-page-section button {
+    font-size: clamp(20px, 1.3vw, 30px);
+    padding: 1rem 2rem;
+  }
+
+  /* -------------------------------------------------------
+     HERO IMAGE (prevents ugly stretching)
+  ------------------------------------------------------- */
+  .open-page-section img {
+    max-height: 130vh;
+    object-fit: cover;
+    border-radius: 40px;
+  }
+
+
+  .home-banner h2{
+    font-size: 4rem;
+  }
+
+  /* -------------------------------------------------------
+     EXPERIENCE CARDS (fixes the misalignment bug)
+  ------------------------------------------------------- */
+  .experiencie-libs-cards-container {
+    gap: 40px;
+    padding-inline: 3vw;
+  }
+
+  .experiencie-libs-cards-container .libs-card {
+    width: 38vh;       // prevent card from becoming too huge
+    height: 38vh;
+  }
+}
+
+/* ==========================================================
+   MEDIUM DESKTOPS (1100px–1500px)
+  
+========================================================== */
+
+@media (max-width: 1400px) and (min-width: 1100px) {
+
+  .open-page-section {
+    padding-inline: 3vw;
+  }
+  .open-page-section img {
+    max-height: 100vh;
+    
+  }
+
+  .open-page-section .open-page-info {
+    
+    button{
+      font-size: 20px
+    }
+    div p{
+      max-width: 80%;
+      font-size: 17px;
+    }
+    img{
+      width: 60%;
+    }
+    
+  }
+
+  .home-about-us .home-about-us-about button{
+    width: 30%;
+    font-size: 25px;
+  }
+
+  .home-about-us .home-about-us-about p{
+    font-size: 26px
+  }
+  .home-about-us .home-about-us-explore{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .experiencie-libs-cards-container .libs-card {
+    width: 42vh;
+    height: 42vh;
+  }
+}

@@ -192,3 +192,48 @@
         }
     }
 }
+
+$desktop-xl: 1500px;
+$laptop-max: 1400px; 
+$laptop-min: 1100px;
+$tablet-min: 768px;  
+
+
+@media (min-width: $desktop-xl) {
+    .online-how-it-works-section h1{
+        width: 75%;
+    }
+    .online-how-it-works-section .online-how-it-works-section-div img{
+        max-height: 100vh;
+    }
+}
+
+/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+    .online-how-it-works-section h1{
+        width: 75%;
+        font-size: 40px;
+    }
+
+    .online-how-it-works-section .online-how-it-works-section-div ul h2{
+        font-size: 45px;
+    }
+    .online-how-it-works-section .online-how-it-works-section-div ul li {
+        padding: 1.5rem;
+        .step-number {
+            font-size: 1.5rem;
+        }
+        .step-badge img {
+            width: 80px;
+        }
+        span{
+            font-size: 18px;
+        }
+        p{
+            font-size: 13px;
+        }
+    }
+    .online-buy-section button{
+        font-size: 40px;
+    }
+}
