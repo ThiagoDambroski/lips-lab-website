@@ -15,7 +15,7 @@ function OnlineExperiencie() {
       <Navbar css={1}/>
       <CreateBatomBox/>
       <main>
-      
+       
         <section className='online-how-it-works-section'>
           <h1>Cria o teu batom personalizado onde quer que estejas!</h1>
           <div className='online-how-it-works-section-div'>
@@ -27,42 +27,42 @@ function OnlineExperiencie() {
                     <img src={libs} alt="" aria-hidden="true" />
                     <span className="step-number">1</span>
                   </div>
-                <span>Escolhe a tua base e acabamento</span>
-                <p>Decide se queres um  batom cremoso, mate, liquido ou um gloss labial brilhante</p>
+                <span>ESCOLHE A BASE</span>
+                <p>Começa por decidir o “estilo” do teu produto: queres algo cremoso, super mate, líquido ou preferes o brilho irresistível de um gloss?</p>
               </li>
               <li>
                  <div className="step-badge">
                     <img src={libs} alt="" aria-hidden="true" />
                     <span className="step-number">2</span>
                   </div>
-                <span>Cria a tua cor e o glitter</span>
-                <p>Mistura pigmentos e descobre o tom que melhor reflete a tua personalidade</p>
+                <span>CRIA A TUA COR</span>
+                <p>Liberta o teu lado artístico! Mistura pigmentos, experimenta combinações e descobre o tom que te representa na perfeição.</p>
               </li>
               <li>
                  <div className="step-badge">
                     <img src={libs} alt="" aria-hidden="true" />
                     <span className="step-number">3</span>
                   </div>
-                <span>Escolhe o teu aroma favorito</span>
-                <p> Dá ao teu batom uma assinatura sensorial única, escolhe o aroma que combina contigo</p>
+                <span>ADICIONA AROMA & ESSÊNCIA</span>
+                <p> Torna o teu batom inesquecível escolhendo o aroma e a essência que mais te conquistam… tu decides o ambiente da experiência!</p>
               </li>
               <li>
                  <div className="step-badge">
                     <img src={libs} alt="" aria-hidden="true" />
                     <span className="step-number">4</span>
                   </div>
-                <span>Adiciona os teus aditivos</span>
-                <p> Personaliza a fórmula do teu batom com os aditivos naturais disponíveis na experiência</p>
+                <span>ESCOLHE O ADITIVO</span>
+                <p> Dá um upgrade à fórmula com benefícios extra: mais hidratação, volume, suavização ou proteção. Escolhe aquilo que torna o teu batom ainda mais “tu”.</p>
               </li>
               <li>
                  <div className="step-badge">
                     <img src={libs} alt="" aria-hidden="true" />
                     <span className="step-number">5</span>
                   </div>
-                <span>Personaliza a embalagem</span>
-                <p>Grava um nome, uma palavra ou símbolo</p>
+                <span>PERSONALIZA A EMBALAGEM</span>
+                <p>Grava o teu nome ou um símbolo especial e escolhe os charms que melhor te representam. O toque final que torna o teu batom único.</p>
               </li>
-              <li>
+              {/* <li>
                  <div className="step-badge">
                     <img src={libs} alt="" aria-hidden="true" />
                     <span className="step-number">6</span>
@@ -77,7 +77,8 @@ function OnlineExperiencie() {
                   </div>
                 <span>Escolhe o teu aroma favorito</span>
                 <p>No final, sais da Lips Lab com o teu batom ou gloss labial personalizado criado por ti</p>
-              </li>
+              </li>*/}
+              
             </ul>
           </div>
         </section>

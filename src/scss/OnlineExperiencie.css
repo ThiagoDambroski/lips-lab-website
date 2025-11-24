@@ -17,6 +17,9 @@
   font-weight: lighter;
   color: #e45397;
   text-transform: uppercase;
+  font-weight: bold;
+  font-family: "ApercuPro";
+  font-style: italic;
 }
 
 .online-how-it-works-section .online-how-it-works-section-div {
@@ -49,18 +52,24 @@
 }
 
 .online-how-it-works-section .online-how-it-works-section-div ul h2 {
+  font-family: "IvyPresto";
   color: #c41123;
-  font-size: 50px;
+  font-size: 70px;
+  font-style: italic;
   -ms-flex-item-align: end;
       align-self: flex-end;
   justify-self: flex-end;
+  padding-bottom: 2rem;
 }
 
 .online-how-it-works-section .online-how-it-works-section-div ul li {
   background-color: #ffd3dd;
-  padding: 1rem;
+  padding: 2rem;
   position: relative;
   border-radius: 50px;
+  font-family: "ApercuPro";
+  width: 90%;
+  color: #c41123;
 }
 
 .online-how-it-works-section .online-how-it-works-section-div ul li .step-badge {
@@ -73,24 +82,28 @@
 .online-how-it-works-section .online-how-it-works-section-div ul li .step-badge img {
   position: relative;
   display: block;
-  width: 80px;
+  width: 90px;
 }
 
 .online-how-it-works-section .online-how-it-works-section-div ul li .step-number {
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   -webkit-transform: translate(-50%, -65%);
           transform: translate(-50%, -65%);
   color: #fff;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   line-height: 1;
   background: none;
 }
 
 .online-how-it-works-section .online-how-it-works-section-div ul li span {
-  font-size: 18px;
+  top: -25px;
+  left: 25%;
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .online-how-it-works-section .online-how-it-works-section-div ul li p {
@@ -115,6 +128,9 @@
 }
 
 .online-buy-section button {
+  font-family: "IvyPresto";
+  font-weight: 600;
+  font-style: italic;
   background-color: #ffd3dd;
   color: #c41123;
   border: none;
@@ -122,12 +138,28 @@
   padding: 1.5rem;
   font-size: 60px;
   width: 40%;
+  cursor: pointer;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  -webkit-transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+}
+
+.online-buy-section button:hover {
+  background-color: #ffa0b6;
+  color: #950d1b;
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: 0 14px 26px rgba(0, 0, 0, 0.26);
+          box-shadow: 0 14px 26px rgba(0, 0, 0, 0.26);
 }
 
 .online-buy-section .online-buy-p {
-  font-size: 30px;
+  font-family: "ApercuPro";
+  font-size: 25px;
+  font-weight: 600;
   color: #e45397;
   padding-left: 4rem;
 }
@@ -158,6 +190,18 @@
   width: 40%;
   border-radius: 50px;
   background-color: #dddddd;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+}
+
+.online-buy-section .online-buy-container .online-buy-card:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .online-buy-section .online-buy-container .online-buy-card img {
@@ -170,14 +214,18 @@
 }
 
 .online-buy-section .online-buy-container .online-buy-card h3 {
+  font-family: 'ApercuPro';
   color: #c41123;
 }
 
 .online-buy-section .online-buy-container .online-buy-card p {
+  font-family: 'IvyPresto';
   color: #c41123;
+  font-weight: bold;
 }
 
 .online-buy-section .online-buy-container .online-buy-card span {
+  font-family: 'ApercuPro';
   color: #c41123;
   font-size: 25px;
   font-weight: bolder;

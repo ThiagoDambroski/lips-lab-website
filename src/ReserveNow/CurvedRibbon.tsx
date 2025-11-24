@@ -1,4 +1,5 @@
 import React from "react";
+import apercu from "../assets/fonts/apercu/ApercuPro-Bold.eot"
 
 type Props = {
   text?: string;
@@ -41,14 +42,14 @@ export default function CurvedText({
       </defs>
 
       
-      <text fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
+      <text fontFamily={apercu} fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
         <textPath href="#curve-1" startOffset="0%">
           {repeat(text, repeatCount)}
         </textPath>
       </text>
 
       
-      <text fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
+      <text fontFamily={apercu} fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
         <textPath href="#curve-2" startOffset="0%">
           {repeat(text, repeatCount)}
         </textPath>

@@ -107,6 +107,18 @@
   width: fit-content;
   border-radius: 50px;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+}
+
+.open-page-section .open-page-info button:hover {
+  background-color: #a80f1f;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
 .open-page-section .open-page-info div {
@@ -415,6 +427,19 @@
   border: none;
   padding: 1rem;
   font-style: italic;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+}
+
+.home-venha-ate button:hover {
+  background-color: #f3a4ba;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 .home-about-us {

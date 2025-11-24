@@ -128,36 +128,31 @@ function ExperiencieAndPrice() {
               <div className='whats-include-div'>
                   <ul>
                     <li>
-                      <h3>Criação personalizada de batom ou gloss labial </h3>
-                      <p>Define o acabamento, o aroma e a cor perfeita, com a orientação de uma especialista </p>
+                      <h3>Bebida de boas-vindas </h3>
+                      <p>Recebe uma bebida de boas-vindas para começar a tua experiência da melhor forma </p>
                     </li>
                     <li>
-                      <h3>Criação no laboratório Lips Lab </h3>
-                      <p>veste a bata e torna-te criadora do teu próprio batom ou gloss labial
-                        no laboratório lips lab, és tu quem faz tudo
+                      <h3>Coloração Pessoal</h3>
+                      <p>Descobre os tons que mais valorizam a tua cor de pele, cabelo e olhos, para criares uma cor que te favorece verdadeiramente
                       </p>
                     </li>
                     <li>
-                      <h3>Bebida de boas-vindas </h3>
+                      <h3>A tua criação no nosso laboratório </h3>
                       <p>para desfrutares durante a experiência </p>
                     </li>
                     <li>
-                      <h3>Personalização exclusiva </h3>
-                      <p>grava o teu nome, símbolo ou palavra favorita na embalagem do produto </p>
+                      <h3>Todos os Aditivos Incluídos </h3>
+                      <p>Veste a bata, entra no laboratório e cria o teu próprio produto, desde a escolha da base até à mistura de pigmentos, aromas, essência e aditivos</p>
                     </li>
                     <li>
-                      <h3>Charms decorativos </h3>
-                      <p>pequenos detalhes que tornam a tua criação ainda mais especial </p>
+                      <h3>Personalização Exclusiva</h3>
+                      <p>Grava o teu nome, símbolo ou palavra favorita na embalagem do produto </p>
                     </li>
                     <li>
-                      <h3>Oferta especial (mistério) </h3>
-                      <p>uma surpresa preparada pela nossa equipa para tornar o momento inesquecível</p>
+                      <h3>Charms Decorativos </h3>
+                      <p>Escolhe charms especiais para tornar a tua criação ainda mais única e personalizada</p>
                     </li>
-                    <li>
-                      <h3>Introdução à coloração pessoal</h3>
-                      <p>Descobre, com base na tua cor de pele, cabelo e olhos, 
-                        a cartela de tons que mais harmoniza com a tua beleza natural e valoriza os teus traços</p>
-                    </li>
+           
                   </ul>
                   <img src={logo} alt="Libs lab logo" />
                   

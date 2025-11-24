@@ -1,3 +1,67 @@
+/* ----- ApercuPro Bold ----- */
+@font-face {
+  font-family: "ApercuPro";
+  src: url("../assets/fonts/apercu/ApercuPro-Bold.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Bold.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ----- ApercuPro Bold Italic ----- */
+@font-face {
+  font-family: "ApercuPro";
+  src: url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ----- ApercuPro Italic ----- */
+@font-face {
+  font-family: "ApercuPro";
+  src: url("../assets/fonts/apercu/ApercuPro-Italic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Italic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ----- ApercuPro Medium ----- */
+@font-face {
+  font-family: "ApercuPro";
+  src: url("../assets/fonts/apercu/ApercuPro-Medium.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Medium.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* ----- ApercuPro Medium Italic ----- */
+@font-face {
+  font-family: "ApercuPro";
+  src: url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ----- ApercuPro Mono ----- */
+@font-face {
+  font-family: "ApercuProMono";
+  src: url("../assets/fonts/apercu/ApercuPro-Mono.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Mono.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Mono.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ----- ApercuPro Regular (caso exista) ----- */
+@font-face {
+  font-family: "ApercuPro";
+  src: url("../assets/fonts/apercu/ApercuPro.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ----- ivy-prestio*/
+@font-face {
+  font-family: "IvyPresto";
+  src: url("../assets/fonts/ivy-presto-display/ivy-presto-display.otf") format("ptf");
+  font-weight: 400;
+  font-style: normal;
+}
+
 .how-it-works-section {
   padding: 0rem 0rem 3rem 3rem;
   display: -webkit-box;
@@ -11,6 +75,8 @@
 }
 
 .how-it-works-section h1 {
+  font-family: "ApercuPro";
+  font-style: italic;
   padding-left: 1rem;
   color: #e45397;
   font-size: 80px;
@@ -28,7 +94,8 @@
 
 .how-it-works-section .how-it-works-div ul {
   list-style: none;
-  color: white;
+  color: #c41123;
+  font-family: "ApercuPro";
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,7 +103,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 30px;
+  gap: 40px;
 }
 
 .how-it-works-section .how-it-works-div ul li {
@@ -73,11 +140,15 @@
 }
 
 .how-it-works-section .how-it-works-div ul li span {
+  top: -20px;
+  left: 20%;
+  position: absolute;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .how-it-works-section .how-it-works-div ul li p {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   font-style: italic;
 }
@@ -95,9 +166,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  gap: 4rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 2rem;
 }
 
@@ -111,6 +183,7 @@
 }
 
 .how-it-works-section .how-it-works-div .how-it-works-section-div p {
+  font-weight: bold;
   font-size: 27px;
   color: white;
   max-width: 100%;
@@ -135,6 +208,8 @@
 }
 
 .whats-include-section h1 {
+  font-family: "IvyPresto";
+  font-style: italic;
   font-size: 70px;
   color: #c41123;
 }
@@ -202,7 +277,6 @@
           flex-direction: column;
   gap: 35px;
   color: white;
-  text-transform: uppercase;
 }
 
 .whats-include-section .whats-include-background .whats-include-div ul li {
@@ -222,12 +296,17 @@
 }
 
 .whats-include-section .whats-include-background .whats-include-div ul li h3 {
-  font-weight: lighter;
+  font-weight: bold;
+  font-size: 30px;
+  font-style: italic;
+  color: #c41123;
+  font-family: "IvyPresto";
 }
 
 .whats-include-section .whats-include-background .whats-include-div ul li p {
+  font-family: "ApercuPro";
   text-align: center;
-  width: 80%;
+  width: 60%;
 }
 
 .whats-include-section .whats-include-background .whats-include-div img {
@@ -240,9 +319,26 @@
   padding: 2rem;
   color: #c41123;
   width: 35%;
-  font-size: 30px;
+  font-family: "ApercuPro";
+  font-size: 35px;
+  font-weight: 500;
+  font-style: italic;
   border-radius: 50px;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+}
+
+.whats-include-section .whats-include-background button:hover {
+  background-color: #ffa0b6;
+  color: #950d1b;
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 /*# sourceMappingURL=ExperiencieAndPrice.css.map */

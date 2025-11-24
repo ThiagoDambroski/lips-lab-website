@@ -106,7 +106,17 @@ $pink-libs-color:#e45397;
             width: fit-content;
             border-radius: 50px;
             cursor: pointer;
-        }
+            transition: 
+            background-color 0.3s ease,
+            transform 0.25s ease,
+            box-shadow 0.3s ease;
+             &:hover{
+              background-color: #a80f1f; 
+              transform: scale(1.05);   
+              box-shadow: 0 8px 18px rgba(0,0,0,0.25);  
+            }
+            }
+           
         div{
             display: flex;
             flex-direction: column;
@@ -332,14 +342,25 @@ $pink-libs-color:#e45397;
         text-align: center
     }
     button{
-        font-family: "ApercuPro";
-        color:white;
-        background-color: #f9d1dc;
-        border-radius: 50px;
-        font-size: 40px;
-        border: none;
-        padding: 1rem;
-        font-style: italic;
+      font-family: "ApercuPro";
+      color:white;
+      background-color: #f9d1dc;
+      border-radius: 50px;
+      font-size: 40px;
+      border: none;
+      padding: 1rem;
+      font-style: italic;
+      cursor: pointer;
+      transition: 
+        background-color 0.3s ease,
+        transform 0.25s ease,
+        box-shadow 0.3s ease;
+
+      &:hover {
+          background-color: darken(#f9d1dc, 10%); // elegant darker pink
+          transform: scale(1.05);                 // soft zoom
+          box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      }
 
     }
 }
