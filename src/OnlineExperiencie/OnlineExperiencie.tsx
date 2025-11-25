@@ -7,6 +7,7 @@ import libs from "../assets/libs-display.png"
 import CuverdRibbon2 from "../OnlineExperiencie/CuverdRibbon2"
 import gloss from "../assets/gloss.png"
 import batom from "../assets/batom.png"
+import agoraImg from "../assets/agora ribbon.png"
 
 function OnlineExperiencie() {
   
@@ -82,7 +83,10 @@ function OnlineExperiencie() {
             </ul>
           </div>
         </section>
-        <CuverdRibbon2/>
+        <div className='now-img-container'>
+          <img src={agoraImg} className='now-img'/>
+        </div>
+        
         <section className='online-buy-section'>
           <button>
             COMEÇAR!

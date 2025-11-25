@@ -97,6 +97,16 @@
         
     }
 }
+.now-img-container{
+    height: 20vh;
+    position: relative;
+    .now-img{
+        position: absolute;
+        width: 110vw;
+        left: -30px;
+    }
+}
+
 
 .online-buy-section{
     min-height: 100vh;
