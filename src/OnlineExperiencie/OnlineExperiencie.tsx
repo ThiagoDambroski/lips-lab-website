@@ -8,16 +8,20 @@ import CuverdRibbon2 from "../OnlineExperiencie/CuverdRibbon2"
 import gloss from "../assets/gloss.png"
 import batom from "../assets/batom.png"
 import agoraImg from "../assets/agora ribbon.png"
+import { useState } from 'react'
 
 function OnlineExperiencie() {
+
+  const [createActive,setCreateActive] = useState(false)
   
   return (
     <>
       <Navbar css={1}/>
-      <CreateBatomBox/>
+      
       <main>
-       
-        <section className='online-how-it-works-section'>
+        {!createActive && 
+        <>
+          <section className='online-how-it-works-section'>
           <h1>Cria o teu batom personalizado onde quer que estejas!</h1>
           <div className='online-how-it-works-section-div'>
             <img src={kiss} alt="" />
@@ -88,7 +92,7 @@ function OnlineExperiencie() {
         </div>
         
         <section className='online-buy-section'>
-          <button>
+          <button onClick={() => setCreateActive(true)}>
             COMEÇAR!
           </button>
           <p className='online-buy-p'>Experimenta criar o teu batom personalizado sem sair de casa!</p>
@@ -107,6 +111,11 @@ function OnlineExperiencie() {
             </div>
           </div>
         </section>
+        </>}
+      {createActive && 
+      <>  
+        <CreateBatomBox/>
+      </>}
         
     </main>
     </>

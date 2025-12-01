@@ -4,6 +4,10 @@ import SecondStep from './Steps/SecondStep';
 import { useApp } from '../../Contexts/AppProvider';
 import AutomaticColors from './automatic/AutomaticColors';
 
+import virtual from "../../assets/virutal as.png"
+import cloud from "../../assets/cloud pens.png"
+import "../../scss/CreateBatom.css"
+
 type ColorsSelectionProps = {
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>,
   step: number,
@@ -87,17 +91,24 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
   }, [selected, weights]);
 
   return (
-    <div >
-
+    <>
+      
       {doItYourSelf === undefined &&
-        <>
-          <div onClick={() => setDoItYourSelf(true)}>
-            Escolha vc
-          </div>
-          <div onClick={() => setDoItYourSelf(false)}>
-            Escolha automatica
-          </div>
-        </>
+        <div className='main-color-selection-options'>
+          <h3>Escolhe como vais viver a experiência lips lab!</h3>
+          <div>
+            <button onClick={() => setDoItYourSelf(false)}>
+              <img src={virtual} alt="" />
+              assistência virtual
+            </button>
+            <button onClick={() => setDoItYourSelf(true)}>
+              <img src={cloud} alt="" />
+            cria a partir do zero
+            </button>
+            
+          </div>          
+          
+        </div>
         
       }
       
@@ -130,7 +141,7 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
       
       
 
-    </div>
+    </>
   );
 }
 

@@ -23,36 +23,53 @@ function SecondStep({selected,weights,setWeights,toggleColor}:SecondStepProps) {
 
 
   return (
-    <div style={{ display: 'grid', gap: 12 }}>
+    <div className="second-step">
           {selected.map((c) => (
-            <div key={c} style={{ display: 'grid', gap: 6 }}>
+            <div key={c} style={{ display: 'grid', gap: 20 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <div
                   
                   style={{
-                    width: 24,
-                    height: 24,
+                    width: 90,
+                    height: 80,
                     backgroundColor: c,
                     border: '1px solid #ccc',
-                    borderRadius: 6,
+                    borderRadius: 50,
                   }}
                   aria-label={`Swatch ${c}`}
                 />
-                
-                <span style={{ marginLeft: 'auto' }}>{weights[c] ?? 0}%</span>
-              </div>
-              <input
+                <input
                 type="range"
                 min={0}
                 max={100}
                 step={1}
+                style={{
+                    
+                  backgroundColor: c,
+                   
+                  }}
                 value={weights[c] ?? 0}
                 onChange={onWeightChange(c)}
                 aria-label={`Intensity for ${c}`}
               />
+          
+              </div>
+              
               <button onClick={() => toggleColor(c)} >X</button>
             </div>
           ))}
+          {selected.length != 4 && 
+          <>
+          <div className="add-color-wrapper">
+            <button className="add-color-btn">
+              <span className="plus">+</span>
+            </button>
+            <span className="add-color-text">adiciona outra cor!</span>
+          </div>
+
+          </>}
+
+          <button className="continue-button">Continuar!</button>
         </div>
   )
 }

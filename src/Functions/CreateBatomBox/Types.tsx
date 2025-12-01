@@ -6,7 +6,7 @@ export type productType = null | {
   base:BaseOptions,
   smell:SmelltOptions,
   aditive:AdditivesOptions,
-  format:FormatOptions,
+  esence:EsenceOptions,
   boxText:string 
 
 }
@@ -30,18 +30,18 @@ export type BaseOptions =
 
 export type SmelltOptions =
   | "none"
-  | "doce-de-cenoura"
-  | "cereja-doce"
-  | "canela-e-acucar"
-  | "caramelo-brulee"
-  | "avela-cremosa"
-  | "coco-tropical"
-  | "flor-de-mimosa"
-  | "menta-fresca"
-  | "pessego-doce"
-  | "champanhe-rose"
-  | "framboesa-chocolate"
-  | "licor-de-anis";
+  | "canela"
+  | "cereja"
+  | "trufa"
+  | "champa"
+  | "creme"
+  | "bolo"
+  | "hortela"
+  | "lima"
+  | "avela"
+  | "sorvete"
+  | "mimosa"
+  | "sambuca";
 
   export type AdditivesOptions =
   | "none"
@@ -53,7 +53,7 @@ export type SmelltOptions =
   | "textura-sedosa";
 
 
-  export type FormatOptions = undefined | "classic" | "gotic"
+  export type EsenceOptions = undefined | "Especiarias Exóticas" | "Baunilha" | "Cappuccino" | "Cítricos" | "Chocolate" | "Rosa Parisiense"
 
 
   //choose for u

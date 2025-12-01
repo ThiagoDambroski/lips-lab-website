@@ -9,26 +9,30 @@ type FristStepProps = {
 
 function FristStep({allColors,selected,toggleColor}:FristStepProps) {
   return (
-    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {allColors.map((c) => {
+    <div className='colors-selection'>
+          <h3>Combina até 4 pigmentos, mistura tons 
+          e encontra a cor que reflete quem és!</h3>
+          <div>
+            {allColors.map((c) => {
             const active = selected.includes(c);
             return (
-              <button
+              <button className='colors-section'
                 key={c}
                 onClick={() => toggleColor(c)}
                 style={{
-                  width: 48,
-                  height: 48,
+                 
                   backgroundColor: c,
                   border: active ? '3px solid green' : '1px solid #ccc',
-                  borderRadius: 8,
+                  borderRadius: 50,
                   cursor: 'pointer',
                 }}
                 aria-pressed={active}
                 aria-label={`Select color ${c}`}
               />
             );
-          })}
+            })}
+          </div>
+          <button>regula a intensidade</button>
         </div>
   )
 }

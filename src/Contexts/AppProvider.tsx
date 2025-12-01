@@ -1,6 +1,31 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
-import type { AdditivesOptions, BaseOptions, EyeColorOptions, GlittersOptions, HairColorOptions, SkinToneOptions, SmelltOptions } from '../Functions/CreateBatomBox/Types';
+import type { AdditivesOptions, BaseOptions, EsenceOptions, EyeColorOptions, GlittersOptions, HairColorOptions, SkinToneOptions, SmelltOptions } from '../Functions/CreateBatomBox/Types';
+import hidr from "../assets/hidr.png"
+import suav from "../assets/sua.png"
+import prot from "../assets/prot.png"
+import dens from "../assets/dens.png"
+import vol from "../assets/vol.png"
+import anti from "../assets/anti.png"
 
+import canela from "../assets/canela.png"
+import cereja from "../assets/cereja.png"
+import trufa from "../assets/trufa.png"
+import champa from "../assets/champa.png"
+import creme from "../assets/creme.png"
+import bolo from "../assets/bolo.png"
+import hortela from "../assets/hortela.png"
+import lima from "../assets/lima.png"
+import avela from "../assets/avelea.png"
+import sorvete from "../assets/sorvete.png"
+import mimosa from "../assets/mimosa.png"
+import sambuca from "../assets/sambuca.png"
+
+import espc from "../assets/espec.png"
+import bauni from "../assets/bauni.png"
+import cappu from "../assets/cappu.png"
+import citri from "../assets/citricos.png"
+import choco from "../assets/chocolate.png"
+import rosa from "../assets/rosa.png"
 
 
 type AppContextType = {
@@ -11,15 +36,18 @@ type AppContextType = {
     dustOptions: GlittersOptions[],
     baseBatom: {id:BaseOptions,name:string,description:string}[],
     baseGloss: {id:BaseOptions,name:string,description:string}[],
-    smellOptions: {id:SmelltOptions,name:string,description:string}[],
+    smellOptions: {id:SmelltOptions,name:string,img:string}[],
     additiveOptions: { 
     id: AdditivesOptions; 
     name: string; 
     description: string; 
+    img: string;
     }[],
     eyesOptions: { id: EyeColorOptions; name: string }[],
     skinOptions: { id: SkinToneOptions; name: string }[],
-    hairOptions: { id: HairColorOptions; name: string }[];
+    hairOptions: { id: HairColorOptions; name: string }[],
+    allEsence:{id:EsenceOptions,name:string,img:string}[];
+
 }
 
 type appProviderProps = {
@@ -85,156 +113,153 @@ function AppProvider({children}:appProviderProps) {
     const baseGloss: {id:BaseOptions,name:string,description:string}[] = [
     {
       id: "classic",
-      name: "Lip Gloss (Clássico)",
+      name: "clássico",
       description:
-        "Brilho intenso e textura envolvente. Proporciona um acabamento luminoso e hidratante.",
+        "brilhante & hidratante",
     },
     {
       id: "mirror-shine",
-      name: "Lip Glacé (Efeito Espelhado)",
+      name: "brilho intenso",
       description:
-        "Brilho leve e efeito espelhado, com um toque suave e elegante nos lábios.",
+        "translúcido & alto brilho",
     },
     {
       id: "balm",
-      name: "Lip Smoothie (Efeito Bálsamo)",
+      name: "CREMOSO",
       description:
-        "Textura macia e confortável, com acabamento natural e não pegajoso.",
+        "bálsamo & nutritivo",
     },
     {
       id: "vinyl",
-      name: "Lip Polish (Efeito Verniz)",
+      name: "POLIDO",
       description:
-        "Brilho intenso e acabamento uniforme, com ingredientes reparadores e nutritivos.",
+        "brilho intenso & sem efeito pegajoso",
     },
     {
       id: "vegan",
-      name: "Base Natural de Lip Gloss (Vegan Friendly)",
+      name: "NATURAL",
       description:
-        "Fórmula vegana e leve, ideal para um brilho natural e confortável.",
+        "hidratante & nutritivo",
     },
   ];
-  const smellOptions:{id:SmelltOptions,name:string,description:string}[] = [
+  const smellOptions:{id:SmelltOptions,name:string,img:string}[] = [
+  
   {
-    id: "none",
-    name: "Sem fragrância",
-    description: "Versão neutra, sem adição de aroma.",
+    id: "canela",
+    name: "canela",
+    img:
+      canela,
   },
   {
-    id: "doce-de-cenoura",
-    name: "Doce de Cenoura",
-    description:
-      "Aroma quente e reconfortante, com notas suaves de especiarias e baunilha.",
+    id: "cereja",
+    name: "cereja jubilee",
+    img: cereja,
   },
   {
-    id: "cereja-doce",
-    name: "Cereja Doce",
-    description: "Frutado e vibrante, com toque gourmand e feminino.",
+    id: "trufa",
+    name: "trufa de framboesa",
+    img:
+      trufa,
   },
   {
-    id: "canela-e-acucar",
-    name: "Canela e Açúcar",
-    description:
-      "Doce e envolvente, com aquele aroma acolhedor típico de inverno.",
+    id: "champa",
+    name: "champanhe rosé",
+    img: champa,
   },
   {
-    id: "caramelo-brulee",
-    name: "Caramelo Brûlée",
-    description: "Cremoso e sofisticado — mistura de baunilha e açúcar tostado.",
+    id: "creme",
+    name: "crème brûlée",
+    img: creme,
   },
   {
-    id: "avela-cremosa",
-    name: "Avelã Cremosa",
-    description: "Notas suaves e doces, com toque amendoados irresistível.",
+    id: "bolo",
+    name: "bolo de cenoura",
+    img:bolo,
   },
   {
-    id: "coco-tropical",
-    name: "Coco Tropical",
-    description:
-      "Fresco e exótico, com um leve toque cítrico de lima.",
+    id: "hortela",
+    name: "hortelâ fresca",
+    img:
+     hortela,
   },
   {
-    id: "flor-de-mimosa",
-    name: "Flor de Mimosa",
-    description:
-      "Floral, delicado e elegante — uma fragrância leve e feminina.",
+    id: "lima",
+    name: "lima com coco",
+    img:
+      lima,
   },
   {
-    id: "menta-fresca",
-    name: "Menta Fresca",
-    description:
-      "Refrescante e limpa, ideal para quem adora sensação de frescor nos lábios.",
+    id: "avela",
+    name: "avelã",
+    img:
+      avela,
   },
   {
-    id: "pessego-doce",
-    name: "Pêssego Doce",
-    description:
-      "Frutado e suave, com aquele toque de verão e leveza.",
+    id: "sorvete",
+    name: "sorvete de pêssego",
+    img:
+      sorvete,
   },
   {
-    id: "champanhe-rose",
-    name: "Champanhe Rosé",
-    description:
-      "Elegante e festivo, com notas frutadas e cintilantes.",
+    id: "mimosa",
+    name: "mimosa",
+    img:
+      mimosa,
   },
   {
-    id: "framboesa-chocolate",
-    name: "Framboesa & Chocolate",
-    description:
-      "Irresistivelmente doce e sensual — mistura perfeita entre fruta e tentação.",
-  },
-  {
-    id: "licor-de-anis",
-    name: "Licor de Anis",
-    description:
-      "Aroma marcante e sofisticado, levemente doce e exótico.",
+    id: "sambuca",
+    name: "sambuca",
+    img:sambuca,
   },
   ]
   const additiveOptions: { 
     id: AdditivesOptions; 
     name: string; 
-    description: string; 
+    description: string;
+    img: string;
   }[] = [
-    {
-      id: "none",
-      name: "Sem aditivo",
-      description: "Versão pura, sem aditivos adicionais.",
-    },
+    
     {
       id: "brilho-hidratacao",
-      name: "✨ Aditivo de Brilho e Hidratação",
+      name: "HIDRATANTE",
       description:
         "Melhora a textura do batom ou gloss, tornando-o mais cremoso, luminoso e confortável nos lábios.",
+      img:hidr
     },
     {
       id: "efeito-volume",
-      name: "💋 Efeito Volume (Lip Plumper)",
+      name: "SUAVIZAÇÃO",
       description:
         "Proporciona um efeito de lábios mais preenchidos e hidratados.",
+      img: suav
     },
     {
       id: "aditivo-hidratante",
-      name: "💧 Aditivo Hidratante",
+      name: "PROTEÇÃO SOLAR",
       description:
         "Rico em antioxidantes, aumenta a hidratação e deixa os lábios suaves e nutridos.",
+      img: prot
     },
     {
       id: "complexo-multifloral",
-      name: "🌸 Complexo Multifloral",
+      name: "DENSIFICADOR",
       description:
         "Suaviza a pele, estimula o colágeno e ajuda a combater o envelhecimento.",
+      img: dens
     },
     {
       id: "protecao-solar",
-      name: "🌞 Proteção Solar (SPF)",
+      name: "VOLUME LABIAL",
       description:
         "Adiciona fator de proteção solar, ajudando a proteger os lábios da exposição ao sol.",
+      img: vol
     },
     {
       id: "textura-sedosa",
-      name: "🪶 Textura Sedosa (Silkening)",
+      name: "ANTI-IDADE & REGENERADOR",
       description:
         "Cria um acabamento mais macio, leve e aveludado.",
+      img: anti
     },
   ];
 
@@ -264,6 +289,31 @@ function AppProvider({children}:appProviderProps) {
     { id: "ruivo", name: "Ruivo" },
   ];
 
+  const allEsence:{id:EsenceOptions,name:string,img:string}[] = [
+    {id:"Especiarias Exóticas",
+      name:"Especiarias Exóticas",
+      img:espc
+    },
+    {id:"Baunilha",
+      name:"Baunilha",
+      img:bauni},
+
+    {id:"Cappuccino",
+      name:"Cappuccino",
+      img:cappu},
+
+    {id:"Cítricos",
+      name:"Cítricos",
+      img:citri}  ,
+
+    {id:"Chocolate",
+      name:"Chocolate",
+      img:choco},
+    {id:"Rosa Parisiense",
+      name:"Rosa Parisiense",
+      img:rosa},
+  ]
+
 
 
     const toggleLightBox = ():void => {
@@ -272,7 +322,7 @@ function AppProvider({children}:appProviderProps) {
 
   return (
     <AppContext.Provider value={{lightBox,toggleLightBox,allColors,glitterOptions,dustOptions,baseBatom,baseGloss,
-    smellOptions,additiveOptions,eyesOptions,skinOptions,hairOptions}}>
+    smellOptions,additiveOptions,eyesOptions,skinOptions,hairOptions,allEsence}}>
         {children}
     </AppContext.Provider>
   )

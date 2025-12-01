@@ -27,8 +27,54 @@ function GlitterBaseSelection({
 
   return (
     <div>
-    
-      {step === 2 && (
+    {step === 2 && (
+        <div className="texture-selection-section"> 
+          <p className="texture-selection-p">Diferentes texturas de glosses labiais requerem diferentes tipos de base.
+            Existem seis opções principais entre as quais podes escolher:</p>
+      
+          {type === "batom" && (
+            <ul>
+              {baseBatom.map((b) => (
+                <li
+                  key={b.id}
+                  onClick={() => setBaseSelected(b.id)}
+                  style={{
+                    backgroundColor: baseSelected === b.id ? "green" : "",
+                  }}
+                >
+                  <strong>{b.name}</strong>
+                  <p>
+                    {b.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {type === "gloss" && (
+            <ul>
+              {baseGloss.map((b) => (
+                <li
+                  key={b.id}
+                  onClick={() => setBaseSelected(b.id)}
+                  style={{
+                    backgroundColor: baseSelected === b.id ? "green" : "",
+                   
+                  }}
+                >
+                  <strong>{b.name}</strong>
+                  <p>{b.description}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+          <button className="texture-selection-section-button">CONTINUAR!</button>
+        </div>
+      )}
+
+
+      
+      {step === 4 && (
         <div>
           <p
             onClick={() => setGlitterSelected("none")}
@@ -75,56 +121,7 @@ function GlitterBaseSelection({
       )}
 
    
-      {step === 3 && (
-        <div>
-          <p
-            style={{
-              backgroundColor: baseSelected === "none" ? "green" : "",
-              cursor: "pointer",
-            }}
-            onClick={() => setBaseSelected("none")}
-          >
-            None
-          </p>
-          {type === "batom" && (
-            <ul>
-              {baseBatom.map((b) => (
-                <li
-                  key={b.id}
-                  onClick={() => setBaseSelected(b.id)}
-                  style={{
-                    backgroundColor: baseSelected === b.id ? "green" : "",
-                  }}
-                >
-                  <strong>{b.name}</strong>
-                  <p>
-                    {b.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
-          {type === "gloss" && (
-            <ul>
-              {baseGloss.map((b) => (
-                <li
-                  key={b.id}
-                  onClick={() => setBaseSelected(b.id)}
-                  style={{
-                    backgroundColor: baseSelected === b.id ? "green" : "",
-                   
-                  }}
-                >
-                  <strong>{b.name}</strong>
-                  <p>
-                    {b.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
+      
     </div>
   );
 }
