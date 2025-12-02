@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .main-create-box {
   z-index: 1;
 }
@@ -42,6 +43,18 @@
   border-radius: 50px;
   border: none;
   font-family: "IvyPresto";
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.gloss-or-batom-container .gloss-or-batom-container-image button:hover {
+  -webkit-transform: translateY(-4px) scale(1.03);
+          transform: translateY(-4px) scale(1.03);
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
 .main-color-selection {
@@ -108,7 +121,22 @@
 }
 
 .item-display .item-img {
-  width: 100%;
+  width: 300px;
+  height: 500px;
+  position: relative;
+  z-index: 2;
+}
+
+.item-img-2-create {
+  width: 300px;
+  height: 500px;
+  position: relative;
+  z-index: 2;
+}
+
+.item-img-color-wrapper,
+.item-img-2-color-wrapper {
+  padding: 0;
 }
 
 .main-color-selection-options {
@@ -170,6 +198,71 @@
   margin-bottom: 20px;
 }
 
+.item-img-color-wrapper,
+.item-img-2-color-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 500px;
+  padding: 0;
+}
+
+.item-img,
+.item-img-2 {
+  position: relative;
+  z-index: 2;
+}
+
+/* coloured “liquid” behind the glass */
+/* coloured “liquid” behind the glass */
+.item-color-fill {
+  position: absolute;
+  z-index: 1;
+  /* position INSIDE the bottle */
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 30%;
+  width: 36%;
+  height: 310px;
+  border-radius: 0 0 80px 80px;
+  overflow: hidden;
+  /* shading for gloss effect */
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.45)), color-stop(40%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), color-stop(60%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 40%), linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 60%);
+}
+
+/* highlight */
+.item-color-fill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 22%;
+  width: 22%;
+  height: 100%;
+  border-radius: inherit;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.7)), color-stop(50%, rgba(255, 255, 255, 0.1)), color-stop(80%, rgba(255, 255, 255, 0)));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 80%);
+  pointer-events: none;
+}
+
+/* inner shadow */
+.item-color-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+/* if the second view needs a tiny offset tweak */
+/* second view – adjust liquid so it stays inside the bottle */
+.item-color-fill-2 {
+  /* make it shorter so it stops at the bottom of the glass */
+}
+
 .colors-selection {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -218,6 +311,34 @@
   color: white;
   padding: 1rem;
   font-size: 20px;
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.colors-selection button:hover {
+  -webkit-transform: translateY(-4px) scale(1.03);
+          transform: translateY(-4px) scale(1.03);
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.colors-selection button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.colors-selection button:disabled:hover {
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .second-step {
@@ -232,7 +353,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .second-step input {
@@ -335,6 +456,18 @@
   border-radius: 50px;
   color: white;
   font-size: 1.5rem;
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.second-step .continue-button:hover {
+  -webkit-transform: translateY(-4px) scale(1.03);
+          transform: translateY(-4px) scale(1.03);
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
 .texture-selection-section {
@@ -392,6 +525,7 @@
   background-color: #c41123;
   padding: 0.3rem;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .texture-selection-section ul strong {
@@ -416,6 +550,41 @@
       -ms-grid-row-align: center;
       align-self: center;
   width: 25%;
+  -webkit-transition: opacity 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: opacity 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.texture-selection-section .texture-selection-section-button:hover {
+  -webkit-transform: translateY(-4px) scale(1.03);
+          transform: translateY(-4px) scale(1.03);
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.texture-selection-section .texture-selection-section-button:active {
+  -webkit-transform: translateY(0px) scale(0.97);
+          transform: translateY(0px) scale(0.97);
+  -webkit-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+.texture-selection-section .texture-selection-section-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.texture-selection-section .texture-selection-section-button:disabled:hover {
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .item-display-2 {
@@ -498,6 +667,7 @@
           align-items: center;
   padding: 1.5rem;
   color: white;
+  cursor: pointer;
 }
 
 .adtive-container ul li img {
@@ -515,6 +685,41 @@
   color: white;
   font-size: 30px;
   border-radius: 50px;
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.adtive-container button:hover {
+  -webkit-transform: translateY(-4px) scale(1.03);
+          transform: translateY(-4px) scale(1.03);
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.adtive-container button:active {
+  -webkit-transform: translateY(0px) scale(0.97);
+          transform: translateY(0px) scale(0.97);
+  -webkit-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+.adtive-container button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.adtive-container button:disabled:hover {
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .adtive-container span {
@@ -652,6 +857,35 @@
   font-size: 25px;
   color: white;
   border-radius: 50px;
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  -webkit-transform: translateY(-4px) scale(1.03);
+          transform: translateY(-4px) scale(1.03);
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.continue-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #b30f20;
+}
+
+.continue-button:disabled:hover {
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .formula-section {
@@ -756,5 +990,388 @@
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+/* EngravingStep.scss */
+.engraving {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3rem;
+  padding: 3rem 4rem;
+  border-radius: 40px;
+  position: relative;
+}
+
+.engraving-main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.engraving-title {
+  font-family: "IvyPresto", serif;
+  font-size: 1.6rem;
+  color: #e55499;
+  margin-bottom: 6rem;
+}
+
+.engraving-input-wrapper {
+  width: 90%;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  background: #ffb7d2;
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.engraving-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background: #ffb7d2;
+  color: #c41123;
+  font-size: 1rem;
+  outline: none;
+}
+
+.engraving-input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.engraving-input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.engraving-input::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.engraving-input::placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.engraving-test-fonts {
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.engraving-subtitle {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: #e55499;
+  text-align: center;
+}
+
+.engraving-symbol-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.engraving-symbol {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #c41123;
+  font-size: 1.5rem;
+  cursor: pointer;
+  -webkit-transition: background-color 0.15s ease, -webkit-transform 0.15s ease;
+  transition: background-color 0.15s ease, -webkit-transform 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, -webkit-transform 0.15s ease;
+}
+
+.engraving-symbol:hover {
+  -webkit-transform: translateY(-2px) scale(1.05);
+          transform: translateY(-2px) scale(1.05);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.engraving-symbol--active {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 0 2px #c41123;
+          box-shadow: 0 0 0 2px #c41123;
+}
+
+.engraving-continue {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  padding: 0.9rem 3.2rem;
+  border-radius: 999px;
+  border: none;
+  background: #c41123;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  -webkit-transition: opacity 0.15s ease, -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+  transition: opacity 0.15s ease, -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+}
+
+.engraving-continue:disabled {
+  opacity: 0.5;
+  cursor: default;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.engraving-continue:not(:disabled):hover {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* Right-side font list */
+.engraving-fonts {
+  width: 220px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1.5rem 1.2rem;
+  border-radius: 26px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.engraving-fonts-title {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: #c41123;
+}
+
+.engraving-fonts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.engraving-font-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 0.4rem 0.2rem;
+  margin-bottom: 0.1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  -webkit-transition: color 0.15s ease, background-color 0.15s ease;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.engraving-font-item:hover {
+  background: #ffe4f0;
+  color: #c41123;
+}
+
+.engraving-font-item--active {
+  background: #ffb7d2;
+  color: #c41123;
+  border-radius: 999px;
+  padding-left: 0.7rem;
+}
+
+.glliter-selection-div ul {
+  margin: 0;
+  padding: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (max-content)[8];
+      grid-template-columns: repeat(8, -webkit-max-content);
+      grid-template-columns: repeat(8, max-content);
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-column-gap: 0;
+          column-gap: 0;
+  row-gap: 0;
+}
+
+.glliter-selection-div ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* keep the li tight around the image */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.glliter-selection-div ul li img {
+  display: block;
+  width: 40px;
+}
+
+/* --- Ligthbox--- */
+/* FULL-SCREEN PINK OVERLAY */
+.glitter-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  /* soft pink veil instead of dark background */
+  background: rgba(255, 192, 210, 0.7);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 9999;
+}
+
+/* WRAPPER THAT HOLDS CIRCLE + NAME + BUTTONS
+   (transparent: we want to see the page pink behind) */
+.glitter-lightbox {
+  background: transparent;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* BIG WHITE CIRCLE, CENTERED (LIKE YOUR DESIGN) */
+.glitter-lightbox-circle {
+  width: 55vmin;
+  /* scales with viewport */
+  height: 50vmin;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* IMAGE INSIDE THE CIRCLE */
+.glitter-lightbox-img {
+  width: 70%;
+  height: 70%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* NAME BELOW THE CIRCLE */
+.glitter-lightbox-name {
+  margin-top: 0rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* BUTTONS BELOW NAME */
+.glitter-lightbox-btns {
+  margin-top: 1.3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* BUTTONS STYLE */
+.glitter-lightbox-btn {
+  padding: 0.5rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  -webkit-transition: opacity 0.15s ease, -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+  transition: opacity 0.15s ease, -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+}
+
+.glitter-lightbox-btn.cancel {
+  background: #ffe4ee;
+  color: #b3446f;
+}
+
+.glitter-lightbox-btn.confirm {
+  background: #ff6aa0;
+  color: #ffffff;
+}
+
+.glitter-lightbox-btn:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+.glitter-lightbox-btn:active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: 0.9;
 }
 /*# sourceMappingURL=CreateBatom.css.map */

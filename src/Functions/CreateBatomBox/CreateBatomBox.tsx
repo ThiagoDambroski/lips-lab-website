@@ -5,6 +5,7 @@ import type { AdditivesOptions, BaseOptions, EsenceOptions, GlittersOptions, pro
 import SmellAndAditive from "./SmellAndAditive";
 import FormatAndText from "./FormatAndText";
 import glossImage from "../../assets/gloss.png"
+import glossWhioutImage from "../../assets/gloss whiout.png"
 import batomImage from "../../assets/batom.png"
 import libsbackg from "../../assets/libs back.png"
 import "../../scss/CreateBatom.css"
@@ -21,11 +22,11 @@ function CreateBatomBox() {
     const [automaticChoice,setAutomaticChoice] = useState<boolean>()
     
     const [selectedColor,setSelectedColor] = useState<string | undefined>(undefined);
-    const [glitterSelected,setGlitterSelected] = useState<GlittersOptions>("none")
+    const [glitterSelected,setGlitterSelected] = useState<string>("none")
     const [baseSelected,setBaseSelected] = useState<BaseOptions>("none")
     const [smell,setSmell] = useState<SmelltOptions>('none')
     const [aditive,setAditive] = useState<AdditivesOptions>('none')
-    const [esence,setEsence] = useState<EsenceOptions>(undefined)
+    const [esence,setEsence] = useState<EsenceOptions>('none')
     const [boxText,setBoxText] = useState<string>("")
 
     const handleTypeChange = (typeInput:TypesOptions) => {
@@ -37,7 +38,7 @@ function CreateBatomBox() {
       setGlitterSelected('none')
       setBaseSelected('none')
       setAditive('none')
-      setEsence(undefined)
+      setEsence('none')
       setBoxText("")
     }
 
@@ -72,47 +73,7 @@ function CreateBatomBox() {
         {type !== undefined &&
          <>
           <p>{type} <button onClick={() => setType(undefined)}>X</button></p>
-          <div
-            style={{
-              width: '100%',
-              height: 120,
-              borderRadius: 12,
-              border: '1px solid #ccc',
-              backgroundColor: selectedColor,
-              marginBottom: 16,
-            }}
-            aria-label="Mixed color preview"
-          />
-            <h2 >step for fonts</h2>
-            
-            <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-              <button onClick={() => setStep(0)} disabled={step === 0}>
-                Step 0 – Choose colors
-              </button>
-              <button onClick={() => setStep(1)} disabled={selectedColor === "#ffffff" || step === 1}>
-                Step 1 – Adjust intensities
-              </button>
-              <button onClick={() => setStep(2)} disabled={step === 0 || step === 2}>
-                Step 2 - Acabamento
-              </button>
-              <button onClick={() => setStep(3)} disabled={step === 0 || step === 1 || step === 3}>
-                Step 3 - Glitter
-              </button>
-              <button onClick={() => setStep(4)} disabled={step === 0 || step === 1 || step === 2 || step === 4}>
-                Step 4- Cheiro/gosto
-              </button>
-              <button onClick={() => setStep(5)} disabled={step === 0 || step === 1 || step === 2 || step === 3 || step === 5}>
-                Step 5- Aditivo
-              </button>
-              <button onClick={() => setStep(6)} disabled={step === 0 || step === 1 || step === 2 || step === 3 || step === 4 
-                || step === 6}>
-                Step 6 - format
-              </button>
-              <button onClick={() => setStep(7)} disabled={step === 0 || step === 1 || step === 2 || step === 3 || step === 4 
-                || step === 5 || step === 7 || (esence=== undefined && type !== "gloss")}>
-                Step 7 - text
-              </button>
-            </div>
+          
             <main className='main-color-selection' >
               {step <= 2 && 
               <>
@@ -128,13 +89,26 @@ function CreateBatomBox() {
                         Para obter melhores resultados, certifique-se de 
                         que o brilho do ecrã está no máximo</p>
                       </div>
-                      <img src={glossImage} alt="" className='item-img'/>
+                       <div className="item-img-color-wrapper">
+                        <div
+                          className="item-color-fill"
+                          style={{ backgroundColor: selectedColor || "transparent" }}
+                        />
+                        <img src={glossWhioutImage} alt="" className="item-img" />
+                      </div>
                 </div>
               </>}
               {step >=3 &&
               <>
               <div className="item-display-2">
-                <img src={glossImage} alt="" className='item-img-2'/>
+                 <div className="item-img-2-color-wrapper">
+                  <div
+                    className="item-color-fill item-color-fill-2"
+                    style={{ backgroundColor: selectedColor || "transparent" }}
+                  />
+                  <img src={glossWhioutImage} alt="" className='item-img-2-create'/>
+                </div>
+
                 <img src={descVer} alt="" className="item-img-3"/>
               </div>
               
@@ -142,12 +116,12 @@ function CreateBatomBox() {
               
             
               <ColorsSelection setSelectedColor={setSelectedColor} step={step} setStep={setStep}/>
-              <GlitterBaseSelection step={step} glitterSelected={glitterSelected} 
+              <GlitterBaseSelection step={step} setStep={setStep} glitterSelected={glitterSelected} 
               setGlitterSelected={setGlitterSelected} 
               type={type}
               baseSelected={baseSelected}
               setBaseSelected={setBaseSelected}/>
-              <SmellAndAditive step={step} smell={smell} setSmell={setSmell} aditive={aditive} setAditive={setAditive} esence={esence} setEsence={setEsence}/>
+              <SmellAndAditive step={step} setStep={setStep} smell={smell} setSmell={setSmell} aditive={aditive} setAditive={setAditive} esence={esence} setEsence={setEsence}/>
               <FormatAndText step={step} type={type} boxText={boxText} 
               setBoxText={setBoxText}/>
             </main>

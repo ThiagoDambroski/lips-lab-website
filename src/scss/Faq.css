@@ -3,7 +3,7 @@
 }
 
 .faq-intro h1 {
-  font-size: 5rem;
+  font-size: 5.5rem;
   color: #e45397;
   font-style: italic;
   font-weight: 600;
@@ -12,8 +12,12 @@
 
 .faq-intro p {
   max-width: 30%;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #e45397;
+}
+
+.ribbon-image {
+  width: 120%;
 }
 
 .faq-question {
@@ -182,6 +186,11 @@
   gap: 5px;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  -webkit-transition: background-color 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .faq-still-questions div button p {
@@ -192,5 +201,14 @@
 .faq-still-questions div button span {
   font-size: 2rem;
   color: white;
+}
+
+.faq-still-questions div button:hover {
+  -webkit-transform: translateY(-5px) scale(1.03);
+          transform: translateY(-5px) scale(1.03);
+  background-color: #f4c4d2;
+  /* slightly darker pink for a premium effect */
+  -webkit-box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 /*# sourceMappingURL=Faq.css.map */

@@ -7,13 +7,14 @@ type SecondStepProps = {
     selected:string[],
     weights: Record<string, number>,
     setWeights: React.Dispatch<React.SetStateAction<Record<string, number>>>,
-    toggleColor: (hex:string) => void
+    toggleColor: (hex:string) => void,
+    setStep: React.Dispatch<React.SetStateAction<number>>
 
 }
 
  
 
-function SecondStep({selected,weights,setWeights,toggleColor}:SecondStepProps) {
+function SecondStep({selected,weights,setWeights,toggleColor,setStep}:SecondStepProps) {
 
     const onWeightChange = (hex: string) => (e: ChangeEvent<HTMLInputElement>) => {
         const value = Math.max(0, Math.min(100, Number(e.target.value) || 0));
@@ -25,8 +26,8 @@ function SecondStep({selected,weights,setWeights,toggleColor}:SecondStepProps) {
   return (
     <div className="second-step">
           {selected.map((c) => (
-            <div key={c} style={{ display: 'grid', gap: 20 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div key={c} style={{ display: 'grid', gap: 20,width: "90%"}}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8,justifyContent:"center" }}>
                 <div
                   
                   style={{
@@ -61,7 +62,7 @@ function SecondStep({selected,weights,setWeights,toggleColor}:SecondStepProps) {
           {selected.length != 4 && 
           <>
           <div className="add-color-wrapper">
-            <button className="add-color-btn">
+            <button className="add-color-btn" onClick={() => setStep(0)}>
               <span className="plus">+</span>
             </button>
             <span className="add-color-text">adiciona outra cor!</span>
@@ -69,7 +70,7 @@ function SecondStep({selected,weights,setWeights,toggleColor}:SecondStepProps) {
 
           </>}
 
-          <button className="continue-button">Continuar!</button>
+          <button className="continue-button" onClick={() => setStep(2)}>Continuar!</button>
         </div>
   )
 }

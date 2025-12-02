@@ -191,6 +191,10 @@
   white-space: pre-line;
 }
 
+.ribbon-img {
+  width: 110%;
+}
+
 .whats-include-section {
   display: -webkit-box;
   display: -ms-flexbox;

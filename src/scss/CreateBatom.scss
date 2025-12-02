@@ -32,7 +32,13 @@
             border-radius: 50px;
             border: none;
             font-family: "IvyPresto";
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
         }
+        button:hover {
+          transform: translateY(-4px) scale(1.03);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          }
     }
 }
 
@@ -83,9 +89,25 @@
        
     }
     .item-img{
-        width: 100%;
+        width: 300px;
+        height: 500px;
+        position: relative;
+        z-index: 2;
     }
 }
+
+.item-img-2-create{
+        width: 300px;
+        height: 500px;
+        position: relative;
+        z-index: 2;
+  }
+
+.item-img-color-wrapper,
+.item-img-2-color-wrapper {
+  padding: 0;
+}
+
 
 .main-color-selection-options{
     width: 100%;
@@ -125,6 +147,79 @@
     
 }
 
+.item-img-color-wrapper,
+.item-img-2-color-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 300px;   
+  height: 500px; 
+  padding: 0;
+}
+
+
+.item-img,
+.item-img-2 {
+  position: relative;
+  z-index: 2;
+}
+
+/* coloured “liquid” behind the glass */
+/* coloured “liquid” behind the glass */
+.item-color-fill {
+  position: absolute;
+  z-index: 1;
+
+  /* position INSIDE the bottle */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;          // start a bit lower in the bottle
+  width: 36%;        // narrower so it doesn’t touch the outer glass
+  height: 310px;       // slightly shorter so it stays inside
+  border-radius: 0 0 80px 80px; // flat top, rounded bottom like the bottle
+
+  overflow: hidden;
+
+  /* shading for gloss effect */
+  background-image:
+    linear-gradient(to top, rgba(255,255,255,0.45), rgba(255,255,255,0) 40%),
+    linear-gradient(to bottom, rgba(0,0,0,0.20), rgba(0,0,0,0) 60%);
+}
+
+/* highlight */
+.item-color-fill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 22%;
+  width: 22%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  pointer-events: none;
+}
+
+/* inner shadow */
+.item-color-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.25);
+  pointer-events: none;
+}
+
+/* if the second view needs a tiny offset tweak */
+/* second view – adjust liquid so it stays inside the bottle */
+.item-color-fill-2 {
+     /* make it shorter so it stops at the bottom of the glass */
+}
+
+
 
 .colors-selection{ 
    display: flex;
@@ -160,7 +255,26 @@
     color: white;
     padding: 1rem;
     font-size: 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
    }
+   button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+    }
+    button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    }
+
+   
+    button:disabled:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
 }
 
 .second-step{
@@ -168,7 +282,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem;
+    
+    padding: 2rem;
     input{
         width: 100%;
         height: 16px;     // increases the clickable area
@@ -255,6 +370,12 @@
         border-radius: 50px;
         color: white;
         font-size: 1.5rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+     }
+    .continue-button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
     }
 
 }
@@ -286,6 +407,7 @@
             background-color: #c41123;
             padding: 0.3rem;
             border-radius: 50px;
+            cursor: pointer;
         }
         strong{
             text-transform: uppercase;
@@ -298,7 +420,8 @@
             
         }
     }
-    .texture-selection-section-button{
+    
+    .texture-selection-section-button {
         padding: 1rem;
         border-radius: 50px;
         border: none;
@@ -307,7 +430,39 @@
         font-size: 20px;
         align-self: center;
         width: 25%;
+
+        
+        transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+        cursor: pointer;
     }
+
+    
+    .texture-selection-section-button:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+        
+    }
+
+    
+    .texture-selection-section-button:active {
+        transform: translateY(0px) scale(0.97);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    
+    .texture-selection-section-button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    
+    .texture-selection-section-button:disabled:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
 }
 .item-display-2{
     display: flex;
@@ -352,6 +507,7 @@
             align-items: center;
             padding: 1.5rem;
             color: white;
+            cursor: pointer;
             img{
                 width: 60%;
                 
@@ -369,6 +525,30 @@
         color: white;
         font-size: 30px;
         border-radius: 50px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+    }
+
+    button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+    }
+
+    button:active {
+        transform: translateY(0px) scale(0.97);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+    }
+    button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    }
+
+    
+    button:disabled:hover {
+        transform: none;
+        box-shadow: none;
     }
     span{
         color: #c41123;
@@ -477,6 +657,24 @@
     font-size: 25px;
     color: white;
     border-radius: 50px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+.continue-button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+.continue-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    background-color: #b30f20; 
+}
+
+.continue-button:disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 
@@ -561,4 +759,312 @@
   max-height: 300px;
   opacity: 1;
   transform: translateY(0);
+}
+
+
+//STEP 7
+
+/* EngravingStep.scss */
+
+.engraving {
+  display: flex;
+  gap: 3rem;
+  padding: 3rem 4rem;
+ 
+ 
+  border-radius: 40px;
+  position: relative;
+}
+
+.engraving-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.engraving-title {
+  font-family: "IvyPresto", serif;
+  font-size: 1.6rem;
+  color: #e55499;
+  margin-bottom: 6rem;
+}
+
+.engraving-input-wrapper {
+  width: 90%;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  background: #ffb7d2;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.engraving-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background: #ffb7d2;
+  color: #c41123;
+  font-size: 1rem;
+  outline: none;
+}
+
+.engraving-input::placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.engraving-test-fonts {
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.engraving-subtitle {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: #e55499;
+  text-align: center;
+}
+
+.engraving-symbol-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.engraving-symbol {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #c41123;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.engraving-symbol:hover {
+  transform: translateY(-2px) scale(1.05);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.engraving-symbol--active {
+  background-color: #fff;
+  box-shadow: 0 0 0 2px #c41123;
+}
+
+.engraving-continue {
+  align-self: center;
+  justify-self: center;
+  padding: 0.9rem 3.2rem;
+  border-radius: 999px;
+  border: none;
+  background: #c41123;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.engraving-continue:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
+
+.engraving-continue:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* Right-side font list */
+
+.engraving-fonts {
+  width: 220px;
+  height: fit-content;
+  padding: 1.5rem 1.2rem;
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.engraving-fonts-title {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: #c41123;
+}
+
+.engraving-fonts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.engraving-font-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 0.4rem 0.2rem;
+  margin-bottom: 0.1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.engraving-font-item:hover {
+  background: #ffe4f0;
+  color: #c41123;
+}
+
+.engraving-font-item--active {
+  background: #ffb7d2;
+  color: #c41123;
+  border-radius: 999px;
+  padding-left: 0.7rem;
+}
+
+
+//glitter
+
+.glliter-selection-div {
+  ul {
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+
+
+    grid-template-columns: repeat(8, max-content);
+
+   
+    justify-content: flex-start;
+    align-content: flex-start;
+
+   
+    column-gap: 0;
+    row-gap: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      /* keep the li tight around the image */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        display: block;
+        width: 40px; // or whatever size you prefer
+      }
+    }
+  }
+}
+
+/* --- Ligthbox--- */
+/* FULL-SCREEN PINK OVERLAY */
+.glitter-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  /* soft pink veil instead of dark background */
+  background: rgba(255, 192, 210, 0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* WRAPPER THAT HOLDS CIRCLE + NAME + BUTTONS
+   (transparent: we want to see the page pink behind) */
+.glitter-lightbox {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* BIG WHITE CIRCLE, CENTERED (LIKE YOUR DESIGN) */
+.glitter-lightbox-circle {
+  width: 55vmin;        /* scales with viewport */
+  height: 50vmin;
+
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IMAGE INSIDE THE CIRCLE */
+.glitter-lightbox-img {
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* NAME BELOW THE CIRCLE */
+.glitter-lightbox-name {
+  margin-top: 0rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* BUTTONS BELOW NAME */
+.glitter-lightbox-btns {
+  margin-top: 1.3rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* BUTTONS STYLE */
+.glitter-lightbox-btn {
+  padding: 0.5rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.glitter-lightbox-btn.cancel {
+  background: #ffe4ee;
+  color: #b3446f;
+}
+
+.glitter-lightbox-btn.confirm {
+  background: #ff6aa0;
+  color: #ffffff;
+}
+
+.glitter-lightbox-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+.glitter-lightbox-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.9;
 }

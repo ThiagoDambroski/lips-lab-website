@@ -2,7 +2,7 @@ export type productType = null | {
   id:number,
   type:TypesOptions,
   color:string | undefined,
-  glitter:GlittersOptions,
+  glitter:string,
   base:BaseOptions,
   smell:SmelltOptions,
   aditive:AdditivesOptions,
@@ -53,7 +53,7 @@ export type SmelltOptions =
   | "textura-sedosa";
 
 
-  export type EsenceOptions = undefined | "Especiarias Exóticas" | "Baunilha" | "Cappuccino" | "Cítricos" | "Chocolate" | "Rosa Parisiense"
+  export type EsenceOptions = 'none' | "Especiarias Exóticas" | "Baunilha" | "Cappuccino" | "Cítricos" | "Chocolate" | "Rosa Parisiense"
 
 
   //choose for u

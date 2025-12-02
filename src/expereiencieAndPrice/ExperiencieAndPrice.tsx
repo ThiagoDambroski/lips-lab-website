@@ -3,11 +3,17 @@ import Navbar from '../Navbar/navbar'
 import logo from "../assets/logo.png"
 import "../scss/ExperiencieAndPrice.css"
 import CurvedRibbon from '../ReserveNow/CurvedRibbon'
+import ribbonImg from "../assets/ribbon experiencie.png"
 import ProductCarousel from '../ReserveNow/ProductCarouselProps'
 import libsBackground from "../assets/libs back.png"
 import upGloss from "../assets/up-gloss.png"
 import donwGloss from '../assets/down-gloss.png'
 import libs from "../assets/libs-display.png"
+import normalGloss from "../assets/gloss.png"
+import normalBatom from "../assets/batom.png"
+import lipCombo from "../assets/lipCombo.png"
+import glossCombo from "../assets/glossCombo.png"
+import batomCombo from "../assets/batomCombo.png"
 
 
 export type ProductItem = {
@@ -23,17 +29,37 @@ const products: ProductItem[] = [
     id: 1,
     title: "GLOSS LABIAL",
     price: "55€",
-    imageUrl: "/images/gloss.png",
+    imageUrl: normalGloss,
     alt: "Gloss labial rosa",
   },
   {
     id: 2,
     title: "BATOM",
     price: "55€",
-    imageUrl: "/images/batom.png",
+    imageUrl: normalBatom,
     alt: "Batom branco com tampa rosa",
   },
-  
+  {
+    id: 3,
+    title: "LIP COMBO",
+    price: "99€",
+    imageUrl: lipCombo,
+    alt: "Batom branco com tampa rosa",
+  },
+  {
+    id: 4,
+    title: "GLOSS COMBO",
+    price: "99€",
+    imageUrl: glossCombo,
+    alt: "Batom branco com tampa rosa",
+  },
+  {
+    id: 5,
+    title: "BATOM COMBO",
+    price: "99€",
+    imageUrl: batomCombo,
+    alt: "Batom branco com tampa rosa",
+  },
 ];
 
 
@@ -115,7 +141,7 @@ function ExperiencieAndPrice() {
             </div>
           </div>
         </section>
-        <CurvedRibbon/>
+        <img src={ribbonImg} alt="" className='ribbon-img' />
         <ProductCarousel
           items={products}
           initialIndex={0}

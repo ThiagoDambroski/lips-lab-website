@@ -76,7 +76,7 @@
 }
 
 .pc-imageWrap img {
-  width: clamp(120px, 38%, 210px);
+  width: 20%;
   height: auto;
   -webkit-transform: translateY(0);
           transform: translateY(0);
@@ -128,9 +128,8 @@
   border-radius: 999px;
   border: none;
   background: #fff;
-  -webkit-box-shadow: var(--shadow);
-          box-shadow: var(--shadow);
-  font-size: 28px;
+  color: #e55498;
+  font-size: 80px;
   line-height: 1;
   display: -ms-grid;
   display: grid;
@@ -148,11 +147,11 @@
 }
 
 .pc-nav:first-of-type {
-  left: 12px;
+  left: 0px;
 }
 
 .pc-nav:last-of-type {
-  right: 12px;
+  right: 0px;
 }
 
 .pc-progress {

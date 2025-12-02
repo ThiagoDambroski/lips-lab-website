@@ -56,7 +56,7 @@
   padding:1.5rem 1rem .5rem;
 }
 .pc-imageWrap img{
-  width:clamp(120px, 38%, 210px);
+  width:20%;
   height:auto;
   transform:translateY(0);
   transition:transform 220ms ease;
@@ -92,8 +92,8 @@
   border-radius:999px;
   border:none;
   background:#fff;
-  box-shadow:var(--shadow);
-  font-size:28px;
+  color: #e55498;
+  font-size:80px;
   line-height:1;
   display:grid;
   place-items:center;
@@ -102,8 +102,8 @@
 }
 .pc-nav:disabled{ opacity:.35; cursor:default; }
 
-.pc-nav:first-of-type{ left:12px; }
-.pc-nav:last-of-type{ right:12px; }
+.pc-nav:first-of-type{ left:0px; }
+.pc-nav:last-of-type{ right:0px; }
 
 .pc-progress{
   position:absolute;

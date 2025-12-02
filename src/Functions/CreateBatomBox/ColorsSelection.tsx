@@ -119,6 +119,7 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
           allColors={allColors}
           selected={selected}
           toggleColor={toggleColor}
+          setStep = {setStep}
           />
         )}
 
@@ -128,6 +129,7 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
             weights={weights}
             setWeights={setWeights}
             toggleColor={toggleColor}
+            setStep = {setStep}
           />
         )}
 

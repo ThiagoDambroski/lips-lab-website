@@ -15,8 +15,10 @@ import paraba_icon from "../assets/paraba.svg"
 
 import background_venha_ate_nos from "../assets/background-venha-ate-nos.png"
 import image_woman from "../assets/image-woman-home-page.png"
-import  Navbar from "../Navbar/navbar"
+import  Navbar from "../Navbar/Navbar"
 import backLibs from "../assets/libs back.png"
+import lightBackLibs from "../assets/libs back light.png"
+import { NavLink } from "react-router-dom"
 
 
 function HomePage() {
@@ -31,7 +33,7 @@ function HomePage() {
               <img src={homePageImage} alt="Garota sorrindo"/>
             </div>
             <div className="open-page-info">
-              <button>MARCA JÁ TUA EXPERIÊNCIA!</button>
+              <button> <NavLink to="experiencie">MARCA JÁ TUA EXPERIÊNCIA!</NavLink> </button>
               <div>
                 <p>Entra no nosso laboratório e cria o teu batom ou gloss labial. 
                   Vive toda a experiência da criação, 
@@ -56,7 +58,7 @@ function HomePage() {
           ENTREGAMOS PARA TODO O PAÍS! &nbsp; ENTREGAMOS PARA TODO O PAÍS! &nbsp;  ENTREGAMOS PARA TODO O PAÍS! &nbsp; ENTREGAMOS PARA TODO O PAÍS! &nbsp; ENTREGAMOS PARA TODO O PAÍS! &nbsp;
         </Marquee>
         <img className="gloss-bakcground" src={glossBackground} alt="gloss background" />
-        <section className="experiencie-libs">
+        <section className="experiencie-libs" style={{ backgroundImage: `url(${backLibs})` }}>
           <div className="experiencie-libs-intro">
             <h2>EXPERIÊNCIA LIPS LAB</h2>
             <button>passo a passo</button>
@@ -105,7 +107,7 @@ function HomePage() {
           backgroundRepeat: 'no-repeat',
         }}>
           <h2>NÃO PODES VIR ATÉ NÓS?</h2>
-          <button>EXPERIÊNCIA ONLINE!</button>
+          <button><NavLink to="create">EXPERIÊNCIA ONLINE!</NavLink></button>
 
         </section>
         <section className="home-about-us" style={{ backgroundImage: `url(${backLibs})` }}>
@@ -129,7 +131,7 @@ function HomePage() {
                 onde vais misturar pigmentos, escolher aromas 
                 e transformar ideias em cor
                 </p>
-                <button>veja os nossos produtos!</button>
+                <button><NavLink to="experiencie">veja os nossos produtos!</NavLink></button>
               </div>
           </div>
         </section>

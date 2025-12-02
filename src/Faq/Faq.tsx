@@ -4,6 +4,7 @@ import mockUp from "../assets/kissing-batom.png"
 import "../scss/Faq.css"
 import bckLibs from "../assets/libs back.png"
 import CuverdRibbon from "../Faq/CuverdRibbon3"
+import ribbonImg from "../assets/ribbon fqa.png"
 
 const faqItems = [
   {
@@ -81,7 +82,7 @@ function Faq() {
             Aqui encontras respostas às perguntas mais frequentes — desde como funciona a personalização até aos prazos de entrega e cuidados com o teu produto. Explora e prepara-te para viver a tua experiência de beleza, sem segredos.
           </p>
         </section>
-        <CuverdRibbon/>
+        <img src={ribbonImg} alt=""  className='ribbon-image'/>
         <section className="faq-question">
           <img src={mockUp} alt="" />
           <div className='faq-question-container'>
@@ -119,7 +120,7 @@ function Faq() {
         <section className='faq-still-questions' style={{ backgroundImage: `url(${bckLibs})` }}>
             <div>
               <h1>A TUA DÚVIDA NÃO FOI RESPONDIDA?</h1>
-              <button>
+              <button onClick={() => window.location.href = "mailto:lipslab.co@gmail.com"}>
                 <p>ENVIA-NOS UM EMAIL COM A TUA PERGUNTA E NÓS TE AJUDAMOS!</p>
                 <span>lipslab.co@gmail.com</span>
               </button>

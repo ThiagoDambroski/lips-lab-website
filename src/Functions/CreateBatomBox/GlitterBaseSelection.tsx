@@ -1,11 +1,12 @@
-import React from "react";
-import type { BaseOptions, GlittersOptions } from "./Types";
-import { useApp } from "../../Contexts/AppProvider";
+import React, { useState } from "react";
+import type { BaseOptions } from "./Types";
+import { useApp, type GlitterColor } from "../../Contexts/AppProvider";
 
 type GlitterBaseType = {
   step: number;
-  glitterSelected: GlittersOptions;
-  setGlitterSelected: React.Dispatch<React.SetStateAction<GlittersOptions>>;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  glitterSelected: string;
+  setGlitterSelected: React.Dispatch<React.SetStateAction<string>>;
   type: string;
   baseSelected: BaseOptions;
   setBaseSelected: React.Dispatch<React.SetStateAction<BaseOptions>>;
@@ -13,25 +14,42 @@ type GlitterBaseType = {
 
 function GlitterBaseSelection({
   step,
+  setStep,
   glitterSelected,
   setGlitterSelected,
   type,
   baseSelected,
   setBaseSelected,
 }: GlitterBaseType) {
+  const { glitterOptions, baseBatom, baseGloss } = useApp();
 
+  const categories = Array.from(
+    new Set(glitterOptions.map((g) => g.category))
+  );
 
-  const {glitterOptions,dustOptions,baseBatom,baseGloss} = useApp()
+  // --------------------------
+  // LIGHTBOX STATE
+  // --------------------------
+  const [preview, setPreview] = useState<GlitterColor | null>(null);
 
-  
+  const openLightbox = (g: GlitterColor) => setPreview(g);
+  const closeLightbox = () => setPreview(null);
+
+  const confirmSelect = () => {
+    if (preview) setGlitterSelected(preview.name);
+    setPreview(null);
+  };
 
   return (
     <div>
-    {step === 2 && (
-        <div className="texture-selection-section"> 
-          <p className="texture-selection-p">Diferentes texturas de glosses labiais requerem diferentes tipos de base.
-            Existem seis opções principais entre as quais podes escolher:</p>
-      
+
+      {step === 2 && (
+        <div className="texture-selection-section">
+          <p className="texture-selection-p">
+            Diferentes texturas de glosses labiais requerem diferentes tipos de base.
+            Existem seis opções principais entre as quais podes escolher:
+          </p>
+
           {type === "batom" && (
             <ul>
               {baseBatom.map((b) => (
@@ -43,9 +61,7 @@ function GlitterBaseSelection({
                   }}
                 >
                   <strong>{b.name}</strong>
-                  <p>
-                    {b.description}
-                  </p>
+                  <p>{b.description}</p>
                 </li>
               ))}
             </ul>
@@ -59,7 +75,6 @@ function GlitterBaseSelection({
                   onClick={() => setBaseSelected(b.id)}
                   style={{
                     backgroundColor: baseSelected === b.id ? "green" : "",
-                   
                   }}
                 >
                   <strong>{b.name}</strong>
@@ -68,60 +83,81 @@ function GlitterBaseSelection({
               ))}
             </ul>
           )}
-          <button className="texture-selection-section-button">CONTINUAR!</button>
-        </div>
-      )}
 
-
-      
-      {step === 4 && (
-        <div>
-          <p
-            onClick={() => setGlitterSelected("none")}
-            style={{
-              backgroundColor: glitterSelected === "none" ? "green" : "",
-              cursor: "pointer",
-            }}
+          <button
+            className="texture-selection-section-button"
+            onClick={() => setStep(3)}
+            disabled={baseSelected === "none"}
           >
-            None
-          </p>
-
-          <p>Glitter</p>
-          <ul>
-            {glitterOptions.map((g) => (
-              <li
-                key={g}
-                onClick={() => setGlitterSelected(g)}
-                style={{
-                  backgroundColor: glitterSelected === g ? "green" : "",
-                  cursor: "pointer",
-                }}
-              >
-                {g}
-              </li>
-            ))}
-          </ul>
-
-          <p>Dust</p>
-          <ul>
-            {dustOptions.map((d) => (
-              <li
-                key={d}
-                onClick={() => setGlitterSelected(d)}
-                style={{
-                  backgroundColor: glitterSelected === d ? "green" : "",
-                  cursor: "pointer",
-                }}
-              >
-                {d}
-              </li>
-            ))}
-          </ul>
+            CONTINUAR!
+          </button>
         </div>
       )}
 
-   
-      
+      {step === 4 && (
+        <section>
+          {categories.map((category) => (
+            <div key={category} className="glliter-selection-div">
+              <h2>{category}</h2>
+
+              <ul>
+                {glitterOptions
+                  .filter((g) => g.category === category)
+                  .map((g) => (
+                    <li
+                      key={g.id}
+                      onClick={() => openLightbox(g)}
+                      style={{
+                        backgroundColor:
+                          glitterSelected === g.name ? "green" : "",
+                        cursor: "pointer",
+                        listStyle: "none",
+                      }}
+                    >
+                      <img src={g.img} />
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      )}
+
+       
+      {preview && (
+        <div className="glitter-lightbox-overlay" onClick={closeLightbox}>
+          <div
+            className="glitter-lightbox"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="glitter-lightbox-circle">
+              <img
+                src={preview.img}
+                alt={preview.name}
+                className="glitter-lightbox-img"
+              />
+            </div>
+
+            <h3 className="glitter-lightbox-name">{preview.name}</h3>
+
+            <div className="glitter-lightbox-btns">
+              <button
+                className="glitter-lightbox-btn cancel"
+                onClick={closeLightbox}
+              >
+                Cancelar
+              </button>
+
+              <button
+                className="glitter-lightbox-btn confirm"
+                onClick={confirmSelect}
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

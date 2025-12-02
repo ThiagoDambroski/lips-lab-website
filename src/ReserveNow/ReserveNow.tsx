@@ -4,6 +4,7 @@ import "../scss/reserverNow.css"
 import background_woman from "../assets/image-woman.png"
 import background_colors from "../assets/background-colors.png"
 import gloss from "../assets/gloss-2-image.png"
+import { NavLink } from "react-router-dom"
 
 function ReserveNow() {
   return (
@@ -35,7 +36,7 @@ function ReserveNow() {
                   Após esse tempo, a sessão poderá ser reagendada, 
                   mas não poderá ser realizada no mesmo dia devido ao tempo limitado`}
               </p>
-              <button>experiência e preços</button>
+              <button><NavLink to="/experiencie">experiência e preços</NavLink></button>
             </div>
             <img src={gloss} alt="2 gloss da libs-lab" />
           </div>

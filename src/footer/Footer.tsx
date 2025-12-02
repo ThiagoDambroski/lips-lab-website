@@ -10,8 +10,8 @@ function Footer() {
             <img src={logo} alt="logo" />
             
                 <ul>
-                    <li><NavLink to = "/create">reserva agora</NavLink></li>
-                    <li><NavLink to = "/reserve">experiência online</NavLink></li>
+                    <li><NavLink to = "/reserve">reserva agora</NavLink></li>
+                    <li><NavLink to = "/create">experiência online</NavLink></li>
                     <li><NavLink to = "/faq">perquntas frequentes</NavLink></li>
                 </ul>
                 <div className='footer-social'>

@@ -154,11 +154,14 @@ $pink-libs-color:#e45397;
     margin-left: -1rem;
     margin-top: -5px;
     width: 105vw;
-    margin-bottom: 4rem;
+   
 }
 
 .experiencie-libs{
+    padding-top: 4rem;
     display: flex;
+    background-size: 100%;
+    background-repeat: repeat; 
     
     .experiencie-libs-intro{
         min-height: 100vh;
@@ -338,7 +341,7 @@ $pink-libs-color:#e45397;
     h2{
         font-family: "ApercuPro";
         font-size: 100px;
-        width: 60%;
+        width: 100%;
         text-align: center
     }
     button{

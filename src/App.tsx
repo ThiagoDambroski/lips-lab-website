@@ -1,4 +1,4 @@
-import Navbar from './Navbar/navbar'
+
 import HomePage from './HomePage/HomePage'
 import Faq from './Faq/Faq';
 import OnlineExperiencie from './OnlineExperiencie/OnlineExperiencie';
@@ -8,6 +8,7 @@ import AppProvider from './Contexts/AppProvider';
 import Footer from './footer/Footer';
 import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
 import Marquee from 'react-fast-marquee';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
 
@@ -22,7 +23,9 @@ function App() {
           PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp;  PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp;
         </Marquee>
       <AppProvider>
+        <ScrollToTop />
         <Routes>
+            
             <Route path='/' element ={<HomePage/>}/>
             <Route path='/reserve' element={<ReserveNow/>}/>
             <Route path='/create' element = {<OnlineExperiencie/>}/>

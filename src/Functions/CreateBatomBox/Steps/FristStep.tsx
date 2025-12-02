@@ -3,13 +3,15 @@ import React from 'react'
 type FristStepProps = {
     allColors:string[],
     selected:string[],
-    toggleColor: (hex:string) => void
+    toggleColor: (hex:string) => void,
+    setStep: React.Dispatch<React.SetStateAction<number>>;
 
 }
 
-function FristStep({allColors,selected,toggleColor}:FristStepProps) {
+
+function FristStep({allColors,selected,toggleColor,setStep}:FristStepProps) {
   return (
-    <div className='colors-selection'>
+    <section className='colors-selection'>
           <h3>Combina até 4 pigmentos, mistura tons 
           e encontra a cor que reflete quem és!</h3>
           <div>
@@ -32,8 +34,8 @@ function FristStep({allColors,selected,toggleColor}:FristStepProps) {
             );
             })}
           </div>
-          <button>regula a intensidade</button>
-        </div>
+          <button onClick={() => setStep(1)} disabled={selected.length === 0}>regula a intensidade</button>
+   </section>
   )
 }
 
