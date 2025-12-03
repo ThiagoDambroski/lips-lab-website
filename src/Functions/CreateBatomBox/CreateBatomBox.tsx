@@ -8,6 +8,8 @@ import glossImage from "../../assets/gloss.png"
 import glossWhioutImage from "../../assets/gloss whiout.png"
 import batomImage from "../../assets/batom.png"
 import libsbackg from "../../assets/libs back.png"
+import libsLigthBack from "../../assets/libs back light.png"
+import logoLibs from "../../assets/logo.png"
 import "../../scss/CreateBatom.css"
 
 import descVer from "../../assets/desc-ver.png"
@@ -27,6 +29,7 @@ function CreateBatomBox() {
     const [smell,setSmell] = useState<SmelltOptions>('none')
     const [aditive,setAditive] = useState<AdditivesOptions>('none')
     const [esence,setEsence] = useState<EsenceOptions>('none')
+    const [formula,setFormula] = useState<string>("none")
     const [boxText,setBoxText] = useState<string>("")
 
     const handleTypeChange = (typeInput:TypesOptions) => {
@@ -39,13 +42,14 @@ function CreateBatomBox() {
       setBaseSelected('none')
       setAditive('none')
       setEsence('none')
+      setFormula('none')
       setBoxText("")
     }
 
 
     const generatedProduct = () => {
       const newProduct:productType = {id:1,type:type,color:selectedColor,glitter:glitterSelected,
-        base:baseSelected,smell:smell,aditive:aditive,esence:esence,boxText:boxText} 
+        base:baseSelected,smell:smell,aditive:aditive,esence:esence,formula:formula,boxText:boxText} 
       setNewProduct(newProduct)
     }
     
@@ -98,7 +102,7 @@ function CreateBatomBox() {
                       </div>
                 </div>
               </>}
-              {step >=3 &&
+              {step >=3 && step <8 &&
               <>
               <div className="item-display-2">
                  <div className="item-img-2-color-wrapper">
@@ -122,9 +126,66 @@ function CreateBatomBox() {
               baseSelected={baseSelected}
               setBaseSelected={setBaseSelected}/>
               <SmellAndAditive step={step} setStep={setStep} smell={smell} setSmell={setSmell} aditive={aditive} setAditive={setAditive} esence={esence} setEsence={setEsence}/>
-              <FormatAndText step={step} type={type} boxText={boxText} 
+              <FormatAndText step={step} setStep={setStep} type={type} boxText={boxText} formula={formula} setFormula={setFormula} 
               setBoxText={setBoxText}/>
+              
             </main>
+            {step === 8 && 
+                 <div className="purchse-screen">
+                    <div className="purchse-screen-logo">
+                      <img src={logoLibs} alt="Lips Lab logo" />
+                      <div className="purchse-screen-logo-div">
+                        <h2>CRIASTE O TEU GLOSS LABIAL DO ZERO!</h2>
+                        <p>Antes de adicionares ao carrinho, confirma se está tudo correto.</p>
+                      </div>
+                      <ul>
+                        <li>
+                          <div style={{backgroundColor:selectedColor}} onClick={() => setStep(1)}>
+
+                          </div>
+                          <p>cor</p>
+                        </li>
+                        <li>
+                          <div onClick={() => setStep(2)}>
+                              <p>{baseSelected}</p>
+                          </div>
+                          <p>base</p>
+                        </li>
+                        <li>
+                          <div onClick={() => setStep(3)}>
+                              <p>{aditive}</p>
+                          </div>
+                          <p>aditivo</p>
+                        </li>
+                        <li>
+                          <div onClick={() => setStep(4)}>
+                            <p>{glitterSelected}</p>
+                          </div>  
+                          <p>pigmento</p>
+                        </li>
+                        <li>
+                          <div onClick={() => setStep(5)}>
+                            <p>{smell} & {esence}</p>
+                          </div>
+                          <p>SABOR &ESSÊNCIA</p>
+                        </li>
+                        <li>
+                          <div onClick={() => setStep(6)}>
+                            <p>{formula}</p>
+                          </div>
+                          <p>FÓRMULA</p>
+                        </li>
+                        <li>
+                          <div onClick={() => setStep(7)}>
+                            <p>{boxText}</p>
+                          </div>
+                          <p>PERSONALIZAÇÃO</p>
+                        </li>
+                      </ul>
+                      <button><p>Conclui a tua compra</p> </button>
+                    </div>
+                  </div>
+              }
           </>}
         
 

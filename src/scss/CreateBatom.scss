@@ -939,11 +939,52 @@
 
 //glitter
 
+.glitter-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.glitter-intro{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h2{
+    color: #e55499;
+    width: 80%;
+  }
+  button{
+    width: 40%;
+    background-color: #c41123;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+  }
+  button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+  }
+
+}
+
 .glliter-selection-div {
+  display: flex;
+  flex-direction: column;
+  h2{
+    color: #e55499;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 25px;
+  }
   ul {
     margin: 0;
     padding: 0;
-
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: grid;
 
 
@@ -954,8 +995,8 @@
     align-content: flex-start;
 
    
-    column-gap: 0;
-    row-gap: 0;
+    column-gap: 5px;
+    row-gap: 5px;
 
     li {
       margin: 0;
@@ -966,6 +1007,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      
 
       img {
         display: block;
@@ -1067,4 +1109,101 @@
   transform: translateY(0);
   box-shadow: none;
   opacity: 0.9;
+}
+
+
+//step 8
+
+.purchse-screen {
+  /* base colour behind the pattern */
+  background-color: #e55499;
+
+  /* IMPORTANT: actual pattern image */
+  background-image: url("../assets/libs\ back\ white.png"); // ⬅ change to your real file name
+  background-repeat: repeat;
+  background-size: 110%; // adjust until it looks like the second image
+  background-position: center;
+
+  min-height: 100vh;       // so it fills the entire screen
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.purchse-screen-logo {
+  z-index: 1;
+  padding-top: 2rem;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  button{
+    margin-top: 3rem;
+    padding: 1.5rem;
+    width: 40%;
+    border-radius: 50px;
+    border: none;
+    background-color: #ffd3dd;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    p{
+      color: white;
+    }
+  }
+  .purchse-screen-logo-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3rem;
+    h2{
+      font-size: 2rem;
+      color: white;
+      font-weight: 500;
+    }
+    p{
+      text-align: center;
+      color: white;
+    }
+  }
+  img{
+    width:25%;
+    margin-bottom: 3rem;
+  }
+  ul{
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap: 10px;
+  }
+  li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    div{
+      width: 100%;
+      border-radius: 30px;
+      height: 180px;
+      display: flex;
+      padding: 1rem;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffb7d2;
+      p{
+        text-transform: lowercase;
+      }
+    }
+    p{
+      text-transform: uppercase;
+      color: white;
+    }
+    
+  }
 }

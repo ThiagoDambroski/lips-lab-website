@@ -3,12 +3,15 @@ import type { TypesOptions } from './Types'
 
 type FormatAndTextType = {
   step: number
+  setStep: React.Dispatch<React.SetStateAction<number>>
   type: TypesOptions
   boxText: string
   setBoxText: React.Dispatch<React.SetStateAction<string>>
+  formula:string,
+  setFormula:React.Dispatch<React.SetStateAction<string>>
 }
 
-function FormatAndText({ step, type, boxText, setBoxText }: FormatAndTextType) {
+function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setFormula }: FormatAndTextType) {
   const formulaItems = [
     {
       id: 'Lip Gloss',
@@ -52,6 +55,7 @@ function FormatAndText({ step, type, boxText, setBoxText }: FormatAndTextType) {
 
   const toggleFormula = (id: string) => {
     setOpenFormulaId(prev => (prev === id ? null : id))
+    setFormula(prev => (prev === id ? "none" : id))
   }
 
   /// nome
@@ -156,7 +160,7 @@ function FormatAndText({ step, type, boxText, setBoxText }: FormatAndTextType) {
               )
             })}
           </ul>
-          <button className="continue-button">Continuar!</button>
+          <button className="continue-button" disabled={formula === "none"} onClick={() => setStep(7)}>Continuar!</button>
         </div>
       )}
 
@@ -208,6 +212,7 @@ function FormatAndText({ step, type, boxText, setBoxText }: FormatAndTextType) {
               className="engraving-continue"
               type="button"
               disabled={!canContinue}
+              onClick={() => setStep(8)}
             >
               CONTINUAR!
             </button>

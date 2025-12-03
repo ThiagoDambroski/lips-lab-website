@@ -1209,9 +1209,76 @@
   padding-left: 0.7rem;
 }
 
+.glitter-section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.glitter-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.glitter-intro h2 {
+  color: #e55499;
+  width: 80%;
+}
+
+.glitter-intro button {
+  width: 40%;
+  background-color: #c41123;
+  border: none;
+  padding: 1rem;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.5rem;
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.glitter-intro button:hover {
+  -webkit-transform: translateY(-4px) scale(1.03);
+          transform: translateY(-4px) scale(1.03);
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.glliter-selection-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.glliter-selection-div h2 {
+  color: #e55499;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 25px;
+}
+
 .glliter-selection-div ul {
   margin: 0;
   padding: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (max-content)[8];
@@ -1222,9 +1289,9 @@
           justify-content: flex-start;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  -webkit-column-gap: 0;
-          column-gap: 0;
-  row-gap: 0;
+  -webkit-column-gap: 5px;
+          column-gap: 5px;
+  row-gap: 5px;
 }
 
 .glliter-selection-div ul li {
@@ -1373,5 +1440,150 @@
   -webkit-box-shadow: none;
           box-shadow: none;
   opacity: 0.9;
+}
+
+.purchse-screen {
+  /* base colour behind the pattern */
+  background-color: #e55499;
+  /* IMPORTANT: actual pattern image */
+  background-image: url("../assets/libs back white.png");
+  background-repeat: repeat;
+  background-size: 110%;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.purchse-screen-logo {
+  z-index: 1;
+  padding-top: 2rem;
+  width: 100%;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.purchse-screen-logo button {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  width: 40%;
+  border-radius: 50px;
+  border: none;
+  background-color: #ffd3dd;
+  font-size: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.purchse-screen-logo button p {
+  color: white;
+}
+
+.purchse-screen-logo .purchse-screen-logo-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.purchse-screen-logo .purchse-screen-logo-div h2 {
+  font-size: 2rem;
+  color: white;
+  font-weight: 500;
+}
+
+.purchse-screen-logo .purchse-screen-logo-div p {
+  text-align: center;
+  color: white;
+}
+
+.purchse-screen-logo img {
+  width: 25%;
+  margin-bottom: 3rem;
+}
+
+.purchse-screen-logo ul {
+  width: 100%;
+  list-style: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.purchse-screen-logo li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.purchse-screen-logo li div {
+  width: 100%;
+  border-radius: 30px;
+  height: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffb7d2;
+}
+
+.purchse-screen-logo li div p {
+  text-transform: lowercase;
+}
+
+.purchse-screen-logo li p {
+  text-transform: uppercase;
+  color: white;
 }
 /*# sourceMappingURL=CreateBatom.css.map */

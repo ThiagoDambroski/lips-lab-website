@@ -95,31 +95,40 @@ function GlitterBaseSelection({
       )}
 
       {step === 4 && (
-        <section>
-          {categories.map((category) => (
-            <div key={category} className="glliter-selection-div">
-              <h2>{category}</h2>
+        <section className="glitter-section">
+          <div className="glitter-intro">
+            <h2>Sabemos que tudo fica melhor com brilho, 
+            por isso, podes escolher se queres
+            adicionar algum! </h2>
+            <button onClick={() => setStep(5)}>Continuar</button>
+          </div>
+          <div>
+            {categories.map((category) => (
+              <div key={category} className="glliter-selection-div">
+                <h2>{category}</h2>
 
-              <ul>
-                {glitterOptions
-                  .filter((g) => g.category === category)
-                  .map((g) => (
-                    <li
-                      key={g.id}
-                      onClick={() => openLightbox(g)}
-                      style={{
-                        backgroundColor:
-                          glitterSelected === g.name ? "green" : "",
-                        cursor: "pointer",
-                        listStyle: "none",
-                      }}
-                    >
-                      <img src={g.img} />
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))}
+                <ul>
+                  {glitterOptions
+                    .filter((g) => g.category === category)
+                    .map((g) => (
+                      <li
+                        key={g.id}
+                        onClick={() => openLightbox(g)}
+                        style={{
+                          backgroundColor:
+                            glitterSelected === g.name ? "green" : "",
+                          cursor: "pointer",
+                          listStyle: "none",
+                        }}
+                      >
+                        <img src={g.img} />
+                      </li>
+                    ))}
+                </ul>
+              </div>
+             ))}
+          </div>
+          
         </section>
       )}
 

@@ -7,6 +7,7 @@ export type productType = null | {
   smell:SmelltOptions,
   aditive:AdditivesOptions,
   esence:EsenceOptions,
+  formula:string,
   boxText:string 
 
 }
