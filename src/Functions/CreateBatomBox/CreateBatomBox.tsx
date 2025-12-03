@@ -14,13 +14,15 @@ import "../../scss/CreateBatom.css"
 
 import descVer from "../../assets/desc-ver.png"
 
+type CreateBatomType = {
+  typeInput: TypesOptions;
+};
 
-
-function CreateBatomBox() {
+function CreateBatomBox({typeInput}:CreateBatomType) {
     const [step, setStep] = useState<number>(0);
     const [newProduct,setNewProduct] = useState<productType >(null);
 
-    const [type,setType] = useState<TypesOptions>(undefined);
+    const [type,setType] = useState<TypesOptions>(typeInput);
     const [automaticChoice,setAutomaticChoice] = useState<boolean>()
     
     const [selectedColor,setSelectedColor] = useState<string | undefined>(undefined);
@@ -84,9 +86,9 @@ function CreateBatomBox() {
                 <div className='item-display'>
                       <div className='item-display-container'>
                         <div>
-                          <h2>TEU GLOSS LABIAL DOS SONHOS!</h2>
+                          <h2>TEU {type === "gloss" ? "GLOSS LABIAL" : "BATOM"} DOS SONHOS!</h2>
                           <p className='p-1'>Segue os passos de personalização 
-                          para criar o teu batom</p>
+                          para criar o teu {type}</p>
                           <img src={descVer} alt="" />
                         </div>
                         <p>*As cores podem variar dependendo do tipo de ecrã
@@ -135,8 +137,8 @@ function CreateBatomBox() {
                     <div className="purchse-screen-logo">
                       <img src={logoLibs} alt="Lips Lab logo" />
                       <div className="purchse-screen-logo-div">
-                        <h2>CRIASTE O TEU GLOSS LABIAL DO ZERO!</h2>
-                        <p>Antes de adicionares ao carrinho, confirma se está tudo correto.</p>
+                        <h2>CRIASTE O TEU {type === "gloss" ? "GLOSS LABIAL" : "BATOM" } DO ZERO!</h2>
+                        <p>Antes de finalizar a compra, confirma se está tudo correto.</p>
                       </div>
                       <ul>
                         <li>

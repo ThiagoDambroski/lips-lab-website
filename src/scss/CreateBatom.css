@@ -190,12 +190,26 @@
   font-size: 20px;
   border-radius: 30px;
   text-transform: uppercase;
+  -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease, -webkit-filter 0.3s ease;
+  transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease, -webkit-filter 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease, -webkit-filter 0.3s ease;
+  cursor: pointer;
 }
 
 .main-color-selection-options div button img {
   width: 75px;
-  height: 75px;
+  height: 80px;
   margin-bottom: 20px;
+}
+
+.main-color-selection-options div button:hover {
+  -webkit-transform: translateY(-6px) scale(1.03);
+          transform: translateY(-6px) scale(1.03);
+  -webkit-box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  -webkit-filter: brightness(1.08);
+          filter: brightness(1.08);
 }
 
 .item-img-color-wrapper,
@@ -773,6 +787,7 @@
           flex-direction: column;
   margin-bottom: 2rem;
   gap: 10px;
+  cursor: pointer;
 }
 
 .taste-section li div {

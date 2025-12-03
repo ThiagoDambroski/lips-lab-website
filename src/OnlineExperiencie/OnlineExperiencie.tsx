@@ -9,11 +9,19 @@ import gloss from "../assets/gloss.png"
 import batom from "../assets/batom.png"
 import agoraImg from "../assets/agora ribbon.png"
 import { useState } from 'react'
+import type { TypesOptions } from '../Functions/CreateBatomBox/Types'
 
 function OnlineExperiencie() {
 
   const [createActive,setCreateActive] = useState(false)
-  
+  const [type,setType] = useState<TypesOptions>(undefined);
+
+
+  const handleSetCreativeActive = (state:boolean,typeinput:TypesOptions) => {
+    setCreateActive(state)
+    setType(typeinput)
+
+  }
   return (
     <>
       <Navbar css={1}/>
@@ -92,18 +100,18 @@ function OnlineExperiencie() {
         </div>
         
         <section className='online-buy-section'>
-          <button onClick={() => setCreateActive(true)}>
+          <button onClick={() => handleSetCreativeActive(true,undefined)}>
             COMEÇAR!
           </button>
           <p className='online-buy-p'>Experimenta criar o teu batom personalizado sem sair de casa!</p>
-          <div className='online-buy-container'>
-            <div className='online-buy-card'>
+          <div className='online-buy-container'onClick={() => setCreateActive(true)} >
+            <div className='online-buy-card' onClick={() => handleSetCreativeActive(true,"gloss")}>
               <img src={gloss} alt="libs labs gloss" />
               <h3>GLOSS LABIAL</h3>
               <p>cria teu gloss lábial do zero!</p>
               <span>29€</span>
             </div>
-            <div className='online-buy-card'>
+            <div className='online-buy-card' onClick={() => handleSetCreativeActive(true,"batom")}>
               <img src={batom} alt="libs labs batom" />
               <h3>BATOM</h3>
               <p>cria teu batom do zero!</p>
@@ -114,7 +122,7 @@ function OnlineExperiencie() {
         </>}
       {createActive && 
       <>  
-        <CreateBatomBox/>
+        <CreateBatomBox  typeInput={type}/>
       </>}
         
     </main>

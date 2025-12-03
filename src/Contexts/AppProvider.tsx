@@ -170,34 +170,34 @@ function AppProvider({children}:appProviderProps) {
     
     const baseBatom: {id:BaseOptions,name:string,description:string}[] = [
     {
-      id: "cream",
-      name: "Base Cremosa (Cream Base)",
-      description:
-        "Textura suave e hidratante. Ideal para quem gosta de um acabamento cremoso e confortável.",
-    },
-    {
       id: "matte",
-      name: "Base Mate de Longa Duração (Long Last Matte)",
+      name: "MATTE",
       description:
-        "Efeito mate elegante com maior durabilidade e resistência.",
+        "duradouro & aveludado",
     },
     {
-      id: "butter",
-      name: "Base Manteiga (Butter Base)",
+      id: "matte liquido",
+      name: "matte liquido",
       description:
-        "Acabamento ligeiramente brilhante e textura sedosa.",
+        "alta fixação & confortável",
     },
     {
-      id: "vegan",
-      name: "Base Orgânica Natural (Organic Natural Lipstick Base)",
+      id: "cream",
+      name: "CREMOSO",
       description:
-        "Fórmula natural e cremosa, rica em ingredientes orgânicos e hidratantes.",
+        "hidratante & suave",
     },
     {
-      id: "liquid-matte",
-      name: "Base Mate Líquida (Liquid Matte Base)",
+      id: "amanteigado",
+      name: "AMANTEIGADO",
       description:
-        "Textura cremosa de alta cobertura, com acabamento mate e moderno.",
+        "brilhante & suave",
+    },
+    {
+      id: "natural",
+      name: "NATURAL",
+      description:
+        "hidratante & cremoso",
     },
     ];
 
