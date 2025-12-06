@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, type ChangeEvent } from 'react';
+import React, { useEffect, useMemo, useState} from 'react';
 import FristStep from './Steps/FristStep';
 import SecondStep from './Steps/SecondStep';
 import { useApp } from '../../Contexts/AppProvider';

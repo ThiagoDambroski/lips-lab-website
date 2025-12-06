@@ -9,6 +9,7 @@ import Footer from './footer/Footer';
 import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
 import Marquee from 'react-fast-marquee';
 import ScrollToTop from './ScrollToTop';
+import CartPage from './Cart/CartPage';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
             <Route path='/create' element = {<OnlineExperiencie/>}/>
             <Route path='/faq' element={<Faq/>}/>
             <Route path='experiencie' element={<ExperiencieAndPrice/>}/>
+            <Route path="/cart" element={<CartPage />} /> 
         </Routes>
       </AppProvider>
       <Footer/>

@@ -1,8 +1,7 @@
-import React from 'react'
-import Navbar from '../Navbar/navbar'
+
+import Navbar from '../Navbar/Navbar'
 import logo from "../assets/logo.png"
 import "../scss/ExperiencieAndPrice.css"
-import CurvedRibbon from '../ReserveNow/CurvedRibbon'
 import ribbonImg from "../assets/ribbon experiencie.png"
 import ProductCarousel from '../ReserveNow/ProductCarouselProps'
 import libsBackground from "../assets/libs back.png"

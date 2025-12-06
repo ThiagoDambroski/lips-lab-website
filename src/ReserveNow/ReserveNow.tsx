@@ -1,5 +1,5 @@
 //Frecha
-import Navbar from "../Navbar/navbar"
+import Navbar from "../Navbar/Navbar"
 import "../scss/reserverNow.css"
 import background_woman from "../assets/image-woman.png"
 import background_colors from "../assets/background-colors.png"

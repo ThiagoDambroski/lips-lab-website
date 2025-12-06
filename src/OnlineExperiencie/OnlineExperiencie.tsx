@@ -2,9 +2,8 @@
 import CreateBatomBox from '../Functions/CreateBatomBox/CreateBatomBox'
 import "../scss/OnlineExperiencie.css"
 import kiss from "../assets/kissing-batom.png"
-import Navbar from '../Navbar/navbar'
+import Navbar from '../Navbar/Navbar'
 import libs from "../assets/libs-display.png"
-import CuverdRibbon2 from "../OnlineExperiencie/CuverdRibbon2"
 import gloss from "../assets/gloss.png"
 import batom from "../assets/batom.png"
 import agoraImg from "../assets/agora ribbon.png"

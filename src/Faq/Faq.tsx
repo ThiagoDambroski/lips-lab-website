@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import Navbar from '../Navbar/navbar'
+import { useState } from 'react'
+import Navbar from '../Navbar/Navbar'
 import mockUp from "../assets/kissing-batom.png"
 import "../scss/Faq.css"
 import bckLibs from "../assets/libs back.png"
-import CuverdRibbon from "../Faq/CuverdRibbon3"
 import ribbonImg from "../assets/ribbon fqa.png"
 
 const faqItems = [

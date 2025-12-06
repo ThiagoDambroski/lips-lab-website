@@ -1,4 +1,4 @@
-import React from "react";
+
 import apercu from "../assets/fonts/apercu/ApercuPro-Bold.eot"
 
 type Props = {

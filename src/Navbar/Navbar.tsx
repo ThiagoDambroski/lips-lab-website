@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom"
 import logo from "../assets/logo.png"
 import "../scss/NavBar.css"
-import { useEffect } from "react"
 import "../scss/NavBar.css"
 import whitePin from "../assets/pinWhite.png"
 import whiteShop from "../assets/shopWhite.png"

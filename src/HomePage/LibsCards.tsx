@@ -1,4 +1,4 @@
-import React from "react";
+
 import libs from "../assets/libs-display.png"
 
 type LibsCardsType = {

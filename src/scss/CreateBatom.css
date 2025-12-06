@@ -1577,12 +1577,17 @@
 }
 
 .purchse-screen-logo li div {
+  cursor: pointer;
   width: 100%;
   border-radius: 30px;
   height: 180px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 1rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1591,6 +1596,35 @@
       -ms-flex-align: center;
           align-items: center;
   background-color: #ffb7d2;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+.purchse-screen-logo li div:hover {
+  width: 102%;
+  height: 185px;
+}
+
+.purchse-screen-logo li div .smell-esence {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.purchse-screen-logo li div .smell-esence img {
+  width: 50px;
+}
+
+.purchse-screen-logo li div img {
+  width: 90px;
 }
 
 .purchse-screen-logo li div p {

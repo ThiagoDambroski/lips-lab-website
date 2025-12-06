@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
-import type { AdditivesOptions, BaseOptions, EsenceOptions, EyeColorOptions, GlittersOptions, HairColorOptions, SkinToneOptions, SmelltOptions } from '../Functions/CreateBatomBox/Types';
+import type { AdditivesOptions, BaseOptions, EsenceOptions, EyeColorOptions, HairColorOptions, SkinToneOptions, SmelltOptions } from '../Functions/CreateBatomBox/Types';
 import hidr from "../assets/hidr.png"
 import suav from "../assets/sua.png"
 import prot from "../assets/prot.png"
@@ -325,7 +325,7 @@ function AppProvider({children}:appProviderProps) {
       img: suav
     },
     {
-      id: "aditivo-hidratante",
+      id: "protecao-solar",
       name: "PROTEÇÃO SOLAR",
       description:
         "Rico em antioxidantes, aumenta a hidratação e deixa os lábios suaves e nutridos.",
@@ -339,7 +339,7 @@ function AppProvider({children}:appProviderProps) {
       img: dens
     },
     {
-      id: "protecao-solar",
+      id: "aditivo-hidratante",
       name: "VOLUME LABIAL",
       description:
         "Adiciona fator de proteção solar, ajudando a proteger os lábios da exposição ao sol.",

@@ -17,7 +17,6 @@ import background_venha_ate_nos from "../assets/background-venha-ate-nos.png"
 import image_woman from "../assets/image-woman-home-page.png"
 import  Navbar from "../Navbar/Navbar"
 import backLibs from "../assets/libs back.png"
-import lightBackLibs from "../assets/libs back light.png"
 import { NavLink } from "react-router-dom"
 
 

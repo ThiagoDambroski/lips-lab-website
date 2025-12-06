@@ -1200,14 +1200,33 @@
     align-items: center;
     gap: 10px;
     div{
+      cursor: pointer;
       width: 100%;
       border-radius: 30px;
       height: 180px;
       display: flex;
+      flex-direction: column;
       padding: 1rem;
       justify-content: center;
       align-items: center;
       background-color: #ffb7d2;
+      transition: all ease 0.2s;
+      &:hover{
+        width: 102%;
+        height: 185px;
+      }
+      .smell-esence{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        height: fit-content;
+        img{
+          width: 50px;
+        }
+      }
+      img{
+        width: 90px;
+      }
       p{
         text-transform: lowercase;
       }

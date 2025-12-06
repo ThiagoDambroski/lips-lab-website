@@ -19,8 +19,8 @@ function AutomaticColors({toggleColor,selected,setSelected}:AutomaticColors) {
     const [hairColor,setHairColor] = useState<HairColorOptions>(undefined)
     const [pallete,setPallete] = useState<Palette>()
 
-
     const handleEyeChange = (eye:EyeColorOptions):void => {
+        console.log(hairColor)
         setEyeColor(eye)
         setInternalStep(1)
 

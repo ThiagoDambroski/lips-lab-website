@@ -55,7 +55,7 @@ function GlitterBaseSelection({
               {baseBatom.map((b) => (
                 <li
                   key={b.id}
-                  onClick={() => setBaseSelected(b.id)}
+                  onClick={baseSelected === b.id ? () => setBaseSelected("none") : () => setBaseSelected(b.id)}
                   style={{
                     backgroundColor: baseSelected === b.id ? "green" : "",
                   }}
@@ -72,7 +72,7 @@ function GlitterBaseSelection({
               {baseGloss.map((b) => (
                 <li
                   key={b.id}
-                  onClick={() => setBaseSelected(b.id)}
+                  onClick={baseSelected === b.id ? () => setBaseSelected("none") : () => setBaseSelected(b.id)}
                   style={{
                     backgroundColor: baseSelected === b.id ? "green" : "",
                   }}
@@ -87,7 +87,7 @@ function GlitterBaseSelection({
           <button
             className="texture-selection-section-button"
             onClick={() => setStep(3)}
-            disabled={baseSelected === "none"}
+            
           >
             CONTINUAR!
           </button>
