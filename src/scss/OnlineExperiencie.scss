@@ -98,12 +98,12 @@
     }
 }
 .now-img-container{
-    height: 20vh;
-    position: relative;
-    .now-img{
-        position: absolute;
-        width: 110vw;
+    width: 100%;
+    padding-top: 2rem;
+    img{
+        position: relative;
         left: -30px;
+        width:110%;
     }
 }
 
@@ -111,27 +111,24 @@
 .online-buy-section{
     min-height: 100vh;
     padding: 0rem 3rem 3rem 3rem;
-    background: linear-gradient(
-            180deg,
-            transparent 0%,      // fully transparent at the top
-            transparent 10%,     // keeps the top clear for a bit
-            #ffe7eb 40%,         // starts fading into light pink
-            #ffd3dd8f 100%         // finishes with deeper pink
-    );
+
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    button{
-        font-family: "IvyPresto";
+    gap: 2.5rem;
+    .frist-button-online{
+        align-self: center;
+        text-transform: uppercase;
+        margin-top: 1rem;
+        font-family: "ApercuPro";
         font-weight: 600;
         font-style: italic;
-        background-color: #ffd3dd;
-        color: #c41123;
+        background-color: #c41123;
+        color: white;
         border: none;
-        border-radius: 50px;
-        padding: 1.5rem;
-        font-size: 60px;
-        width: 40%;
+        border-radius: 30px;
+        padding: 2.0rem;
+        font-size: 45px;
+        width: 50%;
         cursor: pointer;
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
          transition:
@@ -148,12 +145,45 @@
         }
 
     }
+    .second-button-online{
+        align-self: center;
+        text-transform: uppercase;
+        margin-top: 1rem;
+        font-family: "ApercuPro";
+        font-weight: 600;
+        font-style: italic;
+        background: none;
+        color: white;
+        border: 2px solid #c41123;
+        border-radius: 50px;
+        padding: 2.0rem;
+        font-size: 45px;
+        width: 50%;
+        color: #c41123;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+         transition:
+        background-color 0.35s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.35s ease;
+
+        &:hover {
+            background-color: darken(#ffd3dd, 10%);   
+            color: darken(#c41123, 10%);              
+            transform: scale(1.04);                   
+            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.26);
+        }
+    }
     .online-buy-p{
         font-family: "ApercuPro";
-        font-size: 25px;
+        font-size: 30px;
         font-weight: 600;
-        color: #e45397;
-        padding-left: 4rem;
+        color: #c41123;
+        align-self: center;
+        font-style: italic;
+        text-align: center;
+        text-transform: uppercase;
 
     }
 
@@ -167,9 +197,9 @@
             padding: 2rem;
             display: flex;
             flex-direction: column;
-            width: 40%;
-            border-radius: 50px;
-            background-color: #dddddd;
+            width: 30%;
+            border-radius: 20px;
+            background-color: white;
             cursor: pointer;
             transition: 
                 transform 0.3s ease,
@@ -180,27 +210,37 @@
                 box-shadow: 0 12px 25px rgba(0, 0, 0, 0.20); // soft depth
             }
             img{
+                width: 30%;
                 align-self: center;
                 justify-self: center;
-                height: 50vh;
+                margin-bottom: 1rem;
+                
             }
             h3{
                 font-family: 'ApercuPro';
-                color: #c41123;
+                color: black;
+                font-style: italic;
+                font-size: 1.5rem;
             }
-            p{
-                font-family: 'IvyPresto';
-                color: #c41123;
-                font-weight: bold;
-            }
+
             span{
                 font-family: 'ApercuPro';
-                color: #c41123;
-                font-size: 25px;
+                color: black;
+                padding: 0.5rem;
+                border: 2px solid black;
+                border-radius: 50px;
+
+                text-align: center;
                 font-weight: bolder;
             }
         }
     }
+}
+
+.img-site{
+    align-self: center;
+    width: 60%;
+    margin-bottom: 3rem;
 }
 
 $desktop-xl: 1500px;

@@ -114,21 +114,19 @@
 }
 
 .now-img-container {
-  height: 20vh;
-  position: relative;
+  width: 100%;
+  padding-top: 2rem;
 }
 
-.now-img-container .now-img {
-  position: absolute;
-  width: 110vw;
+.now-img-container img {
+  position: relative;
   left: -30px;
+  width: 110%;
 }
 
 .online-buy-section {
   min-height: 100vh;
   padding: 0rem 3rem 3rem 3rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(10%, transparent), color-stop(40%, #ffe7eb), to(#ffd3dd8f));
-  background: linear-gradient(180deg, transparent 0%, transparent 10%, #ffe7eb 40%, #ffd3dd8f 100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,20 +134,25 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 20px;
+  gap: 2.5rem;
 }
 
-.online-buy-section button {
-  font-family: "IvyPresto";
+.online-buy-section .frist-button-online {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  font-family: "ApercuPro";
   font-weight: 600;
   font-style: italic;
-  background-color: #ffd3dd;
-  color: #c41123;
+  background-color: #c41123;
+  color: white;
   border: none;
-  border-radius: 50px;
-  padding: 1.5rem;
-  font-size: 60px;
-  width: 40%;
+  border-radius: 30px;
+  padding: 2.0rem;
+  font-size: 45px;
+  width: 50%;
   cursor: pointer;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
@@ -159,7 +162,42 @@
   transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
 }
 
-.online-buy-section button:hover {
+.online-buy-section .frist-button-online:hover {
+  background-color: #ffa0b6;
+  color: #950d1b;
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: 0 14px 26px rgba(0, 0, 0, 0.26);
+          box-shadow: 0 14px 26px rgba(0, 0, 0, 0.26);
+}
+
+.online-buy-section .second-button-online {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  font-family: "ApercuPro";
+  font-weight: 600;
+  font-style: italic;
+  background: none;
+  color: white;
+  border: 2px solid #c41123;
+  border-radius: 50px;
+  padding: 2.0rem;
+  font-size: 45px;
+  width: 50%;
+  color: #c41123;
+  cursor: pointer;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  -webkit-transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+}
+
+.online-buy-section .second-button-online:hover {
   background-color: #ffa0b6;
   color: #950d1b;
   -webkit-transform: scale(1.04);
@@ -170,10 +208,15 @@
 
 .online-buy-section .online-buy-p {
   font-family: "ApercuPro";
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 600;
-  color: #e45397;
-  padding-left: 4rem;
+  color: #c41123;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-style: italic;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .online-buy-section .online-buy-container {
@@ -199,9 +242,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 40%;
-  border-radius: 50px;
-  background-color: #dddddd;
+  width: 30%;
+  border-radius: 20px;
+  background-color: white;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
   transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
@@ -217,30 +260,38 @@
 }
 
 .online-buy-section .online-buy-container .online-buy-card img {
+  width: 30%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   -ms-grid-column-align: center;
       justify-self: center;
-  height: 50vh;
+  margin-bottom: 1rem;
 }
 
 .online-buy-section .online-buy-container .online-buy-card h3 {
   font-family: 'ApercuPro';
-  color: #c41123;
-}
-
-.online-buy-section .online-buy-container .online-buy-card p {
-  font-family: 'IvyPresto';
-  color: #c41123;
-  font-weight: bold;
+  color: black;
+  font-style: italic;
+  font-size: 1.5rem;
 }
 
 .online-buy-section .online-buy-container .online-buy-card span {
   font-family: 'ApercuPro';
-  color: #c41123;
-  font-size: 25px;
+  color: black;
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 50px;
+  text-align: center;
   font-weight: bolder;
+}
+
+.img-site {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 60%;
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 1500px) {

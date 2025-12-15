@@ -1,49 +1,48 @@
 //Frecha
 import Navbar from "../Navbar/Navbar"
 import "../scss/reserverNow.css"
-import background_woman from "../assets/image-woman.png"
-import background_colors from "../assets/background-colors.png"
-import gloss from "../assets/gloss-2-image.png"
+import back from "../assets/libs back.png"
+import fristImage from "../assets/reserve now frist image.png"
+import secondImage from "../assets/friends reserve now.png"
 import { NavLink } from "react-router-dom"
 
 function ReserveNow() {
   return (
     <>
       <Navbar css={1}/>
-      <main className="reserve-now">
-        <section className="reserve-now-intro" style={{
-          backgroundImage: `url(${background_woman})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}>
+      <main className="reserve-now" style={{backgroundImage:`url(${back})`}}>
+        <section className="reserve-now-intro">
+          <img src={fristImage} alt="" />
           <div>
-            <h2>QUERES VESTIR A BATA?</h2>
-            <button>QUERO AGENDAR!</button>
-          </div>
-        </section>
-        <section className="reserve-now-display">
-          <div className="reserve-now-display-flex">
-            <div className="reserve-now-display-div">
-              <h3>IMPORTANTE SABERES!</h3>
-              <p>{`As reservas são recomendadas 
-                  Sem reserva, não garantimos o atendimento
-
-                  Sugerimos agendar com antecedência 
-                  para garantir disponibilidade
-
-                  Oferecemos uma tolerância máxima de 10 minutos após o horário marcado
-                  Após esse tempo, a sessão poderá ser reagendada, 
-                  mas não poderá ser realizada no mesmo dia devido ao tempo limitado`}
-              </p>
-              <button><NavLink to="/experiencie">experiência e preços</NavLink></button>
-            </div>
-            <img src={gloss} alt="2 gloss da libs-lab" />
+            <h1>cria o teu<br/>
+            batom e GLOSS<br/>
+            no nosso<br/>
+            laboratório</h1><br/>
+            <button>quero agendar!</button>
           </div>
           
-          <div>
-              <img src={background_colors} alt="colors" className="img-bck-colors"/>
+        </section>
+        <section className="reserve-now-end">
+          <div className="important-saberes">
+            <h2>IMPORTANTE SABERES!</h2>
+
+            <ul>
+              <li>As reservas são recomendadas;</li>
+              <li>Sem reserva, não garantimos o atendimento;</li>
+              <li>
+                Sugerimos agendar com antecedência para garantir disponibilidade;
+              </li>
+              <li>
+                Oferecemos uma tolerância máxima de 10 minutos após o horário marcado:
+                <br />
+                Após esse tempo, o agendamento poderá ser reagendado conforme a
+                disponibilidade.
+              </li>
+            </ul>
+
+            <button>EXPERIÊNCIA E PREÇOS</button>
           </div>
+          <img src={secondImage} alt="" />
         </section>
 
       </main>

@@ -60,9 +60,8 @@ function navbar({css = 0}:NavbarProps) {
         </div>
 
         <div className={css === 0 ? "" : "icon-nav-2"}>
-          <img src={css === 0 ? whitePin : redPin} alt="" className="nav-icon-img"/>
           <img src={css === 0 ? whiteShop: redShop} alt="" className="nav-icon-img"/>
-          <img src={css === 0 ? whiteUser : redUser} alt="" className="nav-icon-img"/>
+
         </div>
       </ul>
 

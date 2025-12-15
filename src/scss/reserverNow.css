@@ -1,15 +1,14 @@
 @charset "UTF-8";
 .reserve-now .reserve-now-intro {
-  min-height: 120vh;
+  padding: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  gap: 10rem;
+}
+
+.reserve-now .reserve-now-intro img {
+  width: 40%;
 }
 
 .reserve-now .reserve-now-intro div {
@@ -20,85 +19,62 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-right: 20px;
-  gap: 5rem;
+  padding-top: 3rem;
+  gap: 1.5rem;
 }
 
-.reserve-now .reserve-now-intro div h2 {
+.reserve-now .reserve-now-intro div h1 {
   font-family: "ApercuPro";
-  font-size: 50px;
-  color: #e45397;
-  font-style: italic;
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: #b30e1f;
+  line-height: 1.3;
+  text-align: center;
 }
 
 .reserve-now .reserve-now-intro div button {
-  background-color: #f9d1dc;
-  border: 0px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 60%;
   padding: 2rem;
-  border-radius: 50px;
-  width: 80%;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  background: #b30e1f;
+  border-radius: 9999px;
+  border: none;
+  color: #ffffff;
+  font-weight: bolder;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 20px;
 }
 
-.reserve-now .reserve-now-intro div button:hover {
-  background-color: #f3a4ba;
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
-  -webkit-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-}
-
-.reserve-now .reserve-now-display {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), to(#ffd3dd));
-  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd 100%);
-  padding-top: 2rem;
+.reserve-now .reserve-now-end {
+  padding: 1.5rem;
   display: -ms-grid;
   display: grid;
-  gap: 10px;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  max-height: 170vh;
-  padding: 1rem;
+  -ms-grid-columns: 0.8fr 1.2fr;
+      grid-template-columns: 0.8fr 1.2fr;
+  gap: 0.5rem;
+  /* Optional: keep it nice on small screens */
 }
 
-.reserve-now .reserve-now-display .reserve-now-display-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
-}
-
-.reserve-now .reserve-now-display .reserve-now-display-flex img {
-  position: absolute;
+.reserve-now .reserve-now-end img {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
   width: 80%;
-  top: 75vh;
-  left: -100px;
 }
 
-.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div {
-  margin-bottom: 2rem;
-  background-color: #ffd3dd;
-  margin-left: 20px;
-  min-height: 40vh;
-  padding: 1rem;
-  border-radius: 50px;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
+.reserve-now .reserve-now-end .important-saberes {
+  background: #ffd3dc;
+  /* light pink */
+  border: 3px solid #c41123;
+  /* strong red */
+  border-radius: 34px;
+  padding: 35px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -106,55 +82,114 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 20px;
-}
-
-.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div h3 {
+  gap: 2rem;
   font-family: "ApercuPro";
-  padding-left: 20px;
+  /* helps the “poster” feel */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.reserve-now .reserve-now-end .important-saberes h2 {
+  margin: 0 0 18px;
+  text-align: center;
   color: #c41123;
-  font-size: 40px;
-  font-weight: 500;
-}
-
-.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div p {
-  color: white;
-  white-space: pre-line;
-  font-size: 20px;
-  margin-bottom: 25px;
-  font-family: "IvyPresto";
-  font-weight: bold;
-}
-
-.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div button {
-  font-family: "IvyPresto";
+  font-weight: 900;
   font-style: italic;
-  font-weight: bold;
-  width: 40%;
-  background-color: #c41123;
-  border: none;
-  border-radius: 50px;
-  font-size: 18px;
-  padding: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 45px;
+  line-height: 1.05;
+}
+
+.reserve-now .reserve-now-end .important-saberes ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+}
+
+.reserve-now .reserve-now-end .important-saberes li {
+  position: relative;
+  padding-left: 18px;
+  color: #c41123;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.35;
+}
+
+.reserve-now .reserve-now-end .important-saberes li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #c41123;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.reserve-now .reserve-now-end .important-saberes button {
+  display: block;
+  margin: 38px auto 0;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  /* white outline like the pic */
+  background: #c41123;
+  color: #fff;
+  border-radius: 999px;
+  padding: 20px 30px;
+  font-size: 25px;
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
   cursor: pointer;
-  color: white;
-  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  /* no shadow */
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: background 160ms ease, border-color 160ms ease, -webkit-transform 160ms ease;
+  transition: background 160ms ease, border-color 160ms ease, -webkit-transform 160ms ease;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, -webkit-transform 160ms ease;
 }
 
-.reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div button:hover {
-  background-color: #950d1b;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+.reserve-now .reserve-now-end .important-saberes button:hover {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  background: #ae0f1f;
+  border-color: white;
 }
 
-.reserve-now .reserve-now-display .img-bck-colors {
-  width: 100%;
-  max-height: 80%;
+.reserve-now .reserve-now-end .important-saberes button:active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.reserve-now .reserve-now-end .important-saberes button:focus-visible {
+  outline: 3px solid rgba(196, 17, 35, 0.35);
+  outline-offset: 4px;
+}
+
+@media (max-width: 420px) {
+  .reserve-now .reserve-now-end .important-saberes {
+    padding: 22px;
+  }
+  .reserve-now .reserve-now-end .important-saberes h2 {
+    font-size: 28px;
+  }
+  .reserve-now .reserve-now-end .important-saberes li {
+    font-size: 15px;
+  }
+  .reserve-now .reserve-now-end .important-saberes button {
+    width: 100%;
+    padding: 14px 18px;
+  }
 }
 
 /* ================================

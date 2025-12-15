@@ -64,7 +64,7 @@
 }
 
 .how-it-works-section {
-  padding: 0rem 0rem 3rem 3rem;
+  padding: 0rem 0rem 0rem 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,10 +79,11 @@
   font-family: "ApercuPro";
   font-style: italic;
   padding-left: 1rem;
-  color: #e45397;
-  font-size: 80px;
-  font-weight: lighter;
+  color: #c41123;
+  font-size: 60px;
+  font-weight: 700;
   padding-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .how-it-works-section .how-it-works-div {
@@ -93,8 +94,10 @@
   gap: 20px;
 }
 
-.how-it-works-section .how-it-works-div ul {
+.how-it-works-section .how-it-works-div .steps-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
   color: #c41123;
   font-family: "ApercuPro";
   display: -webkit-box;
@@ -107,27 +110,28 @@
   gap: 40px;
 }
 
-.how-it-works-section .how-it-works-div ul li {
-  background-color: #ffd3dd;
-  padding: 1rem;
+.how-it-works-section .how-it-works-div .steps-list .step-item {
   position: relative;
-  border-radius: 50px;
+  border-radius: 999px;
+  padding: 18px 20px;
+  --content-left: 110px;
+  /* IMPORTANT: CLOSED STATE */
+  /* OPEN STATE */
 }
 
-.how-it-works-section .how-it-works-div ul li .step-badge {
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-badge {
   position: absolute;
-  display: inline-block;
-  top: -20px;
+  top: 10px;
   left: 30px;
 }
 
-.how-it-works-section .how-it-works-div ul li .step-badge img {
-  position: relative;
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-badge img {
   display: block;
   width: 80px;
+  height: auto;
 }
 
-.how-it-works-section .how-it-works-div ul li .step-number {
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-badge .step-number {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -137,29 +141,24 @@
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 1;
-  background: none;
 }
 
-.how-it-works-section .how-it-works-div ul li span {
-  top: -20px;
-  left: 20%;
-  position: absolute;
-  font-size: 18px;
-  font-weight: bold;
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 12px;
+  padding-left: var(--content-left);
+  padding-right: 10px;
 }
 
-.how-it-works-section .how-it-works-div ul li p {
-  font-size: 14px;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.how-it-works-section .how-it-works-div .how-it-works-section-div {
-  background-color: #c41123;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 50px 0px 0px 50px;
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,32 +166,112 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 4rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 2rem;
+  gap: 6px;
 }
 
-.how-it-works-section .how-it-works-div .how-it-works-section-div img {
-  -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
-  margin-right: 30px;
-  width: 35%;
-  justify-self: flex-end;
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
 }
 
-.how-it-works-section .how-it-works-div .how-it-works-section-div p {
-  font-weight: bold;
-  font-size: 27px;
-  color: white;
-  max-width: 100%;
-  white-space: pre-line;
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-toggle {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid #c41123;
+  background: transparent;
+  color: #c41123;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-toggle .toggle-icon {
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: -webkit-transform 180ms ease;
+  transition: -webkit-transform 180ms ease;
+  transition: transform 180ms ease;
+  transition: transform 180ms ease, -webkit-transform 180ms ease;
+  display: inline-block;
+}
+
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-toggle:focus-visible {
+  outline: 2px solid #c41123;
+  outline-offset: 3px;
+}
+
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-panel {
+  display: none;
+  padding-left: var(--content-left);
+  padding-right: 10px;
+  padding-top: 8px;
+}
+
+.how-it-works-section .how-it-works-div .steps-list .step-item .step-panel p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.how-it-works-section .how-it-works-div .steps-list .step-item.is-open {
+  border-radius: 50px;
+}
+
+.how-it-works-section .how-it-works-div .steps-list .step-item.is-open .step-panel {
+  display: block;
+}
+
+.how-it-works-section .how-it-works-div .steps-list .step-item.is-open .step-toggle .toggle-icon {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.how-it-works-section .how-it-works-div .how-it-works-video {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  top: -150px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.how-it-works-section .how-it-works-div .how-it-works-video video {
+  width: 60%;
+}
+
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .ribbon-img {
-  width: 110%;
+  width: 100%;
 }
 
 .whats-include-section {
@@ -208,18 +287,12 @@
           align-items: center;
   gap: 20px;
   padding-bottom: 2rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), color-stop(70%, #ffd3dd));
-  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd 70%);
-}
-
-.whats-include-section h1 {
-  font-family: "IvyPresto";
-  font-style: italic;
-  font-size: 70px;
-  color: #c41123;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), color-stop(70%, #e9519da6));
+  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #e9519da6 70%);
 }
 
 .whats-include-section .whats-include-background {
+  padding-top: 5rem;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -238,22 +311,11 @@
   position: relative;
 }
 
-.whats-include-section .whats-include-background .up-gloss {
-  width: 25%;
-  position: absolute;
-  right: -130px;
-  z-index: 10;
-}
-
-.whats-include-section .whats-include-background .down-gloss {
-  width: 20%;
-  position: absolute;
-  right: -100px;
-  bottom: 0px;
-}
-
 .whats-include-section .whats-include-background .whats-include-div {
-  padding: 2rem 0rem 2rem 0rem;
+  width: 50%;
+  position: relative;
+  border: 3px solid #f800a5;
+  padding: 4rem 0rem 2rem 0rem;
   background-color: #ffd3dd;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
@@ -269,10 +331,20 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 30px;
+  /* NEW: pills list like the reference */
 }
 
-.whats-include-section .whats-include-background .whats-include-div ul {
+.whats-include-section .whats-include-background .whats-include-div .img-include {
+  position: absolute;
+  top: -55px;
+  width: 200px;
+}
+
+.whats-include-section .whats-include-background .whats-include-div .include-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -280,71 +352,176 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 35px;
-  color: white;
-}
-
-.whats-include-section .whats-include-background .whats-include-div ul li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 4rem;
 }
 
-.whats-include-section .whats-include-background .whats-include-div ul li h3 {
-  font-weight: bold;
-  font-size: 30px;
-  font-style: italic;
-  color: #c41123;
-  font-family: "IvyPresto";
+.whats-include-section .whats-include-background .whats-include-div .include-item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* closed by default */
 }
 
-.whats-include-section .whats-include-background .whats-include-div ul li p {
+.whats-include-section .whats-include-background .whats-include-div .include-item .include-panel {
+  display: none;
+  width: 60%;
+  margin-top: 10px;
+}
+
+.whats-include-section .whats-include-background .whats-include-div .include-item .include-panel p {
+  margin: 0;
   font-family: "ApercuPro";
   text-align: center;
+  width: 100%;
+  color: #ffffff;
+  opacity: 0.9;
+  line-height: 1.25;
+}
+
+.whats-include-section .whats-include-background .whats-include-div .include-item.is-open .include-panel {
+  display: block;
+}
+
+.whats-include-section .whats-include-background .whats-include-div .include-item.is-open .include-plus {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.whats-include-section .whats-include-background .whats-include-div .include-pill {
   width: 60%;
-}
-
-.whats-include-section .whats-include-background .whats-include-div img {
-  width: 50%;
-}
-
-.whats-include-section .whats-include-background button {
-  background-color: #ffd3dd;
-  border: none;
-  padding: 2rem;
-  color: #c41123;
-  width: 35%;
-  font-family: "ApercuPro";
-  font-size: 35px;
-  font-weight: 500;
-  font-style: italic;
-  border-radius: 50px;
-  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  height: 56px;
+  border-radius: 999px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 14px;
+  background: #E9519C;
+  border: 2px solid #c41123;
+  -webkit-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
   cursor: pointer;
-  -webkit-transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, color 0.3s ease;
-  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease, color 0.3s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.3s ease;
+  padding: 0 25px;
+  /* reset default button styles */
+  outline: none;
 }
 
-.whats-include-section .whats-include-background button:hover {
-  background-color: #ffa0b6;
-  color: #950d1b;
-  -webkit-transform: scale(1.04);
-          transform: scale(1.04);
-  -webkit-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+.whats-include-section .whats-include-background .whats-include-div .include-pill:focus-visible {
+  outline: 2px solid #c41123;
+  outline-offset: 4px;
+}
+
+.whats-include-section .whats-include-background .whats-include-div .include-title {
+  font-family: "ApercuPro";
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 17px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.whats-include-section .whats-include-background .whats-include-div .include-plus {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  border: 1px solid #c41123;
+  color: #c41123;
+  background: transparent;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+  -webkit-transition: -webkit-transform 180ms ease;
+  transition: -webkit-transform 180ms ease;
+  transition: transform 180ms ease;
+  transition: transform 180ms ease, -webkit-transform 180ms ease;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.reserve-now-section-experiencie {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.5fr 0.5fr;
+      grid-template-columns: 0.5fr 0.5fr;
+  position: relative;
+}
+
+.reserve-now-section-experiencie img {
+  position: relative;
+  bottom: -1px;
+  z-index: 1;
+  width: 100%;
+}
+
+.reserve-now-section-experiencie button {
+  background-color: #e84f9a;
+  border: 4px solid #c41123;
+  border-radius: 40px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
+  width: 60%;
+  height: 130px;
+  padding: 18px 56px;
+  font-family: "ApercuPro", system-ui, sans-serif;
+  font-size: 35px;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
+}
+
+.reserve-now-section-experiencie button:hover {
+  background-color: #e4348a;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+.reserve-now-section-experiencie button:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+.reserve-now-section-experiencie button:focus-visible {
+  outline: 2px solid rgba(196, 17, 35, 0.6);
+  outline-offset: 4px;
 }
 
 /* ================================

@@ -12,7 +12,7 @@ function Footer() {
                 <ul>
                     <li><NavLink to = "/reserve">reserva agora</NavLink></li>
                     <li><NavLink to = "/create">experiência online</NavLink></li>
-                    <li><NavLink to = "/faq">perquntas frequentes</NavLink></li>
+                    <li><NavLink to = "/faq">perguntas frequentes</NavLink></li>
                 </ul>
                 <div className='footer-social'>
                     <span>SOCIAL</span>

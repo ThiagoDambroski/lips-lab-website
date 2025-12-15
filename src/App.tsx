@@ -15,14 +15,7 @@ function App() {
 
   return (
     <>
-      <Marquee
-          gradient={false}       // remove fade nas bordas
-          speed={100}             // controla a velocidade
-          pauseOnHover={false}    // pausa com o rato em cima
-          className="rolling-card-2"
-        >
-          PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp;  PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp; PIONEIRA EM PORTUGAL! &nbsp;
-        </Marquee>
+   
       <AppProvider>
         <ScrollToTop />
         <Routes>

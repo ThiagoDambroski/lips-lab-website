@@ -1,51 +1,70 @@
 
-
-import logo from "../assets/logo.png"
-import homePageImage from "../assets/homePageImage.png"
+import bckground from "../assets/home background.svg"
 import "../scss/HomePage.css"
-import glossBackground from "../assets/gloss-background.png"
+
 import Marquee from "react-fast-marquee"
 import LibsCards from "./LibsCards"
-import portugal_icon from "../assets/portugal.svg"
-import eco_icon from "../assets/eco.svg"
-import cruel_icon from "../assets/cruel.svg"
-import toxico_icon from "../assets/toxico.svg"
-import artesanal_icon from "../assets/artesenal.svg"
-import paraba_icon from "../assets/paraba.svg"
 
-import background_venha_ate_nos from "../assets/background-venha-ate-nos.png"
-import image_woman from "../assets/image-woman-home-page.png"
+import ourProductsBanner from "../assets/ourProducts.svg"
+import daniAndFriend from "../assets/dani e friend.svg"
 import  Navbar from "../Navbar/Navbar"
 import backLibs from "../assets/libs back.png"
+import backEnd from "../assets/home-end-backg.svg"
 import { NavLink } from "react-router-dom"
+import ToneCarousel, { type Slide }  from "./ToneCarousel"
 
+// replace these paths with your real assets
+import circlesRed from "../assets/colorsVer.svg";
+import circlesPink from "../assets/colorsVib.svg";
+import circlesNude from "../assets/colorsNude.svg";
+import circlesExpressive from "../assets/colorsExp.svg";
+
+import collageRed from "../assets/colageVer.svg";
+import collagePink from "../assets/colageVib.svg";
+import collageNude from "../assets/colageNude.svg";
+import collageExpressive from "../assets/colageExp.png";
+
+const slides: Slide[] = [
+  {
+    id: "vermelho",
+    bgColor: "#B93A2B",
+    circlesImageSrc: circlesRed,
+    collageImageSrc: collageRed,
+    activePill: "VERMELHO",
+  },
+  {
+    id: "vibrante",
+    bgColor: "#C5556B",
+    circlesImageSrc: circlesPink,
+    collageImageSrc: collagePink,
+    activePill: "VIBRANTE",
+  },
+  {
+    id: "nude",
+    bgColor: "#D88A7C",
+    circlesImageSrc: circlesNude,
+    collageImageSrc: collageNude,
+    activePill: "NUDE",
+  },
+  {
+    id: "expressivo",
+    bgColor: "#8B3E4E",
+    circlesImageSrc: circlesExpressive,
+    collageImageSrc: collageExpressive,
+    activePill: "EXPRESSIVO",
+  },
+];
 
 function HomePage() {
 
     
   return (
     <>
-      <Navbar/>
+      <Navbar css={1}/>
       <main>
-        <section className="open-page-section">
-            <div>
-              <img src={homePageImage} alt="Garota sorrindo"/>
-            </div>
-            <div className="open-page-info">
-              <button> <NavLink to="experiencie">MARCA JÁ TUA EXPERIÊNCIA!</NavLink> </button>
-              <div>
-                <p>Entra no nosso laboratório e cria o teu batom ou gloss labial. 
-                  Vive toda a experiência da criação, 
-                  
-                </p>
-                <p>
-                  desde a fórmula até à embalagem.
-                  Na Lips Lab, crias um batom ou gloss único, totalmente personalizado, tudo feito por ti!
-                </p>
-              </div>
-              
-              <img src={logo} alt="Logo" />
-            </div>
+        <section className="open-page-section"  style={{ backgroundImage: `url(${bckground})` }}>
+            
+        
             
         </section>
         <Marquee
@@ -54,9 +73,8 @@ function HomePage() {
           pauseOnHover={false}    // pausa com o rato em cima
           className="rolling-card"
         >
-          ENTREGAMOS PARA TODO O PAÍS! &nbsp; ENTREGAMOS PARA TODO O PAÍS! &nbsp;  ENTREGAMOS PARA TODO O PAÍS! &nbsp; ENTREGAMOS PARA TODO O PAÍS! &nbsp; ENTREGAMOS PARA TODO O PAÍS! &nbsp;
+          PELA PRIMEIRA VEZ EM PORTUGAl &nbsp; PELA PRIMEIRA VEZ EM PORTUGAl &nbsp;  PELA PRIMEIRA VEZ EM PORTUGAl &nbsp; PELA PRIMEIRA VEZ EM PORTUGAl &nbsp; PELA PRIMEIRA VEZ EM PORTUGAl &nbsp;
         </Marquee>
-        <img className="gloss-bakcground" src={glossBackground} alt="gloss background" />
         <section className="experiencie-libs" style={{ backgroundImage: `url(${backLibs})` }}>
           <div className="experiencie-libs-intro">
             <h2>EXPERIÊNCIA LIPS LAB</h2>
@@ -67,74 +85,31 @@ function HomePage() {
                 ))}
                 
             </div>
+            <h3>feito por ti, para ti!</h3>
           </div>
         </section>
         <section className="home-banner">
-              <h2>NOSSOS PRODUTOS SÃO</h2>
-              <div className="home-banner-icons">
-                <div>
-                  <img src={portugal_icon} alt="portugal"/>
-                  <p>DESENVOLVIDO EM PORTUGAL</p>
-                </div>
-                <div>
-                  <img src={eco_icon} alt="eco" />
-                  <p>eco-friendly</p>
-                </div>
-                <div>
-                  <img src={cruel_icon} alt="animal lover" />
-                  <p>Cruelty-Free</p>
-                </div>
-                <div>
-                  <img src={toxico_icon} alt="nao toxico" />
-                  <p>não tóxico</p>
-                </div>
-                <div>
-                  <img src={artesanal_icon} alt="artesanal" />
-                  <p>PRODUTO ARTESANAL</p>
-                </div>
-                <div>
-                  <img src={paraba_icon} alt="sem parabenos" />
-                  <p>SEM PARABENOS</p>
-                </div>
-              </div>
+              <h2>OS NOSSOS PRODUTOS SÃO</h2>
+              <p className="">{`feitos com ceras vegetais puras,
+                ingredientes botânicos e minerais`}</p>
+              <img src={ourProductsBanner} className="home-banner-icons"/>
+                
+              
         </section>
-
-        <section className="home-venha-ate"  style={{
-          backgroundImage: `url(${background_venha_ate_nos})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}>
-          <h2>NÃO PODES VIR ATÉ NÓS?</h2>
-          <button><NavLink to="create">EXPERIÊNCIA ONLINE!</NavLink></button>
-
+        <section className="home-marca-ex">
+            <div style={{backgroundImage:`url(${daniAndFriend})`}}>
+              <button>MARCA JÁ A TUA experiência </button>
+            </div>
         </section>
-        <section className="home-about-us" style={{ backgroundImage: `url(${backLibs})` }}>
-          <div className="home-about-us-about">
-            <button>SOBRE NÓS</button>
-            <p> {`A LIPS LAB É A PRIMEIRA LOJA EM PORTUGAL, 
-
-                  onde entras num verdadeiro laboratório e crias o teu próprio batom ou gloss, passo a passo e totalmente à tua medida. 
-
-                  Da fórmula à embalagem tudo feito por ti! Aqui escolhes a base, defines a cor, adicionas aroma e aditivos, e finalizas com uma embalagem personalizada.
-
-                  Todo o processo é feito de forma responsável: fórmulas vegan, cruelty-free, sem glúten e desenvolvidas em Portugal.`}
-            </p>
+        
+        <ToneCarousel slides={slides} autoplayMs={7000} />
+        <section className="home-end" style={{ backgroundImage: `url(${backEnd})` }}>
+          <div>
+            <h1>Não consegues <br/>vir  à Lips Lab?</h1>
+            <button>experiência ONLINE!</button>
           </div>
-          <div className="home-about-us-explore">
-              <img src={image_woman} alt="image woman" />
-              <div>
-                <h3>EXPLORA A LIPS LAB</h3>
-                <p>Na Lips Lab, és convidada a vestir a bata 
-                e entrar no laboratório, um espaço inspirador 
-                onde vais misturar pigmentos, escolher aromas 
-                e transformar ideias em cor
-                </p>
-                <button><NavLink to="experiencie">veja os nossos produtos!</NavLink></button>
-              </div>
-          </div>
-        </section>
           
+        </section>
       </main>
     </>
     

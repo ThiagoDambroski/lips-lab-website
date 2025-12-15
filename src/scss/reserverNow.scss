@@ -1,132 +1,173 @@
 .reserve-now{
+
     .reserve-now-intro{
-        min-height: 120vh;
+        padding: 1.5rem;
         display: flex;
-        justify-content: end;
-        align-items: center;
+        gap: 10rem;
+        img{
+            width: 40%;
+        }
         div{
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding-right: 20px;
-            gap: 5rem;
-            h2{
+            padding-top: 3rem;
+            gap: 1.5rem;
+            h1{
                 font-family: "ApercuPro";
-                font-size: 50px;
-                color: #e45397;
-                font-style: italic;
+                font-size: 5rem;
+                text-transform: uppercase;
+                color: #b30e1f;
+                line-height: 1.3;
+                text-align: center;
             }
             button{
-                background-color: #f9d1dc;
-                border: 0px;
+                align-self: center;
+                width: 60%;
                 padding: 2rem;
-                border-radius: 50px;
-                width: 80%;
-                font-size: 30px;
-                color: white;
-                cursor: pointer;
-                box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-                transition:
-                    background-color 0.3s ease,
-                    transform 0.25s ease,
-                    box-shadow 0.3s ease;
+                background: #b30e1f;
+                border-radius: 9999px;
+                border: none;
+                color: #ffffff;
+                font-weight: bolder;
+                font-style: italic;
+                text-transform: uppercase;
 
-                &:hover {
-                    background-color: darken(#f9d1dc, 10%);
-                    transform: scale(1.03);
-                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-                }
-
-
+                font-size: 20px;
             }
         }
-        
-
     }
-    .reserve-now-display{
-        background: linear-gradient(
-            180deg,
-            transparent 0%,      // fully transparent at the top
-            transparent 20%,     // keeps the top clear for a bit
-            #ffe7eb 40%,         // starts fading into light pink
-            #ffd3dd 100%         // finishes with deeper pink
-        );
-        padding-top: 2rem;
-        
+    .reserve-now-end{
+       
+        padding: 1.5rem;
         display: grid;
-        gap: 10px;
-        grid-template-columns: 1fr 1fr;
-        max-height: 170vh;
-        padding: 1rem;
-        .reserve-now-display-flex{
+        grid-template-columns: 0.8fr 1.2fr;
+        gap:0.5rem;
+        img{
+            align-self: center;
+            justify-self: center;
+            width: 80%;
+        }
+        
+        .important-saberes {
+            
+            background: #ffd3dc; /* light pink */
+            border: 3px solid #c41123; /* strong red */
+            border-radius: 34px;
+            padding:35px;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            position: relative;
-            img{
-                position: absolute;
-                width: 80%;
-                top: 75vh;
-                left: -100px;
+            gap: 2rem;
+            font-family: "ApercuPro";
+            /* helps the “poster” feel */
+            box-sizing: border-box;
+
+            h2 {
+                margin: 0 0 18px;
+                text-align: center;
+                color: #c41123;
+                font-weight: 900;
+                font-style: italic;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                font-size: 45px;
+                line-height: 1.05;
             }
-            .reserve-now-display-div{
-                margin-bottom: 2rem;
-                
-                background-color: #ffd3dd;
-                margin-left: 20px;
-                min-height: 40vh;
-                padding: 1rem;
-                border-radius: 50px;
-                padding-top: 4rem;
-                padding-bottom: 2rem;
+
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
-                h3{
-                    font-family: "ApercuPro"; 
-                    padding-left: 20px;
-                    color: #c41123;
-                    font-size: 40px;
-                    font-weight: 500;
-                }
-                p{
-                    color: white;
-                    white-space: pre-line;
-                    font-size: 20px;
-                    margin-bottom: 25px;
-                    font-family: "IvyPresto";
-                    font-weight: bold;
-                }
-                button{
-                    font-family: "IvyPresto";
-                    font-style: italic;
-                    font-weight: bold;
-                    width: 40%;
-                    background-color: #c41123;
-                    border: none;
-                    border-radius: 50px;
-                    font-size: 18px;
-                    padding: 1rem;
-                    cursor: pointer;
-                    color: white;
-                     transition:
-                        background-color 0.3s ease,
-                        transform 0.25s ease,
-                        box-shadow 0.3s ease;
+                gap: 40px;
+            }
 
-                    &:hover {
-                        background-color: darken(#c41123, 10%);  // elegant darker red
-                        transform: scale(1.05);                 // luxury zoom effect
-                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-                    }
+            li {
+                position: relative;
+                padding-left: 18px;
+
+                color: #c41123;
+                font-style: italic;
+                font-weight: 700;
+                font-size: 25px;
+                line-height: 1.35;
+                
+                &::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: #c41123;
+                font-weight: 900;
+                line-height: 1.2;
                 }
             }
-        }
-        .img-bck-colors{
-            width: 100%;
-            max-height: 80%;
-        }
-        
+
+            button {
+                display: block;
+                margin: 38px auto 0;
+
+                border: 2px solid rgba(255, 255, 255, 0.85); /* white outline like the pic */
+                background: #c41123;
+                color: #fff;
+
+                border-radius: 999px;
+                padding: 20px 30px;
+                font-size: 25px;
+                font-weight: 500;
+                font-style: italic;
+                text-transform: uppercase;
+                letter-spacing: 0.4px;
+                
+                cursor: pointer;
+
+                /* no shadow */
+                box-shadow: none;
+
+                transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+
+                &:hover {
+                transform: translateY(-1px);
+                background: #ae0f1f;
+                border-color: rgba(255, 255, 255, 1);
+                }
+
+                &:active {
+                transform: translateY(0);
+                }
+
+                &:focus-visible {
+                outline: 3px solid rgba(196, 17, 35, 0.35);
+                outline-offset: 4px;
+                }
+            }
+            }
+
+            /* Optional: keep it nice on small screens */
+            @media (max-width: 420px) {
+            .important-saberes {
+                padding: 22px;
+
+                h2 {
+                font-size: 28px;
+                }
+
+                li {
+                font-size: 15px;
+                }
+
+                button {
+                width: 100%;
+                padding: 14px 18px;
+                }
+            }
+            }
+
     }
+    
+
 }
 
 
