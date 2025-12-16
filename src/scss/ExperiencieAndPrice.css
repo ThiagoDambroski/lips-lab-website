@@ -222,6 +222,7 @@
   font-weight: 600;
   font-style: italic;
   line-height: 1.25;
+  margin-bottom: -2rem;
 }
 
 .how-it-works-section .how-it-works-div .steps-list .step-item.is-open {
@@ -390,7 +391,9 @@
 }
 
 .whats-include-section .whats-include-background .whats-include-div .include-item.is-open .include-panel {
+  width: 50%;
   display: block;
+  text-transform: uppercase;
 }
 
 .whats-include-section .whats-include-background .whats-include-div .include-item.is-open .include-plus {
