@@ -10,9 +10,9 @@ import libsBackground from "../assets/libs back.png";
 
 import normalGloss from "../assets/gloss final.svg";
 import normalBatom from "../assets/batom final.svg";
-import lipCombo from "../assets/lipCombo.png";
-import glossCombo from "../assets/glossCombo.png";
-import batomCombo from "../assets/batomCombo.png";
+import lipCombo from "../assets/lip combo.svg";
+import glossCombo from "../assets/gloss combo.svg";
+import batomCombo from "../assets/batom combo.svg";
 
 
 import holdingGloss from "../assets/dani holding gloss.svg"
@@ -48,35 +48,35 @@ const includedItems: IncludeItem[] = [
   {
     id: 1,
     title: "CRIAÇÃO NO LABORATÓRIO LIPS LAB",
-    description: "Recebe uma bebida de boas-vindas para começar a tua experiência da melhor forma",
+    description: "Veste a bata e entra no nosso laboratório.Escolhe a base, cria a cor, adiciona o aroma, a essência e o aditivo.és tu quem decide tudo!",
   },
   {
     id: 2,
     title: "BEBIDA DE BOAS-VINDAS",
     description:
-      "Descobre os tons que mais valorizam a tua cor de pele, cabelo e olhos, para criares uma cor que te favorece verdadeiramente",
+      "Uma bebida especial para desfrutares enquanto vives a experiência lips lab.",
   },
   {
     id: 3,
     title: "COLORAÇÃO PESSOAL",
-    description: "para desfrutares durante a experiência",
+    description: "Descobre a cartela de tons que realça a tua beleza natural e valoriza os teus traços",
   },
   {
     id: 4,
     title: "Embalagem personalizada",
     description:
-      "Veste a bata, entra no laboratório e cria o teu próprio produto, desde a escolha da base até à mistura de pigmentos, aromas, essência e aditivos",
+      "Grava o teu nome, símbolo ou palavra na embalagem do teu produto",
   },
   {
     id: 5,
     title: "CHARMS DECORATIVOS",
     description:
-      "Veste a bata, entra no laboratório e cria o teu próprio produto, desde a escolha da base até à mistura de pigmentos, aromas, essência e aditivos",
+      "Pequenos detalhes únicos que tornama tua criação ainda mais especial",
   },
   {
     id: 6,
     title: "OFERTA MISTÉRIO",
-    description: "Grava o teu nome, símbolo ou palavra favorita na embalagem do produto",
+    description: "Uma OFERTA MISTÉRIO PARA Acrescentar À TUA experiência ",
   },
 ];
 

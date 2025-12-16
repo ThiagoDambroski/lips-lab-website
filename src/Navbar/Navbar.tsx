@@ -57,6 +57,16 @@ function navbar({css = 0}:NavbarProps) {
               Experiência Online
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/giftCard"
+              className={({ isActive }: { isActive: boolean }) =>
+                isActive ? "active" : ""
+              }
+            >
+              Gift Card
+            </NavLink>
+          </li>
         </div>
 
         <div className={css === 0 ? "" : "icon-nav-2"}>

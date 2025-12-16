@@ -80,7 +80,7 @@ function HomePage() {
             <h2>EXPERIÊNCIA LIPS LAB</h2>
             <button>passo a passo</button>
             <div className="experiencie-libs-cards-container">
-                {[...Array(7)].map((_, index) => (
+                {[...Array(5)].map((_, index) => (
                   <LibsCards key={index} number={index + 1} />
                 ))}
                 
@@ -102,7 +102,7 @@ function HomePage() {
             </div>
         </section>
         
-        <ToneCarousel slides={slides} autoplayMs={7000} />
+        <ToneCarousel slides={slides} />
         <section className="home-end" style={{ backgroundImage: `url(${backEnd})` }}>
           <div>
             <h1>Não consegues <br/>vir  à Lips Lab?</h1>

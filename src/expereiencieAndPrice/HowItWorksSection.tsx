@@ -12,11 +12,11 @@ function HowItWorksSection() {
     };
 
     const steps: Step[] = [
-    { id: 1, title: "ESCOLHE A BASE", description: "Decide se queres um batom cremoso, mate, líquido ou um gloss labial brilhante" },
-    { id: 2, title: "CRIA A COR", description: "Mistura pigmentos e descobre o tom que melhor reflete a tua personalidade" },
-    { id: 3, title: "ADICIONA O AROMA E A ESSÊNCIA", description: "Dá ao teu batom uma assinatura sensorial única, escolhe o aroma que combina contigo" },
-    { id: 4, title: "ESCOLHE O ADITIVO", description: "Personaliza a fórmula do teu batom com os aditivos naturais disponíveis na experiência" },
-    { id: 5, title: "PERSONALIZA A EMBALAGEM", description: "Grava um nome, uma palavra ou símbolo" },
+    { id: 1, title: "ESCOLHE A BASE", description: "Descobre as diferentes opções de acabamento e escolhe a que mais gostas." },
+    { id: 2, title: "CRIA A COR", description: "Trabalha com uma especialista em cores para encontrares a cor perfeita para ti" },
+    { id: 3, title: "ADICIONA O AROMA E A ESSÊNCIA", description: "Escolhe o aroma e a essência que dão uma personalidade única à tua criação." },
+    { id: 4, title: "ESCOLHE O ADITIVO", description: "Dá o toque final. São vários os aditivos que podes acrescentar à tua fórmula perfeita." },
+    { id: 5, title: "PERSONALIZA A EMBALAGEM", description: "Grava o teu nome na embalagem e adiciona charms para tornar o teu produto único" },
     ];
       const [openId, setOpenId] = useState<number | null>(null);
   const toggle = (id: number) => setOpenId((prev) => (prev === id ? null : id));

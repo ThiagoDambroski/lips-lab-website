@@ -1,0 +1,224 @@
+.gift-intro {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1.5fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
+}
+
+.gift-intro img {
+  width: 80%;
+}
+
+.gift-intro div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+  /* esconde o radio nativo */
+  /* bolinha interna */
+  /* estado ativo */
+  /* acessibilidade */
+}
+
+.gift-intro div h2 {
+  font-size: 3rem;
+  color: #E9519C;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: "ApercuPro";
+}
+
+.gift-intro div p {
+  font-size: 20px;
+  white-space: pre-line;
+}
+
+.gift-intro div .gift-radio-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+
+.gift-intro div .gift-radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.gift-intro div .gift-radio input[type="radio"] {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.8px solid #000;
+  border-radius: 50%;
+  background: transparent;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.gift-intro div .gift-radio input[type="radio"]::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.15s ease;
+  transition: -webkit-transform 0.15s ease;
+  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, -webkit-transform 0.15s ease;
+}
+
+.gift-intro div .gift-radio input[type="radio"]:checked::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.gift-intro div .gift-radio__label {
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.gift-intro div .gift-radio input[type="radio"]:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.25);
+  outline-offset: 3px;
+}
+
+.gift-banner {
+  background-color: #E9519C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.gift-banner p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 2rem;
+  color: white;
+}
+
+.gift-banner img {
+  width: 50%;
+}
+
+.gift-terms {
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 22px 48px;
+  color: #111;
+}
+
+.gift-terms__block {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 2px solid rgba(0, 0, 0, 0.45);
+}
+
+.gift-terms__block:first-child {
+  margin-top: 0;
+}
+
+.gift-terms__title {
+  margin: 0 0 14px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.gift-terms__text {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.gift-terms__text:last-child {
+  margin-bottom: 0;
+}
+
+.gift-terms__list {
+  margin: 6px 0 14px;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.gift-terms__list li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.gift-terms__list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.gift-terms__values {
+  margin: 10px 0 16px;
+}
+
+.gift-terms__values p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.gift-terms__address {
+  margin: 6px 0 16px;
+}
+
+.gift-terms__address p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .gift-terms {
+    padding: 26px 18px 40px;
+  }
+  .gift-terms__title {
+    font-size: 28px;
+  }
+  .gift-terms__text, .gift-terms__list,
+  .gift-terms__values p,
+  .gift-terms__address p {
+    font-size: 13.5px;
+  }
+}
+/*# sourceMappingURL=GiftCard.css.map */

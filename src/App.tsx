@@ -10,6 +10,7 @@ import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
 import Marquee from 'react-fast-marquee';
 import ScrollToTop from './ScrollToTop';
 import CartPage from './Cart/CartPage';
+import GiftCard from './GiftCard/GiftCard';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Route path='/create' element = {<OnlineExperiencie/>}/>
             <Route path='/faq' element={<Faq/>}/>
             <Route path='experiencie' element={<ExperiencieAndPrice/>}/>
+            <Route path='/giftCard' element={<GiftCard/>}/>
             <Route path="/cart" element={<CartPage />} /> 
         </Routes>
       </AppProvider>

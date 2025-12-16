@@ -6,13 +6,12 @@ type LibsCardsType = {
 };
 
 const arrayInfo = [
-  { title: "Escolhe a tua base", desc: "Começa por decidir o “estilo” do teu produto: queres algo cremoso, super mate, líquido ou preferes o brilho irresistível de um gloss?" },
-  { title: "Cria a tua cor ", desc: "Liberta o teu lado artístico!\nMistura pigmentos, experimenta combinações e descobre o tom que te representa na perfeição" },
-  { title: "Adiciona o aroma e essência", desc: "Torna o teu batom inesquecível escolhendo o aroma e a essência que mais te agrada… \ntu decides o cheiro e sabor do teu batom ou gloss" },
-  { title: "Escolhe o aditivo", desc: "Dá um upgrade à fórmula com benefícios extra: mais hidratação, volume, suavização ou proteção.\nEscolhe aquilo que torna o teu batom ainda mais “tu”" },
-  { title: "Personaliza a embalagem", desc: "Grava o teu nome ou um símbolo especial e escolhe os charms que melhor te representam. \nO toque final que torna o teu batom único" },
-  { title: "Escolhe o teu charm", desc: "Dá o toque final perfeito com os nossos charms decorativos exclusivos. Podes escolher entre diferentes estilos e símbolos" },
-  { title: "Leva o teu batom contigo", desc: "No final, sais da Lips Lab com o teu batom ou gloss labial personalizado criado por ti, para ti, e com o teu toque final" },
+  { title: "Escolhe a tua base", desc: "Descobre as diferentes opções de acabamento e escolhe a que mais gostas." },
+  { title: "Cria a tua cor ", desc: "Trabalha com uma especialista em cores para encontrares a cor perfeita para ti." },
+  { title: "Adiciona o aroma e essência", desc: "Escolhe o aroma e a essência que dão uma personalidade única à tua criação." },
+  { title: "Escolhe o aditivo", desc: "Dá o toque final. São vários os aditivos que podes acrescentar à tua fórmula perfeita." },
+  { title: "Personaliza a embalagem", desc: "Grava o teu nome na embalagem e adiciona charms para tornar o teu produto único." },
+ 
 ];
 
 export default function LibsCards({ number }: LibsCardsType) {
