@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
-import mockUp from "../assets/kissing-batom.png"
+import mockUp from "../assets/fqaImage.svg"
 import "../scss/Faq.css"
 import bckLibs from "../assets/libs back.png"
-import ribbonImg from "../assets/ribbon fqa.png"
+import ribbonImg from "../assets/perguntasFrequentes.svg"
 
 const faqItems = [
   {
@@ -78,7 +78,10 @@ function Faq() {
         <section className="faq-intro">
           <h1>Tens dúvidas?</h1>
           <p>
-            Aqui encontras respostas às perguntas mais frequentes — desde como funciona a personalização até aos prazos de entrega e cuidados com o teu produto. Explora e prepara-te para viver a tua experiência de beleza, sem segredos.
+            Aqui encontras respostas às perguntas<br/> mais frequentes.<br/>
+Desde como funciona a personalização até<br/> aos prazos de entrega e aos cuidados com<br/> o teu produto.<br/><br/>
+
+ Explora e prepara-te para viver a tua<br/> experiência, sem segredos
           </p>
         </section>
         <img src={ribbonImg} alt=""  className='ribbon-image'/>
