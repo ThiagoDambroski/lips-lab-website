@@ -2,13 +2,9 @@ import { NavLink } from "react-router-dom"
 import logo from "../assets/logo.png"
 import "../scss/NavBar.css"
 import "../scss/NavBar.css"
-import whitePin from "../assets/pinWhite.png"
-import whiteShop from "../assets/shopWhite.png"
-import whiteUser from "../assets/userWhite.png"
 
-import redPin from "../assets/pinRed.png"
+import whiteShop from "../assets/shopWhite.png"
 import redShop from "../assets/shopRed.png"
-import redUser from "../assets/userRed.png"
 
 type NavbarProps = {
   css?: number;

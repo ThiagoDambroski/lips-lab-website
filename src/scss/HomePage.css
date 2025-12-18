@@ -93,7 +93,6 @@
 }
 
 .experiencie-libs .experiencie-libs-intro {
-  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -155,7 +154,7 @@
   font-family: "ApercuPro";
   font-style: italic;
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   text-transform: uppercase;
   color: #e45397;
 }
@@ -164,6 +163,8 @@
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
   gap: 25px;
   max-width: 90vw;
   padding: 40px 0 30px;
@@ -172,8 +173,6 @@
 
 .experiencie-libs-cards-container .libs-card {
   position: relative;
-  width: 36vh;
-  height: 40vh;
   border-radius: 25px;
   background-color: #ffd3dd;
   color: white;
@@ -191,6 +190,7 @@
           align-items: center;
   text-align: center;
   font-family: "ApercuPro";
+  padding-bottom: 4rem;
 }
 
 .experiencie-libs-cards-container .libs-card .libs-badge {
@@ -309,11 +309,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 95vh;
+  height: 46vw;
 }
 
 .home-marca-ex div button {
-  margin-bottom: 8rem;
+  margin-bottom: 3rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -325,7 +325,7 @@
   font-weight: bolder;
   font-style: italic;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 1.5rem;
   -webkit-transition: -webkit-transform 0.15s ease, -webkit-filter 0.15s ease;
   transition: -webkit-transform 0.15s ease, -webkit-filter 0.15s ease;
   transition: transform 0.15s ease, filter 0.15s ease;
@@ -544,84 +544,58 @@
 /* ==========================================================
    LARGE DESKTOP RESPONSIVE FIXES
    (keeps full-width design, prevents stretching)
-   Only additions — no changes to your existing rules
-   Applies to screens > 1500px
+   Only additions — no changes to existing rules
 ========================================================== */
 @media (min-width: 1500px) {
-  /* -------------------------------------------------------
-     HERO SECTION (OPEN PAGE)
-  ------------------------------------------------------- */
-  .open-page-section {
-    padding-inline: 5vw;
+  .experiencie-libs-cards-container .libs-card .libs-card__title {
+    font-size: 1.5rem;
   }
-  .open-page-section .open-page-info p {
-    max-width: 70%;
-    font-size: clamp(18px, 1.2vw, 22px);
+  .experiencie-libs-cards-container .libs-card .libs-card__text {
+    font-size: 1.3rem;
   }
-  .open-page-section button {
-    font-size: clamp(20px, 1.3vw, 30px);
-    padding: 1rem 2rem;
+  .home-marca-ex div button {
+    font-size: 2rem;
   }
-  /* -------------------------------------------------------
-     HERO IMAGE (prevents ugly stretching)
-  ------------------------------------------------------- */
-  .open-page-section img {
-    max-height: 130vh;
-    -o-object-fit: cover;
-       object-fit: cover;
-    border-radius: 40px;
+  .tone-carousel__subtitle {
+    font-size: 2.5rem;
   }
-  .home-banner h2 {
-    font-size: 4rem;
+  .tone-carousel__title {
+    font-size: 3rem;
   }
-  /* -------------------------------------------------------
-     EXPERIENCE CARDS (fixes the misalignment bug)
-  ------------------------------------------------------- */
-  .experiencie-libs-cards-container {
-    gap: 40px;
-    padding-inline: 3vw;
+  .tone-carousel__left {
+    gap: 3rem;
   }
-  .experiencie-libs-cards-container .libs-card {
-    width: 38vh;
-    height: 38vh;
+  .tone-carousel__pill {
+    font-size: 1rem;
   }
 }
 
-/* ==========================================================
-   MEDIUM DESKTOPS (1100px–1500px)
-  
-========================================================== */
 @media (max-width: 1400px) and (min-width: 1100px) {
-  .open-page-section {
-    padding-inline: 3vw;
+  .experiencie-libs-cards-container .libs-card {
+    padding-top: 2rem;
+    padding-bottom: 2.2rem;
   }
-  .open-page-section img {
-    max-height: 100vh;
-  }
-  .open-page-section .open-page-info button {
-    font-size: 20px;
-  }
-  .open-page-section .open-page-info div p {
-    max-width: 80%;
-    font-size: 17px;
-  }
-  .open-page-section .open-page-info img {
-    width: 60%;
-  }
-  .home-about-us .home-about-us-about button {
+  .experiencie-libs .experiencie-libs-intro button {
     width: 30%;
+  }
+  .experiencie-libs-cards-container .libs-card .libs-card__title {
+    font-size: 18px;
+    margin-bottom: 2rem;
+  }
+  .experiencie-libs-cards-container .libs-card .libs-badge {
+    width: 100px;
+  }
+  .experiencie-libs-cards-container .libs-card .libs-badge .libs-card__badge {
     font-size: 25px;
   }
-  .home-about-us .home-about-us-about p {
-    font-size: 26px;
+  .experiencie-libs-cards-container .libs-card .libs-card__text {
+    font-size: 15px;
   }
-  .home-about-us .home-about-us-explore {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .home-end h1 {
+    font-size: 5rem;
   }
-  .experiencie-libs-cards-container .libs-card {
-    width: 42vh;
-    height: 42vh;
+  .home-end button {
+    font-size: 1.8rem;
   }
 }
 /*# sourceMappingURL=HomePage.css.map */

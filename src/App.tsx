@@ -7,7 +7,6 @@ import { Routes, Route } from 'react-router-dom';
 import AppProvider from './Contexts/AppProvider';
 import Footer from './footer/Footer';
 import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
-import Marquee from 'react-fast-marquee';
 import ScrollToTop from './ScrollToTop';
 import CartPage from './Cart/CartPage';
 import GiftCard from './GiftCard/GiftCard';

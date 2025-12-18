@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import { useId, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import giftCardImg from "../assets/giftBox.svg"
 import giftBanner from "../assets/giftBoxBanner.svg"

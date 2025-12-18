@@ -305,30 +305,13 @@
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
 @media (max-width: 1400px) and (min-width: 1100px) {
-  .online-how-it-works-section h1 {
-    width: 75%;
+  .online-buy-section .frist-button-online {
     font-size: 40px;
   }
-  .online-how-it-works-section .online-how-it-works-section-div ul h2 {
-    font-size: 45px;
-  }
-  .online-how-it-works-section .online-how-it-works-section-div ul li {
+  .online-buy-section .second-button-online {
+    width: 60%;
+    font-size: 40px;
     padding: 1.5rem;
-  }
-  .online-how-it-works-section .online-how-it-works-section-div ul li .step-number {
-    font-size: 1.5rem;
-  }
-  .online-how-it-works-section .online-how-it-works-section-div ul li .step-badge img {
-    width: 80px;
-  }
-  .online-how-it-works-section .online-how-it-works-section-div ul li span {
-    font-size: 18px;
-  }
-  .online-how-it-works-section .online-how-it-works-section-div ul li p {
-    font-size: 13px;
-  }
-  .online-buy-section button {
-    font-size: 40px;
   }
 }
 /*# sourceMappingURL=OnlineExperiencie.css.map */

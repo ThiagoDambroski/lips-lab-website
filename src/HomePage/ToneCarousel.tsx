@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import{ useEffect, useState } from "react";
 
 
 export type Pill = "VERMELHO" | "VIBRANTE" | "NUDE" | "EXPRESSIVO";
@@ -31,7 +31,7 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
   };
 
   const next = () => goTo((index + 1) % slides.length);
-  const prev = () => goTo((index - 1 + slides.length) % slides.length);
+  //const prev = () => goTo((index - 1 + slides.length) % slides.length);
 
   useEffect(() => {
     if (!autoplayMs) return;

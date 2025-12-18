@@ -21,6 +21,9 @@ type ProductCarouselProps = {
 const clamp = (n: number, min: number, max: number) =>
   Math.max(min, Math.min(n, max));
 
+const CARDS_PER_VIEW = 2;
+const STEP_PCT = 100 / CARDS_PER_VIEW;
+
 export const ProductCarousel: React.FC<ProductCarouselProps> = ({
   items,
   initialIndex = 0,
@@ -29,24 +32,34 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
   onIndexChange,
   className,
 }) => {
-  const [index, setIndex] = useState(
-    clamp(initialIndex, 0, Math.max(0, items.length - 1))
-  );
-
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const autoplayRef = useRef<number | null>(null);
 
+  // Last valid index when showing 2 cards per view:
+  // Example: 7 items -> maxIndex = 5 (shows items 6 & 7 in the last view)
+  const maxIndex = useMemo(
+    () => Math.max(0, items.length - CARDS_PER_VIEW),
+    [items.length]
+  );
+
+  const [index, setIndex] = useState(() => clamp(initialIndex, 0, maxIndex));
+
+  // Keep index valid if items length changes
+  useEffect(() => {
+    setIndex((curr) => clamp(curr, 0, maxIndex));
+  }, [maxIndex]);
+
   const goTo = useCallback(
     (next: number) => {
-      const clamped = clamp(next, 0, items.length - 1);
+      const clamped = clamp(next, 0, maxIndex);
       setIndex(clamped);
       onIndexChange?.(clamped);
     },
-    [items.length, onIndexChange]
+    [maxIndex, onIndexChange]
   );
 
   const canPrev = index > 0;
-  const canNext = index < items.length - 1;
+  const canNext = index < maxIndex;
 
   const prev = useCallback(() => {
     if (canPrev) goTo(index - 1);
@@ -67,23 +80,23 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
     return () => window.removeEventListener("keydown", onKey);
   }, [prev, next]);
 
-  // Autoplay
+  // Autoplay (loops back to 0)
   useEffect(() => {
     if (!autoplayMs || autoplayMs < 600) return;
 
     if (autoplayRef.current) window.clearInterval(autoplayRef.current);
 
     autoplayRef.current = window.setInterval(() => {
-      setIndex((curr) => (curr >= items.length - 1 ? 0 : curr + 1));
+      setIndex((curr) => (curr >= maxIndex ? 0 : curr + 1));
     }, autoplayMs);
 
     return () => {
       if (autoplayRef.current) window.clearInterval(autoplayRef.current);
     };
-  }, [autoplayMs, items.length]);
+  }, [autoplayMs, maxIndex]);
 
-  // 2 cards per view → move 50% per index
-  const translatePct = useMemo(() => -(index * 50), [index]);
+  // Move by half of the viewport each index (2 cards per view)
+  const translatePct = useMemo(() => -(index * STEP_PCT), [index]);
 
   return (
     <div
@@ -93,7 +106,13 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
       aria-label="Products carousel"
       tabIndex={0}
     >
-      <button className="pc-nav" aria-label="Previous" onClick={prev} disabled={!canPrev}>
+      <button
+        className="pc-nav"
+        aria-label="Previous"
+        onClick={prev}
+        disabled={!canPrev}
+        type="button"
+      >
         <span aria-hidden>‹</span>
       </button>
 
@@ -106,7 +125,11 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
           }}
         >
           {items.map((it) => (
-            <li key={it.id} className="pc-card" style={{ aspectRatio: `${cardRatio}` }}>
+            <li
+              key={it.id}
+              className="pc-card"
+              style={{ aspectRatio: `${cardRatio}` }}
+            >
               <article className="pc-cardInner">
                 <div className="pc-imageWrap">
                   <img loading="lazy" src={it.imageUrl} alt={it.alt ?? it.title} />
@@ -124,7 +147,13 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
         </ul>
       </div>
 
-      <button className="pc-nav" aria-label="Next" onClick={next} disabled={!canNext}>
+      <button
+        className="pc-nav"
+        aria-label="Next"
+        onClick={next}
+        disabled={!canNext}
+        type="button"
+      >
         <span aria-hidden>›</span>
       </button>
     </div>

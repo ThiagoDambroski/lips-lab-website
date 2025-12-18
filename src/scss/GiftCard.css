@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .gift-intro {
   display: -ms-grid;
   display: grid;
@@ -219,6 +220,19 @@
   .gift-terms__values p,
   .gift-terms__address p {
     font-size: 13.5px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .gift-intro img {
+    width: 60%;
+  }
+}
+
+/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+@media (max-width: 1400px) and (min-width: 1100px) {
+  .gift-banner p {
+    font-size: 1.6rem;
   }
 }
 /*# sourceMappingURL=GiftCard.css.map */

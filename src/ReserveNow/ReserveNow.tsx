@@ -4,7 +4,7 @@ import "../scss/reserverNow.css"
 import back from "../assets/libs back.png"
 import fristImage from "../assets/reserve now frist image.png"
 import secondImage from "../assets/friends reserve now.png"
-import { NavLink } from "react-router-dom"
+//import { NavLink } from "react-router-dom"
 
 function ReserveNow() {
   return (

@@ -270,4 +270,11 @@ footer .footer-social a {
 footer .footer-social a:visited {
   color: white;
 }
+
+@media (max-width: 1400px) and (min-width: 1100px) {
+  .nav-2 ul {
+    -ms-grid-columns: 1fr 3fr 1fr;
+        grid-template-columns: 1fr 3fr 1fr;
+  }
+}
 /*# sourceMappingURL=NavBar.css.map */

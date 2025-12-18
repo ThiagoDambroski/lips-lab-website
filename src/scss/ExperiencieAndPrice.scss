@@ -484,60 +484,41 @@ $tablet-min: 768px;
 
 
 @media (min-width: $desktop-xl) {
-    .reserve-now .reserve-now-intro div {
-        padding-bottom: 4rem;
-        h2{
-            font-size: 4rem;
-        }
-    }
+  .how-it-works-section .how-it-works-div .how-it-works-video video{
+    width: 50%;
+  }
 
-    .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div {
-        p{
-            font-size: 23px;
-        }
-        button{
-            font-size: 25px;
-        }
-
-    }
+  .pc-cardInner{
+    max-width: 35vw;
+  }
+  .pc-title{
+    font-size: 2rem;
+  }
+  .pc-price {
+    font-size: 1.4rem;
+  }
 }
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
 @media (max-width: $laptop-max) and (min-width: $laptop-min) {
-    .how-it-works-section h1{
-        font-size: 70px;
-    }
-    .how-it-works-section .how-it-works-div ul li .step-badge img{
-        width: 75px;
-    }
-   .how-it-works-section .how-it-works-div ul li .step-number{
-    font-size: 1.2rem;
-   }
-  .how-it-works-section .how-it-works-div ul li {
-    span{
-        left: 25%;
-    }
-  }
-  .how-it-works-section .how-it-works-div .how-it-works-section-div{
-    p{
-        font-size: 25px;
-    }
-    
-  }
-  .whats-include-section .whats-include-background {
-        .up-gloss{
-            top: 30%;
-        }
-  }
+     .how-it-works-section .how-it-works-div{
+      grid-template-columns: 1fr 1fr;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-title {
+      font-size: 20px;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .img-include{
+      width: 190px;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .include-title {
+      font-size: 15px;
+     }
 
-  .whats-include-section .whats-include-background .whats-include-div img{
-    width: 40%;
-  }
-  .whats-include-section .whats-include-background button{
-    font-size: 30px;
-  }
-
-  .whats-include-section h1{
-    font-size: 60px;
-  }
+     .whats-include-section .whats-include-background .whats-include-div .include-item .include-panel p{
+      font-size: 16px;
+     }
+     .reserve-now-section-experiencie button{
+      width: 80%;
+      padding: 16px 50px;
+     }
 }

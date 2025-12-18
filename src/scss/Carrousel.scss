@@ -3,7 +3,6 @@
   padding: 56px 34px;
   position: relative;
 
-  /* ❌ IMPORTANT: remove overflow hidden here so hover shadow isn't clipped */
   overflow: visible;
 
   box-sizing: border-box;
@@ -177,10 +176,84 @@
   border: 1.8px solid #e9519c;
 }
 
-/* responsive */
-@media (max-width: 900px) {
+/* ==========================================================
+   LARGE DESKTOP RESPONSIVE FIXES (PC CAROUSEL)
+   Only additions — no changes to your existing rules
+   Applies to screens >= 1500px
+========================================================== */
+
+@media (min-width: 1500px) {
+
+  /* keep carousel content from looking too wide on ultra-wide screens */
+  .pc-carousel {
+    padding: clamp(56px, 3.5vw, 84px) clamp(34px, 3vw, 80px);
+    gap: clamp(18px, 1.4vw, 30px);
+
+    /* keep nav columns proportional */
+    grid-template-columns: clamp(52px, 4.2vw, 72px) 1fr clamp(52px, 4.2vw, 72px);
+  }
+
+  .pc-nav {
+    width: clamp(44px, 3.2vw, 58px);
+    height: clamp(44px, 3.2vw, 58px);
+
+    span {
+      font-size: clamp(28px, 1.9vw, 36px);
+    }
+  }
+
+  /* add a “soft max width” so two cards don’t stretch too much */
+  .pc-viewport {
+    max-width: min(1400px, 88vw);
+    margin: 0 auto;
+  }
+
+  /* spacing between the 2 cards on wide screens */
   .pc-card {
-    flex: 0 0 100%;
-    padding: 0 16px;
+    padding: 0 clamp(22px, 1.6vw, 34px);
+  }
+
+  .pc-cardInner {
+    max-width: clamp(440px, 30vw, 560px);
+    border-radius: clamp(36px, 2.2vw, 52px);
+    padding: clamp(34px, 2.2vw, 52px) clamp(26px, 1.8vw, 40px) clamp(22px, 1.6vw, 34px);
+  }
+
+  .pc-imageWrap {
+    img {
+      max-height: clamp(430px, 34vh, 560px);
+    }
+  }
+
+  .pc-title {
+    font-size: clamp(20px, 1.25vw, 28px);
+    letter-spacing: clamp(0.6px, 0.08vw, 1.2px);
+  }
+
+  .pc-meta {
+    gap: clamp(14px, 1.1vw, 22px);
+    padding-top: clamp(10px, 1vw, 18px);
+  }
+
+  .pc-price {
+    min-width: clamp(210px, 16vw, 300px);
+    height: clamp(34px, 2.2vw, 46px);
+    font-size: clamp(18px, 1.1vw, 24px);
+    border-width: clamp(1.8px, 0.12vw, 2.4px);
+  }
+}
+
+/* ==========================================================
+   VERY LARGE / 4K+ TUNING (optional but safe)
+   Only additions — no changes
+========================================================== */
+
+@media (min-width: 2000px) {
+  .pc-viewport {
+    max-width: 1600px;
+  }
+
+  .pc-cardInner {
+    max-width: 600px;
   }
 }

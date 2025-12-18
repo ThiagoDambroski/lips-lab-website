@@ -226,3 +226,19 @@ footer{
         }
     }
 }
+
+$desktop-xl: 1500px;
+$laptop-max: 1400px; 
+$laptop-min: 1100px;
+$tablet-min: 768px;  
+@media (min-width: $desktop-xl) {
+
+}
+
+
+@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+  
+  .nav-2 ul {
+    grid-template-columns:1fr 3fr 1fr;
+  }
+}

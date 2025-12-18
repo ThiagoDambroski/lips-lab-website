@@ -196,6 +196,27 @@
     &__values p,
     &__address p {
       font-size: 13.5px;
+   
     }
   }
+}
+
+$desktop-xl: 1500px;
+$laptop-max: 1400px; 
+$laptop-min: 1100px;
+$tablet-min: 768px;  
+
+
+@media (min-width: $desktop-xl) {
+  .gift-intro img {
+    width: 60%; 
+}
+}
+
+/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+    .gift-banner p{
+      font-size: 1.6rem;
+    }
+    
 }

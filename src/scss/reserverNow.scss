@@ -184,47 +184,33 @@ $tablet-min: 768px;
 
 
 @media (min-width: $desktop-xl) {
-    .reserve-now .reserve-now-intro div {
-        padding-bottom: 4rem;
-        h2{
-            font-size: 4rem;
-        }
-    }
 
-    .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div {
-        p{
-            font-size: 23px;
-        }
-        button{
-            font-size: 25px;
-        }
-
+    .reserve-now .reserve-now-end img{
+        width: 60%;
     }
 }
 
-/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
 @media (max-width: $laptop-max) and (min-width: $laptop-min) {
-  .reserve-now .reserve-now-intro div {
-        
-        h2{
-            font-size: 2.3rem;
-        }
-        button{
-            width: 70%;
-            padding: 1.4rem;
-            font-size: 20px;
-        }
-    }
+ .reserve-now .reserve-now-intro div h1{
+    font-size: 4rem;
+ }
+ .reserve-now .reserve-now-end{
+    gap:0rem;
+ }
+ .reserve-now .reserve-now-end .important-saberes h2 {
+    font-size: 30px;
+ }
+ .reserve-now .reserve-now-end .important-saberes{
+    gap: 1rem;
+ }
+ .reserve-now .reserve-now-end .important-saberes li{
+    font-size: 20px;
+ }
+ .reserve-now .reserve-now-end .important-saberes button{
+    font-size: 20px;
+ }
+ .reserve-now .reserve-now-end img{
+    margin-left: 5rem;
+ }
 
-    .reserve-now .reserve-now-display .reserve-now-display-flex .reserve-now-display-div{
-        h3{
-            font-size: 30px;
-        }
-        p{
-            font-size: 18px;
-        }
-        button{
-            font-size: 15px;
-        }
-    }
 }

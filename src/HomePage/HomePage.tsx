@@ -10,7 +10,7 @@ import daniAndFriend from "../assets/dani e friend.svg"
 import  Navbar from "../Navbar/Navbar"
 import backLibs from "../assets/libs back.png"
 import backEnd from "../assets/home-end-backg.svg"
-import { NavLink } from "react-router-dom"
+//import { NavLink } from "react-router-dom"
 import ToneCarousel, { type Slide }  from "./ToneCarousel"
 
 // replace these paths with your real assets
