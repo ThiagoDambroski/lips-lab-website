@@ -1,37 +1,77 @@
 
 .main-create-box{
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+   
+    
+
+    h1{
+      color: #c41123;
+      font-family: "ApercuPro";
+      text-transform: uppercase;
+      font-style: italic;
+      font-size: 4.5rem;
+      align-self: center;
+      margin-bottom: 2rem;
+    }
+    p{
+      align-self: center;
+      color: #c41123;
+      font-family: "ApercuPro";
+      text-transform: uppercase;
+      font-style: italic;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: bolder;
+    }
 }
 
 .gloss-or-batom-container{
     display: flex;
+    padding-bottom: 2rem;
     justify-content: center;
     gap: 20rem;
     z-index: 0;
-    background: linear-gradient(
-            180deg,
-            transparent 0%,      // fully transparent at the top
-            transparent 20%,     // keeps the top clear for a bit
-            #ffe7eb 40%,         // starts fading into light pink
-            #ffd3dd 70%         // finishes with deeper pink
-    );
+   background:
+  /* soft center glow – slightly stronger */
+  radial-gradient(
+    1200px 500px at 50% 55%,
+    rgba(255, 205, 225, 0.48) 0%,
+    rgba(255, 205, 225, 0.24) 45%,
+    rgba(255, 205, 225, 0.00) 72%
+  ),
+  /* bottom fade – slightly richer */
+  linear-gradient(
+    180deg,
+    rgba(255, 245, 248, 0.00) 0%,
+    rgba(255, 230, 240, 0.22) 55%,
+    rgba(255, 205, 225, 0.36) 80%,
+    rgba(255, 180, 210, 0.50) 100%
+  );
+
+
+    
     .gloss-or-batom-container-image{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-       
+        img{
+          width: 80%;
+        }
+        
         button{
-            width: 125%;
+            width: 200px;
             padding: 1rem;
             background-color: #c41123;
             color: white;
             text-transform: uppercase;
-            font-style: italic;
+        
             font-size: 2rem;
             border-radius: 50px;
             border: none;
-            font-family: "IvyPresto";
+            font-family: "ApercuPro";
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             cursor: pointer;
         }
@@ -43,50 +83,84 @@
 }
 
 .main-color-selection{
+    
+    
+    
+  .main-color-back{
     display: flex;
     width: 100%;
-    background: linear-gradient(
-            180deg,
-            transparent 0%,      // fully transparent at the top
-            transparent 20%,     // keeps the top clear for a bit
-            #ffe7eb 40%,         // starts fading into light pink
-            #ffd3dd 70%         // finishes with deeper pink
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+      background:
+    /* soft center glow – slightly stronger */
+    radial-gradient(
+      1200px 500px at 50% 55%,
+      rgba(255, 205, 225, 0.48) 0%,
+      rgba(255, 205, 225, 0.24) 45%,
+      rgba(255, 205, 225, 0.00) 72%
+    ),
+    /* bottom fade – slightly richer */
+    linear-gradient(
+      180deg,
+      rgba(255, 245, 248, 0.00) 0%,
+      rgba(255, 230, 240, 0.22) 55%,
+      rgba(255, 205, 225, 0.36) 80%,
+      rgba(255, 180, 210, 0.50) 100%
     );
+  }
 }
 
 .item-display{
     max-width: 40%;
-    background-color: #dddddd;
+    background-color: #FFE6ED;
+    border: 1px solid #c41123;
     border-radius: 0px 50px 50px 00px;
     display: flex;
+    
+    
     .item-display-container{
         padding-left: 1rem;
         padding-top: 3rem;
-        padding-bottom: 1rem;
+       
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+       
         div{
             display: flex;
             flex-direction: column;
             gap: 10px;
             h2{
-            font-size: 20px;
+            font-style: italic;
+            text-transform: uppercase;
+            font-family: "ApercuPro";
+            font-size: 2rem;
             color: #c41123;
+            margin-bottom: 1.5rem;
             }
             .p-1{
+              font-family: "ApercuPro";
                 color: #c41123;
-                width: 70%;
+                width: 100%;
+                font-weight: bold;
+                margin-bottom: 2rem;
             }
             img{
-                width: 80%;
+                width: 90%;
+                margin-bottom: 6rem;
             }
         }
         p{
+            font-size: 0.9rem;
+            font-family: "ApercuPro";
             color: #c41123;
         }
-        
        
+    }
+    .pink-gloss{
+      position: relative;
+      width: 40%;
+      top:-2rem;
+      right: -3rem;
     }
     .item-img{
         width: 300px;
@@ -117,9 +191,13 @@
     flex-direction: column;
     gap: 25px;
     h3{
-        color: #e55499;
-        font-size: 30px;
+      text-align: center;
+        color: #c41123;
+        font-size:  3rem;
         font-style: italic;
+        text-transform: uppercase;
+        font-family: "ApercuPro";
+        margin-bottom: 2rem;
     }
     div{
         display: flex;
@@ -129,12 +207,14 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          height: 25vh;
+          height: 200px;
+          width: 230px;
           background-color: #c41123;
           border: none;
           color: white;
+          font-family: "ApercuPro";
           padding: 1rem;
-          font-size: 20px;
+          font-size: 1.1rem;
           border-radius: 30px;
           text-transform: uppercase;
           transition: 
@@ -143,8 +223,8 @@
             filter 0.3s ease;
           cursor: pointer;
           img{
-          width: 75px;
-          height: 80px;
+          width: 60px;
+          height: 70px;
           margin-bottom: 20px;
           }
           &:hover {
@@ -235,39 +315,89 @@
 .colors-selection{ 
    display: flex;
    flex-direction: column;
+   align-items: center;
    padding:2rem;
    gap: 30px;
+
+   .title-button{
+    font-family: "ApercuPro";
+    color: white;
+    width: 40%;
+    font-weight: bold;
+    font-size: 2rem;
+    border-radius: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+    padding: 1rem;
+    background-color: #c41123;
+   }
    h3{
+    font-style: italic;
+    text-transform: uppercase;
+    text-align: center;
     font-size: 1.5rem;
-    width: 70%;
+    font-family: "ApercuPro";
+    width: 100%;
     font-weight: bolder;
-    color: #e55499;
+    color: #c41123;
 
    }
-   div{
+   h4{
+    font-style: italic;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.8rem;
+    text-align: center;
+    font-family: "ApercuPro";
+    font-weight: bolder;
+    color: #c41123;
+   }
+   .colors-containers{
+    padding: 2rem;
+    border: 2px solid pink;
+    border-radius: 50px;
+    background-color: white;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
-    column-gap: 0px;
+    column-gap: 10px;
     row-gap: 10px;
    }
-   .colors-section{
-    width: 70px;
-    height: 70px;
+   
+   .colors-section-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    .colors-section{
+      width: 80px;
+      height: 80px;  
+    }
+    p{
+      font-family: "ApercuPro";
+      text-align: center;
+      color: #c41123;
+      font-size: 0.7rem;
+    }
+   
    
     
    }
    button{
     background-color: #c41123;
     border: none;
-    width: 30%;
+    width: 45%;
     border-radius: 50px;
     color: white;
     padding: 1rem;
     font-size: 20px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
+    font-family: "ApercuPro";
+    font-weight: bolder;
+    text-transform: uppercase;
    }
    button:hover {
     transform: translateY(-4px) scale(1.03);
@@ -953,16 +1083,22 @@
 
 .glitter-section{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100%;
+  grid-template-columns: 1fr 1.5fr;
+
+
 }
 
 .glitter-intro{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   h2{
-    color: #e55499;
+    color: #c41123;
+    font-family: "ApercuPro";
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 1.2rem;
     width: 80%;
   }
   button{
@@ -982,10 +1118,38 @@
   }
 
 }
-
+.gliter-container{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 50px;
+  border: 2px solid pink;
+  padding: 2rem;
+}
 .glliter-selection-div {
   display: flex;
   flex-direction: column;
+
+  .glitter-subtitle {
+      margin: 14px 0 12px;
+      padding: 10px 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 999px;
+
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+
+      /* soft pink pill look (similar to the screenshot) */
+      background: rgba(233, 81, 156, 0.14);
+      border: 1px solid rgba(233, 81, 156, 0.32);
+      color: rgba(233, 81, 156, 0.95);
+    }
+ 
   h2{
     color: #e55499;
     text-transform: uppercase;
@@ -1017,13 +1181,20 @@
 
       /* keep the li tight around the image */
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       
 
       img {
         display: block;
-        width: 40px; // or whatever size you prefer
+        width: 60px; // or whatever size you prefer
+      }
+      p{
+        font-family: "ApercuPro";
+        text-transform: uppercase;
+        color: #c41123;
+        font-size: 0.6rem;
       }
     }
   }

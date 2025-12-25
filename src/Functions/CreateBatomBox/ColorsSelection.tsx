@@ -11,10 +11,12 @@ import "../../scss/CreateBatom.css"
 type ColorsSelectionProps = {
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>,
   step: number,
-  setStep: React.Dispatch<React.SetStateAction<number>>;
+  setStep: React.Dispatch<React.SetStateAction<number>>,
+  doItYourSelf:Boolean | undefined,
+  setDoItYourSelf:React.Dispatch<React.SetStateAction<Boolean | undefined>>
 };
 
-function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
+function ColorsSelection({setSelectedColor,step,setStep,doItYourSelf,setDoItYourSelf}:ColorsSelectionProps) {
  
 
 
@@ -22,7 +24,7 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
 
   const [selected, setSelected] = useState<string[]>([]);
   const [weights, setWeights] = useState<Record<string, number>>({});
-  const [doItYourSelf,setDoItYourSelf] = useState<Boolean | undefined>()
+ 
 
   
 
@@ -95,7 +97,7 @@ function ColorsSelection({setSelectedColor,step,setStep}:ColorsSelectionProps) {
       
       {doItYourSelf === undefined &&
         <div className='main-color-selection-options'>
-          <h3>Escolhe como vais viver a experiência lips lab!</h3>
+          <h3>Escolhe como vais viver a <br/> tua experiência lips lab:</h3>
           <div>
             <button onClick={() => setDoItYourSelf(false)}>
               <img src={virtual} alt="" />

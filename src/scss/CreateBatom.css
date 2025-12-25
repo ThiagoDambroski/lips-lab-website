@@ -1,19 +1,52 @@
 @charset "UTF-8";
 .main-create-box {
   z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main-create-box h1 {
+  color: #c41123;
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 4.5rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-bottom: 2rem;
+}
+
+.main-create-box p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  color: #c41123;
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bolder;
 }
 
 .gloss-or-batom-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-bottom: 2rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   gap: 20rem;
   z-index: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), color-stop(70%, #ffd3dd));
-  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd 70%);
+  background: radial-gradient(1200px 500px at 50% 55%, rgba(255, 205, 225, 0.48) 0%, rgba(255, 205, 225, 0.24) 45%, rgba(255, 205, 225, 0) 72%), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 245, 248, 0)), color-stop(55%, rgba(255, 230, 240, 0.22)), color-stop(80%, rgba(255, 205, 225, 0.36)), to(rgba(255, 180, 210, 0.5)));
+  background: radial-gradient(1200px 500px at 50% 55%, rgba(255, 205, 225, 0.48) 0%, rgba(255, 205, 225, 0.24) 45%, rgba(255, 205, 225, 0) 72%), linear-gradient(180deg, rgba(255, 245, 248, 0) 0%, rgba(255, 230, 240, 0.22) 55%, rgba(255, 205, 225, 0.36) 80%, rgba(255, 180, 210, 0.5) 100%);
 }
 
 .gloss-or-batom-container .gloss-or-batom-container-image {
@@ -32,17 +65,20 @@
           align-items: center;
 }
 
+.gloss-or-batom-container .gloss-or-batom-container-image img {
+  width: 80%;
+}
+
 .gloss-or-batom-container .gloss-or-batom-container-image button {
-  width: 125%;
+  width: 200px;
   padding: 1rem;
   background-color: #c41123;
   color: white;
   text-transform: uppercase;
-  font-style: italic;
   font-size: 2rem;
   border-radius: 50px;
   border: none;
-  font-family: "IvyPresto";
+  font-family: "ApercuPro";
   -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
   transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -57,18 +93,21 @@
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
-.main-color-selection {
+.main-color-selection .main-color-back {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(20%, transparent), color-stop(40%, #ffe7eb), color-stop(70%, #ffd3dd));
-  background: linear-gradient(180deg, transparent 0%, transparent 20%, #ffe7eb 40%, #ffd3dd 70%);
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  background: radial-gradient(1200px 500px at 50% 55%, rgba(255, 205, 225, 0.48) 0%, rgba(255, 205, 225, 0.24) 45%, rgba(255, 205, 225, 0) 72%), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 245, 248, 0)), color-stop(55%, rgba(255, 230, 240, 0.22)), color-stop(80%, rgba(255, 205, 225, 0.36)), to(rgba(255, 180, 210, 0.5)));
+  background: radial-gradient(1200px 500px at 50% 55%, rgba(255, 205, 225, 0.48) 0%, rgba(255, 205, 225, 0.24) 45%, rgba(255, 205, 225, 0) 72%), linear-gradient(180deg, rgba(255, 245, 248, 0) 0%, rgba(255, 230, 240, 0.22) 55%, rgba(255, 205, 225, 0.36) 80%, rgba(255, 180, 210, 0.5) 100%);
 }
 
 .item-display {
   max-width: 40%;
-  background-color: #dddddd;
+  background-color: #FFE6ED;
+  border: 1px solid #c41123;
   border-radius: 0px 50px 50px 00px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -78,7 +117,6 @@
 .item-display .item-display-container {
   padding-left: 1rem;
   padding-top: 3rem;
-  padding-bottom: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,9 +124,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .item-display .item-display-container div {
@@ -103,21 +138,38 @@
 }
 
 .item-display .item-display-container div h2 {
-  font-size: 20px;
+  font-style: italic;
+  text-transform: uppercase;
+  font-family: "ApercuPro";
+  font-size: 2rem;
   color: #c41123;
+  margin-bottom: 1.5rem;
 }
 
 .item-display .item-display-container div .p-1 {
+  font-family: "ApercuPro";
   color: #c41123;
-  width: 70%;
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }
 
 .item-display .item-display-container div img {
-  width: 80%;
+  width: 90%;
+  margin-bottom: 6rem;
 }
 
 .item-display .item-display-container p {
+  font-size: 0.9rem;
+  font-family: "ApercuPro";
   color: #c41123;
+}
+
+.item-display .pink-gloss {
+  position: relative;
+  width: 40%;
+  top: -2rem;
+  right: -3rem;
 }
 
 .item-display .item-img {
@@ -156,9 +208,13 @@
 }
 
 .main-color-selection-options h3 {
-  color: #e55499;
-  font-size: 30px;
+  text-align: center;
+  color: #c41123;
+  font-size: 3rem;
   font-style: italic;
+  text-transform: uppercase;
+  font-family: "ApercuPro";
+  margin-bottom: 2rem;
 }
 
 .main-color-selection-options div {
@@ -182,12 +238,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 25vh;
+  height: 200px;
+  width: 230px;
   background-color: #c41123;
   border: none;
   color: white;
+  font-family: "ApercuPro";
   padding: 1rem;
-  font-size: 20px;
+  font-size: 1.1rem;
   border-radius: 30px;
   text-transform: uppercase;
   -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease, -webkit-filter 0.3s ease;
@@ -198,8 +256,8 @@
 }
 
 .main-color-selection-options div button img {
-  width: 75px;
-  height: 80px;
+  width: 60px;
+  height: 70px;
   margin-bottom: 20px;
 }
 
@@ -285,18 +343,54 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 2rem;
   gap: 30px;
 }
 
-.colors-selection h3 {
-  font-size: 1.5rem;
-  width: 70%;
-  font-weight: bolder;
-  color: #e55499;
+.colors-selection .title-button {
+  font-family: "ApercuPro";
+  color: white;
+  width: 40%;
+  font-weight: bold;
+  font-size: 2rem;
+  border-radius: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+  padding: 1rem;
+  background-color: #c41123;
 }
 
-.colors-selection div {
+.colors-selection h3 {
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "ApercuPro";
+  width: 100%;
+  font-weight: bolder;
+  color: #c41123;
+}
+
+.colors-selection h4 {
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.8rem;
+  text-align: center;
+  font-family: "ApercuPro";
+  font-weight: bolder;
+  color: #c41123;
+}
+
+.colors-selection .colors-containers {
+  padding: 2rem;
+  border: 2px solid pink;
+  border-radius: 50px;
+  background-color: white;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -307,20 +401,41 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-column-gap: 0px;
-          column-gap: 0px;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
   row-gap: 10px;
 }
 
-.colors-selection .colors-section {
-  width: 70px;
-  height: 70px;
+.colors-selection .colors-section-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+}
+
+.colors-selection .colors-section-div .colors-section {
+  width: 80px;
+  height: 80px;
+}
+
+.colors-selection .colors-section-div p {
+  font-family: "ApercuPro";
+  text-align: center;
+  color: #c41123;
+  font-size: 0.7rem;
 }
 
 .colors-selection button {
   background-color: #c41123;
   border: none;
-  width: 30%;
+  width: 45%;
   border-radius: 50px;
   color: white;
   padding: 1rem;
@@ -330,6 +445,9 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
   cursor: pointer;
+  font-family: "ApercuPro";
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
 .colors-selection button:hover {
@@ -1227,9 +1345,8 @@
 .glitter-section {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  height: 100%;
+  -ms-grid-columns: 1fr 1.5fr;
+      grid-template-columns: 1fr 1.5fr;
 }
 
 .glitter-intro {
@@ -1246,7 +1363,11 @@
 }
 
 .glitter-intro h2 {
-  color: #e55499;
+  color: #c41123;
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 1.2rem;
   width: 80%;
 }
 
@@ -1272,6 +1393,20 @@
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
+.gliter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: white;
+  border-radius: 50px;
+  border: 2px solid pink;
+  padding: 2rem;
+}
+
 .glliter-selection-div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1280,6 +1415,28 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.glliter-selection-div .glitter-subtitle {
+  margin: 14px 0 12px;
+  padding: 10px 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* soft pink pill look (similar to the screenshot) */
+  background: rgba(233, 81, 156, 0.14);
+  border: 1px solid rgba(233, 81, 156, 0.32);
+  color: rgba(233, 81, 156, 0.95);
 }
 
 .glliter-selection-div h2 {
@@ -1317,6 +1474,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1327,7 +1488,14 @@
 
 .glliter-selection-div ul li img {
   display: block;
-  width: 40px;
+  width: 60px;
+}
+
+.glliter-selection-div ul li p {
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  color: #c41123;
+  font-size: 0.6rem;
 }
 
 /* --- Ligthbox--- */

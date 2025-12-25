@@ -17,6 +17,7 @@
             font-family: "ApercuPro";
         }
         p{
+            max-width: 90%;
             font-size: 20px;
             white-space: pre-line;
         }
@@ -128,13 +129,14 @@
     font-style: italic;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    
   }
 
   &__text {
     margin: 0 0 14px;
     font-size: 18px;
     line-height: 1.8;
-
+    max-width: 50vw;
     &:last-child {
       margin-bottom: 0;
     }

@@ -5,8 +5,8 @@ import { useApp, type GlitterColor } from "../../Contexts/AppProvider";
 type GlitterBaseType = {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  glitterSelected: string;
-  setGlitterSelected: React.Dispatch<React.SetStateAction<string>>;
+  glitterSelected: number | null;
+  setGlitterSelected: React.Dispatch<React.SetStateAction<number | null>>;
   type: string;
   baseSelected: BaseOptions;
   setBaseSelected: React.Dispatch<React.SetStateAction<BaseOptions>>;
@@ -36,18 +36,17 @@ function GlitterBaseSelection({
   const closeLightbox = () => setPreview(null);
 
   const confirmSelect = () => {
-    if (preview) setGlitterSelected(preview.name);
+    if (preview) setGlitterSelected(preview.id);
     setPreview(null);
   };
 
   return (
     <div>
-
-      {step === 2 && (
+      {step === 3 && (
         <div className="texture-selection-section">
           <p className="texture-selection-p">
-            Diferentes texturas de glosses labiais requerem diferentes tipos de base.
-            Existem seis opções principais entre as quais podes escolher:
+            Diferentes texturas de glosses labiais requerem diferentes tipos de
+            base. Existem seis opções principais entre as quais podes escolher:
           </p>
 
           {type === "batom" && (
@@ -55,7 +54,11 @@ function GlitterBaseSelection({
               {baseBatom.map((b) => (
                 <li
                   key={b.id}
-                  onClick={baseSelected === b.id ? () => setBaseSelected("none") : () => setBaseSelected(b.id)}
+                  onClick={
+                    baseSelected === b.id
+                      ? () => setBaseSelected("none")
+                      : () => setBaseSelected(b.id)
+                  }
                   style={{
                     backgroundColor: baseSelected === b.id ? "green" : "",
                   }}
@@ -72,7 +75,11 @@ function GlitterBaseSelection({
               {baseGloss.map((b) => (
                 <li
                   key={b.id}
-                  onClick={baseSelected === b.id ? () => setBaseSelected("none") : () => setBaseSelected(b.id)}
+                  onClick={
+                    baseSelected === b.id
+                      ? () => setBaseSelected("none")
+                      : () => setBaseSelected(b.id)
+                  }
                   style={{
                     backgroundColor: baseSelected === b.id ? "green" : "",
                   }}
@@ -86,53 +93,114 @@ function GlitterBaseSelection({
 
           <button
             className="texture-selection-section-button"
-            onClick={() => setStep(3)}
-            
+            onClick={() => setStep(4)}
           >
             CONTINUAR!
           </button>
         </div>
       )}
 
-      {step === 4 && (
+      {step === 2 && (
         <section className="glitter-section">
           <div className="glitter-intro">
-            <h2>Sabemos que tudo fica melhor com brilho, 
-            por isso, podes escolher se queres
-            adicionar algum! </h2>
-            <button onClick={() => setStep(5)}>Continuar</button>
+            <h2>
+              Um toque de brilho faz
+              <br /> toda a diferença.
+              <br />
+              <br />
+              pode optar por
+              <br /> adicioná-lo ao seu
+              <br /> gloss.
+            </h2>
+            <button onClick={() => setStep(3)}>Continuar</button>
           </div>
-          <div>
-            {categories.map((category) => (
-              <div key={category} className="glliter-selection-div">
-                <h2>{category}</h2>
 
-                <ul>
-                  {glitterOptions
-                    .filter((g) => g.category === category)
-                    .map((g) => (
-                      <li
-                        key={g.id}
-                        onClick={() => openLightbox(g)}
-                        style={{
-                          backgroundColor:
-                            glitterSelected === g.name ? "green" : "",
-                          cursor: "pointer",
-                          listStyle: "none",
-                        }}
-                      >
-                        <img src={g.img} />
-                      </li>
-                    ))}
-                </ul>
-              </div>
-             ))}
+          <div className="gliter-container">
+            {categories.map((category) => {
+              // Group FOILS + DUSTS into one section
+              if (category === "Dusts") return null;
+
+              if (category === "Foils") {
+                return (
+                  <div key="Foils & Dusts" className="glliter-selection-div">
+                    <h2>Foils & Dusts</h2>
+
+                    <h3 className="glitter-subtitle">Foils</h3>
+                    <ul>
+                      {glitterOptions
+                        .filter((g) => g.category === "Foils")
+                        .map((g) => (
+                          <li
+                            key={g.id}
+                            onClick={() => openLightbox(g)}
+                            style={{
+                              backgroundColor:
+                                glitterSelected === g.id ? "green" : "",
+                              cursor: "pointer",
+                              listStyle: "none",
+                            }}
+                          >
+                            <img src={g.img} />
+                            <p>{g.name}</p>
+                          </li>
+                        ))}
+                    </ul>
+
+                    <h3 className="glitter-subtitle">Dusts</h3>
+                    <ul>
+                      {glitterOptions
+                        .filter((g) => g.category === "Dusts")
+                        .map((g) => (
+                          <li
+                            key={g.id}
+                            onClick={() => openLightbox(g)}
+                            style={{
+                              backgroundColor:
+                                glitterSelected === g.id ? "green" : "",
+                              cursor: "pointer",
+                              listStyle: "none",
+                            }}
+                          >
+                            <img src={g.img} />
+                            <p>{g.name}</p>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                );
+              }
+
+              // Default category rendering (unchanged)
+              return (
+                <div key={category} className="glliter-selection-div">
+                  <h2>{category}</h2>
+
+                  <ul>
+                    {glitterOptions
+                      .filter((g) => g.category === category)
+                      .map((g) => (
+                        <li
+                          key={g.id}
+                          onClick={() => openLightbox(g)}
+                          style={{
+                            backgroundColor:
+                              glitterSelected === g.id ? "green" : "",
+                            cursor: "pointer",
+                            listStyle: "none",
+                          }}
+                        >
+                          <img src={g.img} />
+                          <p>{g.name}</p>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
-          
         </section>
       )}
 
-       
       {preview && (
         <div className="glitter-lightbox-overlay" onClick={closeLightbox}>
           <div

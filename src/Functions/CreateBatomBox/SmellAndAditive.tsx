@@ -21,7 +21,7 @@ function SmellAndAditive({step,setStep,smell,setSmell,aditive,setAditive,esence,
   return (
     <>
 
-      {step === 3 && 
+      {step === 4 && 
         <div className='adtive-container'>
           <p>Os aditivos especiais são utilizados para melhorar 
             e personalizar ainda mais o teu produto!</p>
@@ -34,7 +34,7 @@ function SmellAndAditive({step,setStep,smell,setSmell,aditive,setAditive,esence,
             </li>
             )}
           </ul>
-          <button onClick={() => setStep(4)} disabled={aditive === 'none'}>Continuar</button>
+          <button onClick={() => setStep(5)} disabled={aditive === 'none'}>Continuar</button>
           <span>*Os aditivos de hidratação (Moisture Additive) e suavização (Silkening Modifier) alteram a textura e as propriedades do batom</span>
         </div>}
 
