@@ -20,60 +20,88 @@ function AutomaticColors({toggleColor,selected,setSelected}:AutomaticColors) {
     const [pallete,setPallete] = useState<Palette>()
 
     const handleEyeChange = (eye:EyeColorOptions):void => {
-        console.log(hairColor)
         setEyeColor(eye)
-        setInternalStep(1)
 
     }
 
     const handleSkinChange = (skin:SkinToneOptions):void => {
         setSkinTone(skin)
-        setInternalStep(2)
+        
     }
 
     const handleHairChange = (hair:HairColorOptions):void => {
         setHairColor(hair)
+        
+    }
+    
+    const setLastStep = () => {
         setInternalStep(3)
         setSelected([])
-        var newPalette:Palette = getPaletteFor(hair,skinTone,eyeColor)
+        var newPalette:Palette = getPaletteFor(hairColor,skinTone,eyeColor)
         setPallete(newPalette)
         toggleColor(newPalette.primary)
     }
 
 
   return (
-    <div>
+    <>
         {internalStep === 0 && 
         <>
-           <div>
-            Olhos
-            {eyesOptions.map((e) => 
-            <div key={e.id} onClick={() => handleEyeChange(e.id)}>
-            {e.name}
-            </div>)}
+            <div className='automatic-color-container'>
+                <div className='automatic-color-bgk'>
+                    <span>PASSO 1 DE 3</span>
+                    <h2>QUAL É O TOM DA TUA PELE?</h2>
+                    <p>Seleciona o tom que mais se aproxima do teu tom de pele.</p>
+                    <div>
+                        {skinOptions.map((s) => 
+                        <img style={{backgroundColor: skinTone == s.id ? "green" : ""}} 
+                        src={s.img} alt="" key={s.id} onClick={() => handleSkinChange(s.id)}/>
+
+                        )}
+                    </div>
+                    <button disabled={skinTone === undefined} onClick={() => setInternalStep(1)}>CONTINUAR</button>
+                </div>
+                
+            </div>
+        </>}
+        {internalStep === 1 && 
+        <>
+           <div className='automatic-color-container'>
+            <div className='automatic-color-bgk'>
+                    <span>PASSO 2 DE 3</span>
+                    <h2>QUAL É A COR DOS TEUS OLHOS?</h2>
+                    <p>Seleciona o tom que mais se aproxima da cor natural dos teus olhos.</p>
+                    <div>
+                        {eyesOptions.map((e) => 
+                        <img style={{backgroundColor: eyeColor == e.id ? "green" : ""}}
+                         key={e.id} onClick={() => handleEyeChange(e.id)} src={e.img}/>
+                        )}
+                    </div>
+                    <button disabled={eyeColor === undefined} onClick={() => setInternalStep(2)}>CONTINUAR</button>
+            </div>
             
            </div>
         </>}
         {internalStep > 0 && 
         <button onClick={() => setInternalStep(prev => prev - 1)}>Go back</button>}
-        {internalStep === 1 && 
-        <>
-            <div>
-                Peles:
-                {skinOptions.map((s) => 
-                <div key={s.id} onClick={() => handleSkinChange(s.id)}>
-                    {s.name}
-                </div>)}
-            </div>
-        </>}
+        
         {internalStep === 2 && 
         <>
-           <div>
-                Cabelo:
-                {hairOptions.map((h) => 
-                <div key={h.id} onClick={() => handleHairChange(h.id)}>
-                    {h.name}
-                </div>)}
+           <div className='automatic-color-container'>
+                <div className='automatic-color-bgk'>
+                        <span>PASSO 3 DE 3</span>
+                        <h2>QUAL É A COR DO TEU CABELO?</h2>
+                        <p>Seleciona o tom que mais se aproxima da cor atual do teu cabelo.</p>
+                        <div>
+                        {hairOptions.map((h) => 
+                            <img style={{backgroundColor: hairColor== h.id ? "green" : ""}} 
+                            key={h.id} onClick={() => handleHairChange(h.id)} src={h.img}/>
+
+                        )}
+                        </div>
+                        <button disabled={hairColor === undefined} onClick={() => setLastStep()}>CONTINUAR</button>
+                </div>
+                
             </div>
         </>}
         {internalStep === 3 &&
@@ -87,7 +115,7 @@ function AutomaticColors({toggleColor,selected,setSelected}:AutomaticColors) {
             </div>
         </>}
 
-    </div>
+    </>
   )
 }
 

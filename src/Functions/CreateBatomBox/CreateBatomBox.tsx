@@ -73,6 +73,7 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
     setSelectedColor(undefined);
     setStep(0);
     setSmell("none");
+    setDoItYourSelf(undefined)
 
     // ✅ reset to null (not "none")
     setGlitterSelected(null);
@@ -168,184 +169,178 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
             {type} <button onClick={() => setType(undefined)}>X</button>
           </p>
 
-          <main
-            className="main-color-selection"
-            style={{ backgroundImage: `url(${libsbackg})` }}
-          >
-            <div className="main-color-back">
-              {doItYourSelf === undefined && (
-                <>
-                  <div className="item-display">
-                    <div className="item-display-container">
-                      <div>
-                        <h2>
-                          Prepara-te para criares o teu{" "}
-                          {type === "gloss" ? "GLOSS " : "BATOM"} de sonho!
-                        </h2>
-                        <p className="p-1">
-                          Segue os próximos passos e dá vida ao teu {type} labial.
+          {step !== 8 && <>
+            <main
+              className="main-color-selection"
+              style={{ backgroundImage: `url(${libsbackg})` }}
+            >
+              <div className="main-color-back">
+                {doItYourSelf === undefined && (
+                  <>
+                    <div className="item-display">
+                      <div className="item-display-container">
+                        <div>
+                          <h2>
+                            Prepara-te para criares o teu{" "}
+                            {type === "gloss" ? "GLOSS " : "BATOM"} de sonho!
+                          </h2>
+                          <p className="p-1">
+                            Segue os próximos passos e dá vida ao teu {type} labial.
+                          </p>
+                          <img src={descVer} alt="" />
+                        </div>
+                        <p>
+                          *As cores podem variar dependendo do tipo de ecrã Para
+                          obter melhores resultados, certifique-se de que o brilho
+                          do ecrã está no máximo
                         </p>
-                        <img src={descVer} alt="" />
                       </div>
-                      <p>
-                        *As cores podem variar dependendo do tipo de ecrã Para
-                        obter melhores resultados, certifique-se de que o brilho
-                        do ecrã está no máximo
-                      </p>
+
+                      <img src={pinkGloss} alt="" className="pink-gloss" />
                     </div>
+                  </>
+                )}
 
-                    <img src={pinkGloss} alt="" className="pink-gloss" />
-                  </div>
-                </>
-              )}
+                {(step >= 0 && step < 3 || step >= 5 && step < 8) && doItYourSelf === true && (
+                  <>
+                    <div className="item-display-2">
+                      <div className="item-img-2-color-wrapper">
+                        <div
+                          className="item-color-fill item-color-fill-2"
+                          style={{
+                            backgroundColor: selectedColor || "transparent",
+                          }}
+                        />
+                        <img
+                          src={glossWhioutImage}
+                          alt=""
+                          className="item-img-2-create"
+                        />
+                      </div>
 
-              {step >= 0 && step < 8 && doItYourSelf !== undefined && (
-                <>
-                  <div className="item-display-2">
-                    <div className="item-img-2-color-wrapper">
-                      <div
-                        className="item-color-fill item-color-fill-2"
-                        style={{
-                          backgroundColor: selectedColor || "transparent",
-                        }}
-                      />
-                      <img
-                        src={glossWhioutImage}
-                        alt=""
-                        className="item-img-2-create"
-                      />
+                      <img src={descVer} alt="" className="item-img-3" />
                     </div>
+                  </>
+                )}
 
-                    <img src={descVer} alt="" className="item-img-3" />
-                  </div>
-                </>
-              )}
+                <ColorsSelection
+                  setSelectedColor={setSelectedColor}
+                  step={step}
+                  setStep={setStep}
+                  doItYourSelf={doItYourSelf}
+                  setDoItYourSelf={setDoItYourSelf}
+                />
 
-              <ColorsSelection
-                setSelectedColor={setSelectedColor}
-                step={step}
-                setStep={setStep}
-                doItYourSelf={doItYourSelf}
-                setDoItYourSelf={setDoItYourSelf}
-              />
+                <GlitterBaseSelection
+                  step={step}
+                  setStep={setStep}
+                  glitterSelected={glitterSelected}
+                  setGlitterSelected={setGlitterSelected}
+                  type={type}
+                  baseSelected={baseSelected}
+                  setBaseSelected={setBaseSelected}
+                />
 
-              <GlitterBaseSelection
-                step={step}
-                setStep={setStep}
-                glitterSelected={glitterSelected}
-                setGlitterSelected={setGlitterSelected}
-                type={type}
-                baseSelected={baseSelected}
-                setBaseSelected={setBaseSelected}
-              />
+                <SmellAndAditive
+                  step={step}
+                  setStep={setStep}
+                  smell={smell}
+                  setSmell={setSmell}
+                  aditive={aditive}
+                  setAditive={setAditive}
+                  esence={esence}
+                  setEsence={setEsence}
+                />
 
-              <SmellAndAditive
-                step={step}
-                setStep={setStep}
-                smell={smell}
-                setSmell={setSmell}
-                aditive={aditive}
-                setAditive={setAditive}
-                esence={esence}
-                setEsence={setEsence}
-              />
-
-              <FormatAndText
-                step={step}
-                setStep={setStep}
-                type={type}
-                boxText={boxText}
-                formula={formula}
-                setFormula={setFormula}
-                setBoxText={setBoxText}
-              />
-            </div>
-          </main>
+                <FormatAndText
+                  step={step}
+                  setStep={setStep}
+                  type={type}
+                  boxText={boxText}
+                  formula={formula}
+                  setFormula={setFormula}
+                  setBoxText={setBoxText}
+                />
+              </div>
+            </main>
+          </>}
+          
 
           {step === 8 && (
-            <div className="purchse-screen">
-              <div className="purchse-screen-logo">
-                <img src={logoLibs} alt="Lips Lab logo" />
-                <div className="purchse-screen-logo-div">
-                  <h2>
-                    CRIASTE O TEU{" "}
-                    {type === "gloss" ? "GLOSS LABIAL" : "BATOM"} DO ZERO!
-                  </h2>
-                  <p>
-                    Antes de finalizar a compra, confirma se está tudo correto.
-                  </p>
-                </div>
-                <ul>
-                  <li>
-                    <div
-                      style={{ backgroundColor: selectedColor }}
-                      onClick={() => setStep(1)}
-                    />
-                    <p>cor</p>
-                  </li>
-                  <li>
-                    <div onClick={() => setStep(2)}>
-                      <p>{baseSelected}</p>
-                    </div>
-                    <p>base</p>
-                  </li>
-                  <li>
-                    <div onClick={() => setStep(3)}>
-                      <img
-                        src={
-                          additiveOptions.filter((a) => a.id === aditive)[0].img
-                        }
-                        alt=""
-                      />
-                      <p>{aditive}</p>
-                    </div>
-                    <p>aditivo</p>
-                  </li>
-                  <li>
-                    <div onClick={() => setStep(4)}>
-                      {selectedGlitterObj?.img && (
-                        <img src={selectedGlitterObj.img} alt="" />
-                      )}
-                      <p>{selectedGlitterObj?.name ?? "none"}</p>
-                    </div>
-                    <p>pigmento</p>
-                  </li>
-                  <li>
-                    <div onClick={() => setStep(5)}>
-                      <div className="smell-esence">
-                        <img
-                          src={smellOptions.filter((a) => a.id === smell)[0].img}
-                          alt=""
-                        />
-                        <img
-                          src={allEsence.filter((a) => a.id === esence)[0].img}
-                          alt=""
-                        />
-                      </div>
-                      <p>
-                        {smell} & {esence}
-                      </p>
-                    </div>
-                    <p>SABOR & ESSÊNCIA</p>
-                  </li>
-                  <li>
-                    <div onClick={() => setStep(6)}>
-                      <p>{formula}</p>
-                    </div>
-                    <p>FÓRMULA</p>
-                  </li>
-                  <li>
-                    <div onClick={() => setStep(7)}>
-                      <p>{boxText}</p>
-                    </div>
-                    <p>PERSONALIZAÇÃO</p>
-                  </li>
-                </ul>
-                <button onClick={handleFinishPurchase}>
-                  <p>Conclui a tua compra</p>
-                </button>
+           <div className="purchse-screen">
+            <div className="purchse-screen-logo">
+              <img src={logoLibs} alt="Lips Lab logo" />
+              <div className="purchse-screen-logo-div">
+                <h2>
+                  CRIASTE O TEU próprio{" "}
+                  {type === "gloss" ? "GLOSS LABIAL" : "BATOM"}!
+                </h2>
+                <p>Antes de adicionares ao carrinho, confirma se está tudo correto.</p>
               </div>
+
+              <ul className="purchase-summary">
+                <li>
+                  <div style={{ ["--swatch" as any]: selectedColor }} onClick={() => setStep(1)} />
+                  <p>cor</p>
+                </li>
+
+               <li>
+                  <div onClick={() => setStep(2)}>
+                    <p>{baseSelected === "none" ? "—" : baseSelected}</p>
+                  </div>
+                  <p>base</p>
+                </li>
+
+                <li>
+                  <div onClick={() => setStep(3)}>
+                    <img
+                      src={additiveOptions.filter((a) => a.id === aditive)[0].img}
+                      alt=""
+                    />
+                  </div>
+                  <p>aditivo</p>
+                </li>
+
+                <li>
+                  <div onClick={() => setStep(4)}>
+                    {selectedGlitterObj?.img && <img src={selectedGlitterObj.img} alt="" />}
+                    
+                  </div>
+                  <p>pigmento</p>
+                </li>
+
+                <li>
+                  <div onClick={() => setStep(5)}>
+                    <div className="smell-esence">
+                      <img src={smellOptions.filter((a) => a.id === smell)[0].img} alt="" />
+                      <img src={allEsence.filter((a) => a.id === esence)[0].img} alt="" />
+                    </div>
+                    
+                  </div>
+                  <p>SABOR & ESSÊNCIA</p>
+                </li>
+
+                <li>
+                  <div onClick={() => setStep(6)}>
+                    <p>{formula === "none" ? "—" : formula}</p>
+                  </div>
+                  <p>FÓRMULA</p>
+                </li>
+
+                <li>
+                  <div onClick={() => setStep(7)}>
+                    <p>{boxText?.trim() ? boxText : "—"}</p>
+                  </div>
+                  <p>PERSONALIZAÇÃO</p>
+                </li>
+              </ul>
+
+              <button onClick={handleFinishPurchase}>
+                <p>Conclui a tua compra</p>
+              </button>
             </div>
+          </div>
+
           )}
         </>
       )}

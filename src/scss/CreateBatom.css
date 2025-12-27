@@ -335,6 +335,20 @@
   /* make it shorter so it stops at the bottom of the glass */
 }
 
+.title-button {
+  font-family: "ApercuPro";
+  color: white;
+  width: 40%;
+  font-weight: bold;
+  font-size: 2rem;
+  border-radius: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+  padding: 1rem;
+  background-color: #c41123;
+}
+
 .colors-selection {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -348,20 +362,6 @@
           align-items: center;
   padding: 2rem;
   gap: 30px;
-}
-
-.colors-selection .title-button {
-  font-family: "ApercuPro";
-  color: white;
-  width: 40%;
-  font-weight: bold;
-  font-size: 2rem;
-  border-radius: 50px;
-  text-align: center;
-  text-transform: uppercase;
-  font-style: italic;
-  padding: 1rem;
-  background-color: #c41123;
 }
 
 .colors-selection h3 {
@@ -603,7 +603,19 @@
 }
 
 .texture-selection-section {
+  width: 100%;
   padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.texture-selection-section img {
+  width: 40%;
+}
+
+.texture-selection-section div {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -611,16 +623,17 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 30px;
-}
-
-.texture-selection-section .texture-selection-p {
-  font-size: 18px;
-  color: #e55499;
-  width: 90%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
 }
 
 .texture-selection-section ul {
+  width: 50%;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -635,8 +648,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 10px;
+  gap: 15px;
   color: white;
+  background-color: white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 50px;
+  border: 2px solid pink;
 }
 
 .texture-selection-section ul li {
@@ -653,17 +671,20 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 35%;
-  background-color: #c41123;
-  padding: 0.3rem;
+  width: 80%;
+  background-color: #EC84A1;
+  padding: 0.5rem;
   border-radius: 50px;
   cursor: pointer;
+  font-weight: bold;
+  font-family: "ApercuPro";
+  font-style: italic;
 }
 
 .texture-selection-section ul strong {
   text-transform: uppercase;
   font-size: 18px;
-  font-weight: lighter;
+  font-weight: bold;
 }
 
 .texture-selection-section ul p {
@@ -743,7 +764,19 @@
   width: 60%;
 }
 
-.adtive-container {
+.adtive-section {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.adtive-section img {
+  width: 40%;
+}
+
+.adtive-section .adtive-container {
+  width: 100%;
   padding-top: 6rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -752,20 +785,26 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 20px;
+  color: white;
 }
 
-.adtive-container p {
-  color: #e55499;
-  font-size: 30px;
-  width: 80%;
+.adtive-section .adtive-container p {
+  color: #c41123;
+  font-size: 1rem;
+  text-align: center;
   font-weight: bold;
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  font-style: italic;
 }
 
-.adtive-container ul {
+.adtive-section .adtive-container ul {
   -ms-grid-row-align: center;
       align-self: center;
-  width: 70%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
@@ -777,13 +816,19 @@
       -ms-flex-align: center;
           align-items: center;
   row-gap: 20px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 50px;
+  border: 2px solid pink;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
 }
 
-.adtive-container ul li {
-  background-color: #c41123;
+.adtive-section .adtive-container ul li {
+  background-color: #EC84A1;
   border-radius: 30px;
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: 170px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -800,13 +845,22 @@
   padding: 1.5rem;
   color: white;
   cursor: pointer;
+  font-weight: bold;
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  font-style: italic;
 }
 
-.adtive-container ul li img {
+.adtive-section .adtive-container ul li p {
+  font-size: 0.8rem;
+  color: white;
+}
+
+.adtive-section .adtive-container ul li img {
   width: 60%;
 }
 
-.adtive-container button {
+.adtive-section .adtive-container button {
   border: none;
   padding: 1rem;
   -ms-flex-item-align: center;
@@ -824,21 +878,21 @@
   cursor: pointer;
 }
 
-.adtive-container button:hover {
+.adtive-section .adtive-container button:hover {
   -webkit-transform: translateY(-4px) scale(1.03);
           transform: translateY(-4px) scale(1.03);
   -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
-.adtive-container button:active {
+.adtive-section .adtive-container button:active {
   -webkit-transform: translateY(0px) scale(0.97);
           transform: translateY(0px) scale(0.97);
   -webkit-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
           box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
 }
 
-.adtive-container button:disabled {
+.adtive-section .adtive-container button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   -webkit-transform: none;
@@ -847,16 +901,11 @@
           box-shadow: none;
 }
 
-.adtive-container button:disabled:hover {
+.adtive-section .adtive-container button:disabled:hover {
   -webkit-transform: none;
           transform: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-}
-
-.adtive-container span {
-  color: #c41123;
-  font-weight: bold;
 }
 
 .taste-section {
@@ -871,31 +920,38 @@
   padding: 1rem;
 }
 
-.taste-section h2 {
-  width: 65%;
-  font-size: 25px;
-  color: #e55499;
-  margin-bottom: 2rem;
+.taste-section .title-button {
+  width: 60%;
 }
 
-.taste-section h3 {
-  color: #e55499;
-  font-size: 25px;
-  margin-bottom: 2rem;
+.taste-section .taste-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 50px;
+  border: 2px solid pink;
 }
 
-.taste-section ul {
+.taste-section .taste-container h3 {
+  color: #c41123;
+  font-family: "ApercuPro";
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.taste-section .taste-container ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
 }
 
-.taste-section li {
+.taste-section .taste-container li {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 80px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -908,7 +964,7 @@
   cursor: pointer;
 }
 
-.taste-section li div {
+.taste-section .taste-container li div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -920,24 +976,33 @@
           align-items: center;
   width: 60px;
   height: 60px;
-  background-color: #c41123;
+  background-color: #EC84A1;
   padding: 2rem;
   border-radius: 50px;
 }
 
-.taste-section li div img {
+.taste-section .taste-container li div img {
   width: 40px;
   height: 40px;
 }
 
-.taste-section li p {
+.taste-section .taste-container li p {
   font-weight: bold;
   color: #c41123;
   text-align: center;
+  font-family: "ApercuPro";
+}
+
+.taste-section .span-botom {
+  font-family: "ApercuPro", serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #c41123;
 }
 
 .esence-container {
-  width: 75%;
+  width: 85%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -946,7 +1011,7 @@
 }
 
 .esence-container button {
-  background-color: #c41123;
+  background-color: #EC84A1;
   color: white;
   border: none;
   border-radius: 50px;
@@ -962,14 +1027,16 @@
 }
 
 .esence-container button img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 .esence-container button p {
-  font-family: "IvyPresto", serif;
-  font-size: 0.7rem;
-  font-weight: 500;
+  width: 100%;
+  font-family: "ApercuPro", serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-style: italic;
   margin: 0;
   text-transform: uppercase;
   text-align: center;
@@ -980,15 +1047,68 @@
       justify-self: center;
 }
 
+.aditive-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.aditive-button-container div {
+  position: relative;
+  top: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+
+.aditive-button-container div .creative {
+  padding: 1.2rem;
+  background-color: #e55499;
+  color: white;
+  font-family: "ApercuPro";
+  text-transform: uppercase;
+  font-style: italic;
+  border: 2px solid white;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.aditive-button-container div p {
+  font-family: "ApercuPro";
+  color: #c41123;
+  text-align: center;
+  font-weight: bold;
+}
+
 .continue-button {
-  margin-top: 5rem;
   background-color: #c41123;
   text-transform: uppercase;
+  font-family: "ApercuPro";
   border: none;
-  padding: 1rem;
-  width: 35%;
-  font-size: 25px;
+  padding: 0.8rem;
+  width: 30%;
+  font-size: 1.8rem;
+  font-style: italic;
   color: white;
+  font-weight: bold;
   border-radius: 50px;
   -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
   transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
@@ -1030,12 +1150,18 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8rem;
 }
 
 .formula-section h2 {
-  color: #e55499;
-  width: 70%;
+  color: #c41123;
+  font-family: "ApercuPro";
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  font-style: italic;
 }
 
 /* Clean elegant formula list */
@@ -1048,12 +1174,12 @@
       justify-self: center;
   padding: 0;
   margin: 0;
-  width: 90%;
+  width: 80%;
 }
 
 .formula-clean-item {
-  border-top: 3px solid #e55499;
-  border-bottom: 3px solid #e55499;
+  border-top: 1.5px solid #e55499;
+  border-bottom: 1.5px solid #e55499;
   margin-bottom: 0.6rem;
   padding-left: 0.4rem;
 }
@@ -1062,7 +1188,7 @@
   width: 100%;
   border: none;
   background: transparent;
-  padding: 0.7rem 0;
+  padding: 0.5rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1076,12 +1202,12 @@
 }
 
 .formula-clean-header span:first-child {
-  font-family: "IvyPresto", serif;
+  font-family: "ApercuPro", serif;
   text-transform: uppercase;
   color: #c41123;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  font-style: italic;
 }
 
 .formula-clean-toggle {
@@ -1113,6 +1239,8 @@
 .formula-clean-body p {
   padding: 0.7rem 0;
   color: #c41123;
+  font-family: "ApercuPro";
+  font-weight: bold;
   font-size: 0.95rem;
   line-height: 1.4;
   margin: 0;
@@ -1136,6 +1264,26 @@
   position: relative;
 }
 
+.engraving-span-title {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-family: "ApercuPro";
+  padding: 1.5rem;
+  background-color: #c41123;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+  border-radius: 35px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
 .engraving-main {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -1150,54 +1298,75 @@
 }
 
 .engraving-title {
-  font-family: "IvyPresto", serif;
-  font-size: 1.6rem;
-  color: #e55499;
-  margin-bottom: 6rem;
+  font-family: "ApercuPro";
+  font-size: 1rem;
+  color: #c41123;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bolder;
+  font-style: italic;
 }
 
 .engraving-input-wrapper {
-  width: 90%;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  background: #ffb7d2;
-  border-radius: 50px;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  background: #e7549a;
+  border-radius: 999px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
+/* INPUT */
 .engraving-input {
+  font-family: "ApercuPro";
   width: 100%;
-  padding: 1rem 1.5rem;
-  border-radius: 50px;
+  padding: 0.25rem 0;
+  background: transparent;
   border: none;
-  background: #ffb7d2;
-  color: #c41123;
-  font-size: 1rem;
   outline: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  /* underline */
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
 }
 
+/* PLACEHOLDER */
 .engraving-input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  font-family: "ApercuPro";
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.7rem;
 }
-
 .engraving-input:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  font-family: "ApercuPro";
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.7rem;
 }
-
 .engraving-input::-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  font-family: "ApercuPro";
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.7rem;
 }
-
 .engraving-input::placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  font-family: "ApercuPro";
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.7rem;
 }
 
 .engraving-test-fonts {
@@ -1207,16 +1376,19 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  font-family: "ApercuPro";
   width: 100%;
 }
 
 .engraving-subtitle {
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  color: #e55499;
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #c41123;
   text-align: center;
+  font-family: "ApercuPro";
 }
 
 .engraving-symbol-list {
@@ -1419,7 +1591,6 @@
 
 .glliter-selection-div .glitter-subtitle {
   margin: 14px 0 12px;
-  padding: 10px 14px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1429,19 +1600,22 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-style: italic;
   border-radius: 999px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  /* soft pink pill look (similar to the screenshot) */
+  font-family: "ApercuPro";
   background: rgba(233, 81, 156, 0.14);
   border: 1px solid rgba(233, 81, 156, 0.32);
   color: rgba(233, 81, 156, 0.95);
 }
 
 .glliter-selection-div h2 {
-  color: #e55499;
+  color: #c41123;
   text-transform: uppercase;
+  font-style: italic;
+  font-family: "ApercuPro";
   font-weight: bolder;
   font-size: 25px;
 }
@@ -1626,9 +1800,8 @@
 }
 
 .purchse-screen {
-  /* base colour behind the pattern */
+  padding: 4rem;
   background-color: #e55499;
-  /* IMPORTANT: actual pattern image */
   background-image: url("../assets/libs back white.png");
   background-repeat: repeat;
   background-size: 110%;
@@ -1665,6 +1838,29 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /* ============================= */
+  /* PURCHASE SUMMARY GRID */
+  /* ============================= */
+  /* WHITE CARD */
+  /* STEP LABEL (COR / BASE / ...) */
+  /* ============================= */
+  /* INSIDE-CIRCLE TEXT */
+  /* BASE (2), FORMULA (6), PERSONALIZACAO (7) */
+  /* ============================= */
+  /* ============================= */
+  /* SPECIFIC CARD FIXES */
+  /* ============================= */
+  /* ADITIVO (3) — icon should NOT fill circle */
+  /* PIGMENTO (4) — MUST fill entire circle */
+  /* SABOR & ESSÊNCIA (5) — hard override */
+  /* ============================= */
+  /* RESPONSIVE */
+  /* ============================= */
+}
+
+.purchse-screen-logo img {
+  width: 25%;
+  margin-bottom: 3rem;
 }
 
 .purchse-screen-logo button {
@@ -1702,32 +1898,50 @@
 }
 
 .purchse-screen-logo .purchse-screen-logo-div h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: white;
-  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "ApercuPro";
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
 }
 
 .purchse-screen-logo .purchse-screen-logo-div p {
   text-align: center;
   color: white;
+  font-family: "ApercuPro";
+  font-weight: bold;
+  font-style: italic;
 }
 
-.purchse-screen-logo img {
-  width: 25%;
-  margin-bottom: 3rem;
-}
-
-.purchse-screen-logo ul {
+.purchse-screen-logo .purchase-summary {
   width: 100%;
   list-style: none;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[7];
       grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+  gap: 34px;
+  padding: 0;
+  margin: 0;
+  place-items: center;
 }
 
-.purchse-screen-logo li {
+.purchse-screen-logo .purchase-summary > li {
+  position: relative;
+  width: 150px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.purchse-screen-logo .purchase-summary > li > div {
+  position: relative;
+  width: 150px;
+  height: 190px;
+  background: #ffffff;
+  border-radius: 28px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1735,20 +1949,248 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 10px;
-}
-
-.purchse-screen-logo li div {
+  padding: 16px 14px 18px;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.18s ease, -webkit-box-shadow 0.18s ease;
+  transition: -webkit-transform 0.18s ease, -webkit-box-shadow 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, -webkit-transform 0.18s ease, -webkit-box-shadow 0.18s ease;
+  /* TOP CIRCLE BACKGROUND */
+  /* COLOR SWATCH (COR only) */
+  /* DEFAULT ICON POSITION */
+  /* DEFAULT ICON (overridden later when needed) */
+  /* DEFAULT VALUE TEXT (below circle) */
+}
+
+.purchse-screen-logo .purchase-summary > li > div:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.purchse-screen-logo .purchase-summary > li > div::before {
+  content: "";
+  width: 66px;
+  height: 66px;
+  border-radius: 999px;
+  background: rgba(255, 183, 210, 0.55);
+  margin-top: 6px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.purchse-screen-logo .purchase-summary > li > div::after {
+  content: "";
+  width: 66px;
+  height: 66px;
+  border-radius: 999px;
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: var(--swatch, transparent);
+  z-index: 2;
+}
+
+.purchse-screen-logo .purchase-summary > li > div img,
+.purchse-screen-logo .purchase-summary > li > div .smell-esence {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 3;
+}
+
+.purchse-screen-logo .purchase-summary > li > div img {
+  width: 44px;
+  height: 44px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.purchse-screen-logo .purchase-summary > li > div .smell-esence {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+}
+
+.purchse-screen-logo .purchase-summary > li > div .smell-esence img {
+  position: static;
+  width: 28px;
+  height: 28px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.purchse-screen-logo .purchase-summary > li > div > p {
+  margin: 0;
+  margin-top: 92px;
+  padding: 0 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  color: #111;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.purchse-screen-logo .purchase-summary > li > p {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin: 0;
+  width: 130px;
+  font-family: "ApercuPro";
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #111;
+  pointer-events: none;
+}
+
+.purchse-screen-logo .purchase-summary > li:nth-child(2) > div > p,
+.purchse-screen-logo .purchase-summary > li:nth-child(6) > div > p,
+.purchse-screen-logo .purchase-summary > li:nth-child(7) > div > p {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 66px;
+  height: 66px;
+  margin: 0;
+  padding: 6px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.55rem;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.6);
+  z-index: 4;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.purchse-screen-logo .purchase-summary > li:nth-child(3) > div img {
+  width: 44px;
+  height: 44px;
+  border-radius: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  top: 33px;
+}
+
+.purchse-screen-logo .purchase-summary > li:nth-child(4) > div img {
+  width: 66px;
+  height: 66px;
+  border-radius: 999px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 22px;
+}
+
+.purchse-screen-logo .purchse-screen-logo
+.purchase-summary
+> li:nth-child(5)
+> div
+.smell-esence {
+  position: absolute !important;
+  top: 22px !important;
+  left: 50% !important;
+  -webkit-transform: translateX(-50%) !important;
+          transform: translateX(-50%) !important;
+  width: 66px !important;
+  height: 66px !important;
+  border-radius: 999px !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  gap: 8px !important;
+  z-index: 4 !important;
+  /* key fixes */
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.purchse-screen-logo .purchse-screen-logo
+.purchase-summary
+> li:nth-child(5)
+> div
+.smell-esence
+img {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  -webkit-transform: none !important;
+          transform: none !important;
+  width: 26px !important;
+  height: 26px !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  border-radius: 0 !important;
+  display: block !important;
+}
+
+@media (max-width: 1200px) {
+  .purchse-screen-logo .purchase-summary {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  .purchse-screen-logo .purchase-summary {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+.automatic-color-container {
   width: 100%;
-  border-radius: 30px;
-  height: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.automatic-color-container .automatic-color-bgk {
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1756,51 +2198,81 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 1rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #ffb7d2;
-  -webkit-transition: all ease 0.2s;
-  transition: all ease 0.2s;
+  background-color: #e55499;
+  min-height: 70vh;
+  padding: 2rem;
+  color: white;
+  border-radius: 30px;
 }
 
-.purchse-screen-logo li div:hover {
-  width: 102%;
-  height: 185px;
+.automatic-color-container .automatic-color-bgk span {
+  font-family: "ApercuPro";
+  font-weight: bold;
+  font-style: italic;
+  font-size: 0.8rem;
+  text-align: center;
 }
 
-.purchse-screen-logo li div .smell-esence {
+.automatic-color-container .automatic-color-bgk h2 {
+  font-family: "ApercuPro";
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.automatic-color-container .automatic-color-bgk p {
+  font-family: "ApercuPro";
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 4rem;
+}
+
+.automatic-color-container .automatic-color-bgk div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  gap: 10px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 6rem;
 }
 
-.purchse-screen-logo li div .smell-esence img {
-  width: 50px;
+.automatic-color-container .automatic-color-bgk div img {
+  cursor: pointer;
 }
 
-.purchse-screen-logo li div img {
-  width: 90px;
-}
-
-.purchse-screen-logo li div p {
-  text-transform: lowercase;
-}
-
-.purchse-screen-logo li p {
+.automatic-color-container .automatic-color-bgk button {
+  font-family: "ApercuPro";
+  font-weight: bold;
   text-transform: uppercase;
+  font-style: italic;
   color: white;
+  background-color: #c41123;
+  padding: 1rem;
+  border: none;
+  border-radius: 50px;
+  width: 25%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  font-size: 1.6rem;
+}
+
+.automatic-color-container .automatic-color-bgk button:disabled {
+  background-color: #f1a5b3;
+  /* softer pink */
+  color: rgba(255, 255, 255, 0.75);
+  cursor: not-allowed;
+  opacity: 0.85;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transform: none;
+          transform: none;
 }
 /*# sourceMappingURL=CreateBatom.css.map */

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import type { BaseOptions } from "./Types";
 import { useApp, type GlitterColor } from "../../Contexts/AppProvider";
+import monthBase from "../../assets/mouthBase.svg"
 
 type GlitterBaseType = {
   step: number;
@@ -41,63 +42,64 @@ function GlitterBaseSelection({
   };
 
   return (
-    <div>
+    <>
       {step === 3 && (
-        <div className="texture-selection-section">
-          <p className="texture-selection-p">
-            Diferentes texturas de glosses labiais requerem diferentes tipos de
-            base. Existem seis opções principais entre as quais podes escolher:
-          </p>
+        <section className="texture-selection-section">
+         
+          <img src={monthBase} alt="" />
+          <div>
+              <span className='title-button'>escolhe a BASE</span>
+              {type === "batom" && (
+              <ul>
+                {baseBatom.map((b) => (
+                  <li
+                    key={b.id}
+                    onClick={
+                      baseSelected === b.id
+                        ? () => setBaseSelected("none")
+                        : () => setBaseSelected(b.id)
+                    }
+                    style={{
+                      backgroundColor: baseSelected === b.id ? "#c41123" : "",
+                    }}
+                  >
+                    <strong>{b.name}</strong>
+                    <p>{b.description}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
 
-          {type === "batom" && (
-            <ul>
-              {baseBatom.map((b) => (
-                <li
-                  key={b.id}
-                  onClick={
-                    baseSelected === b.id
-                      ? () => setBaseSelected("none")
-                      : () => setBaseSelected(b.id)
-                  }
-                  style={{
-                    backgroundColor: baseSelected === b.id ? "green" : "",
-                  }}
-                >
-                  <strong>{b.name}</strong>
-                  <p>{b.description}</p>
-                </li>
-              ))}
-            </ul>
-          )}
+            {type === "gloss" && (
+              <ul>
+                {baseGloss.map((b) => (
+                  <li
+                    key={b.id}
+                    onClick={
+                      baseSelected === b.id
+                        ? () => setBaseSelected("none")
+                        : () => setBaseSelected(b.id)
+                    }
+                    style={{
+                      backgroundColor: baseSelected === b.id ? "#c41123" : "",
+                    }}
+                  >
+                    <strong>{b.name}</strong>
+                    <p>{b.description}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
 
-          {type === "gloss" && (
-            <ul>
-              {baseGloss.map((b) => (
-                <li
-                  key={b.id}
-                  onClick={
-                    baseSelected === b.id
-                      ? () => setBaseSelected("none")
-                      : () => setBaseSelected(b.id)
-                  }
-                  style={{
-                    backgroundColor: baseSelected === b.id ? "green" : "",
-                  }}
-                >
-                  <strong>{b.name}</strong>
-                  <p>{b.description}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          <button
-            className="texture-selection-section-button"
-            onClick={() => setStep(4)}
-          >
-            CONTINUAR!
-          </button>
-        </div>
+            <button
+              className="texture-selection-section-button"
+              onClick={() => setStep(4)}
+            >
+              CONTINUAR!
+            </button>
+          </div>
+          
+        </section>
       )}
 
       {step === 2 && (
@@ -235,7 +237,7 @@ function GlitterBaseSelection({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

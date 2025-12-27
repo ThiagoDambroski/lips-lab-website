@@ -75,6 +75,27 @@ import platinum from "../assets/glitter/platinum.png";
 import ruby from "../assets/glitter/ruby.png";
 import twinkle from "../assets/glitter/twinkle.png";
 
+import muitoClara from "../assets/pele muito clara.svg"
+import clara from "../assets/pele clara.svg"
+import morenaClara from "../assets/morena clara.svg"
+import morena from "../assets/morena.svg"
+import morenaEscura from "../assets/morena escura.svg"
+import escura from "../assets/escura.svg"
+
+import olhoAzul from "../assets/olhos azul.svg"
+import olhoVerde from "../assets/olhos verdes.svg"
+import olhoCinza from "../assets/olhos cinza.svg"
+import olhoCastanho from "../assets/olhos castanhos.svg"
+import olhoEscuro from "../assets/olhos escuros.svg"
+
+import cabeloPreto from "../assets/cabelo preto.svg"
+import cabeloCastanhoEsc from "../assets/cabelo castanho escuro.svg"
+import cabeloCastanhoCla from "../assets/cabelo castanho claro.svg"
+import cabeloCinza from "../assets/cabelo cinza.svg"
+import cabeloLoiro from "../assets/cabelo loiro.svg"
+import cabeloRuvido from "../assets/cabelo ruivo.svg"
+
+
 type ColorOption = {
   hex: string;
   sub: string;
@@ -94,9 +115,9 @@ type AppContextType = {
     description: string;
     img: string;
   }[],
-  eyesOptions: { id: EyeColorOptions; name: string }[],
-  skinOptions: { id: SkinToneOptions; name: string }[],
-  hairOptions: { id: HairColorOptions; name: string }[],
+  eyesOptions: { id: EyeColorOptions; img: string }[],
+  skinOptions: { id: SkinToneOptions; img: string }[],
+  hairOptions: { id: HairColorOptions; img: string }[],
   allEsence: { id: EsenceOptions, name: string, img: string }[];
 
 }
@@ -254,15 +275,15 @@ function AppProvider({ children }: appProviderProps) {
     },
     {
       id: "balm",
-      name: "CREMOSO",
+      name: "BÁLSAMO",
       description:
-        "bálsamo & nutritivo",
+        "suave & nutritivo",
     },
     {
       id: "vinyl",
-      name: "POLIDO",
+      name: "polish",
       description:
-        "brilho intenso & sem efeito pegajoso",
+        "translúcido & reparador",
     },
     {
       id: "vegan",
@@ -275,71 +296,62 @@ function AppProvider({ children }: appProviderProps) {
 
     {
       id: "canela",
-      name: "canela",
+      name: "Canela",
       img:
         canela,
     },
     {
       id: "cereja",
-      name: "cereja jubilee",
+      name: "Cereja jubilee",
       img: cereja,
     },
     {
       id: "trufa",
-      name: "trufa de framboesa",
+      name: "Trufa de framboesa",
       img:
         trufa,
     },
     {
-      id: "champa",
-      name: "champanhe rosé",
-      img: champa,
-    },
-    {
       id: "creme",
-      name: "crème brûlée",
+      name: "Crème brûlée",
       img: creme,
     },
     {
       id: "bolo",
-      name: "bolo de cenoura",
+      name: "Cenoura",
       img: bolo,
     },
     {
       id: "hortela",
-      name: "hortelâ fresca",
+      name: "Menta",
       img:
         hortela,
     },
     {
       id: "lima",
-      name: "lima com coco",
+      name: "Lima com Coco",
       img:
         lima,
     },
     {
       id: "avela",
-      name: "avelã",
+      name: "Avelã",
       img:
         avela,
     },
     {
       id: "sorvete",
-      name: "sorvete de pêssego",
+      name: "Pêssego",
       img:
         sorvete,
     },
     {
       id: "mimosa",
-      name: "mimosa",
+      name: "Mimosa",
       img:
         mimosa,
     },
-    {
-      id: "sambuca",
-      name: "sambuca",
-      img: sambuca,
-    },
+  
   ]
   const additiveOptions: {
     id: AdditivesOptions;
@@ -392,30 +404,30 @@ function AppProvider({ children }: appProviderProps) {
       },
     ];
 
-  const eyesOptions: { id: EyeColorOptions; name: string }[] = [
-    { id: "azul", name: "Azul" },
-    { id: "verde", name: "Verde" },
-    { id: "verde-cinza", name: "Verde / Cinza" },
-    { id: "castanho", name: "Castanho" },
-    { id: "preto-castanho-escuro", name: "Preto / Castanho escuro" },
+  const eyesOptions: { id: EyeColorOptions; img: string }[] = [
+    { id: "azul", img: olhoAzul },
+    { id: "verde", img: olhoVerde },
+    { id: "verde-cinza", img: olhoCinza },
+    { id: "castanho", img: olhoCastanho },
+    { id: "preto-castanho-escuro", img: olhoEscuro },
   ];
 
-  const skinOptions: { id: SkinToneOptions; name: string }[] = [
-    { id: "muito-claro", name: "Muito claro" },
-    { id: "rosado", name: "Rosado" },
-    { id: "oliva", name: "Oliva" },
-    { id: "ambar", name: "Âmbar" },
-    { id: "escuro", name: "Escuro" },
-    { id: "muito-escuro", name: "Muito escuro" },
+  const skinOptions: { id: SkinToneOptions; img: string }[] = [
+    { id: "muito-claro", img: muitoClara },
+    { id: "rosado", img: clara },
+    { id: "oliva", img: morenaClara },
+    { id: "ambar", img: morena },
+    { id: "escuro", img: morenaEscura },
+    { id: "muito-escuro", img: escura },
   ];
 
-  const hairOptions: { id: HairColorOptions; name: string }[] = [
-    { id: "preto", name: "Preto" },
-    { id: "castanho-escuro", name: "Castanho escuro" },
-    { id: "castanho-claro", name: "Castanho claro" },
-    { id: "cinzento", name: "Cinzento" },
-    { id: "loiro", name: "Loiro" },
-    { id: "ruivo", name: "Ruivo" },
+  const hairOptions: { id: HairColorOptions; img: string }[] = [
+    { id: "preto", img: cabeloPreto },
+    { id: "castanho-escuro", img: cabeloCastanhoEsc },
+    { id: "castanho-claro", img: cabeloCastanhoCla },
+    { id: "cinzento", img: cabeloCinza },
+    { id: "loiro", img: cabeloLoiro },
+    { id: "ruivo", img: cabeloRuvido },
   ];
 
   const allEsence: { id: EsenceOptions, name: string, img: string }[] = [

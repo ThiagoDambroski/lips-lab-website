@@ -310,16 +310,7 @@
      /* make it shorter so it stops at the bottom of the glass */
 }
 
-
-
-.colors-selection{ 
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding:2rem;
-   gap: 30px;
-
-   .title-button{
+.title-button{
     font-family: "ApercuPro";
     color: white;
     width: 40%;
@@ -332,6 +323,15 @@
     padding: 1rem;
     background-color: #c41123;
    }
+
+.colors-selection{ 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding:2rem;
+   gap: 30px;
+
+   
    h3{
     font-style: italic;
     text-transform: uppercase;
@@ -522,38 +522,54 @@
 }
 
 .texture-selection-section{
+    width: 100%;
     padding: 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-    .texture-selection-p{
-        font-size: 18px;
-        color: #e55499;
-        width: 90%;
+    
+    img{
+      width: 40%;
+    }
+    div{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
     }
     ul{
+        width: 50%;
         list-style: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
         color: white;
+        background-color: white;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        border-radius: 50px;
+        border: 2px solid pink;
+
         li{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 35%;
-            background-color: #c41123;
-            padding: 0.3rem;
+            width: 80%;
+            background-color: #EC84A1;
+            padding: 0.5rem;
             border-radius: 50px;
             cursor: pointer;
+            font-weight: bold;
+            font-family: "ApercuPro";
+            font-style: italic;
         }
         strong{
             text-transform: uppercase;
             font-size: 18px;
-            font-weight: lighter;
+            font-weight: bold;
         }
         p{
             color:white;
@@ -617,150 +633,187 @@
         width: 60%;
     }
 }
+.adtive-section{
+  width: 100%;
+  display: flex;
+  img{
+    width: 40%;
+  }
+  .adtive-container{
+      width:100% ;
+      padding-top: 6rem;
+      display: flex;
+      flex-direction: column;
+      
+      align-items: center;
+      gap: 20px;
+      color: white;
+      p{
+          color: #c41123;
+          font-size: 1rem;
+          text-align: center;
+          font-weight: bold;
+          font-family: "ApercuPro";
+          text-transform: uppercase;
+          font-style: italic;
+      }
+      ul{
+          align-self: center;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          justify-content: center;
+          align-items: center;
+          row-gap: 20px;
+          background-color: white;
+          padding: 2rem;
+          border-radius: 50px;
+          border: 2px solid pink;
+          column-gap: 20px;
+          li{
+              background-color: #EC84A1;
+              border-radius: 30px;
+              width: 170px;
+              height: 170px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: center;
+              padding: 1.5rem;
+              color: white;
+              cursor: pointer;
+              font-weight: bold;
+              font-family: "ApercuPro";
+              text-transform: uppercase;
+              font-style: italic;
+              p{
+                font-size: 0.8rem;
+                color: white;
+              }
+              img{
+                  width: 60%;
+              }
 
-.adtive-container{
-    padding-top: 6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    p{
-        color: #e55499;
-        font-size: 30px;
-        width: 80%;
-        font-weight: bold;
-    }
-    ul{
-        align-self: center;
-        width: 70%;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-content: center;
-        align-items: center;
-        row-gap: 20px;
-        li{
-            background-color: #c41123;
-            border-radius: 30px;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            color: white;
-            cursor: pointer;
-            img{
-                width: 60%;
-                
+          }
+      }
+      button{
+          border: none;
+          padding: 1rem;
+          align-self: center;
+          width: 40%;
+          background-color: #c41123;
+          color: white;
+          font-size: 30px;
+          border-radius: 50px;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          cursor: pointer;
+      }
 
-            }
+      button:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+      }
 
-        }
-    }
-    button{
-        border: none;
-        padding: 1rem;
-        align-self: center;
-        width: 40%;
-        background-color: #c41123;
-        color: white;
-        font-size: 30px;
-        border-radius: 50px;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        cursor: pointer;
-    }
+      button:active {
+          transform: translateY(0px) scale(0.97);
+          box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+      }
+      button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      }
 
-    button:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
-    }
+      
+      button:disabled:hover {
+          transform: none;
+          box-shadow: none;
+      }
 
-    button:active {
-        transform: translateY(0px) scale(0.97);
-        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
-    }
-    button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-    }
-
-    
-    button:disabled:hover {
-        transform: none;
-        box-shadow: none;
-    }
-    span{
-        color: #c41123;
-        font-weight: bold;
-    }
-    
+      
+  }
 }
+
 
 .taste-section{
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 1rem;
-    h2{
-        width: 65%;
-        font-size: 25px;
-        color: #e55499;
-        margin-bottom: 2rem;
+    .title-button{
+      width: 60%;
     }
-    h3{
-        color: #e55499;
-        font-size: 25px;
-        margin-bottom: 2rem;
-    }
-    ul{
-        display: flex;
-        gap:10px;
-    }
-    li{
-        list-style: none;
-        display: flex;
-     
-        align-items: center;
-        flex-direction: column;
-        margin-bottom: 2rem;
-        gap: 10px;
-        cursor: pointer;
-        div{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 60px;
-            height: 60px;
-            background-color: #c41123;
-            padding: 2rem;
-            border-radius: 50px;
-            img{
-                width: 40px;
-                height: 40px;
+    .taste-container{
+      background-color: white;
+      padding: 2rem;
+      border-radius: 50px;
+      border: 2px solid pink;
+      
+      h3{
+          color: #c41123;
+          font-family: "ApercuPro";
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
+          font-style: italic;
+      }
+      ul{
+          display: flex;
+          gap:10px;
+      }
+      li{
+          list-style: none;
+          display: flex;
+          width: 80px;
+          align-items: center;
+          flex-direction: column;
+          margin-bottom: 2rem;
+          gap: 10px;
+          cursor: pointer;
+          div{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 60px;
+              height: 60px;
+              background-color: #EC84A1;
+              padding: 2rem;
+              border-radius: 50px;
+              img{
+                  width: 40px;
+                  height: 40px;
+              
+              
+              }
+              
+          }
+          p{
+              font-weight: bold;
+              color: #c41123;
+              text-align: center;
             
-            
-            }
-            
-        }
-        p{
-            font-weight: bold;
-            color: #c41123;
-            text-align: center;
-        }
-        
+              font-family: "ApercuPro";
+          }
+          
+      }
     }
+    .span-botom{
+      font-family: "ApercuPro", serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      font-style: italic;
+      color: #c41123;
+  }
+    
 }
 
 .esence-container {
-  width: 75%;
+  width: 85%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 
   button {
-    background-color: #c41123;
+    background-color: #EC84A1;
     color: white;
     border: none;
     border-radius: 50px;
@@ -771,14 +824,16 @@
     cursor: pointer;
 
     img {
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
     }
 
     p {
-      font-family: "IvyPresto", serif;
-      font-size: 0.7rem;
-      font-weight: 500;
+      width: 100%;
+      font-family: "ApercuPro", serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      font-style: italic;
       margin: 0;
       text-transform: uppercase; 
       text-align: center;
@@ -787,47 +842,89 @@
 
     }
   }
+  
+}
+.aditive-button-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  
+  div{
+    position: relative;
+    top: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    .creative{
+      padding: 1.2rem;
+      background-color: #e55499;
+      color: white;
+      font-family: "ApercuPro";
+      text-transform: uppercase;
+      font-style: italic;
+      border: 2px solid white;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    p{
+      font-family: "ApercuPro";
+      color: #c41123;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
 }
 
 .continue-button{
-    margin-top: 5rem;
-    background-color: #c41123;
-    text-transform: uppercase;
-    border: none;
-    padding: 1rem;
-    width: 35%;
-    font-size: 25px;
-    color: white;
-    border-radius: 50px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-}
-.continue-button:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
-}
-.continue-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-    background-color: #b30f20; 
-}
+      
+      background-color: #c41123;
+      text-transform: uppercase;
+      font-family: "ApercuPro";
+      border: none;
+      padding: 0.8rem;
+      width: 30%;
+      font-size: 1.8rem;
+      font-style: italic;
+      color: white;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+  }
+  .continue-button:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+  }
+  .continue-button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      background-color: #b30f20; 
+  }
 
-.continue-button:disabled:hover {
-    transform: none;
-    box-shadow: none;
-}
+  .continue-button:disabled:hover {
+      transform: none;
+      box-shadow: none;
+  }
 
 
 .formula-section{
     width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
+    gap: 8rem;
     h2{
-        color: #e55499;
-        width: 70%;
+        color: #c41123;
+       font-family: "ApercuPro";
+       font-size: 1.7rem;
+       text-transform: uppercase;
+       font-style: italic;
     }
 }
 /* Clean elegant formula list */
@@ -837,12 +934,12 @@
   justify-self: center;
   padding: 0;
   margin: 0;
-  width: 90%;
+  width: 80%;
 }
 
 .formula-clean-item {
-  border-top: 3px solid #e55499;
-  border-bottom: 3px solid #e55499;
+  border-top: 1.5px solid #e55499;
+  border-bottom: 1.5px solid #e55499;
   margin-bottom: 0.6rem;
   padding-left: 0.4rem;
 }
@@ -851,19 +948,19 @@
   width: 100%;
   border: none;
   background: transparent;
-  padding: 0.7rem 0;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 
   span:first-child {
-    font-family: "IvyPresto", serif;
+    font-family: "ApercuPro", serif;
     text-transform: uppercase;
     color: #c41123;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    font-style: italic;
   }
 }
 
@@ -891,6 +988,8 @@
   p {
     padding: 0.7rem 0;
     color: #c41123;
+    font-family: "ApercuPro";
+    font-weight: bold;
     font-size: 0.95rem;
     line-height: 1.4;
     margin: 0;
@@ -918,6 +1017,22 @@
   position: relative;
 }
 
+.engraving-span-title{
+  align-self:center;
+  font-family: "ApercuPro";
+  padding: 1.5rem;
+  background-color: #c41123;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  width: fit-content;
+  text-transform: uppercase;
+  border-radius: 35px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
 .engraving-main {
   flex: 1;
   display: flex;
@@ -925,36 +1040,55 @@
 }
 
 .engraving-title {
-  font-family: "IvyPresto", serif;
-  font-size: 1.6rem;
-  color: #e55499;
-  margin-bottom: 6rem;
+  font-family: "ApercuPro";
+  font-size: 1rem;
+  color: #c41123;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bolder;
+  font-style: italic;
 }
 
 .engraving-input-wrapper {
-  width: 90%;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  background: #ffb7d2;
-  border-radius: 50px;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+
+  background: #e7549a; // darker pink (second image)
+  border-radius: 999px;
+
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
+/* INPUT */
 .engraving-input {
+  font-family: "ApercuPro";
   width: 100%;
-  padding: 1rem 1.5rem;
-  border-radius: 50px;
+
+  padding: 0.25rem 0;
+  background: transparent;
   border: none;
-  background: #ffb7d2;
-  color: #c41123;
-  font-size: 1rem;
   outline: none;
+
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.02em;
+
+  /* underline */
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
 }
 
+/* PLACEHOLDER */
 .engraving-input::placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  font-family: "ApercuPro";
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.7rem;
 }
 
 .engraving-test-fonts {
@@ -964,16 +1098,19 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  font-family: "ApercuPro";
   width: 100%;
 }
 
 .engraving-subtitle {
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  color: #e55499;
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #c41123;
   text-align: center;
+  font-family: "ApercuPro";
 }
 
 .engraving-symbol-list {
@@ -1129,30 +1266,32 @@
 .glliter-selection-div {
   display: flex;
   flex-direction: column;
+  
 
   .glitter-subtitle {
       margin: 14px 0 12px;
-      padding: 10px 14px;
+      
 
       display: flex;
       align-items: center;
       justify-content: center;
-
+      font-style: italic;
       border-radius: 999px;
 
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-
-      /* soft pink pill look (similar to the screenshot) */
+      font-family: "ApercuPro";
       background: rgba(233, 81, 156, 0.14);
       border: 1px solid rgba(233, 81, 156, 0.32);
       color: rgba(233, 81, 156, 0.95);
     }
  
   h2{
-    color: #e55499;
+    color: #c41123;
     text-transform: uppercase;
+    font-style: italic;
+    font-family: "ApercuPro";
     font-weight: bolder;
     font-size: 25px;
   }
@@ -1298,16 +1437,15 @@
 //step 8
 
 .purchse-screen {
-  /* base colour behind the pattern */
+  padding: 4rem;
   background-color: #e55499;
 
-  /* IMPORTANT: actual pattern image */
-  background-image: url("../assets/libs\ back\ white.png"); // ⬅ change to your real file name
+  background-image: url("../assets/libs back white.png");
   background-repeat: repeat;
-  background-size: 110%; // adjust until it looks like the second image
+  background-size: 110%;
   background-position: center;
 
-  min-height: 100vh;       // so it fills the entire screen
+  min-height: 100vh;
   width: 100%;
 
   display: flex;
@@ -1320,11 +1458,18 @@
   padding-top: 2rem;
   width: 100%;
   padding: 2rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  button{
+
+  img {
+    width: 25%;
+    margin-bottom: 3rem;
+  }
+
+  button {
     margin-top: 3rem;
     padding: 1.5rem;
     width: 40%;
@@ -1334,78 +1479,380 @@
     font-size: 3rem;
     display: flex;
     justify-content: center;
-    p{
+
+    p {
       color: white;
     }
   }
-  .purchse-screen-logo-div{
+
+  .purchse-screen-logo-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-bottom: 3rem;
-    h2{
-      font-size: 2rem;
+
+    h2 {
+      font-size: 2.5rem;
       color: white;
-      font-weight: 500;
+      text-transform: uppercase;
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
+      text-align: center;
     }
-    p{
+
+    p {
       text-align: center;
       color: white;
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
     }
   }
-  img{
-    width:25%;
-    margin-bottom: 3rem;
-  }
-  ul{
+
+  /* ============================= */
+  /* PURCHASE SUMMARY GRID */
+  /* ============================= */
+
+  .purchase-summary {
     width: 100%;
     list-style: none;
+
     display: grid;
-    grid-template-columns: repeat(7,1fr);
-    gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 34px;
+
+    padding: 0;
+    margin: 0;
+
+    place-items: center;
   }
-  li{
+
+  .purchase-summary > li {
+    position: relative;
+    width: 150px;
+    display: grid;
+    place-items: center;
+  }
+
+  /* WHITE CARD */
+  .purchase-summary > li > div {
+    position: relative;
+
+    width: 150px;
+    height: 190px;
+    background: #ffffff;
+    border-radius: 28px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
-    div{
-      cursor: pointer;
-      width: 100%;
-      border-radius: 30px;
-      height: 180px;
+
+    padding: 16px 14px 18px;
+    cursor: pointer;
+
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    /* TOP CIRCLE BACKGROUND */
+    &::before {
+      content: "";
+      width: 66px;
+      height: 66px;
+      border-radius: 999px;
+      background: rgba(255, 183, 210, 0.55);
+      margin-top: 6px;
+      flex: 0 0 auto;
+    }
+
+    /* COLOR SWATCH (COR only) */
+    &::after {
+      content: "";
+      width: 66px;
+      height: 66px;
+      border-radius: 999px;
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--swatch, transparent);
+      z-index: 2;
+    }
+
+    /* DEFAULT ICON POSITION */
+    img,
+    .smell-esence {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    /* DEFAULT ICON (overridden later when needed) */
+    img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .smell-esence {
       display: flex;
-      flex-direction: column;
-      padding: 1rem;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffb7d2;
-      transition: all ease 0.2s;
-      &:hover{
-        width: 102%;
-        height: 185px;
+      gap: 8px;
+
+      img {
+        position: static;
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
       }
-      .smell-esence{
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        height: fit-content;
-        img{
-          width: 50px;
-        }
-      }
-      img{
-        width: 90px;
-      }
-      p{
-        text-transform: lowercase;
-      }
+    }
+
+    /* DEFAULT VALUE TEXT (below circle) */
+    > p {
+      margin: 0;
+      margin-top: 92px;
+      padding: 0 10px;
+
+      text-align: center;
+      text-transform: uppercase;
+
+      font-weight: 800;
+      font-size: 0.78rem;
+      line-height: 1.15;
+      letter-spacing: 0.08em;
+
+      color: #111;
+
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  /* STEP LABEL (COR / BASE / ...) */
+  .purchase-summary > li > p {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0;
+    width: 130px;
+    font-family: "ApercuPro";
+    text-align: center;
+    text-transform: uppercase;
+
+    font-weight: 900;
+    font-size: 0.75rem;
+    font-style: italic;
+
+    color: #111;
+    pointer-events: none;
+  }
+
+  /* ============================= */
+  /* INSIDE-CIRCLE TEXT */
+  /* BASE (2), FORMULA (6), PERSONALIZACAO (7) */
+  /* ============================= */
+
+  .purchase-summary > li:nth-child(2) > div > p,
+  .purchase-summary > li:nth-child(6) > div > p,
+  .purchase-summary > li:nth-child(7) > div > p {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 66px;
+    height: 66px;
+    margin: 0;
+    padding: 6px;
+
+    display: grid;
+    place-items: center;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    font-weight: 900;
+    font-size: 0.55rem;
+    line-height: 1.05;
+    letter-spacing: 0.08em;
+
+    color: rgba(0, 0, 0, 0.6);
+    z-index: 4;
+
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  /* ============================= */
+  /* SPECIFIC CARD FIXES */
+  /* ============================= */
+
+  /* ADITIVO (3) — icon should NOT fill circle */
+  .purchase-summary > li:nth-child(3) > div img {
+    width: 44px;
+    height: 44px;
+    border-radius: 0;
+    object-fit: contain;
+    top: 33px;
+  }
+
+  /* PIGMENTO (4) — MUST fill entire circle */
+  .purchase-summary > li:nth-child(4) > div img {
+    width: 66px;
+    height: 66px;
+    border-radius: 999px;
+    object-fit: cover;
+    top: 22px;
+  }
+
+  /* SABOR & ESSÊNCIA (5) — hard override */
+.purchse-screen-logo
+  .purchase-summary
+  > li:nth-child(5)
+  > div
+  .smell-esence {
+  position: absolute !important;
+  top: 22px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  width: 66px !important;
+  height: 66px !important;
+  border-radius: 999px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+
+  z-index: 4 !important;
+
+  /* key fixes */
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.purchse-screen-logo
+  .purchase-summary
+  > li:nth-child(5)
+  > div
+  .smell-esence
+  img {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+
+  width: 26px !important;
+  height: 26px !important;
+  object-fit: contain !important;
+
+  border-radius: 0 !important;
+  display: block !important;
+}
+
+  /* ============================= */
+  /* RESPONSIVE */
+  /* ============================= */
+
+  @media (max-width: 1200px) {
+    .purchase-summary {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .purchase-summary {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+}
+
+.automatic-color-container{
+  width: 100%;
+  display: flex;
+  
+  align-content: center;
+  justify-content: center;
+  .automatic-color-bgk{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: #e55499;
+    min-height: 70vh;
+    padding: 2rem;
+    color: white;
+    border-radius: 30px;
+    span{
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    h2{
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 0.4rem;
     }
     p{
-      text-transform: uppercase;
-      color: white;
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 4rem;
     }
-    
+    div{
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 6rem;
+      img{
+        cursor: pointer;
+      }
+    }
+    button{
+      font-family: "ApercuPro";
+      font-weight: bold;
+      text-transform: uppercase;
+      font-style: italic;
+      color: white;
+      background-color: #c41123;
+      padding: 1rem;
+      border: none;
+      border-radius: 50px;
+      width: 25%;
+      align-self: center;
+      justify-self: end;
+      font-size: 1.6rem;
+      &:disabled {
+        background-color: #f1a5b3; /* softer pink */
+        color: rgba(255, 255, 255, 0.75);
+
+        cursor: not-allowed;
+        opacity: 0.85;
+
+        box-shadow: none;
+        transform: none;
+      }
+    }
   }
 }

@@ -14,45 +14,38 @@ type FormatAndTextType = {
 function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setFormula }: FormatAndTextType) {
   const formulaItemsUnfiltred = [
     {
-      id: 'Lip Gloss',
-      question: 'Lip Gloss',
+      id: 'CLÁSSICO',
+      question: 'CLÁSSICO',
       answers:
-        'Lanolin Oil, Hydroxylated Lanolin, Hydrogenated Polybutene, Cera Microcristallina (Microcrystalline Wax), Ricinus Communis (Castor) Seed Oil, Stearalkonium Hectorite, Propylene Carbonate, Ozokerite Wax, Euphorbia Cerifera (Candelilla) Wax, Copernicia Cerifera (Carnauba) Wax, Butyrospermum Parkii (Shea Butter), Simmondsia Chinensis (Jojoba) Seed Oil, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Honeysuckle) Extract, Caprylyl Glycol, Tocopherol (Vitamin E), Ascorbyl Palmitate (Vitamin C), Glycine Soja (Soybean) Oil, Aloe Barbadensis Leaf Extract.',
+        'Lanolin Oil, Hydroxylated Lanolin, Hydrogenated Polybutene, Cera Microcristallina (Micro- crystalline Wax), Ricinus Communis (Castor) Seed Oil, Stearalkonium Hectorite, Propylene Carbonate, Ozokerite Wax, Euphorbia Cerifera (Candelilla) Wax, Copernicia Cerifera (Car- nauba) Wax, Butyrospermum Parkii (Shea Butter), Simmondsia Chinensis (Jojoba) Seed Oil, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Honeysuckle) Extract, Caprylyl Glycol, Tocopherol (Vitamin E), Ascorbyl Palmitate (Vitamin C), Glycine Soja (Soybe- an) Oil, Aloe Barbadensis Leaf Extract.',
       type:"gloss"
     },
     {
-      id: 'Natural Lip Gloss Base',
-      question: 'Natural Lip Gloss Base',
+      id: 'BRILHO INTENSO',
+      question: 'BRILHO INTENSO',
       answers:
-        'Copernicia Cerifera (Carnauba) Wax, Euphorbia Cerifera (Candelilla) Wax, Organic Butyrospermum Parkii (Shea Butter), Organic Ricinus Communis (Castor) Seed Oil, Lilium Candidum Flower Extract (White Lily), Oenothera Biennis (Evening Primrose) Oil Organic, Tocopherol (Vitamin E).',
+        'Copernicia Cerifera (Carnauba) Wax, Euphorbia Cerifera (Candelilla) Wax, Organic Butyros- permum Parkii (Shea Butter), Organic Ricinus Communis (Castor) Seed Oil, Lilium Candidum Flower Extract (White Lily), Oenothera Biennis (Evening Primrose) Oil Organic, Tocopherol (Vitamin E).',
       type:"gloss"
     },
     {
-      id: 'Lip glace',
-      question: 'Lip glace',
+      id: 'BÁLSAMO',
+      question: 'BÁLSAMO',
       answers:
-        'Hydrogenated Polybutene, Caprylic/Capric Triglyceride, Vitis Vinifera (Grape) Seed Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Macadamia Ternifolia (Macadamia) Seed Oil, Caprylyl Glycol, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Honeysuckle) Extract, Tocopherol (Vitamin E).',
+        'Hydrogenated Polybutene, Caprylic/Capric Triglyceride, Vitis Vinifera (Grape) Seed Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Macadamia Ternifolia (Macadamia) Seed Oil, Caprylyl Glycol, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Honeysu- ckle) Extract, Tocopherol (Vitamin E).',
       type:"gloss"
     },
     {
-      id: 'Lip Gloss smoothie',
-      question: 'Lip Gloss smoothie',
+      id: 'polish',
+      question: 'polish',
       answers:
-        'Hydrogenated Polybutene, Octyldodecyl Stearoyl Stearate, Ricinus Communis (Castor) Seed Oil, Cera Microcristallina (Microcrystalline Wax), Myristyl Lactate, Polyethylene, Ozokerite Wax, Caprylyl Glycol, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Honeysuckle) Extract, Tocopherol (Vitamin E), Camellia Sinensis Leaf Extract.',
+        'Hydrogenated Polybutene, Octyldodecyl Stearoyl Stearate, Ricinus Communis (Castor) Seed Oil, Cera Microcristallina (Microcrystalline Wax), Myristyl Lactate, Polyethylene, Ozokerite Wax, Caprylyl Glycol, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Ho- neysuckle) Extract, Tocopherol (Vitamin E), Camellia Sinensis Leaf Extract.',
       type:"gloss"
     },
     {
-      id: 'Lip polish',
-      question: 'Lip polish',
+      id: 'NATURAL',
+      question: 'NATURAL',
       answers:
-        'Diisostearyl Malate, Polybutene, Cera Microcristallina (Microcrystalline Wax), Bis-Diglyceryl Polyacyladipate-1, Tocopherol (Vitamin E), Caprylyl Glycol, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Honeysuckle) Extract, Tocopherol (Vitamin E).',
-      type:"gloss"
-    },
-    {
-      id: 'Finished Lipstick/Gloss or Liquid Matte',
-      question: 'Finished Lipstick/Gloss or Liquid Matte',
-      answers:
-        'May Contain (+/-): Mica (CI 77019), Titanium Dioxide (CI 77891), Iron Oxides (CI 77491, CI 77492, CI 77499), Red 7 (CI 15850), Red 6 (CI 15850), Red 27 (CI 45410), Red 21 (CI 45380), Red 30 (CI 73360), Red 36 (CI 12085), Orange 5 (CI 45370), Yellow 5 (CI 19140), Yellow 6 (CI 15985), Blue 1 (CI 42090), Carmine (CI 75470), Silica, Polyethylene Terephthalate.',
+        'Diisostearyl Malate, Polybutene, Cera Microcristallina (Microcrystalline Wax), Bis-Diglyceryl Polyacyladipate-1, Tocopherol (Vitamin E), Caprylyl Glycol, Lonicera Caprifolium (Honeysu- ckle) Extract, Lonicera Japonica (Honeysuckle) Extract, Tocopherol (Vitamin E).',
       type:"gloss"
     },
     {
@@ -170,11 +163,10 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setForm
 
   return (
     <>
-      {step === 6 && (
+      {step === 7 && (
         <div className="formula-section">
           <h2>
-            Na Lips Lab, cada fórmula começa com uma selecção rigorosa de
-            ingredientes seguros, nutritivos e de origem responsável!
+            Na Lips Lab, cada fórmula começa com uma selecção rigorosa<br/> de ingredientes seguros, nutritivos e de origem responsável.
           </h2>
           <ul className="formula-clean-list">
             {formulaItems.map(item => {
@@ -201,17 +193,17 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setForm
               )
             })}
           </ul>
-          <button className="continue-button" disabled={formula === "none"} onClick={() => setStep(7)}>Continuar!</button>
+          <button className="continue-button" disabled={formula === "none"} onClick={() => setStep(8)}>Continuar!</button>
         </div>
       )}
 
-      {step === 7 && (
+      {step === 6 && (
         <section className="engraving">
           <div className="engraving-main">
+            <span className='engraving-span-title'>personaliza a embalagem </span>
             <h2 className="engraving-title">
-              Grava o teu nome, uma palavra ou símbolo. <br />
-              O toque final que torna o teu batom num <br />
-              verdadeiro acessório de expressão pessoal!
+              Grava o teu nome, uma palavra ou símbolo.<br/>
+              O toque  que torna o teu GLOSS único E ESPECIAL.
             </h2>
 
             <div className="engraving-input-wrapper">
@@ -220,7 +212,7 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setForm
                 className="engraving-input"
                 value={boxText}
                 maxLength={10}
-                placeholder="Escreve aqui o que queres gravar"
+                placeholder="ESCREVE AQUI O QUE QUERES GRAVAR NO TEU PRODUTO!"
                 onChange={handleTextChange}
                 style={{ fontFamily: selectedFont.cssFamily }}
               />
@@ -253,7 +245,7 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setForm
               className="engraving-continue"
               type="button"
               disabled={!canContinue}
-              onClick={() => setStep(8)}
+              onClick={() => setStep(7)}
             >
               CONTINUAR!
             </button>
