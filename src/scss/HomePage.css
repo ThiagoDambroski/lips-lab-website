@@ -485,13 +485,6 @@
   }
 }
 
-@media (max-width: 980px) {
-  .tone-carousel__slide {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-}
-
 .home-end {
   padding: 1rem;
   min-height: 120vh;
@@ -597,6 +590,99 @@
   }
   .home-end button {
     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .rolling-card {
+    font-size: 15px;
+  }
+  .experiencie-libs .experiencie-libs-intro h2 {
+    font-size: 3rem;
+  }
+  .experiencie-libs .experiencie-libs-intro button {
+    font-size: 15px;
+    width: 30%;
+  }
+  /* ✅ horizontal scroll that actually works */
+  .experiencie-libs-cards-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    /* use auto, not scroll */
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    padding: 30px 16px 15px;
+    /* makes scrolling feel natural */
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+    /* IMPORTANT: prevent cards from shrinking */
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  .experiencie-libs-cards-container .libs-card {
+    /* ✅ each card has a realistic width and does not shrink */
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 200px;
+            flex: 0 0 200px;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    scroll-snap-align: start;
+  }
+  .experiencie-libs-cards-container .libs-card .libs-badge {
+    width: 80px;
+    top: -20px;
+  }
+  .experiencie-libs-cards-container .libs-card .libs-badge .libs-card__badge {
+    font-size: 20px;
+  }
+  .experiencie-libs-cards-container .libs-card .libs-card__title {
+    font-size: 0.95rem;
+    margin-bottom: 1.6rem;
+  }
+  .experiencie-libs-cards-container .libs-card .libs-card__text {
+    font-size: 0.85rem;
+    line-height: 1.25;
+  }
+  .experiencie-libs .experiencie-libs-intro h3 {
+    font-size: 2.5rem;
+  }
+  .home-banner h2 {
+    font-size: 30px;
+  }
+  .home-banner p {
+    font-size: 15px;
+    margin-bottom: 2rem;
+  }
+  .home-marca-ex div button {
+    font-size: 0.9rem;
+    padding: 20px 14px;
+  }
+  .tone-carousel__title {
+    font-size: 1.5rem;
+  }
+  .tone-carousel__circles {
+    width: 200px;
+  }
+  .tone-carousel__subtitle {
+    font-size: 15px;
+  }
+  .tone-carousel__pill {
+    font-size: 8px;
+  }
+  .home-end {
+    min-height: 100vh;
+  }
+  .home-end h1 {
+    font-size: 3rem;
+  }
+  .home-end button {
+    padding: 2rem;
+    font-size: 1.3rem;
+    margin-left: 2rem;
   }
 }
 /*# sourceMappingURL=HomePage.css.map */

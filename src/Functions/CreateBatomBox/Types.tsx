@@ -7,10 +7,25 @@ export type productType = null | {
   smell:SmelltOptions,
   aditive:AdditivesOptions,
   esence:EsenceOptions,
-  formula:string,
   boxText:string 
 
 }
+
+export type Palette = {
+  id: string;        // "A".."H"
+  colors: string[];  // exactly 6
+  primary: string;
+};
+
+export type PaletteCombo = {
+  id: string;                 // e.g. "A+B"
+  top: Palette;               // row 1
+  bottom: Palette;            // row 2
+  rows: [string[], string[]]; // [top.colors, bottom.colors]
+  colors: string[];           // flattened 12
+  primary: string;            // usually top.primary
+};
+
 
 export type TypesOptions = undefined | "gloss" | "batom"
 
@@ -87,4 +102,3 @@ export type SmelltOptions =
   | "loiro"
   | "ruivo";
 
-  export type Palette = { id: string; colors: string[]; primary: string };

@@ -242,3 +242,42 @@ $tablet-min: 768px;
     grid-template-columns:1fr 3fr 1fr;
   }
 }
+
+
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+  
+  .nav-2 ul div{
+    justify-content: center;
+  }
+    .nav-2 ul{
+    grid-template-columns:1fr 4fr 1fr;
+  }
+  .nav-2 ul div li a{
+    font-size: 10px;
+    width: 100%;
+  }
+  .nav-2 ul li .nav-logo{
+    width: 80%;
+  }
+  .nav-icon-img{
+    width: 12px;
+  }
+  //footer
+  footer .footer-div img{
+    width: 45%;
+  }
+  footer .footer-div ul li{
+    font-size: 10px;
+  }
+  .footer-social{
+    span{
+        font-size: 10px;
+    }
+    a{
+        font-size: 10px;
+    }
+  }
+  footer p {
+    font-size: 10px;
+  }
+}

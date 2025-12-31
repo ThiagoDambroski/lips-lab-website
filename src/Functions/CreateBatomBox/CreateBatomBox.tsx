@@ -27,18 +27,21 @@ type CreateBatomType = {
   typeInput: TypesOptions;
 };
 
-// helper type: product without null
 type NonNullProduct = Exclude<productType, null>;
 
-// local helper type ONLY for this file (doesn't change your global Types)
+
 type ProductGlitterValue = number | string | null | undefined;
 
 function CreateBatomBox({ typeInput }: CreateBatomType) {
+
+  type ColorOption = { hex: string; sub: string };
+
+  const [paletteOptions, setPaletteOptions] = useState<ColorOption[] | null>(null);
   const [step, setStep] = useState<number>(-1);
   const [newProduct, setNewProduct] = useState<productType>(null);
 
   const [type, setType] = useState<TypesOptions | undefined>(typeInput);
-  // const [automaticChoice,setAutomaticChoice] = useState<boolean>()
+
   const [doItYourSelf, setDoItYourSelf] = useState<Boolean | undefined>(
     undefined,
   );
@@ -47,21 +50,18 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
     undefined,
   );
 
-  // ✅ CHANGED: id-based selection to avoid duplicated names (Silver, Gold, etc.)
   const [glitterSelected, setGlitterSelected] = useState<number | null>(null);
 
   const [baseSelected, setBaseSelected] = useState<BaseOptions>("none");
   const [smell, setSmell] = useState<SmelltOptions>("none");
   const [aditive, setAditive] = useState<AdditivesOptions>("none");
   const [esence, setEsence] = useState<EsenceOptions>("none");
-  const [formula, setFormula] = useState<string>("none");
   const [boxText, setBoxText] = useState<string>("");
 
   const navigate = useNavigate();
 
   const { additiveOptions, glitterOptions, smellOptions, allEsence } = useApp();
 
-  // ✅ Helper: selected glitter object from id
   const selectedGlitterObj =
     glitterSelected !== null
       ? glitterOptions.find((g) => g.id === glitterSelected)
@@ -75,30 +75,26 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
     setSmell("none");
     setDoItYourSelf(undefined)
 
-    // ✅ reset to null (not "none")
     setGlitterSelected(null);
 
     setBaseSelected("none");
     setAditive("none");
     setEsence("none");
-    setFormula("none");
     setBoxText("");
   };
 
-  // build a product object from the current state
+
   const buildProductFromState = (): NonNullProduct => ({
     id: Date.now(), // simple unique id
     type: type!, // non-null, because we only use this when type is defined
     color: selectedColor,
 
-    // ✅ store glitter as id (fallback "none" to avoid changing productType here)
     glitter: (glitterSelected ?? "none") as any,
 
     base: baseSelected,
     smell,
     aditive,
     esence,
-    formula,
     boxText,
   });
 
@@ -129,7 +125,6 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
     navigate("/cart");
   };
 
-  // ✅ TS-safe display for newProduct.glitter without changing global productType
   const displayNewProductGlitter = (() => {
     if (!newProduct) return "";
     const glitterValue = (newProduct.glitter as ProductGlitterValue) ?? "none";
@@ -204,32 +199,35 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
                 {(step >= 0 && step < 3 || step >= 5 && step < 8) && doItYourSelf === true && (
                   <>
                     <div className="item-display-2">
-                      <div className="item-img-2-color-wrapper">
-                        <div
-                          className="item-color-fill item-color-fill-2"
-                          style={{
-                            backgroundColor: selectedColor || "transparent",
-                          }}
-                        />
-                        <img
-                          src={glossWhioutImage}
-                          alt=""
-                          className="item-img-2-create"
-                        />
-                      </div>
-
-                      <img src={descVer} alt="" className="item-img-3" />
+                    <div className="item-img-2-color-wrapper">
+                      <div
+                        className="item-color-fill item-color-fill-2 is-tip"
+                        style={{
+                          backgroundColor: selectedColor || "transparent",
+                        }}
+                      />
+                      <img
+                        src={glossWhioutImage}
+                        alt=""
+                        className="item-img-2-create"
+                      />
                     </div>
+                  </div>
+
                   </>
                 )}
 
                 <ColorsSelection
                   setSelectedColor={setSelectedColor}
+                  currentSelectedColor={selectedColor}
+                  paletteOptions={paletteOptions}
+                  setPaletteOptions={setPaletteOptions}
                   step={step}
                   setStep={setStep}
                   doItYourSelf={doItYourSelf}
                   setDoItYourSelf={setDoItYourSelf}
                 />
+
 
                 <GlitterBaseSelection
                   step={step}
@@ -257,8 +255,6 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
                   setStep={setStep}
                   type={type}
                   boxText={boxText}
-                  formula={formula}
-                  setFormula={setFormula}
                   setBoxText={setBoxText}
                 />
               </div>
@@ -280,7 +276,14 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
 
               <ul className="purchase-summary">
                 <li>
-                  <div style={{ ["--swatch" as any]: selectedColor }} onClick={() => setStep(1)} />
+                  <div
+                    style={{ ["--swatch" as any]: selectedColor }}
+                    onClick={() => {
+                      setDoItYourSelf(true); 
+                      setStep(0);         
+                    }}
+                  />
+
                   <p>cor</p>
                 </li>
 
@@ -313,18 +316,20 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
                   <div onClick={() => setStep(5)}>
                     <div className="smell-esence">
                       <img src={smellOptions.filter((a) => a.id === smell)[0].img} alt="" />
+                    </div>
+                    
+                  </div>
+                  <p>SABOR</p>
+                </li>
+
+                <li onClick={() => setStep(5)}>
+                  <div >
+                    <div className="smell-esence">
                       <img src={allEsence.filter((a) => a.id === esence)[0].img} alt="" />
                     </div>
                     
                   </div>
-                  <p>SABOR & ESSÊNCIA</p>
-                </li>
-
-                <li>
-                  <div onClick={() => setStep(6)}>
-                    <p>{formula === "none" ? "—" : formula}</p>
-                  </div>
-                  <p>FÓRMULA</p>
+                  <p>ESSÊNCIA</p>
                 </li>
 
                 <li>

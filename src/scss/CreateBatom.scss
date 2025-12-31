@@ -170,17 +170,7 @@
     }
 }
 
-.item-img-2-create{
-        width: 300px;
-        height: 500px;
-        position: relative;
-        z-index: 2;
-  }
 
-.item-img-color-wrapper,
-.item-img-2-color-wrapper {
-  padding: 0;
-}
 
 
 .main-color-selection-options{
@@ -238,12 +228,20 @@
     
 }
 
+.item-img-2-create{
+        width: 400px;
+        height: 700px;
+        position: relative;
+        z-index: 2;
+  }
+
+
 .item-img-color-wrapper,
 .item-img-2-color-wrapper {
   position: relative;
   display: inline-block;
-  width: 300px;   
-  height: 500px; 
+  width: 400px;   
+  height: 700px; 
   padding: 0;
 }
 
@@ -263,9 +261,9 @@
   /* position INSIDE the bottle */
   left: 50%;
   transform: translateX(-50%);
-  top: 30%;          // start a bit lower in the bottle
+  top: 45%;          // start a bit lower in the bottle
   width: 36%;        // narrower so it doesn’t touch the outer glass
-  height: 310px;       // slightly shorter so it stays inside
+  height: 360px;       // slightly shorter so it stays inside
   border-radius: 0 0 80px 80px; // flat top, rounded bottom like the bottle
 
   overflow: hidden;
@@ -324,15 +322,14 @@
     background-color: #c41123;
    }
 
-.colors-selection{ 
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding:2rem;
-   gap: 30px;
+.colors-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 30px;
 
-   
-   h3{
+  h3 {
     font-style: italic;
     text-transform: uppercase;
     text-align: center;
@@ -341,51 +338,60 @@
     width: 100%;
     font-weight: bolder;
     color: #c41123;
+  }
 
-   }
-   h4{
+  h4 {
     font-style: italic;
     text-transform: uppercase;
     text-align: center;
     font-size: 0.8rem;
-    text-align: center;
     font-family: "ApercuPro";
     font-weight: bolder;
     color: #c41123;
-   }
-   .colors-containers{
+  }
+
+  .colors-containers {
     padding: 2rem;
     border: 2px solid pink;
     border-radius: 50px;
     background-color: white;
+
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(7, 1fr); // KEEP YOUR ORIGINAL
     justify-content: center;
     align-items: center;
     column-gap: 10px;
     row-gap: 10px;
-   }
-   
-   .colors-section-div{
+  }
+
+  /* ✅ ONLY when coming from AutomaticColors */
+  .colors-containers.is-palette {
+    grid-template-columns: repeat(6, 1fr); // better for ~10–12 colors
+    column-gap: 18px;
+    row-gap: 18px;
+    padding: 2.5rem;
+  }
+
+  .colors-section-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    .colors-section{
+
+    .colors-section {
       width: 80px;
-      height: 80px;  
+      height: 80px;
     }
-    p{
+
+    p {
       font-family: "ApercuPro";
       text-align: center;
       color: #c41123;
       font-size: 0.7rem;
     }
-   
-   
-    
-   }
-   button{
+  }
+
+  button {
     background-color: #c41123;
     border: none;
     width: 45%;
@@ -398,25 +404,26 @@
     font-family: "ApercuPro";
     font-weight: bolder;
     text-transform: uppercase;
-   }
-   button:hover {
+  }
+
+  button:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
-    }
-    button:disabled {
+  }
+
+  button:disabled {
     opacity: 0.45;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
-    }
+  }
 
-   
-    button:disabled:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
+  button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
+
 
 .second-step{
     width: 100%;
@@ -627,7 +634,7 @@
     justify-content: center;
     align-items: center;
     .item-img-2{
-        width: 70%;
+        width: 100%;
     }
     .item-img-3{
         width: 60%;
@@ -740,10 +747,13 @@
     flex-direction: column;
     gap: 20px;
     padding: 1rem;
+    
     .title-button{
       width: 60%;
     }
     .taste-container{
+      width: 90%;
+      
       background-color: white;
       padding: 2rem;
       border-radius: 50px;
@@ -848,6 +858,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 90%;
 
   
   div{
@@ -1231,21 +1242,26 @@
   justify-content: space-between;
 
   h2{
+    padding-top: 100px;
     color: #c41123;
     font-family: "ApercuPro";
     text-transform: uppercase;
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     width: 80%;
   }
   button{
-    width: 40%;
+    width: 70%;
     background-color: #c41123;
     border: none;
     padding: 1rem;
     border-radius: 50px;
     color: white;
     font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: "ApercuPro";
+    font-weight: bold;
+    font-style: italic;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
   }
@@ -1455,16 +1471,16 @@
 
 .purchse-screen-logo {
   z-index: 1;
-  padding-top: 2rem;
   width: 100%;
   padding: 2rem;
+  padding-top: 2rem;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  img {
+  > img {
     width: 25%;
     margin-bottom: 3rem;
   }
@@ -1477,6 +1493,7 @@
     border: none;
     background-color: #ffd3dd;
     font-size: 3rem;
+
     display: flex;
     justify-content: center;
 
@@ -1515,7 +1532,6 @@
   /* ============================= */
 
   .purchase-summary {
-    width: 100%;
     list-style: none;
 
     display: grid;
@@ -1569,18 +1585,11 @@
       flex: 0 0 auto;
     }
 
-    /* COLOR SWATCH (COR only) */
+    /* IMPORTANT:
+       the swatch MUST exist only for COR (1st card).
+       otherwise it overlays other cards and looks "broken". */
     &::after {
-      content: "";
-      width: 66px;
-      height: 66px;
-      border-radius: 999px;
-      position: absolute;
-      top: 22px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--swatch, transparent);
-      z-index: 2;
+      content: none;
     }
 
     /* DEFAULT ICON POSITION */
@@ -1593,23 +1602,12 @@
       z-index: 3;
     }
 
-    /* DEFAULT ICON (overridden later when needed) */
+    /* DEFAULT ICON */
     img {
       width: 44px;
       height: 44px;
       object-fit: contain;
-    }
-
-    .smell-esence {
-      display: flex;
-      gap: 8px;
-
-      img {
-        position: static;
-        width: 28px;
-        height: 28px;
-        object-fit: contain;
-      }
+      display: block;
     }
 
     /* DEFAULT VALUE TEXT (below circle) */
@@ -1638,6 +1636,22 @@
     }
   }
 
+  /* COR (1) — enable the swatch only here */
+  .purchase-summary > li:nth-child(1) > div {
+    &::after {
+      content: "";
+      width: 66px;
+      height: 66px;
+      border-radius: 999px;
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--swatch, transparent);
+      z-index: 2;
+    }
+  }
+
   /* STEP LABEL (COR / BASE / ...) */
   .purchase-summary > li > p {
     position: absolute;
@@ -1661,11 +1675,11 @@
 
   /* ============================= */
   /* INSIDE-CIRCLE TEXT */
-  /* BASE (2), FORMULA (6), PERSONALIZACAO (7) */
+  /* BASE (2) and PERSONALIZAÇÃO (7)
+     (REMOVE 6 because ESSÊNCIA is an icon card) */
   /* ============================= */
 
   .purchase-summary > li:nth-child(2) > div > p,
-  .purchase-summary > li:nth-child(6) > div > p,
   .purchase-summary > li:nth-child(7) > div > p {
     position: absolute;
     top: 22px;
@@ -1699,7 +1713,7 @@
   /* SPECIFIC CARD FIXES */
   /* ============================= */
 
-  /* ADITIVO (3) — icon should NOT fill circle */
+  /* ADITIVO (3) */
   .purchase-summary > li:nth-child(3) > div img {
     width: 44px;
     height: 44px;
@@ -1708,7 +1722,7 @@
     top: 33px;
   }
 
-  /* PIGMENTO (4) — MUST fill entire circle */
+  /* PIGMENTO (4) — fill entire circle */
   .purchase-summary > li:nth-child(4) > div img {
     width: 66px;
     height: 66px;
@@ -1717,52 +1731,39 @@
     top: 22px;
   }
 
-  /* SABOR & ESSÊNCIA (5) — hard override */
-.purchse-screen-logo
-  .purchase-summary
-  > li:nth-child(5)
-  > div
-  .smell-esence {
-  position: absolute !important;
-  top: 22px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+  /* SABOR (5) + ESSÊNCIA (6) — perfectly centered inner icon wrapper */
+  .purchase-summary > li:nth-child(5) > div .smell-esence,
+  .purchase-summary > li:nth-child(6) > div .smell-esence {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
 
-  width: 66px !important;
-  height: 66px !important;
-  border-radius: 999px !important;
+    width: 66px;
+    height: 66px;
+    border-radius: 999px;
 
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
+    display: grid;
+    place-items: center;
 
-  z-index: 4 !important;
+    z-index: 4;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
 
-  /* key fixes */
-  overflow: hidden !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
+  .purchase-summary > li:nth-child(5) > div .smell-esence img,
+  .purchase-summary > li:nth-child(6) > div .smell-esence img {
+    position: static;
+    transform: none;
 
-.purchse-screen-logo
-  .purchase-summary
-  > li:nth-child(5)
-  > div
-  .smell-esence
-  img {
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  transform: none !important;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
 
-  width: 26px !important;
-  height: 26px !important;
-  object-fit: contain !important;
-
-  border-radius: 0 !important;
-  display: block !important;
-}
+    display: block;
+    border-radius: 0;
+  }
 
   /* ============================= */
   /* RESPONSIVE */
@@ -1780,8 +1781,14 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
+
+    button {
+      width: 100%;
+    }
   }
 }
+
+//do it yourself
 
 .automatic-color-container{
   width: 100%;
@@ -1790,6 +1797,11 @@
   align-content: center;
   justify-content: center;
   .automatic-color-bgk{
+    position: relative;
+    .go-back-arrow{
+      position: absolute;
+      top: 65px;
+    }
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -1854,5 +1866,87 @@
         transform: none;
       }
     }
+  }
+}
+
+.palette-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  h2 {
+    font-family: "ApercuPro";
+    color: #c41123;
+    font-style: italic;
+    font-size: 3rem;
+  }
+
+  p {
+    font-family: "ApercuPro";
+    color: #c41123;
+    font-style: italic;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  .pallet-colors-container {
+    width: 50%;
+    padding: 32px;
+    background-color: #ffffff;
+    border-radius: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .palette-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .swatch {
+    /* button reset */
+    appearance: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+
+
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+
+    /* color comes from inline style */
+    box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    .hex {
+     
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+  }
+  .continue-pallet-button{
+    font-family: "ApercuPro";
+    background-color: #c41123;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-style: italic;
+    font-size: 1.7rem;
+    font-weight: bold;
+    width: 20%;
+    padding:1rem;
+    cursor: pointer;
   }
 }

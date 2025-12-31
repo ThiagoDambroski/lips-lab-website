@@ -7,11 +7,10 @@ type FormatAndTextType = {
   type: TypesOptions
   boxText: string
   setBoxText: React.Dispatch<React.SetStateAction<string>>
-  formula:string,
-  setFormula:React.Dispatch<React.SetStateAction<string>>
+  
 }
 
-function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setFormula }: FormatAndTextType) {
+function FormatAndText({ step, setStep,type, boxText, setBoxText }: FormatAndTextType) {
   const formulaItemsUnfiltred = [
     {
       id: 'CLÁSSICO',
@@ -89,7 +88,7 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setForm
 
   const toggleFormula = (id: string) => {
     setOpenFormulaId(prev => (prev === id ? null : id))
-    setFormula(prev => (prev === id ? "none" : id))
+    
   }
 
   /// nome
@@ -193,7 +192,7 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText,formula,setForm
               )
             })}
           </ul>
-          <button className="continue-button" disabled={formula === "none"} onClick={() => setStep(8)}>Continuar!</button>
+          <button className="continue-button" onClick={() => setStep(8)}>Continuar!</button>
         </div>
       )}
 

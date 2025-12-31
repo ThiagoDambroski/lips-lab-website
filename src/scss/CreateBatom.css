@@ -179,18 +179,6 @@
   z-index: 2;
 }
 
-.item-img-2-create {
-  width: 300px;
-  height: 500px;
-  position: relative;
-  z-index: 2;
-}
-
-.item-img-color-wrapper,
-.item-img-2-color-wrapper {
-  padding: 0;
-}
-
 .main-color-selection-options {
   width: 100%;
   display: -webkit-box;
@@ -270,12 +258,19 @@
           filter: brightness(1.08);
 }
 
+.item-img-2-create {
+  width: 400px;
+  height: 700px;
+  position: relative;
+  z-index: 2;
+}
+
 .item-img-color-wrapper,
 .item-img-2-color-wrapper {
   position: relative;
   display: inline-block;
-  width: 300px;
-  height: 500px;
+  width: 400px;
+  height: 700px;
   padding: 0;
 }
 
@@ -294,9 +289,9 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 30%;
+  top: 45%;
   width: 36%;
-  height: 310px;
+  height: 360px;
   border-radius: 0 0 80px 80px;
   overflow: hidden;
   /* shading for gloss effect */
@@ -362,6 +357,7 @@
           align-items: center;
   padding: 2rem;
   gap: 30px;
+  /* ✅ ONLY when coming from AutomaticColors */
 }
 
 .colors-selection h3 {
@@ -380,7 +376,6 @@
   text-transform: uppercase;
   text-align: center;
   font-size: 0.8rem;
-  text-align: center;
   font-family: "ApercuPro";
   font-weight: bolder;
   color: #c41123;
@@ -393,8 +388,8 @@
   background-color: white;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -404,6 +399,15 @@
   -webkit-column-gap: 10px;
           column-gap: 10px;
   row-gap: 10px;
+}
+
+.colors-selection .colors-containers.is-palette {
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  -webkit-column-gap: 18px;
+          column-gap: 18px;
+  row-gap: 18px;
+  padding: 2.5rem;
 }
 
 .colors-selection .colors-section-div {
@@ -757,7 +761,7 @@
 }
 
 .item-display-2 .item-img-2 {
-  width: 70%;
+  width: 100%;
 }
 
 .item-display-2 .item-img-3 {
@@ -925,6 +929,7 @@
 }
 
 .taste-section .taste-container {
+  width: 90%;
   background-color: white;
   padding: 2rem;
   border-radius: 50px;
@@ -1057,6 +1062,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 90%;
 }
 
 .aditive-button-container div {
@@ -1535,22 +1541,27 @@
 }
 
 .glitter-intro h2 {
+  padding-top: 100px;
   color: #c41123;
   font-family: "ApercuPro";
   text-transform: uppercase;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   width: 80%;
 }
 
 .glitter-intro button {
-  width: 40%;
+  width: 70%;
   background-color: #c41123;
   border: none;
   padding: 1rem;
   border-radius: 50px;
   color: white;
   font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "ApercuPro";
+  font-weight: bold;
+  font-style: italic;
   -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
   transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -1822,9 +1833,9 @@
 
 .purchse-screen-logo {
   z-index: 1;
-  padding-top: 2rem;
   width: 100%;
   padding: 2rem;
+  padding-top: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1842,23 +1853,25 @@
   /* PURCHASE SUMMARY GRID */
   /* ============================= */
   /* WHITE CARD */
+  /* COR (1) — enable the swatch only here */
   /* STEP LABEL (COR / BASE / ...) */
   /* ============================= */
   /* INSIDE-CIRCLE TEXT */
-  /* BASE (2), FORMULA (6), PERSONALIZACAO (7) */
+  /* BASE (2) and PERSONALIZAÇÃO (7)
+     (REMOVE 6 because ESSÊNCIA is an icon card) */
   /* ============================= */
   /* ============================= */
   /* SPECIFIC CARD FIXES */
   /* ============================= */
-  /* ADITIVO (3) — icon should NOT fill circle */
-  /* PIGMENTO (4) — MUST fill entire circle */
-  /* SABOR & ESSÊNCIA (5) — hard override */
+  /* ADITIVO (3) */
+  /* PIGMENTO (4) — fill entire circle */
+  /* SABOR (5) + ESSÊNCIA (6) — perfectly centered inner icon wrapper */
   /* ============================= */
   /* RESPONSIVE */
   /* ============================= */
 }
 
-.purchse-screen-logo img {
+.purchse-screen-logo > img {
   width: 25%;
   margin-bottom: 3rem;
 }
@@ -1916,7 +1929,6 @@
 }
 
 .purchse-screen-logo .purchase-summary {
-  width: 100%;
   list-style: none;
   display: -ms-grid;
   display: grid;
@@ -1959,9 +1971,11 @@
   transition: transform 0.18s ease, box-shadow 0.18s ease;
   transition: transform 0.18s ease, box-shadow 0.18s ease, -webkit-transform 0.18s ease, -webkit-box-shadow 0.18s ease;
   /* TOP CIRCLE BACKGROUND */
-  /* COLOR SWATCH (COR only) */
+  /* IMPORTANT:
+       the swatch MUST exist only for COR (1st card).
+       otherwise it overlays other cards and looks "broken". */
   /* DEFAULT ICON POSITION */
-  /* DEFAULT ICON (overridden later when needed) */
+  /* DEFAULT ICON */
   /* DEFAULT VALUE TEXT (below circle) */
 }
 
@@ -1985,17 +1999,7 @@
 }
 
 .purchse-screen-logo .purchase-summary > li > div::after {
-  content: "";
-  width: 66px;
-  height: 66px;
-  border-radius: 999px;
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  background: var(--swatch, transparent);
-  z-index: 2;
+  content: none;
 }
 
 .purchse-screen-logo .purchase-summary > li > div img,
@@ -2013,21 +2017,7 @@
   height: 44px;
   -o-object-fit: contain;
      object-fit: contain;
-}
-
-.purchse-screen-logo .purchase-summary > li > div .smell-esence {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 8px;
-}
-
-.purchse-screen-logo .purchase-summary > li > div .smell-esence img {
-  position: static;
-  width: 28px;
-  height: 28px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  display: block;
 }
 
 .purchse-screen-logo .purchase-summary > li > div > p {
@@ -2049,6 +2039,20 @@
   -webkit-box-orient: vertical;
 }
 
+.purchse-screen-logo .purchase-summary > li:nth-child(1) > div::after {
+  content: "";
+  width: 66px;
+  height: 66px;
+  border-radius: 999px;
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: var(--swatch, transparent);
+  z-index: 2;
+}
+
 .purchse-screen-logo .purchase-summary > li > p {
   position: absolute;
   bottom: 18px;
@@ -2068,7 +2072,6 @@
 }
 
 .purchse-screen-logo .purchase-summary > li:nth-child(2) > div > p,
-.purchse-screen-logo .purchase-summary > li:nth-child(6) > div > p,
 .purchse-screen-logo .purchase-summary > li:nth-child(7) > div > p {
   position: absolute;
   top: 22px;
@@ -2112,53 +2115,36 @@
   top: 22px;
 }
 
-.purchse-screen-logo .purchse-screen-logo
-.purchase-summary
-> li:nth-child(5)
-> div
-.smell-esence {
-  position: absolute !important;
-  top: 22px !important;
-  left: 50% !important;
-  -webkit-transform: translateX(-50%) !important;
-          transform: translateX(-50%) !important;
-  width: 66px !important;
-  height: 66px !important;
-  border-radius: 999px !important;
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center !important;
-      -ms-flex-align: center !important;
-          align-items: center !important;
-  -webkit-box-pack: center !important;
-      -ms-flex-pack: center !important;
-          justify-content: center !important;
-  gap: 8px !important;
-  z-index: 4 !important;
-  /* key fixes */
-  overflow: hidden !important;
-  padding: 0 !important;
-  margin: 0 !important;
+.purchse-screen-logo .purchase-summary > li:nth-child(5) > div .smell-esence,
+.purchse-screen-logo .purchase-summary > li:nth-child(6) > div .smell-esence {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 66px;
+  height: 66px;
+  border-radius: 999px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  z-index: 4;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
-.purchse-screen-logo .purchse-screen-logo
-.purchase-summary
-> li:nth-child(5)
-> div
-.smell-esence
-img {
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  -webkit-transform: none !important;
-          transform: none !important;
-  width: 26px !important;
-  height: 26px !important;
-  -o-object-fit: contain !important;
-     object-fit: contain !important;
-  border-radius: 0 !important;
-  display: block !important;
+.purchse-screen-logo .purchase-summary > li:nth-child(5) > div .smell-esence img,
+.purchse-screen-logo .purchase-summary > li:nth-child(6) > div .smell-esence img {
+  position: static;
+  -webkit-transform: none;
+          transform: none;
+  width: 28px;
+  height: 28px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+  border-radius: 0;
 }
 
 @media (max-width: 1200px) {
@@ -2175,6 +2161,9 @@ img {
         grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+  .purchse-screen-logo button {
+    width: 100%;
+  }
 }
 
 .automatic-color-container {
@@ -2190,6 +2179,7 @@ img {
 }
 
 .automatic-color-container .automatic-color-bgk {
+  position: relative;
   width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2203,6 +2193,11 @@ img {
   padding: 2rem;
   color: white;
   border-radius: 30px;
+}
+
+.automatic-color-container .automatic-color-bgk .go-back-arrow {
+  position: absolute;
+  top: 65px;
 }
 
 .automatic-color-container .automatic-color-bgk span {
@@ -2274,5 +2269,107 @@ img {
           box-shadow: none;
   -webkit-transform: none;
           transform: none;
+}
+
+.palette-result {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.palette-result h2 {
+  font-family: "ApercuPro";
+  color: #c41123;
+  font-style: italic;
+  font-size: 3rem;
+}
+
+.palette-result p {
+  font-family: "ApercuPro";
+  color: #c41123;
+  font-style: italic;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.palette-result .pallet-colors-container {
+  width: 50%;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.palette-result .palette-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+}
+
+.palette-result .swatch {
+  /* button reset */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  /* color comes from inline style */
+  -webkit-box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.12);
+          box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.12);
+  -webkit-transition: -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+  transition: -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, -webkit-transform 0.15s ease, -webkit-box-shadow 0.15s ease;
+}
+
+.palette-result .swatch .hex {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.palette-result .continue-pallet-button {
+  font-family: "ApercuPro";
+  background-color: #c41123;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: bold;
+  width: 20%;
+  padding: 1rem;
+  cursor: pointer;
 }
 /*# sourceMappingURL=CreateBatom.css.map */

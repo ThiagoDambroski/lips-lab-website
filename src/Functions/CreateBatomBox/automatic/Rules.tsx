@@ -1,22 +1,27 @@
+import type { EyeColorOptions, HairColorOptions, SkinToneOptions } from "../Types";
+import type { PaletteCombo, Palette } from "../Types";
+import { PAL_A, PAL_B, PAL_C, PAL_D, PAL_E, PAL_F, PAL_G, PAL_H } from "../automatic/Pallete";
 
-import type { EyeColorOptions, HairColorOptions, SkinToneOptions, Palette } from "../Types";
-import { PAL_A, PAL_B, PAL_C, PAL_D, PAL_E, PAL_F, PAL_G, PAL_H } from "./Pallete";
+function combo(top: Palette, bottom: Palette): PaletteCombo {
+  return {
+    id: `${top.id}+${bottom.id}`,
+    top,
+    bottom,
+    rows: [top.colors, bottom.colors],
+    colors: [...top.colors, ...bottom.colors],
+    primary: top.primary,
+  };
+}
 
 /**
- * Regras consolidadas do PDF:
- * - Cabelos escuros (preto/castanho-escuro) alternam A/B conforme olho mais frio (azul/verde) ou mais quente (castanho/escuro).
- * - Castanho-claro cai em C (rosados) ou D (coral/rosa) dependendo de pele/olhos.
- * - Loiro tende a D; pode ir para A com olhos frios (variações no PDF).
- * - Ruivo usa E (rosado) ou F (alaranjados).
- * - Cinzento usa G (terrosos quentes) ou H (terrosos alaranjados) conforme pele/olhos.
- * As paletas são as mesmas repetidas no documento, só muda o destaque (primary). :contentReference[oaicite:9]{index=9}
+ * Returns 12 colors (two rows of 6) = the stacked result you see in the PDF UI.
+ * Keep your “characteristics logic” here, but now you return two palettes.
  */
-export function getPaletteFor(
+export function getPaletteComboFor(
   hair: HairColorOptions,
   skin: SkinToneOptions,
   eyes: EyeColorOptions
-): Palette {
-  
+): PaletteCombo {
   const coldEyes = eyes === "azul" || eyes === "verde" || eyes === "verde-cinza";
   const lightSkin = skin === "muito-claro" || skin === "rosado";
   const deepSkin = skin === "escuro" || skin === "muito-escuro";
@@ -24,53 +29,24 @@ export function getPaletteFor(
   switch (hair) {
     case "preto":
     case "castanho-escuro":
-      return coldEyes ? PAL_A : PAL_B;
+      // Example: the screenshot you showed looks exactly like A (top) + B (bottom)
+      // If you want to flip order based on eyes:
+      return coldEyes ? combo(PAL_A, PAL_B) : combo(PAL_B, PAL_A);
 
     case "castanho-claro":
-  
-      return coldEyes ? PAL_C : PAL_D;
+      return coldEyes ? combo(PAL_C, PAL_D) : combo(PAL_D, PAL_C);
 
     case "loiro":
-      
-      return coldEyes ? PAL_D : PAL_D;
+      // If the PDF always uses D + C (example), do that:
+      return coldEyes ? combo(PAL_D, PAL_C) : combo(PAL_D, PAL_C);
 
     case "ruivo":
-      
-      return lightSkin ? PAL_E : PAL_F;
+      return lightSkin ? combo(PAL_E, PAL_F) : combo(PAL_F, PAL_E);
 
     case "cinzento":
-      
-      return deepSkin ? PAL_H : PAL_G;
+      return deepSkin ? combo(PAL_H, PAL_G) : combo(PAL_G, PAL_H);
 
     default:
-      return PAL_A;
+      return combo(PAL_A, PAL_B);
   }
 }
-//
-/* No seu componente onde controla a cor selecionada:
-import { useEffect } from "react";
-import { getPaletteFor } from "./rules";
-import type { HairColorOptions, SkinToneOptions, EyeColorOptions } from "./types";
-
-function useLockedSelectedColor(
-  hair: HairColorOptions | undefined,
-  skin: SkinToneOptions | undefined,
-  eyes: EyeColorOptions | undefined,
-  selectedColor: string | undefined,
-  setSelectedColor: (c: string) => void
-) {
-  useEffect(() => {
-    if (!hair || !skin || !eyes) return;
-    const { colors, primary } = getPaletteFor(hair, skin, eyes);
-
-    // se não houver cor ou se a atual não pertence à paleta nova → força primary
-    if (!selectedColor || !colors.includes(selectedColor)) {
-      setSelectedColor(primary);
-    }
-  }, [hair, skin, eyes, selectedColor, setSelectedColor]);
-}
-
-
-
-useLockedSelectedColor(hair, skin, eyes, selectedColor, (c) => setSelectedColor(c));
-*/
