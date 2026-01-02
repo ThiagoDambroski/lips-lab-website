@@ -1,32 +1,41 @@
-import { NavLink } from "react-router-dom"
-import logo from "../assets/logo.png"
-import "../scss/NavBar.css"
-import "../scss/NavBar.css"
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";
+import "../scss/NavBar.css";
 
-import whiteShop from "../assets/shopWhite.png"
-import redShop from "../assets/shopRed.png"
+import whiteShop from "../assets/shopWhite.png";
+import redShop from "../assets/shopRed.png";
 
 type NavbarProps = {
   css?: number;
 };
 
-function navbar({css = 0}:NavbarProps) {
-  const className = css === 0 ? "nav-1" : "nav-2"
-  
+function Navbar({ css = 0 }: NavbarProps) {
+  const className = css === 0 ? "nav-1" : "nav-2";
+  const isNav2 = css !== 0;
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeMenu = () => setIsOpen(false);
+  const toggleMenu = () => setIsOpen((v) => !v);
 
   return (
-    <nav className={className}>
-
+    <nav className={`${className} ${isNav2 && isOpen ? "is-open" : ""}`}>
       <ul>
-        <li><NavLink to = "/"><img src={logo} alt="Logo" className="nav-logo" /></NavLink></li>
-        <div>
+        {/* LOGO */}
+        <li>
+          <NavLink to="/" onClick={closeMenu}>
+            <img src={logo} alt="Logo" className="nav-logo" />
+          </NavLink>
+        </li>
+
+        {/* LINKS (hidden on mobile via CSS) */}
+        <div className="nav-links">
           <li>
             <NavLink
               to="/reserve"
-              className={({ isActive }: { isActive: boolean }) =>
-                isActive ? "active" : ""
-              }
+              onClick={closeMenu}
+              className={({ isActive }) => (isActive ? "active" : "")}
             >
               Reserva Agora
             </NavLink>
@@ -35,9 +44,8 @@ function navbar({css = 0}:NavbarProps) {
           <li>
             <NavLink
               to="/experiencie"
-              className={({ isActive }: { isActive: boolean }) =>
-                isActive ? "active" : ""
-              }
+              onClick={closeMenu}
+              className={({ isActive }) => (isActive ? "active" : "")}
             >
               Experiência e Preços
             </NavLink>
@@ -46,33 +54,49 @@ function navbar({css = 0}:NavbarProps) {
           <li>
             <NavLink
               to="/create"
-              className={({ isActive }: { isActive: boolean }) =>
-                isActive ? "active" : ""
-              }
+              onClick={closeMenu}
+              className={({ isActive }) => (isActive ? "active" : "")}
             >
               Experiência Online
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/giftCard"
-              className={({ isActive }: { isActive: boolean }) =>
-                isActive ? "active" : ""
-              }
+              onClick={closeMenu}
+              className={({ isActive }) => (isActive ? "active" : "")}
             >
               Gift Card
             </NavLink>
           </li>
         </div>
 
+        {/* RIGHT SIDE: HAMBURGER + CART */}
         <div className={css === 0 ? "" : "icon-nav-2"}>
-          <img src={css === 0 ? whiteShop: redShop} alt="" className="nav-icon-img"/>
+          {isNav2 && (
+            <button
+              type="button"
+              className="nav-toggle"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              onClick={toggleMenu}
+            >
+              <span className="nav-toggle-bar" />
+              <span className="nav-toggle-bar" />
+              <span className="nav-toggle-bar" />
+            </button>
+          )}
 
+          <img
+            src={css === 0 ? whiteShop : redShop}
+            alt="Cart"
+            className="nav-icon-img"
+          />
         </div>
       </ul>
-
     </nav>
-  )
+  );
 }
 
-export default navbar
+export default Navbar;

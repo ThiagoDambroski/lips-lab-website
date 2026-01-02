@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ----- ApercuPro Bold ----- */
 @font-face {
   font-family: "ApercuPro";
@@ -54,7 +55,7 @@
   font-style: normal;
 }
 
-/* ----- ivy-prestio*/
+/* ----- ivy-prestio ----- */
 @font-face {
   font-family: "IvyPresto";
   src: url("../assets/fonts/ivy-presto-display/ivy-presto-display.otf") format("ptf");
@@ -130,6 +131,8 @@
   width: 80%;
   border-radius: 50px;
   font-family: "ApercuPro";
+  position: relative;
+  /* ✅ Hamburger button (exists in JSX, hidden on desktop/tablet by default) */
 }
 
 .nav-2 ul {
@@ -140,6 +143,9 @@
   -ms-grid-columns: 1fr 2fr 1fr;
       grid-template-columns: 1fr 2fr 1fr;
   gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .nav-2 ul li {
@@ -192,6 +198,32 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
+}
+
+.nav-2 .nav-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 999px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.nav-2 .nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #c41123;
+  border-radius: 999px;
+}
+
+.nav-2 .nav-toggle-bar:not(:last-child) {
+  margin-bottom: 5px;
 }
 
 footer {
@@ -298,6 +330,158 @@ footer .footer-social a:visited {
   .nav-icon-img {
     width: 12px;
   }
+  footer .footer-div img {
+    width: 45%;
+  }
+  footer .footer-div ul li {
+    font-size: 10px;
+  }
+  .footer-social span {
+    font-size: 10px;
+  }
+  .footer-social a {
+    font-size: 10px;
+  }
+  footer p {
+    font-size: 10px;
+  }
+}
+
+/* ✅ MOBILE: hamburger menu ONLY for nav-2 */
+@media (min-width: 320px) and (max-width: 767px) {
+  .nav-2 ul li .nav-logo {
+    width: 80%;
+  }
+  .nav-2 {
+    top: 0px;
+    width: 92%;
+    margin: 1.5rem auto 2rem;
+    border-radius: 999px;
+    /* ✅ Logo stays normal */
+    /* ✅ Hide links on mobile (hamburger will open them) */
+    /* ✅ Make the RIGHT side a row: hamburger + cart */
+    /* ✅ Hamburger visible ONLY on mobile, and small */
+    /* ✅ Cart icon */
+    /* ✅ Dropdown (clean + not giant) */
+  }
+  .nav-2 ul {
+    padding: 10px 12px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+  }
+  .nav-2 .nav-logo {
+    width: 100%;
+    height: auto;
+    padding-left: 10px;
+  }
+  .nav-2 .nav-links {
+    display: none;
+  }
+  .nav-2 .icon-nav-2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .nav-2 .nav-toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100px;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 0;
+    /* ✅ Remove any inherited grid behavior */
+    -ms-flex-item-align: auto;
+        align-self: auto;
+    justify-self: auto;
+  }
+  .nav-2 .nav-toggle:focus-visible {
+    outline: 2px solid rgba(196, 17, 35, 0.35);
+    outline-offset: 3px;
+  }
+  .nav-2 .nav-toggle-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #c41123;
+    border-radius: 999px;
+  }
+  .nav-2 .nav-toggle-bar:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  .nav-2 .nav-icon-img {
+    width: 12px;
+    height: auto;
+  }
+  .nav-2.is-open .nav-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 10px);
+    background: #f9d1dc;
+    border-radius: 22px;
+    padding: 12px;
+    border: 1px solid rgba(196, 17, 35, 0.12);
+    -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    z-index: 9999;
+    max-height: 55vh;
+    overflow: auto;
+  }
+  .nav-2.is-open .nav-links li {
+    width: 100%;
+    list-style: none;
+  }
+  .nav-2.is-open .nav-links li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 10px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #c41123;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.55);
+  }
+  .nav-2.is-open .nav-links li a:visited {
+    color: #c41123;
+  }
+  .nav-2.is-open .nav-links li a.active {
+    background: #ffffff;
+  }
+  /* footer (keep your rules) */
   footer .footer-div img {
     width: 45%;
   }

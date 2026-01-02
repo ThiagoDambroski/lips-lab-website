@@ -2,8 +2,8 @@
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Bold.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Bold.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Bold.ttf") format("truetype");
+    url("../assets/fonts/apercu/ApercuPro-Bold.woff") format("woff"),
+    url("../assets/fonts/apercu/ApercuPro-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -11,9 +11,10 @@
 /* ----- ApercuPro Bold Italic ----- */
 @font-face {
   font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-BoldItalic.ttf") format("truetype");
+  src: url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff2")
+      format("woff2"),
+    url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff") format("woff"),
+    url("../assets/fonts/apercu/ApercuPro-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
 }
@@ -22,8 +23,8 @@
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Italic.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Italic.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Italic.ttf") format("truetype");
+    url("../assets/fonts/apercu/ApercuPro-Italic.woff") format("woff"),
+    url("../assets/fonts/apercu/ApercuPro-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
 }
@@ -32,8 +33,8 @@
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Medium.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Medium.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Medium.ttf") format("truetype");
+    url("../assets/fonts/apercu/ApercuPro-Medium.woff") format("woff"),
+    url("../assets/fonts/apercu/ApercuPro-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
@@ -41,9 +42,10 @@
 /* ----- ApercuPro Medium Italic ----- */
 @font-face {
   font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-MediumItalic.ttf") format("truetype");
+  src: url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff2")
+      format("woff2"),
+    url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff") format("woff"),
+    url("../assets/fonts/apercu/ApercuPro-MediumItalic.ttf") format("truetype");
   font-weight: 500;
   font-style: italic;
 }
@@ -52,8 +54,8 @@
 @font-face {
   font-family: "ApercuProMono";
   src: url("../assets/fonts/apercu/ApercuPro-Mono.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Mono.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Mono.ttf") format("truetype");
+    url("../assets/fonts/apercu/ApercuPro-Mono.woff") format("woff"),
+    url("../assets/fonts/apercu/ApercuPro-Mono.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -62,219 +64,433 @@
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro.ttf") format("truetype");
+    url("../assets/fonts/apercu/ApercuPro.woff") format("woff"),
+    url("../assets/fonts/apercu/ApercuPro.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
-/* ----- ivy-prestio*/
+/* ----- ivy-prestio ----- */
 @font-face {
   font-family: "IvyPresto";
-  src: url("../assets/fonts/ivy-presto-display/ivy-presto-display.otf") format("ptf");
+  src: url("../assets/fonts/ivy-presto-display/ivy-presto-display.otf")
+    format("ptf");
   font-weight: 400;
   font-style: normal;
 }
-.nav-1{
-    position: absolute;
-    top: 30px;
+
+.nav-1 {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+
+  ul {
     width: 100%;
-    ul{
-        width: 100%;
-        padding: 20px;
-        display: flex;
-        align-items: self-end;
-        justify-content: space-between;
-        gap: 10px;
-        li{
-            list-style: none;
-            font-style: italic;
-            font-family: "ApercuPro";
-            .nav-logo{
-                padding-top: 10px;
-                padding-left: 15px;
-                width: 25%;
-            }
-        }
-        div{
-            display: flex;
-            gap: 15px;
-            li{
-                font-size: 18px;
-                text-transform: uppercase;
-                color: white;
-                a{
-                    text-decoration: none;
-                    color: white;
-                    &:visited{
-                        color: white;
-                    }
-                }
-                
-                
-            }
-            .nav-icon-img{}
-        }
-        
+    padding: 20px;
+    display: flex;
+    align-items: self-end;
+    justify-content: space-between;
+    gap: 10px;
+
+    li {
+      list-style: none;
+      font-style: italic;
+      font-family: "ApercuPro";
+
+      .nav-logo {
+        padding-top: 10px;
+        padding-left: 15px;
+        width: 25%;
+      }
     }
+
+    div {
+      display: flex;
+      gap: 15px;
+
+      li {
+        font-size: 18px;
+        text-transform: uppercase;
+        color: white;
+
+        a {
+          text-decoration: none;
+          color: white;
+
+          &:visited {
+            color: white;
+          }
+        }
+      }
+
+      .nav-icon-img {
+      }
+    }
+  }
 }
-.nav-2{
-    background-color: #f9d1dc;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    top: 30px;
+
+.nav-2 {
+  background-color: #f9d1dc;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  top: 30px;
+  align-self: center;
+  justify-self: center;
+  width: 80%;
+  border-radius: 50px;
+  font-family: "ApercuPro";
+
+  position: relative; // ✅ needed for mobile dropdown positioning
+
+  ul {
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+    align-items: center;
+
+    li {
+      width: fit-content;
+      list-style: none;
+
+      .nav-logo {
+        padding-left: 15px;
+        width: 50%;
+        filter: brightness(0) saturate(100%) invert(17%) sepia(96%)
+          saturate(7486%) hue-rotate(342deg) brightness(93%) contrast(96%);
+      }
+    }
+
+    div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 600;
+
+      li {
+        font-size: 15px;
+        text-transform: uppercase;
+        color: #c41123;
+
+        a {
+          text-decoration: none;
+          color: #c41123;
+
+          &.active {
+            background-color: white;
+            border-radius: 50px;
+            padding: 0.2rem;
+          }
+
+          &:visited {
+            color: #c41123;
+          }
+        }
+      }
+    }
+
+    .icon-nav-2 {
+      justify-content: end;
+    }
+  }
+
+  /* ✅ Hamburger button (exists in JSX, hidden on desktop/tablet by default) */
+  .nav-toggle {
+    display: none; // only visible on mobile
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 999px;
     align-self: center;
     justify-self: center;
-    width: 80%;
-    border-radius: 50px;
-    font-family: "ApercuPro";
-    ul{
-        width: 100%;
-        padding: 10px;
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        gap: 10px;
-        li{
-            width: fit-content;
-            list-style: none;
-            .nav-logo{
-                padding-left: 15px;
-                width: 50%;
-                filter: brightness(0) saturate(100%) invert(17%) sepia(96%) saturate(7486%) hue-rotate(342deg) brightness(93%) contrast(96%);
-                
-            }
-        }
-        div{
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-weight: 600;
-            li{
-                font-size: 15px;
-                text-transform: uppercase;
-                color: #c41123;
-               
-                
-                a{
-                    text-decoration: none;
-                    color: #c41123;
-                    
+  }
 
-                    &.active {
-                        background-color: white;
-                        border-radius: 50px;
-                        padding: 0.2rem;
-                    }
-                    &:visited{
-                        color: #c41123;
-                    }
-                }
-                
-                
-            }
-        }
-        .icon-nav-2{
-            justify-content: end;
-        }
-        
+  .nav-toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #c41123;
+    border-radius: 999px;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
     }
+  }
 }
 
-footer{
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  padding-bottom: 1rem;
+  min-height: 25vh;
+  font-family: "ApercuPro";
+  background-color: #e45397;
+
+  .footer-div {
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      li {
+        a {
+          color: white;
+          text-decoration: none;
+
+          &:visited {
+            color: white;
+          }
+        }
+
+        color: white;
+        font-size: 15px;
+      }
+    }
+  }
+
+  p {
+    align-self: center;
+    color: white;
+  }
+
+  .footer-social {
     display: flex;
     flex-direction: column;
-    padding: 3rem;
-    padding-bottom: 1rem;
-    min-height: 25vh;
-    font-family: "ApercuPro";
-    background-color: #e45397;
-    .footer-div{
-        display: flex;
-        justify-content: space-between;
-        ul{
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            li{
-                a{
-                    color: white;
-                    text-decoration: none;
-                    &:visited{
-                        color: white;
-                    }
-                }
-                color: white;
-                font-size: 15px;
-            }
-        }
-    }
-    p{
-        align-self: center;
+    color: white;
+    gap: 10px;
+
+    a {
+      text-decoration: none;
+
+      &:visited {
         color: white;
+      }
     }
-    .footer-social{
-        display: flex;
-        flex-direction: column;
-        color: white;
-        gap:10px;
-        a{
-            text-decoration: none;
-            &:visited{
-                color: white;
-            }
-        }
-    }
+  }
 }
 
 $desktop-xl: 1500px;
-$laptop-max: 1400px; 
+$laptop-max: 1400px;
 $laptop-min: 1100px;
-$tablet-min: 768px;  
+$tablet-min: 768px;
+$phone-max: 767px;
+$phone-min: 320px;
+
 @media (min-width: $desktop-xl) {
-
 }
-
 
 @media (max-width: $laptop-max) and (min-width: $laptop-min) {
-  
   .nav-2 ul {
-    grid-template-columns:1fr 3fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
   }
 }
 
-
 @media (max-width: $laptop-min) and (min-width: $tablet-min) {
-  
-  .nav-2 ul div{
+  .nav-2 ul div {
     justify-content: center;
   }
-    .nav-2 ul{
-    grid-template-columns:1fr 4fr 1fr;
+
+  .nav-2 ul {
+    grid-template-columns: 1fr 4fr 1fr;
   }
-  .nav-2 ul div li a{
+
+  .nav-2 ul div li a {
     font-size: 10px;
     width: 100%;
   }
+
+  .nav-2 ul li .nav-logo {
+    width: 80%;
+  }
+
+  .nav-icon-img {
+    width: 12px;
+  }
+
+  // footer
+  footer .footer-div img {
+    width: 45%;
+  }
+
+  footer .footer-div ul li {
+    font-size: 10px;
+  }
+
+  .footer-social {
+    span {
+      font-size: 10px;
+    }
+
+    a {
+      font-size: 10px;
+    }
+  }
+
+  footer p {
+    font-size: 10px;
+  }
+}
+
+/* ✅ MOBILE: hamburger menu ONLY for nav-2 */
+@media (min-width: $phone-min) and (max-width: $phone-max) {
   .nav-2 ul li .nav-logo{
     width: 80%;
   }
-  .nav-icon-img{
-    width: 12px;
+  .nav-2 {
+    top: 0px;
+    width: 92%;
+    margin: 1.5rem auto 2rem;
+    border-radius: 999px;
+
+    ul {
+      padding: 10px 12px;
+      display: flex;
+
+      gap: 10px;
+    }
+
+    /* ✅ Logo stays normal */
+    .nav-logo {
+      width: 100%;
+      height: auto;
+      padding-left: 10px;
+    }
+
+    /* ✅ Hide links on mobile (hamburger will open them) */
+    .nav-links {
+      display: none;
+    }
+
+    /* ✅ Make the RIGHT side a row: hamburger + cart */
+    .icon-nav-2 {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      
+    }
+
+    /* ✅ Hamburger visible ONLY on mobile, and small */
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100px;
+      height: 100%;
+
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0;
+
+      /* ✅ Remove any inherited grid behavior */
+      align-self: auto;
+      justify-self: auto;
+    }
+
+    .nav-toggle:focus-visible {
+      outline: 2px solid rgba(196, 17, 35, 0.35);
+      outline-offset: 3px;
+    }
+
+    .nav-toggle-bar {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #c41123;
+      border-radius: 999px;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
+
+    /* ✅ Cart icon */
+    .nav-icon-img {
+      width: 12px;
+      height: auto;
+    }
+
+    /* ✅ Dropdown (clean + not giant) */
+    &.is-open {
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 10px);
+
+        background: #f9d1dc;
+        border-radius: 22px;
+        padding: 12px;
+
+        border: 1px solid rgba(196, 17, 35, 0.12);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        z-index: 9999;
+
+        max-height: 55vh;
+        overflow: auto;
+      }
+
+      .nav-links li {
+        width: 100%;
+        list-style: none;
+      }
+
+      .nav-links li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+
+        padding: 12px 10px;
+        border-radius: 14px;
+
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+
+        color: #c41123;
+        text-decoration: none;
+
+        background: rgba(255, 255, 255, 0.55);
+
+        &:visited {
+          color: #c41123;
+        }
+
+        &.active {
+          background: #ffffff;
+        }
+      }
+    }
   }
-  //footer
-  footer .footer-div img{
+
+  /* footer (keep your rules) */
+  footer .footer-div img {
     width: 45%;
   }
-  footer .footer-div ul li{
+  footer .footer-div ul li {
     font-size: 10px;
   }
-  .footer-social{
-    span{
-        font-size: 10px;
+  .footer-social {
+    span {
+      font-size: 10px;
     }
-    a{
-        font-size: 10px;
+    a {
+      font-size: 10px;
     }
   }
   footer p {
