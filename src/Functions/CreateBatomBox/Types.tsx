@@ -7,7 +7,9 @@ export type productType = null | {
   smell:SmelltOptions,
   aditive:AdditivesOptions,
   esence:EsenceOptions,
-  boxText:string 
+  boxText:string ,
+  boxImage:string,
+  price:number
 
 }
 
@@ -34,7 +36,7 @@ export type GlittersOptions= "none" |"rosa" | "bronze" | "dourado" | "preateado"
 
 export type BaseOptions = 
   | "none"
-  | "cream"
+  | "cremoso"
   | "matte"
   | "amanteigado"
   | "natural"
@@ -48,27 +50,27 @@ export type BaseOptions =
 
 export type SmelltOptions =
   | "none"
-  | "canela"
-  | "cereja"
-  | "trufa"
-  | "champa"
+  | "Canela"
+  | "Cereja jubilee"
+  | "Trufa de framboesa"
+  | "Crème brûlée"
   | "creme"
-  | "bolo"
-  | "hortela"
-  | "lima"
+  | "Cenoura"
+  | "Menta"
+  | "Lima com Coco"
   | "avela"
-  | "sorvete"
+  | "Pêssego"
   | "mimosa"
   | "sambuca";
 
   export type AdditivesOptions =
   | "none"
-  | "brilho-hidratacao"
-  | "efeito-volume"
-  | "aditivo-hidratante"
-  | "complexo-multifloral"
-  | "protecao-solar"
-  | "textura-sedosa";
+  | "HIDRATANTE"
+  | "SUAVIZAÇÃO"
+  | "PROTEÇÃO SOLAR"
+  | "DENSIFICADOR"
+  | "ANTI-IDADE & REGENERADOR"
+  | "VOLUME LABIAL";
 
 
   export type EsenceOptions = 'none' | "Especiarias Exóticas" | "Baunilha" | "Cappuccino" | "Cítricos" | "Chocolate" | "Rosa Parisiense"

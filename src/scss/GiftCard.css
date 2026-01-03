@@ -211,20 +211,6 @@
 }
 
 /* Responsive */
-@media (max-width: 600px) {
-  .gift-terms {
-    padding: 26px 18px 40px;
-  }
-  .gift-terms__title {
-    font-size: 28px;
-  }
-  .gift-terms__text, .gift-terms__list,
-  .gift-terms__values p,
-  .gift-terms__address p {
-    font-size: 13.5px;
-  }
-}
-
 @media (min-width: 1500px) {
   .gift-intro img {
     width: 60%;
@@ -232,9 +218,87 @@
 }
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
-@media (max-width: 1400px) and (min-width: 1100px) {
+@media (max-width: 1100px) and (min-width: 768px) {
+  .gift-intro {
+    margin-bottom: 2rem;
+  }
+  .gift-intro div h2 {
+    font-size: 2rem;
+  }
+  .gift-intro div p {
+    font-size: 15px;
+  }
   .gift-banner p {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    padding-left: 10px;
+  }
+  .gift-terms__text {
+    font-size: 15px;
+  }
+  .gift-terms__list li {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .gift-intro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 2rem;
+  }
+  .gift-intro div h2 {
+    font-size: 10vw;
+    text-align: center;
+  }
+  .gift-intro div p {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    font-size: 5vw;
+    text-align: center;
+  }
+  .gift-intro div .gift-radio {
+    padding-left: 30px;
+  }
+  .gift-intro div .gift-radio__label {
+    font-size: 4vw;
+  }
+  .gift-banner p {
+    font-size: 3vw;
+    padding-left: 10px;
+  }
+  .gift-banner img {
+    width: 60%;
+  }
+  .gift-terms__title {
+    font-size: 9vw;
+    text-align: center;
+  }
+  .gift-terms__text {
+    font-size: 3.5vw;
+    max-width: 100%;
+  }
+  .gift-terms__list li {
+    font-size: 3.5vw;
+  }
+  .gift-terms__values p {
+    font-size: 3.5vw;
+  }
+  .gift-terms__address p {
+    font-size: 4vw;
   }
 }
 /*# sourceMappingURL=GiftCard.css.map */

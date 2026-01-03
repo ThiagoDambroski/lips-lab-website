@@ -481,6 +481,8 @@ $desktop-xl: 1500px;
 $laptop-max: 1400px; 
 $laptop-min: 1100px;
 $tablet-min: 768px;  
+$phone-max: 767px;
+$phone-min: 320px;
 
 
 @media (min-width: $desktop-xl) {
@@ -500,25 +502,158 @@ $tablet-min: 768px;
 }
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
-@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
      .how-it-works-section .how-it-works-div{
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.2fr 1fr;
      }
-     .how-it-works-section .how-it-works-div .steps-list .step-item .step-title {
-      font-size: 20px;
-     }
-     .whats-include-section .whats-include-background .whats-include-div .img-include{
-      width: 190px;
-     }
-     .whats-include-section .whats-include-background .whats-include-div .include-title {
-      font-size: 15px;
+    .how-it-works-section .how-it-works-div .how-it-works-video video{
+      position: relative;
+      top: 20px;
+      width: 100%;
+    }
+     .how-it-works-section h1{
+      font-size: 2.5rem;
      }
 
+     .how-it-works-section .how-it-works-div .steps-list{
+      gap: 5px;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item{
+      --content-left: 90px;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-title {
+      font-size: 12px;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge img{
+      width: 60px;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge .step-number{
+      font-size: 1rem;
+     }
+
+     //next section
+     .whats-include-section .whats-include-background .whats-include-div {
+      width: 60%;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .img-include{
+      width: 120px;
+      top: -25px;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .include-pill{
+      width: 80%;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .include-title {
+      font-size: 14px;
+     }
+    
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-panel p{
+      font-size: 12px;
+     }
+    .whats-include-section .whats-include-background .whats-include-div .include-item.is-open .include-panel {
+      width: 70%;
+    }
      .whats-include-section .whats-include-background .whats-include-div .include-item .include-panel p{
-      font-size: 16px;
+      width: 100%;
+      font-size: 14px;
      }
      .reserve-now-section-experiencie button{
       width: 80%;
-      padding: 16px 50px;
+      font-size: 25px;
+      padding: 16px 20px;
+      height: 100px;
+     }
+}
+
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+  .how-it-works-section {
+    padding: 0rem 0rem 0rem 1rem;
+    
+  }
+
+    .how-it-works-section .how-it-works-div{
+      display: flex;
+      flex-direction:  column;
+     
+     }
+     .how-it-works-section .how-it-works-div .how-it-works-video{
+      position: initial;
+     }
+    .how-it-works-section .how-it-works-div .how-it-works-video video{
+
+      width: 90%;
+      margin-bottom: 2rem;
+    }
+     .how-it-works-section h1{
+      font-size: 10vw;
+      padding-bottom: 0rem;
+      
+     }
+
+     .how-it-works-section .how-it-works-div .steps-list{
+      gap: 5px;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item{
+      --content-left: 20vw;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-title {
+      font-size: 3vw;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge img{
+      width: 20vw;
+      
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge{
+        left: 5px;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge .step-number{
+      font-size: 6vw;
+     }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-panel p{
+      font-size: 3vw
+     }
+
+     //next section
+     .whats-include-section .whats-include-background{
+       background-size: cover;
+     }
+     .whats-include-section .whats-include-background .whats-include-div {
+      width: 80%;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .include-list{
+      gap: 1rem;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .img-include{
+      width: 120px;
+      top: -25px;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .include-pill{
+      justify-content: space-between;
+      gap: 0px;
+      width: 90%;
+     }
+     .whats-include-section .whats-include-background .whats-include-div .include-title {
+      font-size: 3vw;
+      text-align: center;
+     }
+    
+     
+    .whats-include-section .whats-include-background .whats-include-div .include-item.is-open .include-panel {
+      width: 70%;
+    }
+     .whats-include-section .whats-include-background .whats-include-div .include-item .include-panel p{
+      width: 100%;
+      font-size: 3.2vw;
+     }
+     ///next section
+     .reserve-now-section-experiencie{
+      background-size: cover;
+      grid-template-columns: 1fr 1.5fr;
+     }
+    
+     .reserve-now-section-experiencie button{
+      width: 90%;
+      font-size: 3vw;
+      padding: 6px 0px;
+      height: 15vw;
      }
 }

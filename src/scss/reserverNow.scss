@@ -181,7 +181,8 @@ $desktop-xl: 1500px;
 $laptop-max: 1400px; 
 $laptop-min: 1100px;
 $tablet-min: 768px;  
-
+$phone-max: 767px;
+$phone-min: 320px;
 
 @media (min-width: $desktop-xl) {
 
@@ -213,4 +214,88 @@ $tablet-min: 768px;
     margin-left: 5rem;
  }
 
+}
+
+
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+    .reserve-now .reserve-now-intro{
+        gap: 7rem;
+    }
+  .reserve-now .reserve-now-intro div h1{
+    font-size: 2.5rem;
+  }
+  .reserve-now .reserve-now-intro div button{
+    width: 70%;
+    font-size: 15px;
+    padding: 1.2rem;
+  }
+
+  .reserve-now .reserve-now-end{
+    gap: 0px;
+    grid-template-columns: 1fr 1.2fr;
+  }
+  .reserve-now .reserve-now-end .important-saberes{
+    gap: 0rem;
+    padding: 1.5rem;
+    
+  }
+  .reserve-now .reserve-now-end .important-saberes h2{
+    font-size: 20px;
+  }
+  .reserve-now .reserve-now-end .important-saberes ul{
+    gap: 10px;
+  }
+  .reserve-now .reserve-now-end .important-saberes li{
+    font-size: 14px;
+  }
+  .reserve-now .reserve-now-end .important-saberes button{
+    padding: 18px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+    .reserve-now{
+        background-size: cover;
+    }
+  .reserve-now .reserve-now-intro{
+        gap: 1rem;
+    }
+
+    .reserve-now .reserve-now-intro img{
+        width: 50%;
+    }
+  .reserve-now .reserve-now-intro div h1{
+    font-size: 5vw
+  }
+  .reserve-now .reserve-now-intro div button{
+    width: 100%;
+    font-size: 2.5vw;
+    padding: 1rem;
+  }
+
+  .reserve-now .reserve-now-end{
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .reserve-now .reserve-now-end .important-saberes{
+    gap: 0rem;
+    padding: 1.5rem;
+    
+  }
+  .reserve-now .reserve-now-end .important-saberes h2{
+    font-size: 5vw;
+  }
+  .reserve-now .reserve-now-end .important-saberes ul{
+    gap: 10px;
+  }
+  .reserve-now .reserve-now-end .important-saberes li{
+    font-size: 3vw;
+  }
+  .reserve-now .reserve-now-end .important-saberes button{
+    width: 90%;
+    padding: 10px;
+    font-size: 2.5vw;
+  }
 }

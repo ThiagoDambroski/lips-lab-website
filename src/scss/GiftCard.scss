@@ -185,29 +185,14 @@
 
 
 /* Responsive */
-@media (max-width: 600px) {
-  .gift-terms {
-    padding: 26px 18px 40px;
 
-    &__title {
-      font-size: 28px;
-    }
-
-    &__text,
-    &__list,
-    &__values p,
-    &__address p {
-      font-size: 13.5px;
-   
-    }
-  }
-}
 
 $desktop-xl: 1500px;
 $laptop-max: 1400px; 
 $laptop-min: 1100px;
 $tablet-min: 768px;  
-
+$phone-max: 767px;
+$phone-min: 320px;
 
 @media (min-width: $desktop-xl) {
   .gift-intro img {
@@ -216,9 +201,78 @@ $tablet-min: 768px;
 }
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
-@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+  .gift-intro {
+    margin-bottom: 2rem;
+  }
+  .gift-intro div h2{
+    font-size: 2rem;
+  }
+  .gift-intro div p{
+    font-size: 15px;
+  }
     .gift-banner p{
-      font-size: 1.6rem;
+      font-size: 1.4rem;
+      padding-left: 10px;
     }
+
+  .gift-terms__text{
+    font-size: 15px;
+  }
+  .gift-terms__list li{
+    font-size: 15px;
+  }
     
+}
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+  .gift-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .gift-intro div h2{
+    font-size: 10vw;
+    text-align: center;
+  }
+  .gift-intro div p{
+    justify-self: center;
+    align-self: center;
+    font-size: 5vw;
+    text-align: center;
+  }
+    
+  .gift-intro div .gift-radio{
+    padding-left: 30px;
+  }
+  .gift-intro div .gift-radio__label{
+    font-size: 4vw;
+  }
+  .gift-banner p{
+      font-size: 3vw;
+      padding-left: 10px;
+      
+  }
+  .gift-banner img{
+    width: 60%;
+  }
+  .gift-terms__title{
+    font-size: 9vw;
+    text-align: center;
+  }
+  .gift-terms__text{
+    font-size: 3.5vw;
+    max-width: 100%;
+  }
+  
+  .gift-terms__list li{
+    font-size: 3.5vw;
+  }
+    .gift-terms__values p{
+      font-size: 3.5vw;
+    }
+  .gift-terms__address p{
+    font-size: 4vw;
+  }
 }

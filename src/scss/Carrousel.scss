@@ -1,3 +1,16 @@
+// ==========================================================
+// Breakpoints (keep at top so you can reuse everywhere)
+// ==========================================================
+$desktop-xl: 1500px;
+$laptop-max: 1400px;
+$laptop-min: 1100px;
+$tablet-min: 768px;
+$phone-max: 767px;
+$phone-min: 320px;
+
+// ==========================================================
+// Base styles
+// ==========================================================
 .pc-carousel {
   width: 100%;
   padding: 56px 34px;
@@ -71,10 +84,10 @@
 .pc-viewport {
   width: 100%;
 
-  /* ✅ keep clipping only here (it’s the sliding window) */
+  /* keep clipping only here (it’s the sliding window) */
   overflow: hidden;
 
-  /* ✅ remove grab cursor */
+  /* remove grab cursor */
   cursor: default;
 }
 
@@ -91,7 +104,7 @@
   will-change: transform;
 }
 
-/* 2 per view */
+/* 2 per view (default) */
 .pc-card {
   flex: 0 0 50%;
   display: flex;
@@ -101,7 +114,6 @@
   box-sizing: border-box;
 }
 
-/* ✅ hover shadow now will be visible because carousel is overflow: visible */
 .pc-cardInner {
   width: 100%;
   max-width: 440px;
@@ -176,20 +188,13 @@
   border: 1.8px solid #e9519c;
 }
 
-/* ==========================================================
-   LARGE DESKTOP RESPONSIVE FIXES (PC CAROUSEL)
-   Only additions — no changes to your existing rules
-   Applies to screens >= 1500px
-========================================================== */
-
-@media (min-width: 1500px) {
-
-  /* keep carousel content from looking too wide on ultra-wide screens */
+// ==========================================================
+// LARGE DESKTOP RESPONSIVE FIXES (>= $desktop-xl)
+// ==========================================================
+@media (min-width: $desktop-xl) {
   .pc-carousel {
     padding: clamp(56px, 3.5vw, 84px) clamp(34px, 3vw, 80px);
     gap: clamp(18px, 1.4vw, 30px);
-
-    /* keep nav columns proportional */
     grid-template-columns: clamp(52px, 4.2vw, 72px) 1fr clamp(52px, 4.2vw, 72px);
   }
 
@@ -202,13 +207,13 @@
     }
   }
 
-  /* add a “soft max width” so two cards don’t stretch too much */
+  /* ✅ FIX: avoid Sass evaluating min(1400px, 88vw) */
   .pc-viewport {
-    max-width: min(1400px, 88vw);
+    width: 88vw;         /* responsive width */
+    max-width: 1400px;   /* hard cap */
     margin: 0 auto;
   }
 
-  /* spacing between the 2 cards on wide screens */
   .pc-card {
     padding: 0 clamp(22px, 1.6vw, 34px);
   }
@@ -216,7 +221,8 @@
   .pc-cardInner {
     max-width: clamp(440px, 30vw, 560px);
     border-radius: clamp(36px, 2.2vw, 52px);
-    padding: clamp(34px, 2.2vw, 52px) clamp(26px, 1.8vw, 40px) clamp(22px, 1.6vw, 34px);
+    padding: clamp(34px, 2.2vw, 52px) clamp(26px, 1.8vw, 40px)
+      clamp(22px, 1.6vw, 34px);
   }
 
   .pc-imageWrap {
@@ -243,11 +249,9 @@
   }
 }
 
-/* ==========================================================
-   VERY LARGE / 4K+ TUNING (optional but safe)
-   Only additions — no changes
-========================================================== */
-
+// ==========================================================
+// VERY LARGE / 4K+ TUNING
+// ==========================================================
 @media (min-width: 2000px) {
   .pc-viewport {
     max-width: 1600px;
@@ -257,3 +261,72 @@
     max-width: 600px;
   }
 }
+
+// ==========================================================
+// MOBILE (<= $phone-max): 1 card per view
+// IMPORTANT: Your JS must also switch cardsPerView to 1 on this breakpoint.
+// ==========================================================
+
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+  .pc-imageWrap img{
+    height: 180px;
+  }
+  .pc-carousel{
+    padding: 56px 5px;
+  }
+  .pc-title{
+    font-size: 15px;
+  }
+  .pc-meta{
+    gap: 5px;
+  }
+  .pc-price{
+    height: 30px;
+    font-size: 14px
+  }
+}
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+  .pc-carousel {
+    padding: 34px 18px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .pc-card {
+    flex: 0 0 100%;
+    padding: 0 14px;
+  }
+
+
+  .pc-imageWrap{
+    display: flex;
+    justify-content: center;
+  }
+
+  .pc-imageWrap img{
+    height: 100%;
+  }
+
+  .pc-title {
+    font-size: 4vw;
+  }
+
+  .pc-price {
+    min-width: 0px;
+    font-size: 4vw;
+    height: 10vw;
+  }
+
+  .pc-nav{
+    width: 25px;
+    height: 20px;
+    span{
+      font-size: 15px;
+    }
+  }
+  .pc-cardInner{
+    width: 90%;
+    padding: 20px 16px 32px
+  }
+}
+

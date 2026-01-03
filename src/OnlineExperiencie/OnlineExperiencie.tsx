@@ -21,6 +21,11 @@ function OnlineExperiencie() {
   const handleSetCreativeActive = (state:boolean,typeinput:TypesOptions) => {
     setCreateActive(state)
     setType(typeinput)
+     window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
 
   }
   return (
@@ -32,7 +37,7 @@ function OnlineExperiencie() {
         <>
         
           <HowItWorksSection/>
-          <div style={{backgroundImage:`url(${libsBackground})`}}>
+          <div className='online-experience-back-main' style={{backgroundImage:`url(${libsBackground})`}}>
             <div className='now-img-container'>
               <img src={agoraImg} className='now-img'/>
             </div>
@@ -64,7 +69,7 @@ function OnlineExperiencie() {
         </>}
       {createActive && 
       <>  
-        <CreateBatomBox  typeInput={type}/>
+        <CreateBatomBox setCreateActive={setCreateActive} typeInput={type}/>
       </>}
         
     </main>

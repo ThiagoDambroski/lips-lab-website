@@ -12,6 +12,7 @@ type FristStepProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   variant?: "default" | "palette"; // NEW
 };
+ 
 
 function FristStep({
   allColors,
@@ -20,6 +21,16 @@ function FristStep({
   setStep,
   variant = "default",
 }: FristStepProps) {
+  
+  const nextStep = () =>{ 
+    setStep(1)
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      })
+  }
+
   return (
     <section className="colors-selection">
       <span className="title-button">cria a cor</span>
@@ -56,7 +67,7 @@ function FristStep({
         })}
       </div>
 
-      <button onClick={() => setStep(1)} disabled={selected.length === 0}>
+      <button onClick={() => nextStep()} disabled={selected.length === 0}>
         regula a intensidade
       </button>
     </section>

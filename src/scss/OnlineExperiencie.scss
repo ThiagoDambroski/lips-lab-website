@@ -244,9 +244,11 @@
 }
 
 $desktop-xl: 1500px;
-$laptop-max: 1400px; 
+$laptop-max: 1400px;
 $laptop-min: 1100px;
-$tablet-min: 768px;  
+$tablet-min: 768px;
+$phone-max: 767px;
+$phone-min: 320px;
 
 
 @media (min-width: $desktop-xl) {
@@ -259,14 +261,70 @@ $tablet-min: 768px;
 }
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
-@media (max-width: $laptop-max) and (min-width: $laptop-min) {
-.online-buy-section .frist-button-online {
-    font-size: 40px;
-}
-.online-buy-section .second-button-online{
-    width: 60%;
-    font-size: 40px;
-    padding: 1.5rem;
-}
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+    .online-buy-section .frist-button-online {
+         width: 80%;
+        font-size: 40px;
+    }
+    .online-buy-section .online-buy-container .online-buy-card{
+        width: 100%;
+        padding-bottom: 0rem;
+    }
+    .online-buy-section .second-button-online{
+        width: 70%;
+        font-size: 25px;
+        padding: 1.5rem;
+    }
+
+    
    
+}
+
+
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+    .online-buy-section{
+        padding-bottom: 0rem;
+    }
+    .online-experience-back-main{
+        background-size: 280vw;
+    }
+    .online-buy-section .frist-button-online{
+        width: 100%;
+        font-size: 5vw;
+        padding: 1.5rem;
+    }
+    .online-buy-section .online-buy-p{
+        font-size: 4vw;
+    }
+    .img-site{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .online-buy-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .online-buy-section .online-buy-container{
+        gap: 1rem;
+        padding-bottom: 1rem;
+    }
+    .online-buy-section .online-buy-container .online-buy-card{
+        width: 100%;
+        padding-bottom: 0rem;
+    }
+    .online-buy-section .online-buy-container .online-buy-card img{
+        width: 30%;
+    }
+    .online-buy-section .online-buy-container .online-buy-card h3{
+        font-size: 4vw;
+    }
+    .online-buy-section .online-buy-container .online-buy-card span{
+        font-size: 3vw;
+    }
+    .online-buy-section .second-button-online{
+        width: 100%;
+        font-size: 5vw;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
 }

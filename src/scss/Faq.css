@@ -229,7 +229,11 @@
 }
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
-@media (max-width: 1400px) and (min-width: 1100px) {
+@media (max-width: 1100px) and (min-width: 768px) {
+  .faq-question {
+    -ms-grid-columns: 0.7fr 0.55fr;
+        grid-template-columns: 0.7fr 0.55fr;
+  }
   .faq-question .faq-question-container h3 {
     font-size: 3rem;
   }
@@ -237,7 +241,78 @@
     font-size: 1rem;
   }
   .faq-question img {
-    height: 150%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: left;
+       object-position: left;
+    border-radius: 40px;
+  }
+  .faq-still-questions div h1 {
+    font-size: 2.5rem;
+  }
+  .faq-still-questions div button {
+    width: 75%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .faq-intro {
+    padding-left: 1rem;
+  }
+  .faq-intro h1 {
+    font-size: 15vw;
+  }
+  .faq-intro p {
+    font-size: 6vw;
+    margin-bottom: 1rem;
+  }
+  .ribbon-image {
+    width: 130%;
+  }
+  .faq-question {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .faq-question .faq-question-container h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    font-size: 15vw;
+  }
+  .faq-question-header p {
+    font-size: 4.5vw;
+  }
+  .faq-question img {
+    width: 100%;
+    border-radius: 40px;
+  }
+  .faq-still-questions {
+    background-size: 450vw;
+  }
+  .faq-answer li {
+    font-size: 4vw;
+  }
+  .faq-still-questions div h1 {
+    font-size: 7vw;
+    text-align: center;
+  }
+  .faq-still-questions div button {
+    width: 80%;
+    padding: 1rem;
+  }
+  .faq-still-questions div button p {
+    font-size: 3.5vw;
+  }
+  .faq-still-questions div button span {
+    font-size: 3.5vw;
   }
 }
 /*# sourceMappingURL=Faq.css.map */

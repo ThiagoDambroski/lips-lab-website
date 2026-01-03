@@ -1,5 +1,24 @@
 import React, { useState } from 'react'
 import type { TypesOptions } from './Types'
+import sparks from "../../assets/sparks.svg";
+import star from "../../assets/star.svg";
+import heart from "../../assets/heart.svg";
+import flower from "../../assets/flower.svg";
+import lipsIcon from "../../assets/libs icon.svg";
+import infinity from "../../assets/inifity.svg";
+import aries from "../../assets/aries.svg";
+import taurus from "../../assets/taurus.svg";
+import gemini from "../../assets/gemini.svg";
+import cancer from "../../assets/cancer.svg";
+import leo from "../../assets/leo.svg";
+import virgo from "../../assets/virgo.svg";
+import libra from "../../assets/libra.svg";
+import scorpio from "../../assets/scorpio.svg";
+import sagittarius from "../../assets/sagittarius.svg";
+import capricornio from "../../assets/capricornio.svg";
+import aquarius from "../../assets/aquarius.svg";
+import peixe from "../../assets/peixe.svg";
+
 
 type FormatAndTextType = {
   step: number
@@ -7,10 +26,12 @@ type FormatAndTextType = {
   type: TypesOptions
   boxText: string
   setBoxText: React.Dispatch<React.SetStateAction<string>>
+  boxImg: string
+  setBoxImg: React.Dispatch<React.SetStateAction<string>>
   
 }
 
-function FormatAndText({ step, setStep,type, boxText, setBoxText }: FormatAndTextType) {
+function FormatAndText({ step, setStep,type, boxText, setBoxText,boxImg,setBoxImg }: FormatAndTextType) {
   const formulaItemsUnfiltred = [
     {
       id: 'CLÁSSICO',
@@ -118,45 +139,58 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText }: FormatAndTex
     },
   ]
 
-  const SYMBOLS = [
-    '★',
-    '♡',
-    '✿',
-    '♕',
-    '∞',
-    '♈',
-    '♉',
-    '♊',
-    '♋',
-    '♌',
-    '♍',
-    '♎',
-    '♏',
-    '♐',
-    '♑',
-    '♒',
-    '♓',
-  ]
+  type SymbolOption = {
+  id: string;
+  img: string;
+};
+
+const SYMBOLS: SymbolOption[] = [
+  { id: "sparks", img: sparks },
+  { id: "star", img: star },
+  { id: "heart", img: heart },
+  { id: "flower", img: flower },
+  { id: "lips", img: lipsIcon },
+  { id: "infinity", img: infinity },
+  { id: "aries", img: aries },
+  { id: "taurus", img: taurus },
+  { id: "gemini", img: gemini },
+  { id: "cancer", img: cancer },
+  { id: "leo", img: leo },
+  { id: "virgo", img: virgo },
+  { id: "libra", img: libra },
+  { id: "scorpio", img: scorpio },
+  { id: "sagittarius", img: sagittarius },
+  { id: "capricornio", img: capricornio },
+  { id: "aquarius", img: aquarius },
+  { id: "peixes", img: peixe },
+];
+
 
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null)
   const [selectedFont, setSelectedFont] = useState<FontOption>(FONTS[0])
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBoxText(e.target.value)
-    // if the user starts typing, “unselect” the symbol
-    if (selectedSymbol) {
-      setSelectedSymbol(null)
-    }
+    setBoxImg("none");
+    setSelectedSymbol(null)
   }
 
-  const handleSymbolClick = (symbol: string) => {
-    setSelectedSymbol(symbol)
-    setBoxText(symbol) // put symbol in the input (optional)
+ const handleSymbolClick = (symbol: string) => {
+  if (boxImg === symbol) {
+    setBoxImg("none");
+    setSelectedSymbol(null);
+  } else {
+    setBoxImg(symbol);
+    setSelectedSymbol(symbol);
   }
+  setBoxText("")
+};
+
 
   const handleFontClick = (font: FontOption) => {
     setSelectedFont(font)
   }
+
 
   const canContinue = boxText.trim().length > 0
 
@@ -225,25 +259,26 @@ function FormatAndText({ step, setStep,type, boxText, setBoxText }: FormatAndTex
             <p className="engraving-subtitle">OU ESCOLHE UM SÍMBOLO</p>
 
             <div className="engraving-symbol-list">
-              {SYMBOLS.map(symbol => (
+              {SYMBOLS.map((symbol) => (
                 <button
-                  key={symbol}
+                  key={symbol.id}
                   type="button"
                   className={
-                    'engraving-symbol' +
-                    (selectedSymbol === symbol ? ' engraving-symbol--active' : '')
+                    "engraving-symbol" +
+                    (selectedSymbol === symbol.id ? " engraving-symbol--active" : "")
                   }
-                  onClick={() => handleSymbolClick(symbol)}
+                  onClick={() => handleSymbolClick(symbol.id)}
                 >
-                  {symbol}
+                  <img src={symbol.img} alt={symbol.id} />
                 </button>
               ))}
             </div>
 
+
             <button
               className="engraving-continue"
               type="button"
-              disabled={!canContinue}
+              
               onClick={() => setStep(7)}
             >
               CONTINUAR!

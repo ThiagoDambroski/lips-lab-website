@@ -241,7 +241,7 @@ function AppProvider({ children }: appProviderProps) {
         "alta fixação & confortável",
     },
     {
-      id: "cream",
+      id: "cremoso",
       name: "CREMOSO",
       description:
         "hidratante & suave",
@@ -295,40 +295,40 @@ function AppProvider({ children }: appProviderProps) {
   const smellOptions: { id: SmelltOptions, name: string, img: string }[] = [
 
     {
-      id: "canela",
+      id: "Canela",
       name: "Canela",
       img:
         canela,
     },
     {
-      id: "cereja",
+      id: "Cereja jubilee",
       name: "Cereja jubilee",
       img: cereja,
     },
     {
-      id: "trufa",
+      id: "Trufa de framboesa",
       name: "Trufa de framboesa",
       img:
         trufa,
     },
     {
-      id: "creme",
+      id: "Crème brûlée",
       name: "Crème brûlée",
       img: creme,
     },
     {
-      id: "bolo",
+      id: "Cenoura",
       name: "Cenoura",
       img: bolo,
     },
     {
-      id: "hortela",
+      id: "Menta",
       name: "Menta",
       img:
         hortela,
     },
     {
-      id: "lima",
+      id: "Lima com Coco",
       name: "Lima com Coco",
       img:
         lima,
@@ -340,7 +340,7 @@ function AppProvider({ children }: appProviderProps) {
         avela,
     },
     {
-      id: "sorvete",
+      id: "Pêssego",
       name: "Pêssego",
       img:
         sorvete,
@@ -361,42 +361,42 @@ function AppProvider({ children }: appProviderProps) {
   }[] = [
 
       {
-        id: "brilho-hidratacao",
+        id: "HIDRATANTE",
         name: "HIDRATANTE",
         description:
           "Melhora a textura do batom ou gloss, tornando-o mais cremoso, luminoso e confortável nos lábios.",
         img: hidr
       },
       {
-        id: "efeito-volume",
+        id: "SUAVIZAÇÃO",
         name: "SUAVIZAÇÃO",
         description:
           "Proporciona um efeito de lábios mais preenchidos e hidratados.",
         img: suav
       },
       {
-        id: "protecao-solar",
+        id: "PROTEÇÃO SOLAR",
         name: "PROTEÇÃO SOLAR",
         description:
           "Rico em antioxidantes, aumenta a hidratação e deixa os lábios suaves e nutridos.",
         img: prot
       },
       {
-        id: "complexo-multifloral",
+        id: "DENSIFICADOR",
         name: "DENSIFICADOR",
         description:
           "Suaviza a pele, estimula o colágeno e ajuda a combater o envelhecimento.",
         img: dens
       },
       {
-        id: "aditivo-hidratante",
+        id: "VOLUME LABIAL",
         name: "VOLUME LABIAL",
         description:
           "Adiciona fator de proteção solar, ajudando a proteger os lábios da exposição ao sol.",
         img: vol
       },
       {
-        id: "textura-sedosa",
+        id: "ANTI-IDADE & REGENERADOR",
         name: "ANTI-IDADE & REGENERADOR",
         description:
           "Cria um acabamento mais macio, leve e aveludado.",

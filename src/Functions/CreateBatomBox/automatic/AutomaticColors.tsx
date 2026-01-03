@@ -88,7 +88,7 @@ function AutomaticColors({
                   alt=""
                   onClick={() => setSkinTone(s.id)}
                   style={{
-                    outline: skinTone === s.id ? "3px solid green" : "none",
+                    outline: skinTone === s.id ? "3px solid white" : "none",
                   }}
                 />
               ))}
@@ -123,7 +123,7 @@ function AutomaticColors({
                   alt=""
                   onClick={() => setEyeColor(e.id)}
                   style={{
-                    outline: eyeColor === e.id ? "3px solid green" : "none",
+                    outline: eyeColor === e.id ? "3px solid white" : "none",
                   }}
                 />
               ))}
@@ -158,7 +158,7 @@ function AutomaticColors({
                   alt=""
                   onClick={() => setHairColor(h.id)}
                   style={{
-                    outline: hairColor === h.id ? "3px solid green" : "none",
+                    outline: hairColor === h.id ? "3px solid white" : "none",
                   }}
                 />
               ))}

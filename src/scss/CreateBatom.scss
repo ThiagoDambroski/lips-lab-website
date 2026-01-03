@@ -1,4 +1,8 @@
-
+.pink-go-back-arrow{
+  position: absolute;
+  left: 30px;
+  cursor: pointer;
+}
 .main-create-box{
     z-index: 1;
     display: flex;
@@ -34,21 +38,22 @@
     gap: 20rem;
     z-index: 0;
    background:
-  /* soft center glow – slightly stronger */
-  radial-gradient(
-    1200px 500px at 50% 55%,
-    rgba(255, 205, 225, 0.48) 0%,
-    rgba(255, 205, 225, 0.24) 45%,
-    rgba(255, 205, 225, 0.00) 72%
-  ),
-  /* bottom fade – slightly richer */
-  linear-gradient(
-    180deg,
-    rgba(255, 245, 248, 0.00) 0%,
-    rgba(255, 230, 240, 0.22) 55%,
-    rgba(255, 205, 225, 0.36) 80%,
-    rgba(255, 180, 210, 0.50) 100%
-  );
+    /* soft central glow */
+    radial-gradient(
+      900px 420px at 50% 45%,
+      rgba(255, 220, 235, 0.55) 0%,
+      rgba(255, 220, 235, 0.30) 40%,
+      rgba(255, 220, 235, 0.12) 65%,
+      rgba(255, 220, 235, 0.00) 80%
+    ),
+
+    /* very gentle vertical depth */
+    linear-gradient(
+      180deg,
+      #fff6fa00 0%,
+      #fde7f088 45%,
+      #f8c9dca8 100%
+    );
 
 
     
@@ -146,7 +151,7 @@
             }
             img{
                 width: 90%;
-                margin-bottom: 6rem;
+                margin-bottom: 3rem;
             }
         }
         p{
@@ -425,108 +430,203 @@
 }
 
 
-.second-step{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    padding: 2rem;
-    input{
-        width: 100%;
-        height: 16px;     // increases the clickable area
-        appearance: none; // remove default browser style
-        border-radius: 10px;
-        cursor: pointer;
+.second-step {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
 
-        /* --- TRACK --- */
-        &::-webkit-slider-runnable-track {
-            height: 12px;         // track thickness
-            border-radius: 10px;
-            
-        }
+/* ================= COLOR ROW ================= */
 
-        /* --- THUMB --- */
-        &::-webkit-slider-thumb {
-            appearance: none;
-            width: 28px;     // bigger thumb
-            height: 28px;
-            border-radius: 50%;
-            background: white;
-            border: 2px solid #e55499; // LipsLab pink/red if you prefer
-            margin-top: -8px; // centers the thumb vertically inside the track
-        }
+.color-row {
+  display: grid;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto;
+}
 
-        /* Firefox support */
-        &::-moz-range-thumb {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: white;
-            border: 2px solid #c41123;
-        }
+.color-row__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
 
-        &::-moz-range-track {
-            height: 12px;
-            border-radius: 10px;
-            background: currentColor;
-        }
-    }
-    .add-color-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 20px;
-    }
+/* ================= COLOR SWATCH ================= */
 
-    .add-color-btn {
-    width: 80px;          
-    height: 80px;        
-    border-radius: 50%;   
-    border: 3px dashed #b8b8b8;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+.color-swatch {
+  width: 90px;
+  height: 80px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+}
 
-    &:hover {
-        border-color: #8d8d8d;
-    }
+/* ================= RANGE SLIDER ================= */
 
-    .plus {
-        font-size: 3rem;
-        color: #8d8d8d;
-        font-weight: 300;
-        line-height: 1;
-    }
-    }
+.color-range {
+  --accent: #e55499; // fallback
+  --val: 0;
 
-    .add-color-text {
-    font-family: "IvyPresto", serif;
-    font-style: italic;
-    font-size: 1.6rem;
-    color: #8d8d8d;
-    }
+  width: 100%;
+  height: 32px;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
 
-    .continue-button{
-        width: 40%;
-        background-color: #c41123;
-        border: none;
-        padding: 1rem;
-        border-radius: 50px;
-        color: white;
-        font-size: 1.5rem;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      cursor: pointer;
-     }
-    .continue-button:hover {
+  &:focus {
+    outline: none;
+  }
+
+  /* ===== WebKit (Chrome, Safari, Edge) ===== */
+  &::-webkit-slider-runnable-track {
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      var(--accent) 0%,
+      var(--accent) calc(var(--val) * 1%),
+      rgba(0, 0, 0, 0.15) calc(var(--val) * 1%),
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--accent);
+    margin-top: -8px;
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+
+  &:active::-webkit-slider-thumb {
+    transform: scale(0.96);
+  }
+
+  /* ===== Firefox ===== */
+  &::-moz-range-track {
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  &::-moz-range-progress {
+    height: 12px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  &::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--accent);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  }
+}
+
+/* ================= EXCLUDE BUTTON ================= */
+
+.step-second-exclude-button {
+  
+  font-family: "ApercuPro";
+  font-size: 12px;
+  font-weight: bold;
+  background: none;
+  border-radius: 50px;
+  width: 70%;
+  align-self: center;
+  justify-self: center;
+  border: 2px solid #e7549a;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  transition: background-color 0.25s ease, color 0.25s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: #e7549a;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* ================= ADD COLOR ================= */
+
+.add-color-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.add-color-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px dashed black;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: black;
+  }
+}
+
+.plus {
+  font-size: 3rem;
+  color: black;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.add-color-text {
+  font-family: "ApercuPro", serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+/* ================= CONTINUE BUTTON ================= */
+
+.continue-button {
+  width: 40%;
+  background-color: #c41123;
+  border: none;
+  padding: 1rem;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
-    }
-
+  }
 }
+
+
 
 .texture-selection-section{
     width: 100%;
@@ -558,6 +658,50 @@
         padding-bottom: 2rem;
         border-radius: 50px;
         border: 2px solid pink;
+         li.base-option-li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+
+            .base-option-text {
+              display: flex;
+              flex-direction: column;
+              gap: 6px;
+            }
+            &.is-active{
+              background-color: #c41123;
+            }
+          }
+        .base-info-btn {
+        position: absolute; /* ✅ only absolute here */
+        right: 5px;
+        top: -10px;
+        transform: translateX(-50%);
+
+        width: 34px;
+        height: 22px;
+        border: 0px solid rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+
+        background: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+
+        z-index: 3; 
+
+        img {
+          width: 18px;
+          height: 18px;
+          display: block;
+          pointer-events: none; 
+        }
+
+        
+
+      }
 
         li{
             display: flex;
@@ -692,6 +836,13 @@
               font-family: "ApercuPro";
               text-transform: uppercase;
               font-style: italic;
+              position: relative;
+              .abs-img{
+                position: absolute;
+                width: 30px;
+                right: 10px;
+                top: -10px;           
+              }
               p{
                 font-size: 0.8rem;
                 color: white;
@@ -779,6 +930,7 @@
           margin-bottom: 2rem;
           gap: 10px;
           cursor: pointer;
+          position: relative;
           div{
               display: flex;
               justify-content: center;
@@ -793,6 +945,12 @@
                   height: 40px;
               
               
+              }
+              .abs-img{
+                position: absolute;
+                width: 15px;
+                top:-20px;
+                right: 15px;
               }
               
           }
@@ -832,7 +990,13 @@
     align-items: center; 
     gap: 0.8rem; 
     cursor: pointer;
-
+    position: relative;
+    .abs-img{
+      position: absolute;
+      width: 15px;
+      top: -15px;
+      right: 15px;
+    }
     img {
       width: 35px;
       height: 35px;
@@ -1021,8 +1185,8 @@
 .engraving {
   display: flex;
   gap: 3rem;
-  padding: 3rem 4rem;
- 
+  padding: 3rem 0rem;
+  padding-right: 1rem;
  
   border-radius: 40px;
   position: relative;
@@ -1129,11 +1293,17 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 2rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 50px;
+  border: 1px solid #e55499;
+  align-items: center;
+  justify-content: center;
 }
 
 .engraving-symbol {
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: none;
   background: transparent;
@@ -1229,19 +1399,17 @@
 
 //glitter
 
-.glitter-section{
+.glitter-section {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-
-
 }
 
-.glitter-intro{
+.glitter-intro {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  h2{
+  h2 {
     padding-top: 100px;
     color: #c41123;
     font-family: "ApercuPro";
@@ -1250,7 +1418,8 @@
     font-size: 1.6rem;
     width: 80%;
   }
-  button{
+
+  button {
     width: 70%;
     background-color: #c41123;
     border: none;
@@ -1265,13 +1434,14 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
   }
+
   button:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
   }
-
 }
-.gliter-container{
+
+.gliter-container {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -1279,31 +1449,31 @@
   border: 2px solid pink;
   padding: 2rem;
 }
+
 .glliter-selection-div {
   display: flex;
   flex-direction: column;
-  
 
   .glitter-subtitle {
-      margin: 14px 0 12px;
-      
+    margin: 14px 0 12px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-style: italic;
-      border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    border-radius: 999px;
 
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-family: "ApercuPro";
-      background: rgba(233, 81, 156, 0.14);
-      border: 1px solid rgba(233, 81, 156, 0.32);
-      color: rgba(233, 81, 156, 0.95);
-    }
- 
-  h2{
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: "ApercuPro";
+    background: rgba(233, 81, 156, 0.14);
+    border: 1px solid rgba(233, 81, 156, 0.32);
+    color: rgba(233, 81, 156, 0.95);
+  }
+
+  h2 {
+    position: relative;
     color: #c41123;
     text-transform: uppercase;
     font-style: italic;
@@ -1311,21 +1481,18 @@
     font-weight: bolder;
     font-size: 25px;
   }
+
   ul {
     margin: 0;
     padding: 0;
     margin-top: 15px;
     margin-bottom: 15px;
+
     display: grid;
-
-
     grid-template-columns: repeat(8, max-content);
-
-   
     justify-content: flex-start;
     align-content: flex-start;
 
-   
     column-gap: 5px;
     row-gap: 5px;
 
@@ -1334,18 +1501,17 @@
       padding: 0;
       list-style: none;
 
-      /* keep the li tight around the image */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      
 
       img {
         display: block;
-        width: 60px; // or whatever size you prefer
+        width: 60px;
       }
-      p{
+
+      p {
         font-family: "ApercuPro";
         text-transform: uppercase;
         color: #c41123;
@@ -1354,6 +1520,157 @@
     }
   }
 }
+
+/* ===== Title + info icon button ===== */
+.glitter-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .glitter-info-btn {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+
+    img {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* =========================
+   LEFT POPUP + DARK OVERLAY
+   ========================= */
+
+.glitter-info-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  /* ✅ dark shadow background */
+  background: rgba(0, 0, 0, 0.28);
+
+  /* optional (remove if you dislike) */
+  backdrop-filter: blur(1px);
+}
+
+.glitter-info-card {
+  position: fixed;
+
+  /* ✅ flush to the left edge */
+  left: 0;
+
+  /* tune this if you have a header */
+  top: 00px;
+
+  width: 360px;
+  height: 100vh;
+
+  padding: 26px 18px;
+
+  /* ✅ only right side rounded */
+  border-radius: 0 28px 28px 0;
+
+  border: 2px solid rgba(231, 84, 154, 0.55);
+  border-left: none;
+
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+  background: linear-gradient(180deg, #f6b7cf 0%, #e7549a 100%);
+
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.glitter-info-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+
+  font-size: 18px;
+  line-height: 1;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.glitter-info-title {
+  margin: 18px 0 14px;
+  font-family: "ApercuPro";
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+
+.glitter-info-body {
+  width: 100%;
+  overflow: auto;
+  padding-right: 6px;
+
+  p {
+    margin: 0 0 12px 0;
+    font-family: "ApercuPro";
+    font-size: 11px;
+    line-height: 1.55;
+    opacity: 0.98;
+  }
+}
+
+.glitter-info-note-title {
+  margin: 8px 0 10px 0;
+  font-family: "ApercuPro";
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.glitter-info-note-line {
+  opacity: 0.95;
+}
+
+
 
 /* --- Ligthbox--- */
 /* FULL-SCREEN PINK OVERLAY */
@@ -1384,7 +1701,7 @@
 /* BIG WHITE CIRCLE, CENTERED (LIKE YOUR DESIGN) */
 .glitter-lightbox-circle {
   width: 55vmin;        /* scales with viewport */
-  height: 50vmin;
+
 
   border-radius: 50%;
   display: flex;
@@ -1404,7 +1721,7 @@
 /* NAME BELOW THE CIRCLE */
 .glitter-lightbox-name {
   margin-top: 0rem;
-  font-size: 1.3rem;
+  font-size: 0rem;
   font-weight: 600;
   text-align: center;
 }

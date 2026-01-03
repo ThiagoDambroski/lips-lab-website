@@ -21,8 +21,16 @@ type ProductCarouselProps = {
 const clamp = (n: number, min: number, max: number) =>
   Math.max(min, Math.min(n, max));
 
-const CARDS_PER_VIEW = 2;
-const STEP_PCT = 100 / CARDS_PER_VIEW;
+/**
+ * Keep this in sync with your CSS breakpoint.
+ * If <= 600px => 1 per view, else 2 per view (your original behavior).
+ */
+const MOBILE_MAX = 600;
+
+function getCardsPerView(): number {
+  if (typeof window === "undefined") return 2;
+  return window.innerWidth <= MOBILE_MAX ? 1 : 2;
+}
 
 export const ProductCarousel: React.FC<ProductCarouselProps> = ({
   items,
@@ -35,16 +43,24 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const autoplayRef = useRef<number | null>(null);
 
-  // Last valid index when showing 2 cards per view:
-  // Example: 7 items -> maxIndex = 5 (shows items 6 & 7 in the last view)
-  const maxIndex = useMemo(
-    () => Math.max(0, items.length - CARDS_PER_VIEW),
-    [items.length]
-  );
+  const [cardsPerView, setCardsPerView] = useState<number>(() => getCardsPerView());
+
+  // Update cardsPerView on resize
+  useEffect(() => {
+    const onResize = () => setCardsPerView(getCardsPerView());
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const stepPct = useMemo(() => 100 / cardsPerView, [cardsPerView]);
+
+  const maxIndex = useMemo(() => {
+    return Math.max(0, items.length - cardsPerView);
+  }, [items.length, cardsPerView]);
 
   const [index, setIndex] = useState(() => clamp(initialIndex, 0, maxIndex));
 
-  // Keep index valid if items length changes
+  // Keep index valid if items length or cardsPerView changes
   useEffect(() => {
     setIndex((curr) => clamp(curr, 0, maxIndex));
   }, [maxIndex]);
@@ -95,8 +111,8 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
     };
   }, [autoplayMs, maxIndex]);
 
-  // Move by half of the viewport each index (2 cards per view)
-  const translatePct = useMemo(() => -(index * STEP_PCT), [index]);
+  // Translate by 1 "slot" where slot size depends on cardsPerView
+  const translatePct = useMemo(() => -(index * stepPct), [index, stepPct]);
 
   return (
     <div
@@ -105,6 +121,7 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
       role="region"
       aria-label="Products carousel"
       tabIndex={0}
+      data-cards-per-view={cardsPerView}
     >
       <button
         className="pc-nav"
@@ -128,7 +145,10 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
             <li
               key={it.id}
               className="pc-card"
-              style={{ aspectRatio: `${cardRatio}` }}
+              style={{
+                aspectRatio: `${cardRatio}`,
+                flex: `0 0 ${100 / cardsPerView}%`,
+              }}
             >
               <article className="pc-cardInner">
                 <div className="pc-imageWrap">

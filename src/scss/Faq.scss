@@ -196,6 +196,8 @@ $desktop-xl: 1500px;
 $laptop-max: 1400px; 
 $laptop-min: 1100px;
 $tablet-min: 768px;  
+$phone-max: 767px;
+$phone-min: 320px;
 
 
 @media (min-width: $desktop-xl) {
@@ -203,8 +205,11 @@ $tablet-min: 768px;
 }
 
 /* -------- Laptops & tablets (≈ 768px–1400px) -------- */
-@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+@media (max-width: $laptop-min) and (min-width: $tablet-min)  {
 
+    .faq-question{
+      grid-template-columns: 0.7fr 0.55fr;
+    }
     .faq-question .faq-question-container h3{
       font-size: 3rem;
     }
@@ -212,6 +217,74 @@ $tablet-min: 768px;
       font-size: 1rem;
     }
     .faq-question img{
-      height: 150%;
+      height: 100%;
+      object-fit:  cover;
+      object-position: left;
+      border-radius: 40px;
+      
+    }
+    .faq-still-questions div h1{
+      font-size: 2.5rem;
+    }
+    .faq-still-questions div button{
+      width: 75%;
+    }
+}
+
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+  
+  .faq-intro{
+    padding-left: 1rem;
+  }
+  .faq-intro h1 {
+    font-size: 15vw;
+  }  
+
+  .faq-intro p {
+    font-size: 6vw ;
+    margin-bottom: 1rem;
+  }
+  .ribbon-image {
+    width: 130%;
+}
+  
+  .faq-question{
+      display: flex;
+      flex-direction: column;
+    }
+    .faq-question .faq-question-container h3{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      align-self: center;
+      font-size: 15vw;
+    }
+    .faq-question-header p{
+      font-size: 4.5vw;
+    }
+    .faq-question img{
+      width: 100%;
+      border-radius: 40px;
+      
+    }
+
+    .faq-still-questions{
+      background-size: 450vw;
+    }
+    .faq-answer li {
+    font-size: 4vw;
+    }
+    .faq-still-questions div h1{
+      font-size:7vw;
+      text-align: center;
+    }
+    .faq-still-questions div button{
+      width: 80%;
+      padding: 1rem;
+    }
+    .faq-still-questions div button p{
+      font-size: 3.5vw;
+    }
+    .faq-still-questions div button span{
+      font-size: 3.5vw;
     }
 }

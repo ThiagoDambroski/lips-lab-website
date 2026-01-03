@@ -551,6 +551,9 @@ $phone-min: 320px;
 }
 
 @media (max-width: $laptop-min) and (min-width: $tablet-min) {
+
+  
+
   .rolling-card {
     font-size: 15px;
   }
@@ -654,6 +657,9 @@ $phone-min: 320px;
   }
 }
 @media (min-width: $phone-min) and (max-width: $phone-max) {
+  .open-page-section{
+    background-size: cover;
+  }
   .rolling-card {
     font-size: 10px;
     height: 35px;
@@ -772,7 +778,8 @@ $phone-min: 320px;
   //home end
 
   .home-end{
-    min-height: 80vh;
+  
+    min-height: 60vh;
   }
   .home-end h1{
     text-align: end;

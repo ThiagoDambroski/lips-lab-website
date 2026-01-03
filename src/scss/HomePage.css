@@ -687,6 +687,9 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+  .open-page-section {
+    background-size: cover;
+  }
   .rolling-card {
     font-size: 10px;
     height: 35px;
@@ -800,7 +803,7 @@
     font-size: 8px;
   }
   .home-end {
-    min-height: 80vh;
+    min-height: 60vh;
   }
   .home-end h1 {
     text-align: end;

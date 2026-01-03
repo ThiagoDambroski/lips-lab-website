@@ -150,6 +150,11 @@ function ColorsSelection({
 
     setDoItYourSelf(true);
     setStep(0);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
   };
 
   const startAutomaticFlow = () => {
@@ -161,6 +166,11 @@ function ColorsSelection({
 
     setDoItYourSelf(false);
     setStep(0);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
   };
 
   const continueFromAutomaticPalette = (paletteHexes: string[]) => {

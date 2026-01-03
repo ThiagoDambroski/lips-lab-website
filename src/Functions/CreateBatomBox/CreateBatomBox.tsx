@@ -18,12 +18,57 @@ import batomImage from "../../assets/batom final exp.svg";
 import libsbackg from "../../assets/libs back.png";
 import logoLibs from "../../assets/logo.png";
 import "../../scss/CreateBatom.css";
+import pinkArrow from "../../assets/pink go back arrow.svg"
 
 import descVer from "../../assets/display icons exp.svg";
 import { useApp } from "../../Contexts/AppProvider";
 import { useNavigate } from "react-router-dom";
+import sparks from "../../assets/sparks.svg";
+import star from "../../assets/star.svg";
+import heart from "../../assets/heart.svg";
+import flower from "../../assets/flower.svg";
+import lipsIcon from "../../assets/libs icon.svg";
+import infinity from "../../assets/inifity.svg";
+import aries from "../../assets/aries.svg";
+import taurus from "../../assets/taurus.svg";
+import gemini from "../../assets/gemini.svg";
+import cancer from "../../assets/cancer.svg";
+import leo from "../../assets/leo.svg";
+import virgo from "../../assets/virgo.svg";
+import libra from "../../assets/libra.svg";
+import scorpio from "../../assets/scorpio.svg";
+import sagittarius from "../../assets/sagittarius.svg";
+import capricornio from "../../assets/capricornio.svg";
+import aquarius from "../../assets/aquarius.svg";
+import peixe from "../../assets/peixe.svg";
 
+
+  type SymbolOption = {
+  id: string;
+  img: string;
+};
+const SYMBOLS: SymbolOption[] = [
+  { id: "sparks", img: sparks },
+  { id: "star", img: star },
+  { id: "heart", img: heart },
+  { id: "flower", img: flower },
+  { id: "lips", img: lipsIcon },
+  { id: "infinity", img: infinity },
+  { id: "aries", img: aries },
+  { id: "taurus", img: taurus },
+  { id: "gemini", img: gemini },
+  { id: "cancer", img: cancer },
+  { id: "leo", img: leo },
+  { id: "virgo", img: virgo },
+  { id: "libra", img: libra },
+  { id: "scorpio", img: scorpio },
+  { id: "sagittarius", img: sagittarius },
+  { id: "capricornio", img: capricornio },
+  { id: "aquarius", img: aquarius },
+  { id: "peixes", img: peixe },
+];
 type CreateBatomType = {
+  setCreateActive:React.Dispatch<React.SetStateAction<boolean>>
   typeInput: TypesOptions;
 };
 
@@ -32,7 +77,7 @@ type NonNullProduct = Exclude<productType, null>;
 
 type ProductGlitterValue = number | string | null | undefined;
 
-function CreateBatomBox({ typeInput }: CreateBatomType) {
+function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
 
   type ColorOption = { hex: string; sub: string };
 
@@ -57,6 +102,8 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
   const [aditive, setAditive] = useState<AdditivesOptions>("none");
   const [esence, setEsence] = useState<EsenceOptions>("none");
   const [boxText, setBoxText] = useState<string>("");
+  const [boxImage,setBoxImage] = useState<string>("none")
+  const price = 29.00
 
   const navigate = useNavigate();
 
@@ -81,6 +128,12 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
     setAditive("none");
     setEsence("none");
     setBoxText("");
+    setBoxImage("none")
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
   };
 
 
@@ -96,6 +149,8 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
     aditive,
     esence,
     boxText,
+    boxImage,
+    price
   });
 
   const generatedProduct = () => {
@@ -136,8 +191,29 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
     return glitterValue;
   })();
 
+  const goBackFunction = () => {
+    if(type === undefined){
+      setCreateActive(false)
+    }else{
+      if (step === 0) {
+          setType(undefined);
+          return;
+        }
+        setStep((prev) => Math.max(0, prev - 1));
+    }
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+  }
+
   return (
     <div>
+      {doItYourSelf !== false && 
+      <img src={pinkArrow} alt=""  className="pink-go-back-arrow" onClick={() => goBackFunction()}/>
+      }
+      
       {type === undefined && (
         <main
           style={{ backgroundImage: `url(${libsbackg})` }}
@@ -160,9 +236,7 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
 
       {type !== undefined && (
         <>
-          <p>
-            {type} <button onClick={() => setType(undefined)}>X</button>
-          </p>
+        
 
           {step !== 8 && <>
             <main
@@ -256,6 +330,8 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
                   type={type}
                   boxText={boxText}
                   setBoxText={setBoxText}
+                  boxImg={boxImage}
+                  setBoxImg={setBoxImage}
                 />
               </div>
             </main>
@@ -332,12 +408,23 @@ function CreateBatomBox({ typeInput }: CreateBatomType) {
                   <p>ESSÊNCIA</p>
                 </li>
 
-                <li>
-                  <div onClick={() => setStep(7)}>
-                    <p>{boxText?.trim() ? boxText : "—"}</p>
-                  </div>
-                  <p>PERSONALIZAÇÃO</p>
-                </li>
+              <li>
+                <div onClick={() => setStep(6)}>
+                  {boxImage !== "none" && (
+                    <img
+                      src={SYMBOLS.find(s => s.id === boxImage)?.img}
+                      alt=""
+                    />
+                  )}
+
+                  {boxText.trim() !== "" && (
+                    <p>{boxText.trim()}</p>
+                  )}
+                </div>
+
+                <p>PERSONALIZAÇÃO</p>
+              </li>
+
               </ul>
 
               <button onClick={handleFinishPurchase}>
