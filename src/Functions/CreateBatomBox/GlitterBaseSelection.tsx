@@ -43,7 +43,14 @@ function GlitterBaseSelection({
   // --------------------------
   const [preview, setPreview] = useState<GlitterColor | null>(null);
 
-  const openLightbox = (g: GlitterColor) => setPreview(g);
+  const openLightbox = (g: GlitterColor) => {
+    if(glitterSelected === g.id){
+      setGlitterSelected(null)
+    }else{
+      setPreview(g);
+    }
+    
+  }
   const closeLightbox = () => setPreview(null);
 
   const confirmSelect = () => {
@@ -182,7 +189,9 @@ function GlitterBaseSelection({
 
   const [infoKey, setInfoKey] = useState<string | null>(null);
 
-  const openInfo = (key: string) => setInfoKey(key);
+  const openInfo = (key: string) => {
+    setInfoKey(key);
+  }
   const closeInfo = () => setInfoKey(null);
 
   const activeInfo: InfoContent | null = infoKey ? infoMap[infoKey] ?? null : null;

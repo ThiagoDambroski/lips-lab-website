@@ -699,6 +699,7 @@
         -ms-flex-pack: center;
             justify-content: center;
     padding-top: 2rem;
+    background-size: 250vw;
   }
   .experiencie-libs .experiencie-libs-intro {
     padding-left: 0rem;

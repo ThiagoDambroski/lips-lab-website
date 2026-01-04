@@ -13,7 +13,14 @@ import SmellAndAditive from "./SmellAndAditive";
 import FormatAndText from "./FormatAndText";
 import glossImage from "../../assets/gloss online exp.svg";
 import glossWhioutImage from "../../assets/gloss whiout.png";
+import batomComplete from "../../assets/batomCompleteForColor.png"
+import batomBaseNoTip from "../../assets/batom_base_no_tip.png";
+import batomTipMaskAlpha from "../../assets/batom_tip_shading2.png";
+import batomTipShading from "../../assets/batom_tip_shading2.png";
+
+import batomTipMask from "../../assets/batomTipMask.png"
 import pinkGloss from "../../assets/gloss pink.svg";
+import finalBatom from "../../assets/final batom.svg"
 import batomImage from "../../assets/batom final exp.svg";
 import libsbackg from "../../assets/libs back.png";
 import logoLibs from "../../assets/logo.png";
@@ -42,6 +49,8 @@ import capricornio from "../../assets/capricornio.svg";
 import aquarius from "../../assets/aquarius.svg";
 import peixe from "../../assets/peixe.svg";
 
+
+import editIcon from "../../assets/edit icon.svg"
 
   type SymbolOption = {
   id: string;
@@ -103,7 +112,7 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
   const [esence, setEsence] = useState<EsenceOptions>("none");
   const [boxText, setBoxText] = useState<string>("");
   const [boxImage,setBoxImage] = useState<string>("none")
-  const price = 29.00
+  const price = 55.00
 
   const navigate = useNavigate();
 
@@ -265,31 +274,43 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
                         </p>
                       </div>
 
-                      <img src={pinkGloss} alt="" className="pink-gloss" />
+                      <img src={ type === "gloss" ? pinkGloss : finalBatom} alt="" className="pink-gloss" />
                     </div>
                   </>
                 )}
 
                 {(step >= 0 && step < 3 || step >= 5 && step < 8) && doItYourSelf === true && (
-                  <>
-                    <div className="item-display-2">
-                    <div className="item-img-2-color-wrapper">
-                      <div
-                        className="item-color-fill item-color-fill-2 is-tip"
-                        style={{
-                          backgroundColor: selectedColor || "transparent",
-                        }}
-                      />
-                      <img
-                        src={glossWhioutImage}
-                        alt=""
-                        className="item-img-2-create"
-                      />
-                    </div>
-                  </div>
+                    <>
+                      <div className="item-display-2">
+                        {type === "gloss" ? (
+                          <div className="item-img-2-color-wrapper">
+                            <div
+                              className="item-color-fill item-color-fill-2 is-tip"
+                              style={{ backgroundColor: selectedColor || "transparent" }}
+                            />
+                            <img src={glossWhioutImage} alt="" className="item-img-2-create" />
+                          </div>
+                        ) : (
+                          <div className="item-batom-wrapper">
+                            <div
+                              className="batom-color-fill"
+                              style={
+                                {
+                                  backgroundColor: selectedColor || "transparent",
+                                  ["--batomMask" as any]: `url(${batomTipMaskAlpha})`,
+                                } as any
+                              }
+                            />
 
-                  </>
-                )}
+                            <img src={batomTipShading} alt="" className="batom-tip-shading" />
+                            <img src={batomBaseNoTip} alt="" className="item-batom-img" />
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
+
+
 
                 <ColorsSelection
                   setSelectedColor={setSelectedColor}
@@ -361,51 +382,77 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
                   />
 
                   <p>cor</p>
+                  <img src={editIcon} alt="" className="edit-icon"/>
                 </li>
 
                <li>
                   <div onClick={() => setStep(2)}>
-                    <p>{baseSelected === "none" ? "—" : baseSelected}</p>
+                    <p>{baseSelected === "none" ? "none" : baseSelected}</p>
                   </div>
                   <p>base</p>
+                  <img src={editIcon} alt="" className="edit-icon"/>
                 </li>
 
                 <li>
                   <div onClick={() => setStep(3)}>
-                    <img
-                      src={additiveOptions.filter((a) => a.id === aditive)[0].img}
-                      alt=""
-                    />
-                  </div>
+                      {aditive !== "none" ? (
+                        <img
+                          src={additiveOptions.find((a) => a.id === aditive)?.img}
+                          alt=""
+                        />
+                      ) : (
+                        <p>none</p>
+                      )}
+                    </div>
                   <p>aditivo</p>
+                  <img src={editIcon} alt="" className="edit-icon"/>
                 </li>
 
                 <li>
                   <div onClick={() => setStep(4)}>
-                    {selectedGlitterObj?.img && <img src={selectedGlitterObj.img} alt="" />}
-                    
-                  </div>
+                      {selectedGlitterObj ? (
+                        <img src={selectedGlitterObj.img} alt="" />
+                      ) : (
+                        <p>none</p>
+                      )}
+                    </div>
                   <p>pigmento</p>
+                  <img src={editIcon} alt="" className="edit-icon"/>
                 </li>
 
                 <li>
                   <div onClick={() => setStep(5)}>
                     <div className="smell-esence">
-                      <img src={smellOptions.filter((a) => a.id === smell)[0].img} alt="" />
+                      {smell !== "none" ? (
+                        <img
+                          src={smellOptions.find((a) => a.id === smell)?.img}
+                          alt=""
+                        />
+                      ) : (
+                        <p>none</p>
+                      )}
                     </div>
-                    
                   </div>
+
                   <p>SABOR</p>
+                  <img src={editIcon} alt="" className="edit-icon"/>
                 </li>
 
                 <li onClick={() => setStep(5)}>
-                  <div >
+                  <div>
                     <div className="smell-esence">
-                      <img src={allEsence.filter((a) => a.id === esence)[0].img} alt="" />
+                      {esence !== "none" ? (
+                        <img
+                          src={allEsence.find((a) => a.id === esence)?.img}
+                          alt=""
+                        />
+                      ) : (
+                        <p>none</p>
+                      )}
                     </div>
-                    
                   </div>
                   <p>ESSÊNCIA</p>
+                  <img src={editIcon} alt="" className="edit-icon"/>
                 </li>
 
               <li>
@@ -423,13 +470,17 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
                 </div>
 
                 <p>PERSONALIZAÇÃO</p>
+                <img src={editIcon} alt="" className="edit-icon"/>
               </li>
 
               </ul>
-
-              <button onClick={handleFinishPurchase}>
-                <p>Conclui a tua compra</p>
-              </button>
+              <div className="button-container">
+                  <span>55,00€</span>
+                  <button onClick={handleFinishPurchase}>
+                    <p>ADICIONAR AO CARRINHO</p>
+                  </button>
+              </div>
+              
             </div>
           </div>
 
