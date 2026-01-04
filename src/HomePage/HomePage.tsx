@@ -23,6 +23,7 @@ import collageRed from "../assets/colageVer.svg";
 import collagePink from "../assets/colageVib.svg";
 import collageNude from "../assets/colageNude.svg";
 import collageExpressive from "../assets/colageExp.png";
+import { NavLink } from "react-router-dom"
 
 const slides: Slide[] = [
   {
@@ -106,7 +107,8 @@ function HomePage() {
         <section className="home-end" style={{ backgroundImage: `url(${backEnd})` }}>
           <div>
             <h1>Não consegues <br/>vir  à Lips Lab?</h1>
-            <button>experiência ONLINE!</button>
+            <button>
+              <NavLink to="/create">experiência ONLINE!</NavLink></button>
           </div>
           
         </section>

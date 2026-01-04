@@ -8,6 +8,7 @@ export type productType = null | {
   aditive:AdditivesOptions,
   esence:EsenceOptions,
   boxText:string ,
+  boxFont:string,
   boxImage:string,
   price:number
 

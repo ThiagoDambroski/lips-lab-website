@@ -196,7 +196,7 @@ function GlitterBaseSelection({
 
   const activeInfo: InfoContent | null = infoKey ? infoMap[infoKey] ?? null : null;
 
-  // Close with ESC
+
   useEffect(() => {
     if (!infoKey) return;
 
@@ -208,7 +208,7 @@ function GlitterBaseSelection({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [infoKey]);
 
-  // Lock page scroll when popup is open (robust)
+
   useEffect(() => {
     if (!infoKey) return;
 
@@ -268,8 +268,8 @@ function GlitterBaseSelection({
                       className="base-info-btn"
                       onClick={(e) => {
                         e.preventDefault();
-                        e.stopPropagation(); // ✅ prevent selecting base on info click
-                        openInfo(infoKeyForBase(b.id)); // ✅ opens the popup
+                        e.stopPropagation(); 
+                        openInfo(infoKeyForBase(b.id)); 
                       }}
                       aria-label={`Info about ${b.name}`}
                     >
@@ -299,7 +299,6 @@ function GlitterBaseSelection({
                       <p>{b.description}</p>
                     </div>
 
-                    {/* ✅ infoCircle for base options */}
                     <button
                       type="button"
                       className="glitter-info-btn base-info-btn"
@@ -344,10 +343,9 @@ function GlitterBaseSelection({
 
           <div className="gliter-container">
             {categories.map((category) => {
-              // Ignore Dusts (merged into Foils & Dusts)
+
               if (category === "Dusts") return null;
 
-              // Merge Foils + Dusts
               if (category === "Foils") {
                 const mergedCategory = "Foils & Dusts";
 
@@ -374,7 +372,7 @@ function GlitterBaseSelection({
                             key={g.id}
                             onClick={() => openLightbox(g)}
                             style={{
-                              backgroundColor: glitterSelected === g.id ? "green" : "",
+                              border: glitterSelected === g.id ? "2px solid red" : "",
                               cursor: "pointer",
                               listStyle: "none",
                             }}
@@ -395,7 +393,7 @@ function GlitterBaseSelection({
                             key={g.id}
                             onClick={() => openLightbox(g)}
                             style={{
-                              backgroundColor: glitterSelected === g.id ? "green" : "",
+                              border: glitterSelected === g.id ? "2px solid red" : "",
                               cursor: "pointer",
                               listStyle: "none",
                             }}
@@ -432,7 +430,7 @@ function GlitterBaseSelection({
                           key={g.id}
                           onClick={() => openLightbox(g)}
                           style={{
-                            backgroundColor: glitterSelected === g.id ? "green" : "",
+                            border: glitterSelected === g.id ? "2px solid red" : "",
                             cursor: "pointer",
                             listStyle: "none",
                           }}

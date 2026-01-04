@@ -457,7 +457,17 @@ $pink-libs-color:#e45397;
     font-size:1.8rem;
     border-radius: 45px;
     color: white;
+    transition: background-color 0.25s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
   }
+
+    button:hover {
+      background-color: #c4172a; /* slightly lighter red */
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(179, 14, 31, 0.35);
+    }
+  
  
 }
 

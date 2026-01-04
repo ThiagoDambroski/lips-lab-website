@@ -372,12 +372,10 @@
   mask-position: center;
   -webkit-mask-size: contain;
   mask-size: contain;
-  /* brilho/satin do batom */
   background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.35)), color-stop(45%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.18)), color-stop(55%, rgba(0, 0, 0, 0)));
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 45%), linear-gradient(to bottom, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 55%);
 }
 
-/* sombra/textura REAL da ponta por cima da cor */
 .batom-tip-shading {
   position: absolute;
   inset: 0;
@@ -418,7 +416,6 @@
           align-items: center;
   padding: 2rem;
   gap: 30px;
-  /* ✅ ONLY when coming from AutomaticColors */
 }
 
 .colors-selection h3 {
@@ -1548,7 +1545,9 @@
 }
 
 .engraving-input-wrapper {
-  width: 100%;
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 80%;
   margin: 1rem 0;
   padding: 0.75rem 1.5rem;
   background: #e7549a;
@@ -1561,10 +1560,16 @@
           align-items: center;
 }
 
+.engraving-fonts-close {
+  background: none;
+  border: none;
+  font-size: 15px;
+}
+
 /* INPUT */
 .engraving-input {
   font-family: "ApercuPro";
-  width: 100%;
+  width: 80%;
   padding: 0.25rem 0;
   background: transparent;
   border: none;
@@ -1631,6 +1636,9 @@
 }
 
 .engraving-symbol-list {
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2806,5 +2814,747 @@
   width: 20%;
   padding: 1rem;
   cursor: pointer;
+}
+
+/* Responsive */
+/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+@media (max-width: 1100px) and (min-width: 768px) {
+  .main-create-box h1 {
+    font-size: 6vw;
+  }
+  .main-create-box p {
+    font-size: 4vw;
+    margin-bottom: 4rem;
+  }
+  .gloss-or-batom-container {
+    gap: 4vw;
+  }
+  .item-display .item-display-container div h2 {
+    font-size: 3vw;
+  }
+  .main-color-selection-options {
+    gap: 0.5vw;
+  }
+  .main-color-selection-options h3 {
+    font-size: 3.5vw;
+  }
+  .item-display .item-display-container div .p-1 {
+    font-size: 2vw;
+  }
+  .item-display .item-display-container p {
+    font-size: 1.2vw;
+    padding-bottom: 10px;
+  }
+  .main-color-selection-options div button {
+    height: 24vh;
+    width: 20vw;
+    font-size: 2vw;
+  }
+  .item-display {
+    max-width: 50%;
+    margin-right: 1.5rem;
+  }
+  .main-color-selection-options div button img {
+    width: 6vw;
+  }
+  .automatic-color-container .automatic-color-bgk {
+    width: 90%;
+  }
+  .automatic-color-container .automatic-color-bgk h2 {
+    font-size: 4vw;
+  }
+  .automatic-color-container .automatic-color-bgk p {
+    font-size: 2vw;
+  }
+  .automatic-color-container .automatic-color-bgk button {
+    width: 40%;
+  }
+  .automatic-color-container .automatic-color-bgk div img {
+    width: 70%;
+  }
+  .palette-result .pallet-colors-container {
+    width: 70%;
+  }
+  .palette-result .continue-pallet-button {
+    width: 25%;
+  }
+  .title-button {
+    width: 50%;
+    font-size: 2.5vw;
+  }
+  .item-img-color-wrapper, .item-img-2-color-wrapper {
+    width: 40vw;
+    height: auto;
+  }
+  .colors-selection .colors-containers.is-palette {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+  .colors-selection h3 {
+    font-size: 2.5vw;
+  }
+  .colors-selection .colors-section-div .colors-section {
+    width: 8vw;
+    height: 8vw;
+  }
+  .item-img-2-create {
+    width: 100%;
+  }
+  .colors-selection button {
+    width: 70%;
+    font-size: 2.5vw;
+  }
+  .color-swatch {
+    width: 70px;
+    height: 60px;
+  }
+  .continue-button {
+    width: 60%;
+  }
+  .add-color-btn {
+    width: 70px;
+    height: 70px;
+  }
+  .glitter-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+  }
+  .glitter-intro {
+    -ms-flex-item-align: self-start;
+        -ms-grid-row-align: self-start;
+        align-self: self-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: self-start;
+        -ms-flex-align: self-start;
+            align-items: self-start;
+    margin-bottom: 1rem;
+  }
+  .glitter-intro button {
+    position: absolute;
+    bottom: -90px;
+    margin-bottom: 1rem;
+  }
+  .glitter-intro h2 {
+    font-size: 2.5vw;
+    text-align: start;
+  }
+  .glliter-selection-div ul {
+    -ms-grid-columns: (1fr)[6];
+        grid-template-columns: repeat(6, 1fr);
+  }
+  .texture-selection-section .texture-selection-section-button {
+    width: 45%;
+  }
+  .texture-selection-section ul {
+    width: 80%;
+  }
+  .texture-selection-section .texture-selection-section-button {
+    width: 50%;
+  }
+  .adtive-section .adtive-container ul li {
+    width: 15vw;
+    height: 15vw;
+  }
+  .adtive-section .adtive-container ul li p {
+    font-size: 1vw;
+  }
+  .adtive-section .adtive-container ul li .abs-img {
+    width: 3vw;
+  }
+  .engraving-span-title {
+    font-size: 2vw;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .engraving-fonts {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  .engraving-title {
+    font-size: 2vw;
+    margin-bottom: 1rem;
+  }
+  .engraving-test-fonts {
+    font-size: 1vw;
+  }
+  .engraving-input-wrapper {
+    width: 50vw;
+  }
+  .engraving-symbol-list {
+    width: 100%;
+  }
+  .formula-section {
+    gap: 2rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .formula-section h2 {
+    font-size: 3vw;
+    margin-bottom: 0rem;
+  }
+  .formula-clean-header span:first-child {
+    font-size: 2vw;
+  }
+  .formula-clean-body p {
+    font-size: 1.5vw;
+  }
+  .purchse-screen-logo .purchase-summary {
+    gap: 50px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1238px) {
+  .taste-section .taste-container ul {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
+  }
+  .taste-section .title-button {
+    width: 100%;
+  }
+  .taste-section .taste-container li div img {
+    width: 4vw;
+    height: 4vw;
+  }
+  .taste-section .taste-container {
+    width: 100%;
+  }
+  .esence-container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .taste-section .taste-container li div .abs-img {
+    width: 2vw;
+    top: -15px;
+  }
+  .aditive-button-container div .creative {
+    font-size: 2vw;
+  }
+  .aditive-button-container div {
+    position: initial;
+    margin-bottom: 10px;
+  }
+  .aditive-button-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .continue-button {
+    font-size: 3vw;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .pink-go-back-arrow {
+    left: 1vw;
+    width: 10vw;
+  }
+  .main-create-box {
+    background-size: 300vw;
+  }
+  .main-create-box h1 {
+    font-size: 6vw;
+    margin-bottom: 1rem;
+  }
+  .main-create-box p {
+    font-size: 4vw;
+    margin-bottom: 0rem;
+  }
+  .gloss-or-batom-container {
+    gap: 13vw;
+  }
+  .gloss-or-batom-container {
+    min-height: 60vh;
+    background: radial-gradient(900px 420px at 50% 45%, rgba(255, 220, 235, 0.55) 0%, rgba(255, 220, 235, 0.3) 0%, rgba(255, 220, 235, 0.12) 5%, rgba(255, 220, 235, 0) 80%), -webkit-gradient(linear, left top, left bottom, from(#fff6fa00), color-stop(45%, #fde7f000), to(#f8c9dca8));
+    background: radial-gradient(900px 420px at 50% 45%, rgba(255, 220, 235, 0.55) 0%, rgba(255, 220, 235, 0.3) 0%, rgba(255, 220, 235, 0.12) 5%, rgba(255, 220, 235, 0) 80%), linear-gradient(180deg, #fff6fa00 0%, #fde7f000 45%, #f8c9dca8 100%);
+  }
+  .gloss-or-batom-container .gloss-or-batom-container-image img {
+    width: 100%;
+    height: 40vh;
+  }
+  .gloss-or-batom-container .gloss-or-batom-container-image button {
+    width: 100%;
+    padding: 2vw;
+    font-size: 4vw;
+  }
+  .main-color-selection .main-color-back {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    min-height: 100vh;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .main-color-selection {
+    background-size: 250vw;
+  }
+  .item-display .item-display-container div h2 {
+    font-size: 5vw;
+    margin-bottom: 0.2vw;
+  }
+  .main-color-selection-options {
+    padding-top: 2rem;
+    gap: 0px;
+  }
+  .main-color-selection-options h3 {
+    font-size: 6vw;
+  }
+  .item-display .item-display-container div .p-1 {
+    font-size: 2vw;
+    margin-bottom: 1vw;
+  }
+  .item-display .item-display-container div img {
+    margin-bottom: 3vw;
+  }
+  .item-display .item-display-container p {
+    font-size: 2vw;
+    padding-bottom: 10px;
+  }
+  .item-display .pink-gloss {
+    top: -1rem;
+  }
+  .main-color-selection-options div button {
+    height: 180px;
+    width: 40vw;
+    font-size: 2.5vw;
+  }
+  .item-display {
+    max-width: 80%;
+    margin-right: 1.5rem;
+  }
+  .main-color-selection-options div button img {
+    width: 15vw;
+  }
+  .automatic-color-container .automatic-color-bgk {
+    width: 90%;
+  }
+  .automatic-color-container .automatic-color-bgk h2 {
+    font-size: 5vw;
+  }
+  .automatic-color-container .automatic-color-bgk p {
+    font-size: 2vw;
+    margin-bottom: 1rem;
+  }
+  .automatic-color-container .automatic-color-bgk button {
+    width: 80%;
+    font-size: 4vw;
+  }
+  .automatic-color-container .automatic-color-bgk .go-back-arrow {
+    top: 0px;
+    left: 10px;
+    width: 10vw;
+  }
+  .automatic-color-container .automatic-color-bgk div {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    aspect-ratio: 1 / 1;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    row-gap: 10vw;
+    margin-bottom: 10vw;
+  }
+  .automatic-color-container .automatic-color-bgk div img {
+    width: 90%;
+    height: 90%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    display: block;
+  }
+  .palette-result h2 {
+    font-size: 8vw;
+  }
+  .palette-result p {
+    font-size: 3vw;
+  }
+  .palette-result .palette-row {
+    gap: 5px;
+  }
+  .palette-result .swatch {
+    width: 13vw;
+    height: 13vw;
+  }
+  .palette-result .pallet-colors-container {
+    width: 100%;
+  }
+  .palette-result .continue-pallet-button {
+    width: 60%;
+    font-size: 5vw;
+  }
+  .colors-selection {
+    gap: 15px;
+  }
+  .title-button {
+    width: 60%;
+    font-size: 3vw;
+    padding: 0.5rem;
+  }
+  .item-display-2 {
+    background-color: #f6b7cf;
+  }
+  .colors-selection .colors-containers.is-palette
+.item-img-color-wrapper, .item-img-2-color-wrapper {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    height: 580px;
+  }
+  .item-color-fill {
+    height: 51%;
+  }
+  .colors-selection .colors-containers.is-palette {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+  .colors-selection h3 {
+    font-size: 3vw;
+  }
+  .colors-selection .colors-section-div .colors-section {
+    width: 15vw;
+    height: 15vw;
+  }
+  .item-img-2-create {
+    height: 580px;
+  }
+  .colors-selection button {
+    width: 70%;
+    font-size: 2.5vw;
+    padding: 1rem;
+  }
+  .colors-selection h4 {
+    font-size: 2.5vw;
+  }
+  .colors-selection .colors-containers.is-palette {
+    padding: 1rem;
+    -webkit-column-gap: 10px;
+            column-gap: 10px;
+    row-gap: 10px;
+  }
+  .color-swatch {
+    width: 65px;
+    height: 50px;
+  }
+  .continue-button {
+    width: 70%;
+    font-size: 4vw;
+  }
+  .add-color-btn {
+    width: 65px;
+    height: 65px;
+  }
+  .second-step {
+    gap: 1rem;
+  }
+  .plus {
+    font-size: 10vw;
+  }
+  .add-color-text {
+    font-size: 6vw;
+  }
+  .glitter-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+  }
+  .glitter-intro {
+    -ms-flex-item-align: self-start;
+        -ms-grid-row-align: self-start;
+        align-self: self-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: self-start;
+        -ms-flex-align: self-start;
+            align-items: self-start;
+    margin-bottom: 1rem;
+  }
+  .glitter-intro button {
+    position: absolute;
+    bottom: -90px;
+    left: 15vw;
+    margin-bottom: 1rem;
+  }
+  .glitter-intro h2 {
+    padding-left: 1rem;
+    font-size: 5vw;
+    text-align: start;
+  }
+  .glliter-selection-div ul {
+    -ms-grid-columns: (1fr)[5];
+        grid-template-columns: repeat(5, 1fr);
+  }
+  .glliter-selection-div ul li img {
+    width: 15vw;
+  }
+  .glitter-info-card {
+    width: 100vw;
+    border-radius: 0px;
+  }
+  .texture-selection-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .texture-selection-section img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .texture-selection-section .texture-selection-section-button {
+    width: 45%;
+  }
+  .texture-selection-section ul {
+    width: 90%;
+  }
+  .texture-selection-section .texture-selection-section-button {
+    width: 90%;
+    font-size: 4vw;
+  }
+  .texture-selection-section div {
+    gap: 1rem;
+  }
+  .texture-selection-section ul strong {
+    font-size: 4vw;
+  }
+  .texture-selection-section ul p {
+    font-size: 3vw;
+  }
+  .adtive-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .adtive-section img {
+    width: 100%;
+  }
+  .adtive-section .adtive-container {
+    padding-top: 2rem;
+  }
+  .adtive-section .adtive-container ul {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .adtive-section .adtive-container ul li {
+    width: 35vw;
+    height: 35vw;
+    padding: 0.5rem;
+  }
+  .adtive-section .adtive-container ul li p {
+    font-size: 3vw;
+  }
+  .adtive-section .adtive-container ul li .abs-img {
+    width: 6vw;
+  }
+  .adtive-section .adtive-container ul {
+    padding: 1rem;
+  }
+  .adtive-section .adtive-container button {
+    width: 80%;
+    font-size: 5vw;
+  }
+  .esence-container button p {
+    font-size: 4vw;
+  }
+  .taste-section .taste-container ul {
+    -ms-grid-row-align: center;
+        align-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
+  }
+  .taste-section .title-button {
+    width: 100%;
+  }
+  .taste-section .taste-container li div img {
+    width: 10vw;
+    height: 10vw;
+  }
+  .taste-section .taste-container h3 {
+    font-size: 8vw;
+    text-align: center;
+  }
+  .taste-section .taste-container {
+    width: 100%;
+  }
+  .esence-container {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .taste-section .taste-container li div .abs-img {
+    width: 5vw;
+    top: -20px;
+    right: 10px;
+  }
+  .aditive-button-container div .creative {
+    font-size: 2vw;
+  }
+  .aditive-button-container div {
+    position: initial;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    font-size: 3vw;
+    margin-bottom: 10px;
+  }
+  .aditive-button-container {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .continue-button {
+    font-size: 3vw;
+  }
+  .taste-section .span-botom {
+    font-size: 4vw;
+    text-align: center;
+  }
+  .engraving-span-title {
+    font-size: 4vw;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .engraving-fonts {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  .engraving {
+    gap: 0rem;
+  }
+  .engraving-title {
+    font-size: 3vw;
+    margin-bottom: 1rem;
+  }
+  .engraving-test-fonts {
+    font-size: 3vw;
+  }
+  .engraving-input-wrapper {
+    width: 100%;
+  }
+  .engraving-symbol-list {
+    width: 100%;
+  }
+  .formula-section {
+    padding: 1rem;
+    gap: 2rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .formula-section h2 {
+    font-size: 4vw;
+    margin-bottom: 0rem;
+  }
+  .formula-clean-header span:first-child {
+    font-size: 3.5vw;
+  }
+  .formula-clean-body p {
+    font-size: 2vw;
+  }
+  .purchse-screen {
+    background-size: 250vw;
+  }
+  .purchse-screen-logo > img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .purchse-screen-logo .purchse-screen-logo-div h2 {
+    font-size: 5vw;
+  }
+  .purchse-screen-logo .purchse-screen-logo-div p {
+    margin-top: 1rem;
+    font-size: 3vw;
+  }
+  .purchse-screen-logo .purchase-summary > li > div {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .purchse-screen-logo .purchase-summary .edit-icon {
+    width: 20px;
+    bottom: -10px;
+  }
+  .purchse-screen-logo .button-container span {
+    font-size: 5vw;
+  }
+  .purchse-screen-logo .button-container button p {
+    font-size: 5vw;
+    width: 80vw;
+  }
 }
 /*# sourceMappingURL=CreateBatom.css.map */

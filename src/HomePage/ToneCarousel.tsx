@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export type Pill = "VERMELHO" | "VIBRANTE" | "NUDE" | "EXPRESSIVO";
 
@@ -17,11 +17,33 @@ type Props = {
   autoplayMs?: number;
 };
 
+function preloadImage(src: string): Promise<void> {
+  return new Promise<void>((resolve) => {
+    const img: HTMLImageElement = document.createElement("img");
+    img.src = src;
+
+    if (typeof img.decode === "function") {
+      img
+        .decode()
+        .then(() => resolve())
+        .catch(() => resolve());
+    } else {
+      img.onload = () => resolve();
+      img.onerror = () => resolve();
+    }
+  });
+}
+
+
 export default function ToneCarousel({ slides, autoplayMs }: Props) {
   const [index, setIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
-  // Defensive: if slides length changes, keep index valid.
+  // Avoid extra renders/interval resets by keeping "animating lock" in a ref too
+  const animatingRef = useRef(false);
+  const timerRef = useRef<number | null>(null);
+
+  // Defensive: keep index valid if slides length changes.
   useEffect(() => {
     setIndex((prev) => (slides.length === 0 ? 0 : Math.min(prev, slides.length - 1)));
   }, [slides.length]);
@@ -34,27 +56,68 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
     return map;
   }, [slides]);
 
-  const goTo = (target: number) => {
-    if (animating) return;
+  // ✅ Preload ALL images once (mount / slides change)
+  useEffect(() => {
+    if (!slides.length) return;
 
-    setIndex((prev) => {
-      if (target === prev) return prev;
-      setAnimating(true);
-      return target;
+    const all = slides.flatMap((s) => [s.circlesImageSrc, s.collageImageSrc]);
+
+    // Use idle time if available to avoid stealing main thread during first render
+    const run = () => {
+      // unique
+      const unique = Array.from(new Set(all));
+      unique.forEach((src) => preloadImage(src));
+    };
+
+    if ("requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(run);
+    } else {
+      // fallback
+      setTimeout(run, 0);
+    }
+  }, [slides]);
+
+  // ✅ Optional: “warm” neighbor slides whenever index changes (extra smooth)
+  useEffect(() => {
+    if (slides.length <= 1) return;
+
+    const prev = slides[(index - 1 + slides.length) % slides.length];
+    const next = slides[(index + 1) % slides.length];
+
+    [prev, next].forEach((s) => {
+      preloadImage(s.circlesImageSrc);
+      preloadImage(s.collageImageSrc);
     });
+  }, [index, slides]);
+
+  const lockAnimation = () => {
+    animatingRef.current = true;
+    setAnimating(true);
+
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    timerRef.current = window.setTimeout(() => {
+      animatingRef.current = false;
+      setAnimating(false);
+    }, 450);
+  };
+
+  const goTo = (target: number) => {
+    if (animatingRef.current) return;
+    if (target === index) return;
+
+    lockAnimation();
+    setIndex(target);
   };
 
   const next = () => {
     if (slides.length <= 1) return;
+    if (animatingRef.current) return;
 
-    setIndex((prev) => {
-      if (animating) return prev;
-      setAnimating(true);
-      return (prev + 1) % slides.length;
-    });
+    lockAnimation();
+    setIndex((prev) => (prev + 1) % slides.length);
   };
 
-  // Autoplay: create ONE interval per autoplayMs change (and slides length)
+  // ✅ Autoplay: no dependency on animating (avoid interval thrash)
   useEffect(() => {
     if (!autoplayMs || slides.length <= 1) return;
 
@@ -63,26 +126,21 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
     }, autoplayMs);
 
     return () => window.clearInterval(id);
-    // important: DO NOT depend on `index`
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoplayMs, slides.length, animating]);
+  }, [autoplayMs, slides.length]); // <-- keep it stable
 
-  // End animation lock
+  // Cleanup timer on unmount
   useEffect(() => {
-    if (!animating) return;
-    const t = window.setTimeout(() => setAnimating(false), 450);
-    return () => window.clearTimeout(t);
-  }, [animating]);
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+  }, []);
 
-  // If slides is empty, render nothing safely
   if (!slides.length || !current) return null;
 
   return (
     <section className="tone-carousel">
-      <div
-        className="tone-carousel__slide"
-        style={{ backgroundColor: current.bgColor }}
-      >
+      <div className="tone-carousel__slide" style={{ backgroundColor: current.bgColor }}>
         {/* LEFT */}
         <aside className="tone-carousel__left">
           <h2 className="tone-carousel__title">
@@ -93,8 +151,8 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
             className="tone-carousel__circles"
             src={current.circlesImageSrc}
             alt=""
-            loading="eager"
             decoding="async"
+            loading="eager"
           />
 
           <p className="tone-carousel__subtitle">
@@ -126,7 +184,13 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
         {/* RIGHT */}
         <div className="tone-carousel__right">
           <div className={`tone-carousel__collage ${animating ? "is-animating" : ""}`}>
-            <img src={current.collageImageSrc} alt="Collage" loading="eager" decoding="async" />
+            <img
+              src={current.collageImageSrc}
+              alt="Collage"
+              decoding="async"
+              loading="eager"
+              draggable={false}
+            />
           </div>
         </div>
       </div>

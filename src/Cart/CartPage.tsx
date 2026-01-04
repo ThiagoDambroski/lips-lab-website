@@ -194,7 +194,8 @@ function CartPage() {
                       alt=""
                     />
                   )}
-                  {item.boxText && <span>{item.boxText}</span>}
+                  {item.boxText && <span>{item.boxText} - Fonte : {item.boxFont}</span>}
+                  
                 </div>
 
                 <div className="cart-price">Preço: €{itemPrice.toFixed(2)}</div>

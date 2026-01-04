@@ -111,6 +111,7 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
   const [aditive, setAditive] = useState<AdditivesOptions>("none");
   const [esence, setEsence] = useState<EsenceOptions>("none");
   const [boxText, setBoxText] = useState<string>("");
+  const [boxFont,setBoxFont] = useState<string>("century-gothic")
   const [boxImage,setBoxImage] = useState<string>("none")
   const price = 55.00
 
@@ -137,6 +138,8 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
     setAditive("none");
     setEsence("none");
     setBoxText("");
+    setBoxFont("")
+    setBoxFont("century-gothic");
     setBoxImage("none")
     window.scrollTo({
       top: 0,
@@ -147,8 +150,8 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
 
 
   const buildProductFromState = (): NonNullProduct => ({
-    id: Date.now(), // simple unique id
-    type: type!, // non-null, because we only use this when type is defined
+    id: Date.now(), 
+    type: type!, 
     color: selectedColor,
 
     glitter: (glitterSelected ?? "none") as any,
@@ -158,6 +161,7 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
     aditive,
     esence,
     boxText,
+    boxFont,
     boxImage,
     price
   });
@@ -353,6 +357,8 @@ function CreateBatomBox({setCreateActive, typeInput }: CreateBatomType) {
                   setBoxText={setBoxText}
                   boxImg={boxImage}
                   setBoxImg={setBoxImage}
+                  boxFont={boxFont}
+                  setBoxFont={setBoxFont}
                 />
               </div>
             </main>
