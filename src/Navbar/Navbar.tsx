@@ -87,12 +87,19 @@ function Navbar({ css = 0 }: NavbarProps) {
               <span className="nav-toggle-bar" />
             </button>
           )}
-
+          <NavLink
+          to="/cart"
+          onClick={closeMenu}
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
           <img
             src={css === 0 ? whiteShop : redShop}
             alt="Cart"
             className="nav-icon-img"
           />
+        </NavLink>
+
+
         </div>
       </ul>
     </nav>

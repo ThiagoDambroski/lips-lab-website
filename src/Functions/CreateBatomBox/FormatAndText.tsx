@@ -51,7 +51,6 @@ function FormatAndText({
   setBoxText,
   boxImg,
   setBoxImg,
-  boxFont,
   setBoxFont,
 }: FormatAndTextType) {
   const formulaItemsUnfiltred = useMemo(

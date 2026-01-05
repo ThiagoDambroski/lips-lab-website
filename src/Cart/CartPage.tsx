@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { productType } from "../Functions/CreateBatomBox/Types";
 import "../scss/cart.css";
 import Navbar from "../Navbar/Navbar";
@@ -103,10 +103,113 @@ const GLITTER_LABELS: Record<number, string> = {
 };
 
 // =======================
+// SHOPIFY (NO TOKEN)
+// =======================
+const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
+
+// ✅ ESTES SÃO OS IDS CORRETOS (VARIANT IDS)
+const SHOPIFY_GLOSS_VARIANT_ID = 47048949006593;
+const SHOPIFY_BATOM_VARIANT_ID = 47049932833025;
+
+// =======================
+// Helpers
+// =======================
+function toBase64Url(input: string): string {
+  const utf8 = encodeURIComponent(input).replace(
+    /%([0-9A-F]{2})/g,
+    (_, hex) => String.fromCharCode(parseInt(hex, 16))
+  );
+  const b64 = btoa(utf8);
+  return b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+}
+
+function safeString(value: unknown): string | null {
+  if (value === null || value === undefined) return null;
+  const v = String(value).trim();
+  return v.length ? v : null;
+}
+
+function buildLineItemProperties(item: CartProduct): Record<string, string> {
+  const props: Record<string, string> = {};
+
+  const put = (key: string, value: unknown) => {
+    const v = safeString(value);
+    if (!v) return;
+    props[key] = v;
+  };
+
+  put("type", item.type);
+  put("color", item.color);
+
+  if (typeof (item as any).glitter === "number") {
+    const num = (item as any).glitter as number;
+    put("glitter", GLITTER_LABELS[num] ?? String(num));
+  } else {
+    put("glitter", (item as any).glitter);
+  }
+
+  put("base", item.base);
+  put("smell", item.smell);
+  put("aditive", item.aditive);
+  put("esence", item.esence);
+
+  put("boxImage", item.boxImage);
+  put("boxText", item.boxText);
+  put("boxFont", item.boxFont);
+
+  put("lipslab_item_id", item.id);
+
+  return props;
+}
+
+function resolveVariantIdForItem(item: CartProduct): number {
+  const t = (item.type ?? "").toLowerCase();
+  if (t.includes("gloss")) return SHOPIFY_GLOSS_VARIANT_ID;
+  if (t.includes("batom")) return SHOPIFY_BATOM_VARIANT_ID;
+
+  // fallback: se não reconhecer, manda para gloss
+  return SHOPIFY_GLOSS_VARIANT_ID;
+}
+
+function buildCartPermalinkForSingleItem(item: CartProduct): string {
+  const variantId = resolveVariantIdForItem(item);
+  const props = buildLineItemProperties(item);
+  const encoded = toBase64Url(JSON.stringify(props));
+  return `${SHOPIFY_SHOP_URL}/cart/${variantId}:1?properties=${encoded}`;
+}
+
+// Guarda uma “fila” de checkouts no sessionStorage
+const QUEUE_KEY = "lipslab_shopify_queue";
+
+function saveQueue(urls: string[]) {
+  sessionStorage.setItem(QUEUE_KEY, JSON.stringify(urls));
+}
+
+function loadQueue(): string[] {
+  const raw = sessionStorage.getItem(QUEUE_KEY);
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((x) => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function shiftQueue(): string | null {
+  const q = loadQueue();
+  const next = q.shift() ?? null;
+  saveQueue(q);
+  return next;
+}
+
+// =======================
 // COMPONENT
 // =======================
 function CartPage() {
   const [items, setItems] = useState<CartProduct[]>([]);
+  const [isBuying, setIsBuying] = useState(false);
+  const [buyError, setBuyError] = useState<string | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("lipslab_cart");
@@ -131,10 +234,61 @@ function CartPage() {
     localStorage.removeItem("lipslab_cart");
   };
 
-  const total = items.reduce((sum, item) => {
-    const price = typeof (item as any).price === "number" ? (item as any).price : 0;
-    return sum + price;
-  }, 0);
+  const total = useMemo(() => {
+    return items.reduce((sum, item) => {
+      const price = typeof (item as any).price === "number" ? (item as any).price : 0;
+      return sum + price;
+    }, 0);
+  }, [items]);
+
+  /**
+   * ✅ Comprar agora (um item por vez, para garantir properties em TODOS)
+   *
+   * Fluxo:
+   * 1) cria uma fila de URLs (1 por item)
+   * 2) redireciona para o primeiro URL
+   *
+   * Nota: Depois de finalizar/adicionar no Shopify, o utilizador volta aqui e clica “Comprar agora” de novo
+   * para adicionar o próximo item.
+   *
+   * Se quiseres automação total (sem voltar), precisas Storefront API.
+   */
+  const handleBuyNow = () => {
+    setBuyError(null);
+
+    try {
+      if (!items.length) return;
+
+      // cria 1 URL por item (garante properties sempre)
+      const urls = items.map(buildCartPermalinkForSingleItem);
+
+      // guarda a fila e manda o primeiro
+      saveQueue(urls);
+
+      const first = shiftQueue();
+      if (!first) return;
+
+      setIsBuying(true);
+      window.location.assign(first);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Falha ao iniciar o checkout no Shopify.";
+      setBuyError(msg);
+      setIsBuying(false);
+    }
+  };
+
+  /**
+   * ✅ Botão opcional: “Adicionar próximo item ao Shopify”
+   * Útil se o cliente voltar e quiser mandar o próximo da fila.
+   */
+  const handleAddNextToShopify = () => {
+    const next = shiftQueue();
+    if (!next) {
+      setBuyError("Não há mais itens na fila para enviar ao Shopify.");
+      return;
+    }
+    window.location.assign(next);
+  };
 
   if (items.length === 0) {
     return (
@@ -155,12 +309,8 @@ function CartPage() {
 
         <ul className="cart-list">
           {items.map((item) => {
-            const displayType = item.type
-              ? item.type.toUpperCase()
-              : "PRODUTO";
-
-            const itemPrice =
-              typeof (item as any).price === "number" ? (item as any).price : 0;
+            const displayType = item.type ? item.type.toUpperCase() : "PRODUTO";
+            const itemPrice = typeof (item as any).price === "number" ? (item as any).price : 0;
 
             return (
               <li key={item.id} className="cart-item">
@@ -176,9 +326,9 @@ function CartPage() {
 
                 <div>
                   Glitter:{" "}
-                  {typeof item.glitter === "number"
-                    ? GLITTER_LABELS[item.glitter] ?? "—"
-                    : item.glitter}
+                  {typeof (item as any).glitter === "number"
+                    ? GLITTER_LABELS[(item as any).glitter as number] ?? "—"
+                    : (item as any).glitter}
                 </div>
 
                 <div>Base: {item.base}</div>
@@ -189,20 +339,18 @@ function CartPage() {
                 <div className="cart-personalization">
                   Personalização:
                   {item.boxImage !== "none" && (
-                    <img
-                      src={SYMBOLS.find((s) => s.id === item.boxImage)?.img}
-                      alt=""
-                    />
+                    <img src={SYMBOLS.find((s) => s.id === item.boxImage)?.img} alt="" />
                   )}
-                  {item.boxText && <span>{item.boxText} - Fonte : {item.boxFont}</span>}
-                  
+                  {item.boxText && (
+                    <span>
+                      {item.boxText} - Fonte : {item.boxFont}
+                    </span>
+                  )}
                 </div>
 
                 <div className="cart-price">Preço: €{itemPrice.toFixed(2)}</div>
 
-                <button onClick={() => handleRemove(item.id)}>
-                  Remover do carrinho
-                </button>
+                <button onClick={() => handleRemove(item.id)}>Remover do carrinho</button>
               </li>
             );
           })}
@@ -214,9 +362,21 @@ function CartPage() {
         </div>
 
         <div className="cart-actions">
-          <button onClick={handleClear}>Esvaziar carrinho</button>
-          <button className="buy-button">Comprar agora</button>
+          <button onClick={handleClear} disabled={isBuying}>
+            Esvaziar carrinho
+          </button>
+
+          <button className="buy-button" onClick={handleBuyNow} disabled={isBuying}>
+            {isBuying ? "A redirecionar..." : "Comprar agora"}
+          </button>
+
+          {/* Opcional: útil para mandar o próximo item sem ter de recalcular */}
+          <button onClick={handleAddNextToShopify} disabled={isBuying}>
+            Adicionar próximo item ao Shopify
+          </button>
         </div>
+
+        {buyError && <p className="cart-error">{buyError}</p>}
       </main>
     </>
   );
