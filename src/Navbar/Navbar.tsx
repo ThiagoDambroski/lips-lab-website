@@ -87,7 +87,7 @@ function Navbar({ css = 0 }: NavbarProps) {
               <span className="nav-toggle-bar" />
             </button>
           )}
-          <NavLink
+          {/* <NavLink
           to="/cart"
           onClick={closeMenu}
           className={({ isActive }) => (isActive ? "active" : "")}
@@ -97,7 +97,8 @@ function Navbar({ css = 0 }: NavbarProps) {
             alt="Cart"
             className="nav-icon-img"
           />
-        </NavLink>
+        </NavLink>*/}
+          
 
 
         </div>

@@ -1,12 +1,41 @@
-import { useId, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import giftCardImg from "../assets/giftBox.svg"
-import giftBanner from "../assets/giftBoxBanner.svg"
-import "../scss/GiftCard.css"
+import giftCardImg from "../assets/giftBox.svg";
+import giftBanner from "../assets/giftBoxBanner.svg";
+import "../scss/GiftCard.css";
+
+type GiftOption = "single" | "pack";
+
+// ✅ Shopify cart permalink base
+const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
+
+// ✅ Variants you provided
+const VARIANT_BY_OPTION: Record<GiftOption, number> = {
+  single: 47047067336961, // CRIA O TEU BATOM OU GLOSS LABIAL (55€)
+  pack: 47047067369729,   // PACK 2 PRODUTOS (99€)
+};
+
+function goToShopifyAlways(url: string) {
+  const tab = window.open("about:blank", "_blank", "noopener,noreferrer");
+  if (tab) {
+    tab.location.href = url;
+    return;
+  }
+  window.location.assign(url);
+}
 
 function GiftCard() {
-  const groupName = useId(); // unique name for the radio group
-  const [selected, setSelected] = useState<"single" | "pack">("single");
+  const groupName = useId();
+  const [selected, setSelected] = useState<GiftOption>("single");
+
+  const cartUrl = useMemo(() => {
+    const variantId = VARIANT_BY_OPTION[selected];
+    return `${SHOPIFY_SHOP_URL}/cart/${variantId}:1`;
+  }, [selected]);
+
+  const handleBuy = () => {
+    goToShopifyAlways(cartUrl);
+  };
 
   return (
     <>
@@ -30,7 +59,11 @@ Oferece uma experiência Lips Lab e permite que a pessoa presenteada viva o mome
 Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
             </p>
 
-            <div className="gift-radio-group" role="radiogroup" aria-label="Escolhe o cartão-presente">
+            <div
+              className="gift-radio-group"
+              role="radiogroup"
+              aria-label="Escolhe o cartão-presente"
+            >
               <label className="gift-radio">
                 <input
                   type="radio"
@@ -52,20 +85,32 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
                   checked={selected === "pack"}
                   onChange={() => setSelected("pack")}
                 />
-                <span className="gift-radio__label">
-                  PACK 2 PRODUTOS (99€)
-                </span>
+                <span className="gift-radio__label">PACK 2 PRODUTOS (99€)</span>
               </label>
+
+              <button
+                type="button"
+                className="gift-buy-btn"
+                onClick={handleBuy}
+                aria-label={`Comprar ${selected === "single" ? "55€" : "99€"} e ir para o carrinho`}
+              >
+                Comprar
+              </button>
             </div>
           </div>
         </section>
+
         <section className="gift-banner">
-          <p>Há magia em criar algo que é só nosso...<br/>
-            Surpreende com uma experiência<br/>
-            única e memorável.</p>
+          <p>
+            Há magia em criar algo que é só nosso...
+            <br />
+            Surpreende com uma experiência
+            <br />
+            única e memorável.
+          </p>
           <img src={giftBanner} alt="" />
         </section>
-        
+
         <section className="gift-terms">
           <div className="gift-terms__block">
             <h2 className="gift-terms__title">ENTREGA</h2>
@@ -78,16 +123,12 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
               lipslab.co@gmail.com.
             </p>
 
-            <p className="gift-terms__text">
-              Pode receber o seu cartão-presente de três formas:
-            </p>
+            <p className="gift-terms__text">Pode receber o seu cartão-presente de três formas:</p>
 
             <ul className="gift-terms__list">
               <li>Digitalmente por e-mail, para si ou diretamente para quem deseja surpreender;</li>
               <li>Entrega física em casa (portes de envio aplicados);</li>
-              <li>
-                Levantamento na nossa loja física, na Rua Amélia Rey Colaço, 14E — Lisboa.
-              </li>
+              <li>Levantamento na nossa loja física, na Rua Amélia Rey Colaço, 14E — Lisboa.</li>
             </ul>
           </div>
 
@@ -145,7 +186,6 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
             </p>
           </div>
         </section>
-
       </main>
     </>
   );

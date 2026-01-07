@@ -229,7 +229,7 @@ function FormatAndText({
     setIsFontsOpen(false);
   };
 
-  const canContinue = boxText.trim().length > 0;
+  const canContinue = boxText.trim().length  <= 10;
 
   return (
     <>

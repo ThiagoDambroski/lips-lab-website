@@ -200,13 +200,7 @@ function buildShopifyPermalink(product: NonNullProduct): string {
  * - se o pop-up for bloqueado, faz redirect na mesma aba (garante que vai)
  */
 function goToShopifyAlways(url: string) {
-  const tab = window.open("about:blank", "_blank", "noopener,noreferrer");
-  if (tab) {
-    tab.location.href = url;
-    return;
-  }
-
-  // fallback para garantir que vai sempre
+ 
   window.location.assign(url);
 }
 
@@ -223,6 +217,11 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
   const [doItYourSelf, setDoItYourSelf] = useState<Boolean | undefined>(undefined);
 
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
+
+  // ✅ Persist these across unmount (step 8 removes ColorsSelection from DOM)
+  const [mixSelected, setMixSelected] = useState<string[]>([]);
+  const [mixWeights, setMixWeights] = useState<Record<string, number>>({});
+
   const [glitterSelected, setGlitterSelected] = useState<number | null>(null);
 
   const [baseSelected, setBaseSelected] = useState<BaseOptions>("none");
@@ -248,7 +247,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
   const handleTypeChange = (typeInput: TypesOptions) => {
     setType(typeInput);
     setSelectedColor(undefined);
-    setStep(0);
+    setStep(-1);
     setSmell("none");
     setDoItYourSelf(undefined);
 
@@ -260,6 +259,10 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
     setBoxText("");
     setBoxFont("century-gothic");
     setBoxImage("none");
+
+    // ✅ reset persisted mix
+    setMixSelected([]);
+    setMixWeights({});
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -279,11 +282,6 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
     price,
   });
 
-  /**
-   * ✅ Step 8: manda SEMPRE para Shopify.
-   * - tenta nova aba
-   * - se não der, redireciona na mesma aba
-   */
   const handleFinishPurchase = () => {
     const product = buildProductFromState();
     const url = buildShopifyPermalink(product);
@@ -294,11 +292,14 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
     if (type === undefined) {
       setCreateActive(false);
     } else {
-      if (step === 0) {
+      if (step === -1) {
         setType(undefined);
         return;
       }
-      setStep((prev) => Math.max(0, prev - 1));
+      if (step === 0) {
+        setDoItYourSelf(undefined);
+      }
+      setStep((prev) => Math.max(-1, prev - 1));
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -362,7 +363,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   </div>
                 )}
 
-                {(step >= 0 && step < 3 || (step >= 5 && step < 8)) && doItYourSelf === true && (
+                {( (step > 0 && step <= 4) || (step > 5 && step < 8) ) && doItYourSelf === true && (
                   <div className="item-display-2">
                     {type === "gloss" ? (
                       <div className="item-img-2-color-wrapper">
@@ -399,6 +400,10 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   setStep={setStep}
                   doItYourSelf={doItYourSelf}
                   setDoItYourSelf={setDoItYourSelf}
+                  selected={mixSelected}
+                  setSelected={setMixSelected}
+                  weights={mixWeights}
+                  setWeights={setMixWeights}
                 />
 
                 <GlitterBaseSelection
@@ -448,19 +453,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
 
                 <ul className="purchase-summary">
                   <li>
-                    <div
-                      style={{ ["--swatch" as any]: selectedColor }}
-                      onClick={() => {
-                        setDoItYourSelf(true);
-                        setStep(0);
-                      }}
-                    />
-                    <p>cor</p>
-                    <img src={editIcon} alt="" className="edit-icon" />
-                  </li>
-
-                  <li>
-                    <div onClick={() => setStep(2)}>
+                    <div onClick={() => setStep(0)}>
                       <p>{baseSelected === "none" ? "none" : baseSelected}</p>
                     </div>
                     <p>base</p>
@@ -468,19 +461,20 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   </li>
 
                   <li>
-                    <div onClick={() => setStep(3)}>
-                      {aditive !== "none" ? (
-                        <img src={additiveOptions.find((a) => a.id === aditive)?.img} alt="" />
-                      ) : (
-                        <p>none</p>
-                      )}
-                    </div>
-                    <p>aditivo</p>
+                    <div
+                      style={{ ["--swatch" as any]: selectedColor }}
+                      onClick={() => {
+                        setDoItYourSelf(true);
+                        // ✅ if user already has a selection, go to intensity step
+                        setStep(mixSelected.length > 0 ? 2 : 1);
+                      }}
+                    />
+                    <p>cor</p>
                     <img src={editIcon} alt="" className="edit-icon" />
                   </li>
 
                   <li>
-                    <div onClick={() => setStep(4)}>
+                    <div onClick={() => setStep(3)}>
                       {selectedGlitterObj ? <img src={selectedGlitterObj.img} alt="" /> : <p>none</p>}
                     </div>
                     <p>pigmento</p>
@@ -488,7 +482,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   </li>
 
                   <li>
-                    <div onClick={() => setStep(5)}>
+                    <div onClick={() => setStep(4)}>
                       <div className="smell-esence">
                         {smell !== "none" ? (
                           <img src={smellOptions.find((a) => a.id === smell)?.img} alt="" />
@@ -501,7 +495,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                     <img src={editIcon} alt="" className="edit-icon" />
                   </li>
 
-                  <li onClick={() => setStep(5)}>
+                  <li onClick={() => setStep(4)}>
                     <div>
                       <div className="smell-esence">
                         {esence !== "none" ? (
@@ -516,7 +510,19 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   </li>
 
                   <li>
-                    <div onClick={() => setStep(6)}>
+                    <div onClick={() => setStep(5)}>
+                      {aditive !== "none" ? (
+                        <img src={additiveOptions.find((a) => a.id === aditive)?.img} alt="" />
+                      ) : (
+                        <p>none</p>
+                      )}
+                    </div>
+                    <p>aditivo</p>
+                    <img src={editIcon} alt="" className="edit-icon" />
+                  </li>
+
+                  <li>
+                    <div onClick={() => setStep(6)} className="last-step">
                       {boxImage !== "none" && (
                         <img src={SYMBOLS.find((s) => s.id === boxImage)?.img} alt="" />
                       )}

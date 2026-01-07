@@ -343,7 +343,7 @@ const infoMap: Record<string, InfoContent> = useMemo(
   return (
     <>
       {/* ================= STEP 4 (ADITIVE) ================= */}
-      {step === 4 && (
+      {step === 5 && (
         <section className="adtive-section">
           <img src={monthAditive} alt="" />
 
@@ -379,13 +379,13 @@ const infoMap: Record<string, InfoContent> = useMemo(
               ))}
             </ul>
 
-            <button onClick={() => nextStep(5)}>Continuar</button>
+            <button onClick={() => nextStep(6)}>Continuar</button>
           </div>
         </section>
       )}
 
       {/* ================= STEP 5 (TASTE) ================= */}
-      {step === 5 && (
+      {step === 4 && (
         <div className="taste-section">
           <span className="title-button">ADICIONA O AROMA E a ESSÊNCIA</span>
 
@@ -450,7 +450,7 @@ const infoMap: Record<string, InfoContent> = useMemo(
           <div className="aditive-button-container">
             <button
               className="continue-button"
-              onClick={() => nextStep(6)}
+              onClick={() => nextStep(5)}
               
             >
               continuar

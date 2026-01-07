@@ -23,7 +23,7 @@ import collageRed from "../assets/colageVer.svg";
 import collagePink from "../assets/colageVib.svg";
 import collageNude from "../assets/colageNude.svg";
 import collageExpressive from "../assets/colageExp.png";
-import { NavLink } from "react-router-dom"
+import { href, NavLink } from "react-router-dom"
 
 const slides: Slide[] = [
   {
@@ -57,6 +57,14 @@ const slides: Slide[] = [
 ];
 
 function HomePage() {
+
+const handleBookExperience = () => {
+  window.open(
+    "https://buk.pt/lips-lab?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn5mJhfUsPGn92pJAimmxm--R-onXAbGOX5VwddnzjEfnFWVkKwG-gPLPAD-E_aem_XHGDeIg6Y0ZWcSNuV0Useg",
+    "_blank",
+    "noopener,noreferrer"
+  );
+};
 
     
   return (
@@ -99,7 +107,7 @@ function HomePage() {
         </section>
         <section className="home-marca-ex">
             <div style={{backgroundImage:`url(${daniAndFriend})`}}>
-              <button>MARCA JÁ A TUA experiência </button>
+              <button type="button" onClick={handleBookExperience}>MARCA JÁ A TUA EXPERIÊNCIA</button>
             </div>
         </section>
         

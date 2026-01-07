@@ -141,7 +141,6 @@ function AppProvider({ children }: appProviderProps) {
 
 
   const allColors: ColorOption[] = [
-    { hex: '#4D1D25', sub: 'BLACKBERRY' },
     { hex: '#D13C72', sub: 'MAGENTA' },
     { hex: '#9B243C', sub: 'RUBY RED' },
     { hex: '#6D1718', sub: 'WINEBERRY' },
@@ -153,7 +152,6 @@ function AppProvider({ children }: appProviderProps) {
     { hex: '#E8CA6C', sub: 'PEACH' },
     { hex: '#AA1B11', sub: 'RED' },
     { hex: '#6F2C16', sub: 'RUSSET' },
-    { hex: '#D3571C', sub: 'TANGERINE' },
     { hex: '#4B301B', sub: 'BROWN' },
     { hex: '#53150B', sub: 'MAHOGANY' },
 
@@ -357,14 +355,6 @@ function AppProvider({ children }: appProviderProps) {
     description: string;
     img: string;
   }[] = [
-
-      {
-        id: "HIDRATANTE",
-        name: "HIDRATANTE",
-        description:
-          "Melhora a textura do batom ou gloss, tornando-o mais cremoso, luminoso e confortável nos lábios.",
-        img: hidr
-      },
       {
         id: "SUAVIZAÇÃO",
         name: "SUAVIZAÇÃO",
@@ -378,13 +368,6 @@ function AppProvider({ children }: appProviderProps) {
         description:
           "Rico em antioxidantes, aumenta a hidratação e deixa os lábios suaves e nutridos.",
         img: prot
-      },
-      {
-        id: "DENSIFICADOR",
-        name: "DENSIFICADOR",
-        description:
-          "Suaviza a pele, estimula o colágeno e ajuda a combater o envelhecimento.",
-        img: dens
       },
       {
         id: "VOLUME LABIAL",

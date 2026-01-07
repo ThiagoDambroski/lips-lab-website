@@ -16,9 +16,9 @@ function Footer() {
                 </ul>
                 <div className='footer-social'>
                     <span>SOCIAL</span>
-                    <a href="">@lipslab.pt</a>
+                    <a href="https://www.instagram.com/lipslab.co/">@lipslab.pt</a>
                     <span>CONTACTO</span>
-                    <a href="">lipslab.co@gmail.com</a>
+                    <a onClick={() => window.location.href = "mailto:lipslab.co@gmail.com"}>lipslab.co@gmail.com</a>
                 </div>
             
         </div>

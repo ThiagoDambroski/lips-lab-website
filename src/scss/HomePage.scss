@@ -300,9 +300,14 @@ $pink-libs-color:#e45397;
 
       font-size: 1.5rem;
 
-    
+      cursor: pointer;
       transition: transform 0.15s ease, filter 0.15s ease;
 
+    }
+    button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
     }
   }
   

@@ -416,6 +416,7 @@
           align-items: center;
   padding: 2rem;
   gap: 30px;
+  width: 100%;
 }
 
 .colors-selection h3 {
@@ -446,8 +447,8 @@
   background-color: white;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[7];
-      grid-template-columns: repeat(7, 1fr);
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1016,8 +1017,8 @@
       align-self: center;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -2271,6 +2272,7 @@
   /* ADITIVO (3) */
   /* PIGMENTO (4) — fill entire circle */
   /* SABOR (5) + ESSÊNCIA (6) — perfectly centered inner icon wrapper */
+  /* Center the PERSONALIZAÇÃO icon inside the circle */
   /* ============================= */
   /* RESPONSIVE */
   /* ============================= */
@@ -2482,7 +2484,7 @@
   -webkit-box-orient: vertical;
 }
 
-.purchse-screen-logo .purchase-summary > li:nth-child(1) > div::after {
+.purchse-screen-logo .purchase-summary > li:nth-child(2) > div::after {
   content: "";
   width: 66px;
   height: 66px;
@@ -2514,7 +2516,7 @@
   pointer-events: none;
 }
 
-.purchse-screen-logo .purchase-summary > li:nth-child(2) > div > p,
+.purchse-screen-logo .purchase-summary > li:nth-child(1) > div > p,
 .purchse-screen-logo .purchase-summary > li:nth-child(7) > div > p {
   position: absolute;
   top: 22px;
@@ -2531,7 +2533,10 @@
   text-align: center;
   text-transform: uppercase;
   font-weight: 900;
-  font-size: 0.55rem;
+  font-size: 0.50rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   line-height: 1.05;
   letter-spacing: 0.08em;
   color: rgba(0, 0, 0, 0.6);
@@ -2540,7 +2545,7 @@
   overflow: hidden;
 }
 
-.purchse-screen-logo .purchase-summary > li:nth-child(3) > div img {
+.purchse-screen-logo .purchase-summary > li:nth-child(6) > div img {
   width: 44px;
   height: 44px;
   border-radius: 0;
@@ -2549,7 +2554,7 @@
   top: 33px;
 }
 
-.purchse-screen-logo .purchase-summary > li:nth-child(4) > div img {
+.purchse-screen-logo .purchase-summary > li:nth-child(3) > div img {
   width: 66px;
   height: 66px;
   border-radius: 999px;
@@ -2558,8 +2563,8 @@
   top: 22px;
 }
 
-.purchse-screen-logo .purchase-summary > li:nth-child(5) > div .smell-esence,
-.purchse-screen-logo .purchase-summary > li:nth-child(6) > div .smell-esence {
+.purchse-screen-logo .purchase-summary > li:nth-child(4) > div .smell-esence,
+.purchse-screen-logo .purchase-summary > li:nth-child(5) > div .smell-esence {
   position: absolute;
   top: 22px;
   left: 50%;
@@ -2577,8 +2582,8 @@
   margin: 0;
 }
 
-.purchse-screen-logo .purchase-summary > li:nth-child(5) > div .smell-esence img,
-.purchse-screen-logo .purchase-summary > li:nth-child(6) > div .smell-esence img {
+.purchse-screen-logo .purchase-summary > li:nth-child(4) > div .smell-esence img,
+.purchse-screen-logo .purchase-summary > li:nth-child(5) > div .smell-esence img {
   position: static;
   -webkit-transform: none;
           transform: none;
@@ -2588,6 +2593,14 @@
      object-fit: contain;
   display: block;
   border-radius: 0;
+}
+
+.purchse-screen-logo .purchase-summary > li:last-child > div img {
+  top: 55px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 4;
 }
 
 @media (max-width: 1200px) {
@@ -2894,8 +2907,8 @@
     font-size: 2.5vw;
   }
   .colors-selection .colors-section-div .colors-section {
-    width: 8vw;
-    height: 8vw;
+    width: 6vw;
+    height: 6vw;
   }
   .item-img-2-create {
     width: 100%;
@@ -3241,8 +3254,11 @@
     font-size: 3vw;
   }
   .colors-selection .colors-section-div .colors-section {
-    width: 15vw;
-    height: 15vw;
+    width: 10vw;
+    height: 10vw;
+  }
+  .colors-selection .colors-section-div p {
+    font-size: 2vw;
   }
   .item-img-2-create {
     height: 580px;

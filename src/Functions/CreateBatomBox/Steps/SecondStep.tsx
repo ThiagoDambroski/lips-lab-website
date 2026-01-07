@@ -17,7 +17,7 @@ function SecondStep({
   setStep,
 }: SecondStepProps) {
   const nexStep = () => {
-    setStep(2)
+    setStep(3)
     window.scrollTo({
       top: 0,
       left: 0,

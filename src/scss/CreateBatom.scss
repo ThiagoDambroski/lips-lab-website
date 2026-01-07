@@ -389,6 +389,7 @@
   align-items: center;
   padding: 2rem;
   gap: 30px;
+  width: 100%;
 
   h3 {
     font-style: italic;
@@ -418,7 +419,7 @@
     background-color: white;
 
     display: grid;
-    grid-template-columns: repeat(7, 1fr); 
+    grid-template-columns: repeat(6, 1fr); 
     justify-content: center;
     align-items: center;
     column-gap: 10px;
@@ -865,9 +866,10 @@
           font-style: italic;
       }
       ul{
+          
           align-self: center;
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
           justify-content: center;
           align-items: center;
           row-gap: 20px;
@@ -2052,7 +2054,7 @@
   }
 
   /* COR (1) — enable the swatch only here */
-  .purchase-summary > li:nth-child(1) > div {
+  .purchase-summary > li:nth-child(2) > div {
     &::after {
       content: "";
       width: 66px;
@@ -2094,7 +2096,7 @@
      (REMOVE 6 because ESSÊNCIA is an icon card) */
   /* ============================= */
 
-  .purchase-summary > li:nth-child(2) > div > p,
+  .purchase-summary > li:nth-child(1) > div > p,
   .purchase-summary > li:nth-child(7) > div > p {
     position: absolute;
     top: 22px;
@@ -2113,7 +2115,8 @@
     text-transform: uppercase;
 
     font-weight: 900;
-    font-size: 0.55rem;
+    font-size: 0.50rem;
+    width: fit-content;
     line-height: 1.05;
     letter-spacing: 0.08em;
 
@@ -2129,7 +2132,7 @@
   /* ============================= */
 
   /* ADITIVO (3) */
-  .purchase-summary > li:nth-child(3) > div img {
+  .purchase-summary > li:nth-child(6) > div img {
     width: 44px;
     height: 44px;
     border-radius: 0;
@@ -2138,7 +2141,7 @@
   }
 
   /* PIGMENTO (4) — fill entire circle */
-  .purchase-summary > li:nth-child(4) > div img {
+  .purchase-summary > li:nth-child(3) > div img {
     width: 66px;
     height: 66px;
     border-radius: 999px;
@@ -2147,8 +2150,8 @@
   }
 
   /* SABOR (5) + ESSÊNCIA (6) — perfectly centered inner icon wrapper */
-  .purchase-summary > li:nth-child(5) > div .smell-esence,
-  .purchase-summary > li:nth-child(6) > div .smell-esence {
+  .purchase-summary > li:nth-child(4) > div .smell-esence,
+  .purchase-summary > li:nth-child(5) > div .smell-esence {
     position: absolute;
     top: 22px;
     left: 50%;
@@ -2167,8 +2170,8 @@
     margin: 0;
   }
 
-  .purchase-summary > li:nth-child(5) > div .smell-esence img,
-  .purchase-summary > li:nth-child(6) > div .smell-esence img {
+  .purchase-summary > li:nth-child(4) > div .smell-esence img,
+  .purchase-summary > li:nth-child(5) > div .smell-esence img{
     position: static;
     transform: none;
 
@@ -2179,6 +2182,15 @@
     display: block;
     border-radius: 0;
   }
+
+  /* Center the PERSONALIZAÇÃO icon inside the circle */
+.purchase-summary > li:last-child > div img {
+  top: 55px;                 // 22px (circle top) + 33px (half of 66px)
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
 
   /* ============================= */
   /* RESPONSIVE */
@@ -2465,8 +2477,8 @@ $phone-min: 320px;
     font-size: 2.5vw;
   }
   .colors-selection .colors-section-div .colors-section{
-    width: 8vw;
-    height: 8vw;
+    width: 6vw;
+    height: 6vw;
   }
   .item-img-2-create{
     width: 100%;
@@ -2814,8 +2826,11 @@ $phone-min: 320px;
     font-size: 3vw;
   }
   .colors-selection .colors-section-div .colors-section{
-    width: 15vw;
-    height: 15vw;
+    width: 10vw;
+    height: 10vw;
+  }
+  .colors-selection .colors-section-div p{
+    font-size: 2vw;
   }
   .item-img-2-create{
     height: 580px;

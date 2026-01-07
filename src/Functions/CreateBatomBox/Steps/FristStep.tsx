@@ -23,7 +23,7 @@ function FristStep({
 }: FristStepProps) {
   
   const nextStep = () =>{ 
-    setStep(1)
+    setStep(2)
     window.scrollTo({
         top: 0,
         left: 0,

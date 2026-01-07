@@ -80,6 +80,14 @@ const includedItems: IncludeItem[] = [
   },
 ];
 
+const handleBookExperience = () => {
+  window.open(
+    "https://buk.pt/lips-lab?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn5mJhfUsPGn92pJAimmxm--R-onXAbGOX5VwddnzjEfnFWVkKwG-gPLPAD-E_aem_XHGDeIg6Y0ZWcSNuV0Useg",
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
 function ExperiencieAndPrice() {
 
   // NEW: accordion for "incluído"
@@ -135,7 +143,7 @@ function ExperiencieAndPrice() {
 
         <ProductCarousel items={products} initialIndex={0} autoplayMs={0} onIndexChange={(i) => console.log("slide:", i)} />
         <section className="reserve-now-section-experiencie" style={{ backgroundImage: `url(${libsBackground})` }}>
-              <button>RESERVA AGORA</button>
+              <button onClick={handleBookExperience}>RESERVA AGORA</button>
               <img src={holdingGloss} alt="" />
         </section>
       </main>

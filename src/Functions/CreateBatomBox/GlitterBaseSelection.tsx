@@ -242,8 +242,8 @@ function GlitterBaseSelection({
   }
   return (
     <>
-      {/* ================= STEP 3 (BASE) ================= */}
-      {step === 3 && (
+      {/* ================= STEP 0 (BASE) ================= */}
+      {step === 0 && (
         <section className="texture-selection-section">
           <img src={monthBase} alt="" />
 
@@ -317,7 +317,7 @@ function GlitterBaseSelection({
 
             <button
               className="texture-selection-section-button"
-              onClick={() => nextStep(4)}
+              onClick={() => nextStep(1)}
             >
               CONTINUAR!
             </button>
@@ -325,8 +325,8 @@ function GlitterBaseSelection({
         </section>
       )}
 
-      {/* ================= STEP 2 (GLITTER) ================= */}
-      {step === 2 && (
+      {/* ================= STEP 3 (GLITTER) ================= */}
+      {step === 3 && (
         <section className="glitter-section">
           <div className="glitter-intro">
             <h2>
@@ -338,7 +338,7 @@ function GlitterBaseSelection({
               <br /> adicioná-lo ao seu
               <br /> gloss.
             </h2>
-            <button onClick={() => nextStep(3)}>Continuar</button>
+            <button onClick={() => nextStep(4)}>Continuar</button>
           </div>
 
           <div className="gliter-container">

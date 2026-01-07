@@ -8,6 +8,14 @@ import { NavLink } from "react-router-dom"
 //import { NavLink } from "react-router-dom"
 
 function ReserveNow() {
+
+  const handleBookExperience = () => {
+  window.open(
+    "https://buk.pt/lips-lab?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn5mJhfUsPGn92pJAimmxm--R-onXAbGOX5VwddnzjEfnFWVkKwG-gPLPAD-E_aem_XHGDeIg6Y0ZWcSNuV0Useg",
+    "_blank",
+    "noopener,noreferrer"
+  );
+};
   return (
     <>
       <Navbar css={1}/>
@@ -19,7 +27,7 @@ function ReserveNow() {
             batom e GLOSS<br/>
             no nosso<br/>
             laboratório</h1><br/>
-            <button>quero agendar!</button>
+            <button onClick={handleBookExperience}>quero agendar!</button>
           </div>
           
         </section>

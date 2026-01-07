@@ -1,4 +1,3 @@
-// ColorsSelection.tsx
 import React, { useEffect, useMemo, useState } from "react";
 import FristStep from "./Steps/FristStep";
 import SecondStep from "./Steps/SecondStep";
@@ -22,6 +21,13 @@ type ColorsSelectionProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   doItYourSelf: Boolean | undefined;
   setDoItYourSelf: React.Dispatch<React.SetStateAction<Boolean | undefined>>;
+
+  // ✅ lifted state from parent
+  selected: string[];
+  setSelected: React.Dispatch<React.SetStateAction<string[]>>;
+
+  weights: Record<string, number>;
+  setWeights: React.Dispatch<React.SetStateAction<Record<string, number>>>;
 };
 
 function ColorsSelection({
@@ -33,13 +39,14 @@ function ColorsSelection({
   setStep,
   doItYourSelf,
   setDoItYourSelf,
+  selected,
+  setSelected,
+  weights,
+  setWeights,
 }: ColorsSelectionProps) {
   const { allColors } = useApp();
 
-  const [selected, setSelected] = useState<string[]>([]);
-  const [weights, setWeights] = useState<Record<string, number>>({});
-
-  // ✅ Determine palette mode BEFORE effects run (prevents the "overwrite" bug)
+  // ✅ Determine palette mode BEFORE effects run (prevents overwrite)
   const hasPalette = Boolean(paletteOptions && paletteOptions.length > 0);
 
   const [isFromAutomatic, setIsFromAutomatic] = useState<boolean>(() => hasPalette);
@@ -81,10 +88,10 @@ function ColorsSelection({
     });
   };
 
-  // ✅ Avoid step hijacking (only guard within color flow)
+  // ✅ Guard only inside color flow (prevents step "hijack" after remount)
   useEffect(() => {
-    if (doItYourSelf === true && selected.length === 0 && (step === 0 || step === 1)) {
-      setStep(0);
+    if (doItYourSelf === true && selected.length === 0 && (step === 1 || step === 2)) {
+      setStep(1);
     }
   }, [doItYourSelf, selected.length, step, setStep]);
 
@@ -107,6 +114,8 @@ function ColorsSelection({
       })
       .join("");
 
+  // NOTE: using useMemo for side-effects isn't ideal, but keeping your structure.
+  // If you want, we can convert this to useEffect later.
   useMemo(() => {
     if (selected.length === 0) {
       // ✅ do NOT overwrite an existing color when remounting
@@ -145,6 +154,7 @@ function ColorsSelection({
     setIsFromAutomatic(false);
     setFirstStepColors(allColors);
 
+    // ✅ reset lifted state
     setSelected([]);
     setWeights({});
 
@@ -154,23 +164,24 @@ function ColorsSelection({
       top: 0,
       left: 0,
       behavior: "smooth",
-    })
+    });
   };
 
   const startAutomaticFlow = () => {
     setPaletteOptions(null);
     setIsFromAutomatic(false);
 
+    // ✅ reset lifted state
     setSelected([]);
     setWeights({});
 
     setDoItYourSelf(false);
-    setStep(0);
+    setStep(-1);
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
-    })
+    });
   };
 
   const continueFromAutomaticPalette = (paletteHexes: string[]) => {
@@ -215,7 +226,7 @@ function ColorsSelection({
 
       {doItYourSelf === true && (
         <>
-          {step === 0 && (
+          {step === 1 && (
             <FristStep
               allColors={firstStepColors}
               selected={selected}
@@ -225,7 +236,7 @@ function ColorsSelection({
             />
           )}
 
-          {step === 1 && (
+          {step === 2 && (
             <SecondStep
               selected={selected}
               weights={weights}
