@@ -1,8 +1,11 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  base: '/lips-lab-website/', 
-})
+export default defineConfig(() => {
+  const isNetlify = process.env.NETLIFY === "true"; // Netlify sets this automatically
+
+  return {
+    plugins: [react()],
+    base: isNetlify ? "/" : "/lips-lab-website/",
+  };
+});
