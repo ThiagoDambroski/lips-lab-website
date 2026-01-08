@@ -1,5 +1,5 @@
 
-import bckground from "../assets/home background.svg"
+
 import "../scss/HomePage.css"
 
 import Marquee from "react-fast-marquee"
@@ -23,7 +23,7 @@ import collageRed from "../assets/colageVer.svg";
 import collagePink from "../assets/colageVib.svg";
 import collageNude from "../assets/colageNude.svg";
 import collageExpressive from "../assets/colageExp.png";
-import { href, NavLink } from "react-router-dom"
+import {  NavLink } from "react-router-dom"
 
 const slides: Slide[] = [
   {
@@ -71,11 +71,7 @@ const handleBookExperience = () => {
     <>
       <Navbar css={1}/>
       <main>
-        <section className="open-page-section"  style={{ backgroundImage: `url(${bckground})` }}>
-            
-        
-            
-        </section>
+
         <Marquee
           gradient={false}       // remove fade nas bordas
           speed={100}             // controla a velocidade

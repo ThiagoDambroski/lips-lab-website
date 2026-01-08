@@ -27,7 +27,6 @@ import pinkArrow from "../../assets/pink go back arrow.svg";
 
 import descVer from "../../assets/display icons exp.svg";
 import { useApp } from "../../Contexts/AppProvider";
-import { useNavigate } from "react-router-dom";
 import sparks from "../../assets/sparks.svg";
 import star from "../../assets/star.svg";
 import heart from "../../assets/heart.svg";
@@ -235,9 +234,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
 
   const price = 55.0;
 
-  // ainda podes usar se precisares no resto da app,
-  // mas não vamos navegar para /cart
-  const navigate = useNavigate();
+
 
   const { additiveOptions, glitterOptions, smellOptions, allEsence } = useApp();
 

@@ -1,9 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
 import type { AdditivesOptions, BaseOptions, EsenceOptions, EyeColorOptions, HairColorOptions, SkinToneOptions, SmelltOptions } from '../Functions/CreateBatomBox/Types';
-import hidr from "../assets/hidr.png"
 import suav from "../assets/sua.png"
 import prot from "../assets/prot.png"
-import dens from "../assets/dens.png"
 import vol from "../assets/vol.png"
 import anti from "../assets/anti.png"
 

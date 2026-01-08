@@ -3,8 +3,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../scss/NavBar.css";
 
-import whiteShop from "../assets/shopWhite.png";
-import redShop from "../assets/shopRed.png";
+
 
 type NavbarProps = {
   css?: number;
