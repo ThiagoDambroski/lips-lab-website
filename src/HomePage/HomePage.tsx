@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee"
 import LibsCards from "./LibsCards"
 
 import ourProductsBanner from "../assets/ourProducts.svg"
-import daniAndFriend from "../assets/dani e friend.svg"
+import daniAndFriend from "../assets/dani e friend.jpg"
 import  Navbar from "../Navbar/Navbar"
 import backLibs from "../assets/libs back.png"
 import backEnd from "../assets/home-end-backg.svg"
@@ -19,8 +19,8 @@ import circlesPink from "../assets/colorsVib.svg";
 import circlesNude from "../assets/colorsNude.svg";
 import circlesExpressive from "../assets/colorsExp.svg";
 
-import collageRed from "../assets/colageVer.svg";
-import collagePink from "../assets/colageVib.svg";
+import collageRed from "../assets/colageVer.jpg";
+import collagePink from "../assets/colageVib.jpg";
 import collageNude from "../assets/colageNude.svg";
 import collageExpressive from "../assets/colageExp.png";
 import {  NavLink } from "react-router-dom"

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
-import mockUp from "../assets/fqaImage.svg"
+import mockUp from "../assets/fqaImage.jpg"
 import "../scss/Faq.css"
 import bckLibs from "../assets/libs back.png"
 import ribbonImg from "../assets/perguntasFrequentes.svg"
