@@ -15,7 +15,7 @@ import glossCombo from "../assets/gloss combo.svg";
 import batomCombo from "../assets/batom combo.svg";
 
 
-import holdingGloss from "../assets/dani holding gloss.jpg"
+import holdingGloss from "../assets/dani holding gloss.png"
 
 import "../scss/ExperiencieAndPrice.css"; // keep as you already have
 import HowItWorksSection from "./HowItWorksSection";

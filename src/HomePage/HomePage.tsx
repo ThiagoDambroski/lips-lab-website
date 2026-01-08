@@ -9,7 +9,7 @@ import ourProductsBanner from "../assets/ourProducts.svg"
 import daniAndFriend from "../assets/dani e friend.jpg"
 import  Navbar from "../Navbar/Navbar"
 import backLibs from "../assets/libs back.png"
-import backEnd from "../assets/home-end-backg.svg"
+import backEnd from "../assets/home-end-backg.png"
 //import { NavLink } from "react-router-dom"
 import ToneCarousel, { type Slide }  from "./ToneCarousel"
 
