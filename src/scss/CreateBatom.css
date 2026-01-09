@@ -1994,7 +1994,7 @@
   left: 0;
   /* tune this if you have a header */
   top: 00px;
-  width: 360px;
+  width: 40%;
   height: 100vh;
   padding: 26px 18px;
   /* ✅ only right side rounded */
@@ -2058,7 +2058,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-style: italic;
-  font-size: 20px;
+  font-size: 40px;
   margin-bottom: 2rem;
 }
 
@@ -2071,7 +2071,7 @@
 .glitter-info-body p {
   margin: 0 0 12px 0;
   font-family: "ApercuPro";
-  font-size: 11px;
+  font-size: 20px;
   line-height: 1.55;
   opacity: 0.98;
 }
@@ -3076,6 +3076,9 @@
   }
   .continue-button {
     font-size: 3vw;
+  }
+  .glitter-info-card {
+    width: 60%;
   }
 }
 

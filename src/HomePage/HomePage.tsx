@@ -20,7 +20,7 @@ import circlesNude from "../assets/colorsNude.svg";
 import circlesExpressive from "../assets/colorsExp.svg";
 
 import collageRed from "../assets/colageVer.jpg";
-import collagePink from "../assets/colageVib.jpg";
+import collagePink from "../assets/collageVib.png";
 import collageNude from "../assets/colageNude.svg";
 import collageExpressive from "../assets/colageExp.png";
 import {  NavLink } from "react-router-dom"

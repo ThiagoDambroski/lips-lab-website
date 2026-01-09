@@ -691,10 +691,10 @@
     width: 200px;
   }
   .tone-carousel__subtitle {
-    font-size: 15px;
+    font-size: 2vw;
   }
   .tone-carousel__pill {
-    font-size: 8px;
+    font-size: 10px;
   }
   .home-end {
     min-height: 100vh;
@@ -760,35 +760,36 @@
   .experiencie-libs-cards-container .libs-card {
     /* ✅ each card has a realistic width and does not shrink */
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 150px;
-            flex: 0 0 150px;
+        -ms-flex: 0 0 200px;
+            flex: 0 0 200px;
+    height: 50vw;
     padding-top: 1.5rem;
     padding-bottom: 1rem;
     scroll-snap-align: start;
   }
   .experiencie-libs-cards-container .libs-card .libs-badge {
-    width: 60px;
-    top: -15px;
+    width: 16vw;
+    top: -4vw;
   }
   .experiencie-libs-cards-container .libs-card .libs-badge .libs-card__badge {
-    font-size: 15px;
+    font-size: 4vw;
   }
   .experiencie-libs-cards-container .libs-card .libs-card__title {
-    font-size: 0.7rem;
+    font-size: 3.5vw;
     margin-bottom: 1.6rem;
   }
   .experiencie-libs-cards-container .libs-card .libs-card__text {
-    font-size: 0.55rem;
+    font-size: 3vw;
     line-height: 1.25;
   }
   .experiencie-libs .experiencie-libs-intro h3 {
-    font-size: 6vw;
+    font-size: 7vw;
   }
   .home-banner h2 {
-    font-size: 5vw;
+    font-size: 6vw;
   }
   .home-banner p {
-    font-size: 3vw;
+    font-size: 3.5vw;
     margin-bottom: 1.5rem;
   }
   .home-banner img {
@@ -799,8 +800,8 @@
     padding-bottom: 1rem;
   }
   .home-marca-ex div button {
-    font-size: 2.5vw;
-    padding: 10px 7px;
+    font-size: 3vw;
+    padding: 12px 7px;
     margin-bottom: 1rem;
   }
   .tone-carousel__slide {
@@ -824,20 +825,20 @@
     margin-bottom: 0rem;
   }
   .tone-carousel__pill {
-    font-size: 8px;
+    font-size: 2vw;
   }
   .home-end {
-    min-height: 60vh;
+    min-height: 90vw;
   }
   .home-end h1 {
     text-align: end;
     padding-top: 1rem;
-    font-size: 5vw;
+    font-size: 6vw;
   }
   .home-end button {
     padding: 0.9rem;
     margin-top: 2rem;
-    font-size: 2.5vw;
+    font-size: 3vw;
     margin-left: 2rem;
   }
 }

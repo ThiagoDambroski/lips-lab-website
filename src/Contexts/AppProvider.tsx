@@ -255,12 +255,7 @@ function AppProvider({ children }: appProviderProps) {
   ];
 
   const baseGloss: { id: BaseOptions, name: string, description: string }[] = [
-    {
-      id: "classic",
-      name: "clássico",
-      description:
-        "brilhante & hidratante",
-    },
+    
     {
       id: "mirror-shine",
       name: "brilho intenso",

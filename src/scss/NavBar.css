@@ -311,16 +311,17 @@ footer .footer-social a:visited {
 
 @media (max-width: 1100px) and (min-width: 768px) {
   .nav-2 ul div {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .nav-2 ul {
-    -ms-grid-columns: 1fr 4fr 1fr;
-        grid-template-columns: 1fr 4fr 1fr;
+    -ms-grid-columns: 1fr 4fr;
+        grid-template-columns: 1fr 4fr;
+    gap: 0px;
   }
   .nav-2 ul div li a {
-    font-size: 10px;
+    font-size: 13px;
     width: 100%;
   }
   .nav-2 ul li .nav-logo {
@@ -485,25 +486,24 @@ footer .footer-social a:visited {
     padding: 1rem;
   }
   footer .footer-div img {
-    width: 125px;
-    height: 60px;
+    width: 40vw;
     margin-right: 1rem;
   }
   footer .footer-div ul li {
-    font-size: 8px;
+    font-size: 2vw;
     margin-right: 1rem;
   }
   .footer-social {
     margin-bottom: 1rem;
   }
   .footer-social span {
-    font-size: 8px;
+    font-size: 2vw;
   }
   .footer-social a {
-    font-size: 8px;
+    font-size: 2vw;
   }
   footer p {
-    font-size: 6px;
+    font-size: 1.5vw;
   }
 }
 /*# sourceMappingURL=NavBar.css.map */

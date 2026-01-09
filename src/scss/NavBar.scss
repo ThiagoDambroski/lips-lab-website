@@ -293,15 +293,16 @@ $phone-min: 320px;
 
 @media (max-width: $laptop-min) and (min-width: $tablet-min) {
   .nav-2 ul div {
-    justify-content: center;
+    align-items: center;
   }
 
   .nav-2 ul {
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 4fr ;
+    gap: 0px;
   }
 
   .nav-2 ul div li a {
-    font-size: 10px;
+    font-size: 13px;
     width: 100%;
   }
 
@@ -482,25 +483,25 @@ $phone-min: 320px;
     padding: 1rem;
   }
   footer .footer-div img {
-    width:125px;
-    height: 60px;
+    width:40vw;
+    
     margin-right: 1rem;
   }
   footer .footer-div ul li {
-    font-size: 8px;
+    font-size: 2vw;
     margin-right: 1rem;
     
   }
   .footer-social {
     margin-bottom: 1rem;
     span {
-      font-size: 8px;
+      font-size: 2vw;
     }
     a {
-      font-size: 8px;
+      font-size: 2vw;
     }
   }
   footer p {
-    font-size: 6px;
+    font-size: 1.5vw;
   }
 }
