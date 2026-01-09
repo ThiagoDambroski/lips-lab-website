@@ -232,7 +232,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
   const [boxFont, setBoxFont] = useState<string>("century-gothic");
   const [boxImage, setBoxImage] = useState<string>("none");
 
-  const price = 55.0;
+  const price = 25.0;
 
 
 
@@ -533,7 +533,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                 </ul>
 
                 <div className="button-container">
-                  <span>55,00€</span>
+                  <span>25,00€</span>
                   <button onClick={handleFinishPurchase}>
                     <p>ADICIONAR AO CARRINHO</p>
                   </button>
