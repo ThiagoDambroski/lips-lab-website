@@ -78,7 +78,7 @@ function SecondStep({
         <div className="add-color-wrapper">
           <button
             className="add-color-btn"
-            onClick={() => setStep(0)}
+            onClick={() => setStep(1)}
             aria-label="Add another color"
           >
             <span className="plus">+</span>

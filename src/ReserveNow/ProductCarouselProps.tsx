@@ -25,7 +25,7 @@ const clamp = (n: number, min: number, max: number) =>
  * Keep this in sync with your CSS breakpoint.
  * If <= 600px => 1 per view, else 2 per view (your original behavior).
  */
-const MOBILE_MAX = 600;
+const MOBILE_MAX =767;
 
 function getCardsPerView(): number {
   if (typeof window === "undefined") return 2;

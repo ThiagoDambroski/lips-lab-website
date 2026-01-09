@@ -268,20 +268,20 @@
 
 @media (max-width: 1100px) and (min-width: 768px) {
   .pc-imageWrap img {
-    height: 180px;
+    height: 24vw;
   }
   .pc-carousel {
     padding: 56px 5px;
   }
   .pc-title {
-    font-size: 15px;
+    font-size: 2vw;
   }
   .pc-meta {
     gap: 5px;
   }
   .pc-price {
     height: 30px;
-    font-size: 14px;
+    font-size: 1.8vw;
   }
 }
 

@@ -2959,11 +2959,18 @@
   .glitter-intro button {
     position: absolute;
     bottom: -90px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     margin-bottom: 1rem;
   }
   .glitter-intro h2 {
-    font-size: 2.5vw;
-    text-align: start;
+    font-size: 3vw;
+    text-align: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    padding-left: 1rem;
   }
   .glliter-selection-div ul {
     -ms-grid-columns: (1fr)[6];
@@ -3091,18 +3098,19 @@
     background-size: 300vw;
   }
   .main-create-box h1 {
-    font-size: 6vw;
+    font-size: 6.5vw;
     margin-bottom: 1rem;
   }
   .main-create-box p {
-    font-size: 4vw;
+    font-size: 4.5vw;
     margin-bottom: 0rem;
   }
   .gloss-or-batom-container {
     gap: 13vw;
   }
   .gloss-or-batom-container {
-    min-height: 60vh;
+    padding: 1rem;
+    min-height: 65vh;
     background: radial-gradient(900px 420px at 50% 45%, rgba(255, 220, 235, 0.55) 0%, rgba(255, 220, 235, 0.3) 0%, rgba(255, 220, 235, 0.12) 5%, rgba(255, 220, 235, 0) 80%), -webkit-gradient(linear, left top, left bottom, from(#fff6fa00), color-stop(45%, #fde7f000), to(#f8c9dca8));
     background: radial-gradient(900px 420px at 50% 45%, rgba(255, 220, 235, 0.55) 0%, rgba(255, 220, 235, 0.3) 0%, rgba(255, 220, 235, 0.12) 5%, rgba(255, 220, 235, 0) 80%), linear-gradient(180deg, #fff6fa00 0%, #fde7f000 45%, #f8c9dca8 100%);
   }
@@ -3140,23 +3148,24 @@
     font-size: 6vw;
   }
   .item-display .item-display-container div .p-1 {
-    font-size: 2vw;
+    font-size: 3vw;
     margin-bottom: 1vw;
   }
   .item-display .item-display-container div img {
     margin-bottom: 3vw;
+    width: 100%;
   }
   .item-display .item-display-container p {
-    font-size: 2vw;
+    font-size: 2.5vw;
     padding-bottom: 10px;
   }
   .item-display .pink-gloss {
     top: -1rem;
   }
   .main-color-selection-options div button {
-    height: 180px;
+    height: 40vw;
     width: 40vw;
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   .item-display {
     max-width: 80%;
@@ -3172,7 +3181,7 @@
     font-size: 5vw;
   }
   .automatic-color-container .automatic-color-bgk p {
-    font-size: 2vw;
+    font-size: 2.5vw;
     margin-bottom: 1rem;
   }
   .automatic-color-container .automatic-color-bgk button {
@@ -3232,7 +3241,7 @@
   }
   .title-button {
     width: 60%;
-    font-size: 3vw;
+    font-size: 4vw;
     padding: 0.5rem;
   }
   .item-display-2 {
@@ -3255,25 +3264,29 @@
         grid-template-columns: repeat(4, 1fr);
   }
   .colors-selection h3 {
-    font-size: 3vw;
+    font-size: 4vw;
+  }
+  .colors-selection .colors-containers {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
   }
   .colors-selection .colors-section-div .colors-section {
-    width: 10vw;
-    height: 10vw;
+    width: 15vw;
+    height: 15vw;
   }
   .colors-selection .colors-section-div p {
-    font-size: 2vw;
+    font-size: 3vw;
   }
   .item-img-2-create {
     height: 580px;
   }
   .colors-selection button {
     width: 70%;
-    font-size: 2.5vw;
+    font-size: 3.5vw;
     padding: 1rem;
   }
   .colors-selection h4 {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   .colors-selection .colors-containers.is-palette {
     padding: 1rem;
@@ -3282,8 +3295,8 @@
     row-gap: 10px;
   }
   .color-swatch {
-    width: 65px;
-    height: 50px;
+    width: 20vw;
+    height: 15vw;
   }
   .continue-button {
     width: 70%;
@@ -3337,9 +3350,13 @@
     margin-bottom: 1rem;
   }
   .glitter-intro h2 {
+    width: 100%;
     padding-left: 1rem;
     font-size: 5vw;
-    text-align: start;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    text-align: center;
   }
   .glliter-selection-div ul {
     -ms-grid-columns: (1fr)[5];
@@ -3445,7 +3462,7 @@
     gap: 5px;
   }
   .taste-section .title-button {
-    font-size: 4vw;
+    font-size: 5vw;
     width: 100%;
   }
   .taste-section .taste-container li div img {
@@ -3492,12 +3509,12 @@
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
   }
-  .continue-button {
-    font-size: 3vw;
-  }
   .taste-section .span-botom {
-    font-size: 4vw;
+    font-size: 4.5vw;
     text-align: center;
+  }
+  .aditive-button-container div p {
+    font-size: 3.5vw;
   }
   .engraving-span-title {
     font-size: 4vw;
@@ -3543,10 +3560,11 @@
     font-size: 3.5vw;
   }
   .formula-clean-body p {
-    font-size: 2vw;
+    font-size: 3vw;
   }
   .purchse-screen {
     background-size: 250vw;
+    padding: 0rem;
   }
   .purchse-screen-logo > img {
     width: 100%;
@@ -3557,7 +3575,7 @@
   }
   .purchse-screen-logo .purchse-screen-logo-div p {
     margin-top: 1rem;
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
   .purchse-screen-logo .purchase-summary > li > div {
     -ms-grid-column-align: center;

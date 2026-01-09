@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import type { BaseOptions } from "./Types";
 import { useApp, type GlitterColor } from "../../Contexts/AppProvider";
-import monthBase from "../../assets/mouthBase.svg";
+import monthBase from "../../assets/mouthBase.png";
 import infoCircle from "../../assets/info circle.svg";
 import "../../scss/CreateBatom.css";
 
@@ -39,18 +39,54 @@ function GlitterBaseSelection({
   );
 
   // --------------------------
+  // RESPONSIVE (<= 1100px)
+  // --------------------------
+  const [isMobile1100, setIsMobile1100] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth <= 1100 : false
+  );
+
+  useEffect(() => {
+    const onResize = () => setIsMobile1100(window.innerWidth <= 1100);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // --------------------------
   // GLITTER PREVIEW LIGHTBOX
   // --------------------------
   const [preview, setPreview] = useState<GlitterColor | null>(null);
 
+  useEffect(() => {
+    if (!preview) return;
+
+    const body = document.body;
+    const html = document.documentElement;
+
+    const prevBodyOverflow = body.style.overflow;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyPaddingRight = body.style.paddingRight;
+
+    const scrollbarWidth = window.innerWidth - html.clientWidth;
+    if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+
+    body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+
+    return () => {
+      body.style.overflow = prevBodyOverflow;
+      html.style.overflow = prevHtmlOverflow;
+      body.style.paddingRight = prevBodyPaddingRight;
+    };
+  }, [preview]);
+
   const openLightbox = (g: GlitterColor) => {
-    if(glitterSelected === g.id){
-      setGlitterSelected(null)
-    }else{
+    if (glitterSelected === g.id) {
+      setGlitterSelected(null);
+    } else {
       setPreview(g);
     }
-    
-  }
+  };
+
   const closeLightbox = () => setPreview(null);
 
   const confirmSelect = () => {
@@ -65,7 +101,6 @@ function GlitterBaseSelection({
   const infoKeyForGlitterCategory = (category: string) => `glitter:${category}`;
 
   const infoMap: Record<string, InfoContent> = {
-    // ===== GLITTER INFO =====
     [infoKeyForGlitterCategory("Frosts")]: {
       title: "FROSTS",
       paragraphs: [
@@ -99,7 +134,6 @@ function GlitterBaseSelection({
       ],
     },
 
-    // ===== BASE GLOSS INFO (YOUR TEXTS) =====
     [infoKeyForBase("classic")]: {
       title: "CLÁSSICO",
       paragraphs: [
@@ -141,7 +175,7 @@ function GlitterBaseSelection({
         "Ajuda a proteger, hidratar, nutrir e regenerar os lábios, para um cuidado diário natural.",
       ],
     },
-    // ===== BASE BATOM INFO =====
+
     [infoKeyForBase("matte")]: {
       title: "MATTE",
       paragraphs: [
@@ -184,18 +218,16 @@ function GlitterBaseSelection({
         "Cria um batom cremoso e hidratante, com cobertura leve ou total, ideal para quem procura conforto e cuidado diário.",
       ],
     },
-
   };
 
   const [infoKey, setInfoKey] = useState<string | null>(null);
 
   const openInfo = (key: string) => {
     setInfoKey(key);
-  }
+  };
   const closeInfo = () => setInfoKey(null);
 
   const activeInfo: InfoContent | null = infoKey ? infoMap[infoKey] ?? null : null;
-
 
   useEffect(() => {
     if (!infoKey) return;
@@ -207,7 +239,6 @@ function GlitterBaseSelection({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [infoKey]);
-
 
   useEffect(() => {
     if (!infoKey) return;
@@ -232,14 +263,15 @@ function GlitterBaseSelection({
     };
   }, [infoKey]);
 
-  const nextStep = (step:number) => {
-    setStep(step)
+  const nextStep = (step: number) => {
+    setStep(step);
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
-    })
-  }
+    });
+  };
+
   return (
     <>
       {/* ================= STEP 0 (BASE) ================= */}
@@ -268,15 +300,14 @@ function GlitterBaseSelection({
                       className="base-info-btn"
                       onClick={(e) => {
                         e.preventDefault();
-                        e.stopPropagation(); 
-                        openInfo(infoKeyForBase(b.id)); 
+                        e.stopPropagation();
+                        openInfo(infoKeyForBase(b.id));
                       }}
                       aria-label={`Info about ${b.name}`}
                     >
                       <img src={infoCircle} alt="" />
                     </button>
                   </li>
-
                 ))}
               </ul>
             )}
@@ -315,10 +346,7 @@ function GlitterBaseSelection({
               </ul>
             )}
 
-            <button
-              className="texture-selection-section-button"
-              onClick={() => nextStep(1)}
-            >
+            <button className="texture-selection-section-button" onClick={() => nextStep(1)}>
               CONTINUAR!
             </button>
           </div>
@@ -330,20 +358,28 @@ function GlitterBaseSelection({
         <section className="glitter-section">
           <div className="glitter-intro">
             <h2>
-              Um toque de brilho faz
-              <br /> toda a diferença.
-              <br />
-              <br />
-              pode optar por
-              <br /> adicioná-lo ao seu
-              <br /> gloss.
+              {isMobile1100 ? (
+                <>
+                  Um toque de brilho faz toda a diferença. Pode optar por adicioná-lo ao seu gloss.
+                </>
+              ) : (
+                <>
+                  Um toque de brilho faz
+                  <br /> toda a diferença.
+                  <br />
+                  <br />
+                  pode optar por
+                  <br /> adicioná-lo ao seu
+                  <br /> gloss.
+                </>
+              )}
             </h2>
+
             <button onClick={() => nextStep(4)}>Continuar</button>
           </div>
 
           <div className="gliter-container">
             {categories.map((category) => {
-
               if (category === "Dusts") return null;
 
               if (category === "Foils") {
@@ -379,7 +415,6 @@ function GlitterBaseSelection({
                           >
                             <img src={g.img} alt={g.name} />
                             <p>{g.name}</p>
-                            
                           </li>
                         ))}
                     </ul>
@@ -407,7 +442,6 @@ function GlitterBaseSelection({
                 );
               }
 
-              // Normal categories
               return (
                 <div key={category} className="glliter-selection-div">
                   <h2 className="glitter-title">
@@ -492,11 +526,7 @@ function GlitterBaseSelection({
         <div className="glitter-lightbox-overlay" onClick={closeLightbox}>
           <div className="glitter-lightbox" onClick={(e) => e.stopPropagation()}>
             <div className="glitter-lightbox-circle">
-              <img
-                src={preview.img}
-                alt={preview.name}
-                className="glitter-lightbox-img"
-              />
+              <img src={preview.img} alt={preview.name} className="glitter-lightbox-img" />
             </div>
 
             <h3 className="glitter-lightbox-name">{preview.name}</h3>

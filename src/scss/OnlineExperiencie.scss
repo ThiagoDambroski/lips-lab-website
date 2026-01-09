@@ -283,7 +283,7 @@ $phone-min: 320px;
 
 @media (min-width: $phone-min) and (max-width: $phone-max) {
     .online-buy-section{
-        padding-bottom: 0rem;
+       padding: 2rem;
     }
     .online-experience-back-main{
         background-size: 280vw;
@@ -294,7 +294,7 @@ $phone-min: 320px;
         padding: 1.5rem;
     }
     .online-buy-section .online-buy-p{
-        font-size: 4vw;
+        font-size: 5vw;
     }
     .img-site{
         width: 100%;
@@ -313,13 +313,13 @@ $phone-min: 320px;
         padding-bottom: 0rem;
     }
     .online-buy-section .online-buy-container .online-buy-card img{
-        width: 30%;
+        width: 20vw;
     }
     .online-buy-section .online-buy-container .online-buy-card h3{
-        font-size: 4vw;
+        font-size: 4.5vw;
     }
     .online-buy-section .online-buy-container .online-buy-card span{
-        font-size: 3vw;
+        font-size: 3.5vw;
     }
     .online-buy-section .second-button-online{
         width: 100%;

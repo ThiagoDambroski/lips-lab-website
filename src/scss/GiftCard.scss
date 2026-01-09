@@ -233,23 +233,27 @@ $phone-min: 320px;
     margin-bottom: 2rem;
   }
   .gift-intro div h2{
-    font-size: 2rem;
+    font-size: 4vw;
   }
   .gift-intro div p{
-    font-size: 15px;
+    font-size: 2.5vw;
   }
     .gift-banner p{
       font-size: 1.4rem;
       padding-left: 10px;
     }
-
+  .gift-intro div .gift-radio__label{
+    font-size: 1.5vw;
+  }
   .gift-terms__text{
-    font-size: 15px;
+    font-size: 2.5vw;
   }
   .gift-terms__list li{
-    font-size: 15px;
+    font-size: 2.5vw;
   }
-
+.gift-terms__values p{
+  font-size: 2.5vw;
+}
   .gift-intro div .gift-buy-btn {
     width: 70%;
     padding: 1rem;
@@ -290,22 +294,22 @@ $phone-min: 320px;
     width: 60%;
   }
   .gift-terms__title{
-    font-size: 9vw;
+    font-size: 7vw;
     text-align: center;
   }
   .gift-terms__text{
-    font-size: 3.5vw;
+    font-size: 4.5vw;
     max-width: 100%;
   }
   
   .gift-terms__list li{
-    font-size: 3.5vw;
+    font-size: 4.5vw;
   }
     .gift-terms__values p{
-      font-size: 3.5vw;
+      font-size: 4.5vw;
     }
   .gift-terms__address p{
-    font-size: 4vw;
+    font-size: 4.5vw;
   }
   .gift-intro div .gift-buy-btn {
     justify-self: center;

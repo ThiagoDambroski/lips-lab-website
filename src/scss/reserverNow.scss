@@ -206,23 +206,33 @@ $phone-min: 320px;
 }
 
 @media (max-width: $laptop-max) and (min-width: $laptop-min) {
+  .nav-2 ul div li{
+    font-size: 14px;
+  }
+  .reserve-now .reserve-now-intro img{
+    width: 45%;
+  }
  .reserve-now .reserve-now-intro div h1{
-    font-size: 4rem;
+    font-size: 5vw;
  }
  .reserve-now .reserve-now-end{
+  grid-template-columns: 0.45fr 0.55fr;
     gap:0rem;
  }
  .reserve-now .reserve-now-end .important-saberes h2 {
-    font-size: 30px;
+    font-size: 35px;
  }
  .reserve-now .reserve-now-end .important-saberes{
     gap: 1rem;
  }
  .reserve-now .reserve-now-end .important-saberes li{
-    font-size: 20px;
+    font-size: 25px;
  }
  .reserve-now .reserve-now-end .important-saberes button{
-    font-size: 20px;
+    font-size: 25px;
+ }
+ .reserve-now .reserve-now-intro div button{
+  width: 80%;
  }
  .reserve-now .reserve-now-end img{
     margin-left: 5rem;
@@ -236,11 +246,11 @@ $phone-min: 320px;
         gap: 7rem;
     }
   .reserve-now .reserve-now-intro div h1{
-    font-size: 2.5rem;
+    font-size: 5vw;
   }
   .reserve-now .reserve-now-intro div button{
     width: 70%;
-    font-size: 15px;
+    font-size: 1.5vw;
     padding: 1.2rem;
   }
 
@@ -254,37 +264,42 @@ $phone-min: 320px;
     
   }
   .reserve-now .reserve-now-end .important-saberes h2{
-    font-size: 20px;
+    font-size: 3vw;
   }
   .reserve-now .reserve-now-end .important-saberes ul{
     gap: 10px;
   }
   .reserve-now .reserve-now-end .important-saberes li{
-    font-size: 14px;
+    font-size: 1.8vw;
   }
   .reserve-now .reserve-now-end .important-saberes button{
     padding: 18px;
-    font-size: 15px;
+    font-size: 1.5vw;
   }
 }
 
 @media (min-width: $phone-min) and (max-width: $phone-max) {
     .reserve-now{
-        background-size: cover;
+        background-size: 350vw;
     }
   .reserve-now .reserve-now-intro{
+    flex-direction: column;
         gap: 1rem;
     }
 
     .reserve-now .reserve-now-intro img{
-        width: 50%;
+        width: 100%;
+    }
+    .reserve-now .reserve-now-intro div{
+      padding-top: 1.5vw;
+      gap: 1vw;
     }
   .reserve-now .reserve-now-intro div h1{
-    font-size: 5vw
+    font-size: 10vw
   }
   .reserve-now .reserve-now-intro div button{
     width: 100%;
-    font-size: 2.5vw;
+    font-size: 4.5vw;
     padding: 1rem;
   }
 
@@ -299,17 +314,17 @@ $phone-min: 320px;
     
   }
   .reserve-now .reserve-now-end .important-saberes h2{
-    font-size: 5vw;
+    font-size: 6vw;
   }
   .reserve-now .reserve-now-end .important-saberes ul{
     gap: 10px;
   }
   .reserve-now .reserve-now-end .important-saberes li{
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
   .reserve-now .reserve-now-end .important-saberes button{
     width: 90%;
     padding: 10px;
-    font-size: 2.5vw;
+    font-size: 3.5vw;
   }
 }

@@ -334,16 +334,16 @@ footer .footer-social a:visited {
     width: 45%;
   }
   footer .footer-div ul li {
-    font-size: 10px;
+    font-size: 1.5vw;
   }
   .footer-social span {
-    font-size: 10px;
+    font-size: 1.5vw;
   }
   .footer-social a {
-    font-size: 10px;
+    font-size: 1.5vw;
   }
   footer p {
-    font-size: 10px;
+    font-size: 1vw;
   }
 }
 

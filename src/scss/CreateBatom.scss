@@ -2396,6 +2396,7 @@ $phone-min: 320px;
 @media (max-width: $laptop-min) and (min-width: $tablet-min) {
   //inicia tua experiencia
   .main-create-box h1{
+    
     font-size: 6vw;
   }
   .main-create-box p{
@@ -2522,15 +2523,20 @@ $phone-min: 320px;
   .glitter-intro button{
     position: absolute;
     bottom: -90px;
+    align-self: center;
     margin-bottom: 1rem;
   }
   .glitter-intro h2{
-    font-size: 2.5vw;
-    text-align: start;
+    font-size: 3vw;
+    text-align: center;
+    align-self: center;
+    padding-left: 1rem;
   }
+
   .glliter-selection-div ul{
     grid-template-columns: repeat(6,1fr);
   }
+
   //base selection
   .texture-selection-section .texture-selection-section-button{
     width: 45%;
@@ -2651,20 +2657,22 @@ $phone-min: 320px;
   //inicia tua experiencia
   .main-create-box{
     background-size: 300vw;
+
   }
   .main-create-box h1{
-    font-size: 6vw;
+    font-size: 6.5vw;
     margin-bottom: 1rem;
   }
   .main-create-box p{
-    font-size: 4vw;
+    font-size: 4.5vw;
     margin-bottom: 0rem;
   }
   .gloss-or-batom-container{
     gap: 13vw;
   }
   .gloss-or-batom-container{
-      min-height: 60vh;
+    padding: 1rem;
+      min-height: 65vh;
      background:
     /* soft central glow */
     radial-gradient(
@@ -2715,23 +2723,24 @@ $phone-min: 320px;
     
   }
   .item-display .item-display-container div .p-1{
-    font-size: 2vw;
+    font-size: 3vw;
     margin-bottom: 1vw;
   }
   .item-display .item-display-container div img{
    margin-bottom: 3vw;
+   width: 100%;
   }
   .item-display .item-display-container p{
-    font-size: 2vw;
+    font-size: 2.5vw;
     padding-bottom: 10px;
   }
   .item-display .pink-gloss{
     top: -1rem;
   }
   .main-color-selection-options div button{
-    height: 180px;
+    height:40vw;
     width: 40vw;
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
 
   .item-display {
@@ -2751,7 +2760,7 @@ $phone-min: 320px;
     font-size: 5vw;
   }
   .automatic-color-container .automatic-color-bgk p{
-    font-size: 2vw;
+    font-size: 2.5vw;
     margin-bottom: 1rem;
   }
   .automatic-color-container .automatic-color-bgk button{
@@ -2805,7 +2814,7 @@ $phone-min: 320px;
   }
   .title-button{
     width: 60%;
-    font-size: 3vw;
+    font-size: 4vw;
     padding: 0.5rem;
   }
    .item-display-2 {
@@ -2829,14 +2838,17 @@ $phone-min: 320px;
     grid-template-columns: repeat(4, 1fr);
   }
   .colors-selection h3{
-    font-size: 3vw;
+    font-size: 4vw;
+  }
+  .colors-selection .colors-containers{
+    grid-template-columns: repeat(4,1fr);
   }
   .colors-selection .colors-section-div .colors-section{
-    width: 10vw;
-    height: 10vw;
+    width: 15vw;
+    height: 15vw;
   }
   .colors-selection .colors-section-div p{
-    font-size: 2vw;
+    font-size: 3vw;
   }
   .item-img-2-create{
     height: 580px;
@@ -2845,12 +2857,12 @@ $phone-min: 320px;
 
   .colors-selection button{
     width: 70%;
-    font-size: 2.5vw;
+    font-size: 3.5vw;
     padding: 1rem;
   }
 
   .colors-selection h4{
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   .colors-selection .colors-containers.is-palette {
     padding: 1rem;
@@ -2861,8 +2873,8 @@ $phone-min: 320px;
   //regular color
 
   .color-swatch{
-    width: 65px;
-    height:50px;
+    width: 20vw;
+    height:15vw;
   }
 
   .continue-button {
@@ -2906,9 +2918,11 @@ $phone-min: 320px;
     margin-bottom: 1rem;
   }
   .glitter-intro h2{
+    width: 100%;
     padding-left: 1rem;
     font-size: 5vw;
-    text-align: start;
+    align-self: center;
+    text-align: center;
   }
   .glliter-selection-div ul{
     grid-template-columns: repeat(5,1fr);
@@ -2999,7 +3013,7 @@ $phone-min: 320px;
     gap: 5px;
   }
   .taste-section .title-button{
-    font-size: 4vw;
+    font-size: 5vw;
     width: 100%;
   }
   .taste-section .taste-container li div img{
@@ -3036,12 +3050,13 @@ $phone-min: 320px;
     align-self: center;
     flex-direction: column-reverse;  
   }
-  .continue-button{
-    font-size: 3vw;
-  }
+
   .taste-section .span-botom{
-    font-size: 4vw;
+    font-size: 4.5vw;
     text-align: center;
+  }
+  .aditive-button-container div p{
+    font-size: 3.5vw;
   }
   //box
   .engraving-span-title{
@@ -3087,12 +3102,13 @@ $phone-min: 320px;
     font-size: 3.5vw;
   }
   .formula-clean-body p{
-    font-size: 2vw;
+    font-size: 3vw;
   }
 
   //purchse
   .purchse-screen{
     background-size: 250vw;
+    padding: 0rem;
   }
   .purchse-screen-logo > img{
     width: 100%;
@@ -3103,7 +3119,7 @@ $phone-min: 320px;
   }
   .purchse-screen-logo .purchse-screen-logo-div p{
     margin-top: 1rem;
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
   .purchse-screen-logo .purchase-summary > li > div{
   

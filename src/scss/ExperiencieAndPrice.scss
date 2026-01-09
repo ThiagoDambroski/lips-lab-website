@@ -501,7 +501,6 @@ $phone-min: 320px;
   }
 }
 
-/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
 @media (max-width: $laptop-min) and (min-width: $tablet-min) {
      .how-it-works-section .how-it-works-div{
       grid-template-columns: 1.2fr 1fr;
@@ -509,20 +508,20 @@ $phone-min: 320px;
     .how-it-works-section .how-it-works-div .how-it-works-video video{
       position: relative;
       top: 20px;
-      width: 100%;
+      width: 80%;
     }
      .how-it-works-section h1{
-      font-size: 2.5rem;
+      font-size: 5vw;
      }
 
      .how-it-works-section .how-it-works-div .steps-list{
       gap: 5px;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item{
-      --content-left: 90px;
+      --content-left: 80px;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-title {
-      font-size: 12px;
+      font-size: 2.2vw;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge img{
       width: 60px;
@@ -530,35 +529,39 @@ $phone-min: 320px;
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge .step-number{
       font-size: 1rem;
      }
+     .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge{
+      top:18px;
+     }
+      .how-it-works-section .how-it-works-div .steps-list .step-item .step-panel p{
+      font-size: 1.5vw;
+     }
 
      //next section
      .whats-include-section .whats-include-background .whats-include-div {
       width: 60%;
      }
      .whats-include-section .whats-include-background .whats-include-div .img-include{
-      width: 120px;
-      top: -25px;
+      width: 150px;
+      top: -30px;
      }
      .whats-include-section .whats-include-background .whats-include-div .include-pill{
       width: 80%;
      }
      .whats-include-section .whats-include-background .whats-include-div .include-title {
-      font-size: 14px;
+      font-size: 2vw;
      }
     
-     .how-it-works-section .how-it-works-div .steps-list .step-item .step-panel p{
-      font-size: 12px;
-     }
+    
     .whats-include-section .whats-include-background .whats-include-div .include-item.is-open .include-panel {
       width: 70%;
     }
      .whats-include-section .whats-include-background .whats-include-div .include-item .include-panel p{
       width: 100%;
-      font-size: 14px;
+      font-size: 2vw;
      }
      .reserve-now-section-experiencie button{
       width: 80%;
-      font-size: 25px;
+      font-size: 3vw;
       padding: 16px 20px;
       height: 100px;
      }
@@ -580,7 +583,7 @@ $phone-min: 320px;
      }
     .how-it-works-section .how-it-works-div .how-it-works-video video{
 
-      width: 90%;
+      width: 70%;
       margin-bottom: 2rem;
     }
      .how-it-works-section h1{
@@ -590,29 +593,33 @@ $phone-min: 320px;
      }
 
      .how-it-works-section .how-it-works-div .steps-list{
-      gap: 5px;
+      gap:2vw;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item{
-      --content-left: 20vw;
+      --content-left: 15vw;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-title {
-      font-size: 3vw;
+      font-size: 3.6vw;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge img{
-      width: 20vw;
+      width: 17vw;
       
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge{
         left: 5px;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge .step-number{
-      font-size: 6vw;
+      font-size: 5vw;
      }
      .how-it-works-section .how-it-works-div .steps-list .step-item .step-panel p{
-      font-size: 3vw
+      font-size: 3.5vw
      }
 
      //next section
+
+     .ribbon-img{
+      width: 115vw;
+     }
      .whats-include-section .whats-include-background{
        background-size: cover;
      }
@@ -653,7 +660,8 @@ $phone-min: 320px;
      .reserve-now-section-experiencie button{
       width: 90%;
       font-size: 3vw;
-      padding: 6px 0px;
-      height: 15vw;
+      padding: 0px 0px;
+      height: 12vw;
+      border: 2px solid #c41123;
      }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import type { AdditivesOptions, EsenceOptions, SmelltOptions } from "./Types";
 import { useApp } from "../../Contexts/AppProvider";
-import monthAditive from "../../assets/monthAditive.svg";
+import monthAditive from "../../assets/monthAditive.png";
 import infoCircle from "../../assets/info circle.svg";
 
 type SmellAndAditivePros = {

@@ -1,12 +1,12 @@
 // ==========================================================
 // Breakpoints (keep at top so you can reuse everywhere)
-// ==========================================================
 $desktop-xl: 1500px;
-$laptop-max: 1400px;
+$laptop-max: 1400px; 
 $laptop-min: 1100px;
-$tablet-min: 768px;
+$tablet-min: 768px;  
 $phone-max: 767px;
 $phone-min: 320px;
+
 
 // ==========================================================
 // Base styles
@@ -269,20 +269,20 @@ $phone-min: 320px;
 
 @media (max-width: $laptop-min) and (min-width: $tablet-min) {
   .pc-imageWrap img{
-    height: 180px;
+    height: 24vw;
   }
   .pc-carousel{
     padding: 56px 5px;
   }
   .pc-title{
-    font-size: 15px;
+    font-size: 2vw;
   }
   .pc-meta{
     gap: 5px;
   }
   .pc-price{
     height: 30px;
-    font-size: 14px
+    font-size: 1.8vw;
   }
 }
 @media (min-width: $phone-min) and (max-width: $phone-max) {
