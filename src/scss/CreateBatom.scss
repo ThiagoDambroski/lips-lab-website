@@ -2453,6 +2453,7 @@ $phone-min: 320px;
 
   .automatic-color-container .automatic-color-bgk div img{
     width: 70%;
+
   }
   .palette-result .pallet-colors-container{
     width: 70%;
@@ -2770,6 +2771,7 @@ $phone-min: 320px;
   .automatic-color-container .automatic-color-bgk div img{
     width: 90%;
     height: 90%;
+    max-height: 20vh;
     object-fit: cover;     
     display: block;
   }
@@ -2981,7 +2983,7 @@ $phone-min: 320px;
   //esence
   .esence-container button{
     p{
-      font-size: 4vw;
+      font-size: 3.5vw;
     }
   }
   .taste-section .taste-container ul{
@@ -2989,10 +2991,11 @@ $phone-min: 320px;
     justify-self: center;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(4,1fr);
-    gap: 0px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
   }
   .taste-section .title-button{
+    font-size: 4vw;
     width: 100%;
   }
   .taste-section .taste-container li div img{
@@ -3000,7 +3003,7 @@ $phone-min: 320px;
     height: 10vw;
   }
   .taste-section .taste-container h3{
-    font-size: 8vw;
+    font-size: 7vw;
     text-align: center;
   }
   .taste-section .taste-container{
@@ -3016,7 +3019,7 @@ $phone-min: 320px;
     right: 10px;
   }
   .aditive-button-container div .creative{
-    font-size: 2vw;
+    font-size: 3vw;
   }
   .aditive-button-container div{
     position: initial;
