@@ -1,1 +1,4 @@
-/*  /index.html  200
+https://lips-lab.com/* https://www.lips-lab.com/:splat 301!
+http://lips-lab.com/*  https://www.lips-lab.com/:splat 301!
+
+/* /index.html 200
