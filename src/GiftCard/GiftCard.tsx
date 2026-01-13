@@ -1,7 +1,7 @@
 import { useId, useMemo, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import giftCardImg from "../assets/giftBox.png";
-import giftBanner from "../assets/giftBoxBanner.svg";
+import giftBanner from "../assets/giftBoxBanner.png";
 import "../scss/GiftCard.css";
 
 type GiftOption = "single" | "pack";
