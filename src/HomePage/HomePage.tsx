@@ -60,7 +60,7 @@ function HomePage() {
 
 const handleBookExperience = () => {
   window.open(
-    "https://buk.pt/lips-lab?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn5mJhfUsPGn92pJAimmxm--R-onXAbGOX5VwddnzjEfnFWVkKwG-gPLPAD-E_aem_XHGDeIg6Y0ZWcSNuV0Useg",
+    "https://www.fresha.com/pt/a/lips-lab-lisboa-rua-amelia-rey-colaco-hi2k5yys?pId=2713715&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleAPTCcBleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaeHFhnat8kKfi-i-n8WDMvU7PddxtY6LU5NeMMt0K9RkFqP6EpYv_U3Ccx6OA_aem_epo4Y4C1kOem4xqOGqNnNw",
     "_blank",
     "noopener,noreferrer"
   );
