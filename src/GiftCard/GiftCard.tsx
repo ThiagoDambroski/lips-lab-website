@@ -1,12 +1,12 @@
 import { useId, useMemo, useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import giftCardImg from "../assets/giftBox.svg";
+import giftCardImg from "../assets/giftBox.png";
 import giftBanner from "../assets/giftBoxBanner.svg";
 import "../scss/GiftCard.css";
 
 type GiftOption = "single" | "pack";
 
-// ✅ Shopify cart permalink base
+
 const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
 
 // ✅ Variants you provided
@@ -16,11 +16,7 @@ const VARIANT_BY_OPTION: Record<GiftOption, number> = {
 };
 
 function goToShopifyAlways(url: string) {
-  const tab = window.open("about:blank", "_blank", "noopener,noreferrer");
-  if (tab) {
-    tab.location.href = url;
-    return;
-  }
+  
   window.location.assign(url);
 }
 
