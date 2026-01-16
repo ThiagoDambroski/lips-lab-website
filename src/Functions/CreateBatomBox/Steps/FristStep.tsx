@@ -23,7 +23,7 @@ function FristStep({
 }: FristStepProps) {
   
   const nextStep = () =>{ 
-    setStep(2)
+    setStep(3)
     window.scrollTo({
         top: 0,
         left: 0,
@@ -68,7 +68,7 @@ function FristStep({
       </div>
 
       <button onClick={() => nextStep()} disabled={selected.length === 0}>
-        regula a intensidade
+        Continuar
       </button>
     </section>
   );

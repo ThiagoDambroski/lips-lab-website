@@ -295,8 +295,12 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
       }
       if (step === 0) {
         setDoItYourSelf(undefined);
+      }if(step === 3){
+        setStep(1)
+      }else{
+        setStep((prev) => Math.max(-1, prev - 1));
       }
-      setStep((prev) => Math.max(-1, prev - 1));
+      
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -463,7 +467,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                       onClick={() => {
                         setDoItYourSelf(true);
                         // ✅ if user already has a selection, go to intensity step
-                        setStep(mixSelected.length > 0 ? 2 : 1);
+                        setStep(1);
                       }}
                     />
                     <p>cor</p>

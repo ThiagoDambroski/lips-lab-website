@@ -264,6 +264,19 @@
           filter: brightness(1.08);
 }
 
+.main-color-selection-options div button:disabled {
+  background-color: #b5b5b5;
+  color: #eeeeee;
+  cursor: not-allowed;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transform: none;
+          transform: none;
+  pointer-events: none;
+}
+
 .item-img-2-create {
   width: 400px;
   height: 700px;

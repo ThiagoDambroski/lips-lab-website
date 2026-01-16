@@ -211,7 +211,7 @@ function ColorsSelection({
             Escolhe como vais viver a <br /> tua experiência lips lab:
           </h3>
           <div>
-            <button onClick={startAutomaticFlow}>
+            <button onClick={startAutomaticFlow} disabled={true}>
               <img src={virtual} alt="" />
               assistência virtual
             </button>

@@ -227,6 +227,15 @@
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
             filter: brightness(1.08);
           }
+          &:disabled {
+            background-color: #b5b5b5;
+            color: #eeeeee;
+            cursor: not-allowed;
+            filter: grayscale(100%);
+            box-shadow: none;
+            transform: none;
+            pointer-events: none;
+          }
          
         }
     }
