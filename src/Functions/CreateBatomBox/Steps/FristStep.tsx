@@ -51,7 +51,7 @@ function FristStep({
                       className="swatch"
                       disabled
                       title={c.sub} // ✅ show name on hover
-                      style={{ backgroundColor: c.hex }}
+                      style={{ backgroundColor: c.hex,opacity: 0.9 }}
                     >
                       <span className="hex">{c.hex}</span>
                     </button>
