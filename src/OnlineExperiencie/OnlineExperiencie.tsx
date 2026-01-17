@@ -56,7 +56,7 @@ function OnlineExperiencie() {
 
                   <span>Cria o teu gloss labial / 35€</span>
                 </div>
-                <div className='online-buy-card' onClick={() => handleSetCreativeActive(true,"batom")}>
+                <div className='online-buy-card' onClick={() => handleSetCreativeActive(true,undefined)}>
                   <img src={batom} alt="libs labs batom" />
                   <h3>BATOM</h3>
                   <span>Cria o teu batom / 35€</span>
