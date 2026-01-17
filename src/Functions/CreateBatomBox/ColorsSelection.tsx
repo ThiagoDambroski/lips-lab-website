@@ -22,7 +22,6 @@ type ColorsSelectionProps = {
   doItYourSelf: Boolean | undefined;
   setDoItYourSelf: React.Dispatch<React.SetStateAction<Boolean | undefined>>;
 
-  // ✅ lifted state from parent
   selected: string[];
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
 
@@ -46,49 +45,51 @@ function ColorsSelection({
 }: ColorsSelectionProps) {
   const { allColors } = useApp();
 
-  // ✅ Determine palette mode BEFORE effects run (prevents overwrite)
-  const hasPalette = Boolean(paletteOptions && paletteOptions.length > 0);
+  const hasSuggestedPalette = Boolean(paletteOptions && paletteOptions.length > 0);
+  const [isFromAutomatic, setIsFromAutomatic] = useState<boolean>(() => hasSuggestedPalette);
 
-  const [isFromAutomatic, setIsFromAutomatic] = useState<boolean>(() => hasPalette);
+  // selectable colors are ALWAYS base pigments
+  const [firstStepColors, setFirstStepColors] = useState<ColorOption[]>(() => allColors);
 
-  const [firstStepColors, setFirstStepColors] = useState<ColorOption[]>(() => {
-    return hasPalette ? (paletteOptions as ColorOption[]) : allColors;
-  });
+  // ✅ allowed set (base pigments only)
+  const allowedHexSet = useMemo(() => {
+    return new Set(allColors.map((c) => c.hex.toLowerCase()));
+  }, [allColors]);
 
-  // ✅ If paletteOptions changes (or comes back after remount), apply it with priority
   useEffect(() => {
-    if (paletteOptions && paletteOptions.length > 0) {
-      setIsFromAutomatic(true);
-      setFirstStepColors(paletteOptions);
-    }
-  }, [paletteOptions]);
+    setFirstStepColors(allColors);
+  }, [allColors]);
 
-  // ✅ Keep default list in sync ONLY when NOT using palette
   useEffect(() => {
-    if (!paletteOptions || paletteOptions.length === 0) {
-      setIsFromAutomatic(false);
-      setFirstStepColors(allColors);
-    }
-  }, [allColors, paletteOptions]);
+    setIsFromAutomatic(hasSuggestedPalette);
+  }, [hasSuggestedPalette]);
 
+  // ✅ IMPORTANT FIX: ignore any hex not in base pigments
   const toggleColor = (hex: string) => {
+    const normalized = hex.toLowerCase();
+    if (!allowedHexSet.has(normalized)) return;
+
     setSelected((prev) => {
-      if (prev.includes(hex)) {
+      if (prev.some((c) => c.toLowerCase() === normalized)) {
         setWeights((w) => {
-          const { [hex]: _, ...rest } = w;
+          const key = Object.keys(w).find((k) => k.toLowerCase() === normalized) ?? hex;
+          const { [key]: _, ...rest } = w;
           return rest;
         });
-        return prev.filter((c) => c !== hex);
+        return prev.filter((c) => c.toLowerCase() !== normalized);
       }
 
-      if (prev.length >= 4) return prev; // limit 4
+      if (prev.length >= 4) return prev;
 
-      setWeights((w) => ({ ...w, [hex]: 100 }));
-      return [...prev, hex];
+      // store weights using the exact hex from allColors (canonical casing)
+      const canonicalHex =
+        allColors.find((c) => c.hex.toLowerCase() === normalized)?.hex ?? hex;
+
+      setWeights((w) => ({ ...w, [canonicalHex]: 100 }));
+      return [...prev, canonicalHex];
     });
   };
 
-  // ✅ Guard only inside color flow (prevents step "hijack" after remount)
   useEffect(() => {
     if (doItYourSelf === true && selected.length === 0 && (step === 1 || step === 2)) {
       setStep(1);
@@ -114,11 +115,8 @@ function ColorsSelection({
       })
       .join("");
 
-  // NOTE: using useMemo for side-effects isn't ideal, but keeping your structure.
-  // If you want, we can convert this to useEffect later.
   useMemo(() => {
     if (selected.length === 0) {
-      // ✅ do NOT overwrite an existing color when remounting
       const fallback = currentSelectedColor ?? "#ffffff";
       if (!currentSelectedColor) setSelectedColor("#ffffff");
       return fallback;
@@ -149,56 +147,44 @@ function ColorsSelection({
   }, [selected, weights, setSelectedColor, currentSelectedColor]);
 
   const startManualFromScratch = () => {
-    // leaving palette mode
     setPaletteOptions(null);
     setIsFromAutomatic(false);
-    setFirstStepColors(allColors);
 
-    // ✅ reset lifted state
     setSelected([]);
     setWeights({});
 
     setDoItYourSelf(true);
     setStep(0);
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const startAutomaticFlow = () => {
     setPaletteOptions(null);
     setIsFromAutomatic(false);
 
-    // ✅ reset lifted state
     setSelected([]);
     setWeights({});
 
     setDoItYourSelf(false);
     setStep(-1);
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
+  // ✅ suggested palette is DISPLAY ONLY, but sub must come from base pigments if possible
   const continueFromAutomaticPalette = (paletteHexes: string[]) => {
-    const unique = Array.from(new Set(paletteHexes)).filter(Boolean);
+    const uniqueHexes = Array.from(new Set(paletteHexes)).filter(Boolean);
 
-    const options: ColorOption[] = unique.map((hex) => ({
-      hex,
-      sub: hex,
-    }));
+    const suggested: ColorOption[] = uniqueHexes.map((hex) => {
+      const found = allColors.find((c) => c.hex.toLowerCase() === hex.toLowerCase());
+      return {
+        hex,
+        sub: (found?.sub ?? hex).toUpperCase(),
+      };
+    });
 
-    // ✅ persist in parent (survives unmount at step 8)
-    setPaletteOptions(options);
+    setPaletteOptions(suggested);
 
-    // ✅ apply immediately too
     setIsFromAutomatic(true);
-    setFirstStepColors(options);
-
     setDoItYourSelf(true);
     setStep(0);
   };
@@ -211,7 +197,7 @@ function ColorsSelection({
             Escolhe como vais viver a <br /> tua experiência lips lab:
           </h3>
           <div>
-            <button onClick={startAutomaticFlow} disabled={true}>
+            <button onClick={startAutomaticFlow}>
               <img src={virtual} alt="" />
               assistência virtual
             </button>
@@ -233,6 +219,7 @@ function ColorsSelection({
               toggleColor={toggleColor}
               setStep={setStep}
               variant={isFromAutomatic ? "palette" : "default"}
+              suggestedPalette={paletteOptions}
             />
           )}
 

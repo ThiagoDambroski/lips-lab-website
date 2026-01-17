@@ -5,7 +5,6 @@ import type {
   AdditivesOptions,
   BaseOptions,
   EsenceOptions,
-  productType,
   SmelltOptions,
   TypesOptions,
 } from "./Types";
@@ -79,15 +78,13 @@ type CreateBatomType = {
   typeInput: TypesOptions;
 };
 
-type NonNullProduct = Exclude<productType, null>;
 type ProductGlitterValue = number | string | null | undefined;
 
 // =======================
-// SHOPIFY (PERMALINK + PROPERTIES)
+// SHOPIFY
 // =======================
 const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
 
-// ✅ VARIANT IDS (corretos)
 const SHOPIFY_GLOSS_VARIANT_ID = 47048949006593;
 const SHOPIFY_BATOM_VARIANT_ID = 47049932833025;
 
@@ -153,53 +150,51 @@ function resolveShopifyVariantId(type: TypesOptions): number {
   return SHOPIFY_GLOSS_VARIANT_ID;
 }
 
-function buildShopifyPropertiesFromProduct(product: NonNullProduct): Record<string, string> {
+/**
+ * ✅ ORDER-CONTROLLED
+ */
+function buildShopifyPermalinkOrdered(
+  product: {
+    id: number;
+    type: TypesOptions;
+    glitter: any;
+    base: BaseOptions;
+    smell: SmelltOptions;
+    aditive: string; // comma separated
+    esence: EsenceOptions;
+    boxFont: string;
+    boxImage: string;
+  },
+  selectedColorsSub: string,
+  finalColorHex: string
+): string {
+  const variantId = resolveShopifyVariantId(product.type);
+
   const props: Record<string, string> = {};
 
-  const put = (key: string, value: unknown) => {
-    const v = safeString(value);
-    if (!v) return;
-    props[key] = v;
-  };
-
-  put("type", product.type);
-  put("color", product.color);
+  props["type"] = safeString(product.type) ?? "none";
+  props["selected_colors_sub"] = safeString(selectedColorsSub) ?? "none";
+  props["final_color_hex"] = safeString(finalColorHex) ?? "none";
 
   const glitterVal = (product.glitter as ProductGlitterValue) ?? "none";
-  if (typeof glitterVal === "number") {
-    put("glitter", GLITTER_LABELS[glitterVal] ?? String(glitterVal));
-  } else {
-    put("glitter", glitterVal);
-  }
+  props["glitter"] =
+    typeof glitterVal === "number"
+      ? GLITTER_LABELS[glitterVal] ?? String(glitterVal)
+      : String(glitterVal);
 
-  put("base", product.base);
-  put("smell", product.smell);
-  put("aditive", product.aditive);
-  put("esence", product.esence);
+  props["base"] = safeString(product.base) ?? "none";
+  props["smell"] = safeString(product.smell) ?? "none";
+  props["aditive"] = safeString(product.aditive) ?? "none";
+  props["esence"] = safeString(product.esence) ?? "none";
+  props["boxImage"] = safeString(product.boxImage) ?? "none";
+  props["boxFont"] = safeString(product.boxFont) ?? "none";
+  props["lipslab_item_id"] = safeString(product.id) ?? "none";
 
-  put("boxImage", product.boxImage);
-  put("boxText", product.boxText);
-  put("boxFont", product.boxFont);
-
-  put("lipslab_item_id", product.id);
-
-  return props;
-}
-
-function buildShopifyPermalink(product: NonNullProduct): string {
-  const variantId = resolveShopifyVariantId(product.type);
-  const props = buildShopifyPropertiesFromProduct(product);
   const encoded = toBase64Url(JSON.stringify(props));
   return `${SHOPIFY_SHOP_URL}/cart/${variantId}:1?properties=${encoded}`;
 }
 
-/**
- * ✅ "Sempre vai para Shopify":
- * - tenta abrir numa nova aba
- * - se o pop-up for bloqueado, faz redirect na mesma aba (garante que vai)
- */
 function goToShopifyAlways(url: string) {
- 
   window.location.assign(url);
 }
 
@@ -217,7 +212,6 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
 
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
 
-  // ✅ Persist these across unmount (step 8 removes ColorsSelection from DOM)
   const [mixSelected, setMixSelected] = useState<string[]>([]);
   const [mixWeights, setMixWeights] = useState<Record<string, number>>({});
 
@@ -225,7 +219,10 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
 
   const [baseSelected, setBaseSelected] = useState<BaseOptions>("none");
   const [smell, setSmell] = useState<SmelltOptions>("none");
-  const [aditive, setAditive] = useState<AdditivesOptions>("none");
+
+  // ✅ MULTI
+  const [aditive, setAditive] = useState<AdditivesOptions[]>([]);
+
   const [esence, setEsence] = useState<EsenceOptions>("none");
 
   const [boxText, setBoxText] = useState<string>("");
@@ -234,12 +231,13 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
 
   const price = 35.0;
 
-
-
-  const { additiveOptions, glitterOptions, smellOptions, allEsence } = useApp();
+  const { additiveOptions, glitterOptions, smellOptions, allEsence, allColors } =
+    useApp();
 
   const selectedGlitterObj =
-    glitterSelected !== null ? glitterOptions.find((g) => g.id === glitterSelected) : undefined;
+    glitterSelected !== null
+      ? glitterOptions.find((g) => g.id === glitterSelected)
+      : undefined;
 
   const handleTypeChange = (typeInput: TypesOptions) => {
     setType(typeInput);
@@ -251,37 +249,58 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
     setGlitterSelected(null);
 
     setBaseSelected("none");
-    setAditive("none");
+    setAditive([]); // ✅ reset
     setEsence("none");
     setBoxText("");
     setBoxFont("century-gothic");
     setBoxImage("none");
 
-    // ✅ reset persisted mix
     setMixSelected([]);
     setMixWeights({});
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const buildProductFromState = (): NonNullProduct => ({
-    id: Date.now(),
-    type: type!,
-    color: selectedColor,
-    glitter: (glitterSelected ?? "none") as any,
-    base: baseSelected,
-    smell,
-    aditive,
-    esence,
-    boxText,
-    boxFont,
-    boxImage,
-    price,
-  });
+  const buildProductFromState = () => {
+    const additiveValue = aditive.length ? aditive.join(", ") : "none";
+
+    return {
+      id: Date.now(),
+      type: type!,
+      color: selectedColor,
+      glitter: (glitterSelected ?? "none") as any,
+      base: baseSelected,
+      smell,
+      aditive: additiveValue,
+      esence,
+      boxText,
+      boxFont,
+      boxImage,
+      price,
+    };
+  };
+
+  const resolveSelectedSubLabels = (): string[] => {
+  const allowedHexSet = new Set(allColors.map((c) => c.hex.toLowerCase()));
+
+  return mixSelected
+    .filter((hex) => allowedHexSet.has(hex.toLowerCase())) // ✅ drop unknown
+    .map((hex) => {
+      const found = allColors.find((c) => c.hex.toLowerCase() === hex.toLowerCase());
+      return (found?.sub ?? hex).toUpperCase();
+    });
+};
+
 
   const handleFinishPurchase = () => {
     const product = buildProductFromState();
-    const url = buildShopifyPermalink(product);
+
+    const selectedSubs = resolveSelectedSubLabels();
+    const selectedSubsJoined = selectedSubs.length ? selectedSubs.join(", ") : "none";
+
+    const finalHex = selectedColor ?? "none";
+
+    const url = buildShopifyPermalinkOrdered(product, selectedSubsJoined, finalHex);
     goToShopifyAlways(url);
   };
 
@@ -295,16 +314,22 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
       }
       if (step === 0) {
         setDoItYourSelf(undefined);
-      }if(step === 3){
-        setStep(1)
-      }else{
+      }
+      if (step === 3) {
+        setStep(1);
+      } else {
         setStep((prev) => Math.max(-1, prev - 1));
       }
-      
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
+
+  // ✅ only first additive for summary display
+  const firstAdditive = aditive.length ? aditive[0] : null;
+  const firstAdditiveObj = firstAdditive
+    ? additiveOptions.find((a) => a.id === firstAdditive)
+    : undefined;
 
   return (
     <div>
@@ -328,7 +353,9 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
             </div>
             <div className="gloss-or-batom-container-image">
               <img src={batomImage} alt="" />
-              <button onClick={() => handleTypeChange("batom")} disabled={true}>Batom</button>
+              <button onClick={() => handleTypeChange("batom")} disabled={true}>
+                Batom
+              </button>
             </div>
           </div>
         </main>
@@ -364,7 +391,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   </div>
                 )}
 
-                {( (step > 0 && step <= 4) || (step > 5 && step < 8) ) && doItYourSelf === true && (
+                {((step > 0 && step <= 4) || (step > 5 && step < 8)) && doItYourSelf === true && (
                   <div className="item-display-2">
                     {type === "gloss" ? (
                       <div className="item-img-2-color-wrapper">
@@ -466,7 +493,6 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                       style={{ ["--swatch" as any]: selectedColor }}
                       onClick={() => {
                         setDoItYourSelf(true);
-                        // ✅ if user already has a selection, go to intensity step
                         setStep(1);
                       }}
                     />
@@ -510,13 +536,10 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                     <img src={editIcon} alt="" className="edit-icon" />
                   </li>
 
+                  {/* ✅ only FIRST additive image */}
                   <li>
                     <div onClick={() => setStep(5)}>
-                      {aditive !== "none" ? (
-                        <img src={additiveOptions.find((a) => a.id === aditive)?.img} alt="" />
-                      ) : (
-                        <p>none</p>
-                      )}
+                      {firstAdditiveObj ? <img src={firstAdditiveObj.img} alt="" /> : <p>none</p>}
                     </div>
                     <p>aditivo</p>
                     <img src={editIcon} alt="" className="edit-icon" />

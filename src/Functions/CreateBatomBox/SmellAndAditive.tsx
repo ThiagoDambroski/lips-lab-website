@@ -7,10 +7,14 @@ import infoCircle from "../../assets/info circle.svg";
 type SmellAndAditivePros = {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+
   smell: SmelltOptions;
   setSmell: React.Dispatch<React.SetStateAction<SmelltOptions>>;
-  aditive: AdditivesOptions;
-  setAditive: React.Dispatch<React.SetStateAction<AdditivesOptions>>;
+
+  // ✅ NOW MULTI
+  aditive: AdditivesOptions[];
+  setAditive: React.Dispatch<React.SetStateAction<AdditivesOptions[]>>;
+
   esence: EsenceOptions;
   setEsence: React.Dispatch<React.SetStateAction<EsenceOptions>>;
 };
@@ -34,8 +38,14 @@ function SmellAndAditive({
 }: SmellAndAditivePros) {
   const { smellOptions, additiveOptions, allEsence } = useApp();
 
+  // ✅ multi-select toggle (Set-based, prevents duplicates)
   const handleStepAdtive = (adtiveId: AdditivesOptions) => {
-    aditive === adtiveId ? setAditive("none") : setAditive(adtiveId);
+    setAditive((prev) => {
+      const set = new Set(prev);
+      if (set.has(adtiveId)) set.delete(adtiveId);
+      else set.add(adtiveId);
+      return Array.from(set);
+    });
   };
 
   // ===========================
@@ -49,205 +59,181 @@ function SmellAndAditive({
   // ===========================
   // INFO POPUP CONTENT
   // ===========================
-  
-const infoMap: Record<string, InfoContent> = useMemo(
-  () => ({
-    // =========================
-    // ADDITIVES (already correct)
-    // =========================
-    [infoKeyForAdditive("HIDRATANTE")]: {
-      title: "HIDRATANTE",
-      paragraphs: [
-        "Mistura de óleos naturais de abacate, grainha de uva e jojoba, enriquecida com óleos botânicos ricos em antioxidantes.",
-        "Ajuda a hidratar, nutrir e proteger os lábios, proporcionando conforto e suavidade.",
-        "Este componente é essencial em batons com acabamento perolado ou cintilante, garantindo uma aplicação mais uniforme e confortável.",
-      ],
-    },
+  const infoMap: Record<string, InfoContent> = useMemo(
+    () => ({
+      // =========================
+      // ADDITIVES
+      // =========================
+      [infoKeyForAdditive("HIDRATANTE")]: {
+        title: "HIDRATANTE",
+        paragraphs: [
+          "Mistura de óleos naturais de abacate, grainha de uva e jojoba, enriquecida com óleos botânicos ricos em antioxidantes.",
+          "Ajuda a hidratar, nutrir e proteger os lábios, proporcionando conforto e suavidade.",
+          "Este componente é essencial em batons com acabamento perolado ou cintilante, garantindo uma aplicação mais uniforme e confortável.",
+        ],
+      },
 
-    [infoKeyForAdditive("SUAVIZAÇÃO")]: {
-      title: "SUAVIZAÇÃO",
-      paragraphs: [
-        "Aditivo de origem vegetal que confere uma textura sedosa, cremosa e luxuosa ao batom.",
-        "Formulado com óleos botânicos naturais, melhora o conforto na aplicação e deixa os lábios visivelmente mais suaves e macios.",
-      ],
-    },
+      [infoKeyForAdditive("SUAVIZAÇÃO")]: {
+        title: "SUAVIZAÇÃO",
+        paragraphs: [
+          "Aditivo de origem vegetal que confere uma textura sedosa, cremosa e luxuosa ao batom.",
+          "Formulado com óleos botânicos naturais, melhora o conforto na aplicação e deixa os lábios visivelmente mais suaves e macios.",
+        ],
+      },
 
-    [infoKeyForAdditive("PROTEÇÃO SOLAR")]: {
-      title: "PROTEÇÃO SOLAR",
-      paragraphs: [
-        "Formulado com Octylmethoxycinnamate, um filtro solar cosmético que ajuda a reforçar a proteção solar do batom.",
-        "Todas as bases de batom e gloss incluem proteção solar de base (FPS 8).",
-      ],
-    },
+      [infoKeyForAdditive("PROTEÇÃO SOLAR")]: {
+        title: "PROTEÇÃO SOLAR",
+        paragraphs: [
+          "Formulado com Octylmethoxycinnamate, um filtro solar cosmético que ajuda a reforçar a proteção solar do batom.",
+          "Todas as bases de batom e gloss incluem proteção solar de base (FPS 8).",
+        ],
+      },
 
-    [infoKeyForAdditive("DENSIFICADOR")]: {
-      title: "DENSIFICADOR",
-      paragraphs: [
-        "Aditivo que acrescenta corpo, hidratação e brilho à base do batom personalizado, criando um acabamento mais luxuoso e uniforme.",
-        "Pode ser utilizado em fórmulas cremosas, mate ou brilhantes, sem provocar separação da fórmula, garantindo estabilidade e conforto.",
-      ],
-    },
+      [infoKeyForAdditive("DENSIFICADOR")]: {
+        title: "DENSIFICADOR",
+        paragraphs: [
+          "Aditivo que acrescenta corpo, hidratação e brilho à base do batom personalizado, criando um acabamento mais luxuoso e uniforme.",
+          "Pode ser utilizado em fórmulas cremosas, mate ou brilhantes, sem provocar separação da fórmula, garantindo estabilidade e conforto.",
+        ],
+      },
 
-    [infoKeyForAdditive("VOLUME LABIAL")]: {
-      title: "VOLUME LABIAL",
-      paragraphs: [
-        "Aditivo volumizador com o tripeptídeo patenteado Maxi-Lip™, desenvolvido para:",
-        "• Ajudar a aumentar o volume visível",
-        "• Hidratar intensamente",
-        "• Suavizar linhas finas",
-        "• Melhorar o contorno dos lábios",
-        "• Funciona estimulando a produção de colagénio nos tecidos conjuntivos",
-        "",
-        "Resultados de estudos clínicos (aplicado 3x por dia durante 29 dias):",
-        "• Aumento de 40% no volume dos lábios",
-        "• Melhoria de 60% na hidratação labial",
-        "• Aumento de 70% na suavidade dos lábios",
-        "• Melhoria de 100% na condição labial",
-        "• Redução de 29% nas linhas e rugas superficiais",
-      ],
-    },
+      [infoKeyForAdditive("VOLUME LABIAL")]: {
+        title: "VOLUME LABIAL",
+        paragraphs: [
+          "Aditivo volumizador com o tripeptídeo patenteado Maxi-Lip™, desenvolvido para:",
+          "• Ajudar a aumentar o volume visível",
+          "• Hidratar intensamente",
+          "• Suavizar linhas finas",
+          "• Melhorar o contorno dos lábios",
+          "• Funciona estimulando a produção de colagénio nos tecidos conjuntivos",
+          "",
+          "Resultados de estudos clínicos (aplicado 3x por dia durante 29 dias):",
+          "• Aumento de 40% no volume dos lábios",
+          "• Melhoria de 60% na hidratação labial",
+          "• Aumento de 70% na suavidade dos lábios",
+          "• Melhoria de 100% na condição labial",
+          "• Redução de 29% nas linhas e rugas superficiais",
+        ],
+      },
 
-    [infoKeyForAdditive("ANTI-IDADE & REGENERADOR")]: {
-      title: "ANTI-IDADE & REGENERADOR",
-      paragraphs: [
-        "Aditivo antioxidante que ajuda a reforçar a barreira natural da pele, promovendo hidratação e regeneração labial.",
-        "Rico em polissacarídeos e minerais naturais como zinco, cálcio, magnésio, ferro e cobre, contribui para reduzir a aparência de linhas finas.",
-        "Fórmula anti-envelhecimento, sem parabenos, ideal para cuidado e conforto diário dos lábios.",
-      ],
-    },
+      [infoKeyForAdditive("ANTI-IDADE & REGENERADOR")]: {
+        title: "ANTI-IDADE & REGENERADOR",
+        paragraphs: [
+          "Aditivo antioxidante que ajuda a reforçar a barreira natural da pele, promovendo hidratação e regeneração labial.",
+          "Rico em polissacarídeos e minerais naturais como zinco, cálcio, magnésio, ferro e cobre, contribui para reduzir a aparência de linhas finas.",
+          "Fórmula anti-envelhecimento, sem parabenos, ideal para cuidado e conforto diário dos lábios.",
+        ],
+      },
 
-    // =========================
-    // AROMAS (SmelltOptions)
-    // =========================
-    [infoKeyForSmell("Canela")]: {
-      title: "CANELA",
-      paragraphs: ["Sabor adocicado e intenso, derivado de paus de canela."],
-    },
+      // =========================
+      // AROMAS
+      // =========================
+      [infoKeyForSmell("Canela")]: {
+        title: "CANELA",
+        paragraphs: ["Sabor adocicado e intenso, derivado de paus de canela."],
+      },
+      [infoKeyForSmell("Cereja jubilee")]: {
+        title: "CEREJA JUBILEE",
+        paragraphs: ["Sabor a cereja madura."],
+      },
+      [infoKeyForSmell("Trufa de framboesa")]: {
+        title: "TRUFA DE FRAMBOESA",
+        paragraphs: [
+          "Sabor a bolo de mousse de chocolate com cobertura de framboesa.",
+        ],
+      },
+      [infoKeyForSmell("Crème brûlée")]: {
+        title: "CRÈME BRÛLÉE",
+        paragraphs: [
+          "Sabor a creme caramelizado, doce e com um delicado toque tostado.",
+        ],
+      },
+      [infoKeyForSmell("Cenoura")]: {
+        title: "CENOURA",
+        paragraphs: [
+          "Sabor quente e levemente picante, inspirado num bolo de cenoura acabado de fazer.",
+        ],
+      },
+      [infoKeyForSmell("Menta")]: {
+        title: "MENTA",
+        paragraphs: [
+          "Sabor fresco e revigorante de hortelã, semelhante a um mojito ou a uma tarte tropical de lima.",
+        ],
+      },
+      [infoKeyForSmell("Lima com Coco")]: {
+        title: "LIMA E COCO",
+        paragraphs: [
+          "Sabor a lima espremida com coco, inspirado numa sobremesa tropical.",
+        ],
+      },
+      [infoKeyForSmell("avela")]: {
+        title: "AVELÃ",
+        paragraphs: ["Sabor a avelã torrada, ligeiramente adocicada."],
+      },
+      [infoKeyForSmell("Pêssego")]: {
+        title: "PÊSSEGO",
+        paragraphs: ["Sabor a pêssego maduro, com notas refrescantes."],
+      },
+      [infoKeyForSmell("mimosa")]: {
+        title: "MIMOSA",
+        paragraphs: ["Sabor cítrico e delicado, combinação de laranja e tangerina."],
+      },
 
-    [infoKeyForSmell("Cereja jubilee")]: {
-      title: "CEREJA JUBILEE",
-      paragraphs: ["Sabor a cereja madura."],
-    },
+      // =========================
+      // ESSÊNCIAS
+      // =========================
+      [infoKeyForEsence("Especiarias Exóticas")]: {
+        title: "ESPECIARIAS EXÓTICAS",
+        paragraphs: [
+          "Mistura quente e envolvente de lavanda, patchouli, coentros, ylang-ylang, rosa e outros botânicos.",
+        ],
+      },
+      [infoKeyForEsence("Baunilha")]: {
+        title: "BAUNILHA",
+        paragraphs: [
+          "Fragrância predominantemente de baunilha, indicada para clientes sensíveis a cheiros fortes.",
+        ],
+      },
+      [infoKeyForEsence("Cappuccino")]: {
+        title: "CAPPUCCINO",
+        paragraphs: ["Aroma rico a café, criado a partir de grãos naturais de café."],
+      },
+      [infoKeyForEsence("Cítricos")]: {
+        title: "CÍTRICOS",
+        paragraphs: [
+          "Mistura cítrica de laranja e flor de mimosa, ideal para clientes sensíveis a fragrâncias intensas.",
+        ],
+      },
+      [infoKeyForEsence("Chocolate")]: {
+        title: "CHOCOLATE",
+        paragraphs: [
+          "Aroma a chocolate de leite, delicioso e fácil de combinar com outros aromas.",
+        ],
+      },
+      [infoKeyForEsence("Rosa Parisiense")]: {
+        title: "ROSA PARISIENSE",
+        paragraphs: [
+          "Fragrância suave de rosa parisiense, com uma nota de base exclusiva e subtil.",
+        ],
+      },
 
-    [infoKeyForSmell("Trufa de framboesa")]: {
-      title: "TRUFA DE FRAMBOESA",
-      paragraphs: [
-        "Sabor a bolo de mousse de chocolate com cobertura de framboesa.",
-      ],
-    },
-
-    [infoKeyForSmell("Crème brûlée")]: {
-      title: "CRÈME BRÛLÉE",
-      paragraphs: [
-        "Sabor a creme caramelizado, doce e com um delicado toque tostado.",
-      ],
-    },
-
-    [infoKeyForSmell("Cenoura")]: {
-      title: "CENOURA",
-      paragraphs: [
-        "Sabor quente e levemente picante, inspirado num bolo de cenoura acabado de fazer.",
-      ],
-    },
-
-    [infoKeyForSmell("Menta")]: {
-      title: "MENTA",
-      paragraphs: [
-        "Sabor fresco e revigorante de hortelã, semelhante a um mojito ou a uma tarte tropical de lima.",
-      ],
-    },
-
-    [infoKeyForSmell("Lima com Coco")]: {
-      title: "LIMA E COCO",
-      paragraphs: [
-        "Sabor a lima espremida com coco, inspirado numa sobremesa tropical.",
-      ],
-    },
-
-    [infoKeyForSmell("avela")]: {
-      title: "AVELÃ",
-      paragraphs: [
-        "Sabor a avelã torrada, ligeiramente adocicada.",
-      ],
-    },
-
-    [infoKeyForSmell("Pêssego")]: {
-      title: "PÊSSEGO",
-      paragraphs: [
-        "Sabor a pêssego maduro, com notas refrescantes.",
-      ],
-    },
-
-    [infoKeyForSmell("mimosa")]: {
-      title: "MIMOSA",
-      paragraphs: [
-        "Sabor cítrico e delicado, combinação de laranja e tangerina.",
-      ],
-    },
-
-    // =========================
-    // ESSÊNCIAS (EsenceOptions)
-    // =========================
-    [infoKeyForEsence("Especiarias Exóticas")]: {
-      title: "ESPECIARIAS EXÓTICAS",
-      paragraphs: [
-        "Mistura quente e envolvente de lavanda, patchouli, coentros, ylang-ylang, rosa e outros botânicos.",
-      ],
-    },
-
-    [infoKeyForEsence("Baunilha")]: {
-      title: "BAUNILHA",
-      paragraphs: [
-        "Fragrância predominantemente de baunilha, indicada para clientes sensíveis a cheiros fortes.",
-      ],
-    },
-
-    [infoKeyForEsence("Cappuccino")]: {
-      title: "CAPPUCCINO",
-      paragraphs: [
-        "Aroma rico a café, criado a partir de grãos naturais de café.",
-      ],
-    },
-
-    [infoKeyForEsence("Cítricos")]: {
-      title: "CÍTRICOS",
-      paragraphs: [
-        "Mistura cítrica de laranja e flor de mimosa, ideal para clientes sensíveis a fragrâncias intensas.",
-      ],
-    },
-
-    [infoKeyForEsence("Chocolate")]: {
-      title: "CHOCOLATE",
-      paragraphs: [
-        "Aroma a chocolate de leite, delicioso e fácil de combinar com outros aromas.",
-      ],
-    },
-
-    [infoKeyForEsence("Rosa Parisiense")]: {
-      title: "ROSA PARISIENSE",
-      paragraphs: [
-        "Fragrância suave de rosa parisiense, com uma nota de base exclusiva e subtil.",
-      ],
-    },
-
-    // =========================
-    // CREATIVE COMBOS (already correct)
-    // =========================
-    ["creative:combos"]: {
-      title: "EXEMPLOS DE COMBINAÇÕES CRIATIVAS",
-      paragraphs: [
-        "• Chocolate + Menta → Girl Scout Thin Mint",
-        "• Baunilha + Avelã + Cappuccino → Vanilla Nut Latte",
-        "• Cereja (Cherries Jubilee) + Chocolate → Chocolate Covered Cherry",
-        "• Avelã + Baunilha + Chocolate → Baby Ruth Bar",
-        "• Sorvete de Pêssego + Baunilha → Sherbet",
-        "• Canela → contribui para um efeito de volume visível nos lábios",
-      ],
-    },
-  }),
-  []
-);
-
+      // =========================
+      // CREATIVE COMBOS
+      // =========================
+      ["creative:combos"]: {
+        title: "EXEMPLOS DE COMBINAÇÕES CRIATIVAS",
+        paragraphs: [
+          "• Chocolate + Menta → Girl Scout Thin Mint",
+          "• Baunilha + Avelã + Cappuccino → Vanilla Nut Latte",
+          "• Cereja (Cherries Jubilee) + Chocolate → Chocolate Covered Cherry",
+          "• Avelã + Baunilha + Chocolate → Baby Ruth Bar",
+          "• Sorvete de Pêssego + Baunilha → Sherbet",
+          "• Canela → contribui para um efeito de volume visível nos lábios",
+        ],
+      },
+    }),
+    []
+  );
 
   // ===========================
   // POPUP STATE + HELPERS
@@ -257,14 +243,12 @@ const infoMap: Record<string, InfoContent> = useMemo(
   const openInfo = (key: string) => setInfoKey(key);
   const closeInfo = () => setInfoKey(null);
 
-  // Fallback: if smell/esence isn’t in infoMap yet, use its description automatically
   const activeInfo: InfoContent | null = useMemo(() => {
     if (!infoKey) return null;
 
     const mapped = infoMap[infoKey];
     if (mapped) return mapped;
 
-    // smell fallback
     if (infoKey.startsWith("smell:")) {
       const id = infoKey.replace("smell:", "") as SmelltOptions;
       const s = smellOptions.find((x) => x.id === id);
@@ -276,7 +260,6 @@ const infoMap: Record<string, InfoContent> = useMemo(
       };
     }
 
-    // esence fallback
     if (infoKey.startsWith("esence:")) {
       const id = infoKey.replace("esence:", "") as EsenceOptions;
       const e = allEsence.find((x) => x.id === id);
@@ -332,59 +315,17 @@ const infoMap: Record<string, InfoContent> = useMemo(
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const handleSetEsence = (esenceId:EsenceOptions) => {
-    esence == esenceId ? setEsence('none') : setEsence(esenceId)
-  }
+  const handleSetEsence = (esenceId: EsenceOptions) => {
+    esence === esenceId ? setEsence("none") : setEsence(esenceId);
+  };
 
-  const handleSetSmell = (smellId:SmelltOptions) => {
-    smell == smellId ? setSmell("none") : setSmell(smellId)
-  }
+  const handleSetSmell = (smellId: SmelltOptions) => {
+    smell === smellId ? setSmell("none") : setSmell(smellId);
+  };
 
   return (
     <>
-      {/* ================= STEP 4 (ADITIVE) ================= */}
-      {step === 5 && (
-        <section className="adtive-section">
-          <img src={monthAditive} alt="" />
-
-          <div className="adtive-container">
-            <span className="title-button">escolhe o aditivo</span>
-            <p>
-              Os aditivos de hidratação e suavização
-              <br /> alteram a textura do gloss.
-            </p>
-
-            <ul>
-              {additiveOptions.map((a) => (
-                <li
-                  key={a.id}
-                  style={{ backgroundColor: a.id === aditive ? "#c41123" : "" }}
-                  onClick={() => handleStepAdtive(a.id)}
-                >
-                  <img src={a.img} alt="" />
-                  <p>{a.name}</p>
-
-                  {/* infoCircle for additive */}
-                  <img
-                    src={infoCircle}
-                    alt=""
-                    className="abs-img"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      openInfo(infoKeyForAdditive(a.id));
-                    }}
-                  />
-                </li>
-              ))}
-            </ul>
-
-            <button onClick={() => nextStep(6)}>Continuar</button>
-          </div>
-        </section>
-      )}
-
-      {/* ================= STEP 5 (TASTE) ================= */}
+      {/* ================= STEP 4 (TASTE) ================= */}
       {step === 4 && (
         <div className="taste-section">
           <span className="title-button">ADICIONA O AROMA E a ESSÊNCIA</span>
@@ -396,15 +337,13 @@ const infoMap: Record<string, InfoContent> = useMemo(
                 <li key={s.id} onClick={() => handleSetSmell(s.id)}>
                   <div style={{ backgroundColor: s.id === smell ? "#c41123" : "" }}>
                     <img src={s.img} alt="" />
-
-                    {/* ✅ make the already-added infoCircle WORK */}
                     <img
                       src={infoCircle}
                       alt=""
                       className="abs-img"
                       onClick={(e) => {
                         e.preventDefault();
-                        e.stopPropagation(); // ✅ do not select
+                        e.stopPropagation();
                         openInfo(infoKeyForSmell(s.id));
                       }}
                     />
@@ -426,14 +365,13 @@ const infoMap: Record<string, InfoContent> = useMemo(
                   <img src={e.img} alt={e.name} />
                   <p>{e.name}</p>
 
-                  {/* ✅ make the already-added infoCircle WORK */}
                   <img
                     src={infoCircle}
                     alt=""
                     className="abs-img"
                     onClick={(ev) => {
                       ev.preventDefault();
-                      ev.stopPropagation(); // ✅ do not select
+                      ev.stopPropagation();
                       openInfo(infoKeyForEsence(e.id));
                     }}
                   />
@@ -448,16 +386,11 @@ const infoMap: Record<string, InfoContent> = useMemo(
           </span>
 
           <div className="aditive-button-container">
-            <button
-              className="continue-button"
-              onClick={() => nextStep(5)}
-              
-            >
+            <button className="continue-button" onClick={() => nextStep(5)}>
               continuar
             </button>
 
             <div>
-              {/* ✅ open the last-image popup here */}
               <button
                 className="creative"
                 onClick={(e) => {
@@ -478,7 +411,56 @@ const infoMap: Record<string, InfoContent> = useMemo(
         </div>
       )}
 
-      {/* ================= INFO POPUP (REUSED CLASSES) ================= */}
+      {/* ================= STEP 5 (ADITIVE) ================= */}
+      {step === 5 && (
+        <section className="adtive-section">
+          <img src={monthAditive} alt="" />
+
+          <div className="adtive-container">
+            <span className="title-button">escolhe o aditivo</span>
+            <p>
+              Os aditivos de hidratação e suavização
+              <br /> alteram a textura do gloss.
+            </p>
+
+            <ul>
+              {additiveOptions.map((a) => {
+                const isActive = aditive.includes(a.id);
+
+                return (
+                  <li
+                    key={a.id}
+                    style={{ backgroundColor: isActive ? "#c41123" : "" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleStepAdtive(a.id);
+                    }}
+                  >
+                    <img src={a.img} alt="" />
+                    <p>{a.name}</p>
+
+                    <img
+                      src={infoCircle}
+                      alt=""
+                      className="abs-img"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openInfo(infoKeyForAdditive(a.id));
+                      }}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+
+            <button onClick={() => nextStep(6)}>Continuar</button>
+          </div>
+        </section>
+      )}
+
+      {/* ================= INFO POPUP ================= */}
       {activeInfo && (
         <div className="glitter-info-overlay" onClick={closeInfo}>
           <aside

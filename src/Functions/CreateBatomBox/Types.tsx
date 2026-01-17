@@ -5,7 +5,7 @@ export type productType = null | {
   glitter:string,
   base:BaseOptions,
   smell:SmelltOptions,
-  aditive:AdditivesOptions,
+  aditive:AdditivesOptions[],
   esence:EsenceOptions,
   boxText:string ,
   boxFont:string,
