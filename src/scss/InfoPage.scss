@@ -1,0 +1,137 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+.info-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.info-hero {
+  width: 100%;
+  background: #ea5aa8; /* pink header like the screenshot */
+  padding: 2.4rem 1.6rem 2rem;
+  color: #fff;
+}
+
+.info-hero-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.info-title {
+   font-family: "Archivo Black", sans-serif;
+  font-weight: 800;
+  font-size: 4.5vw;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.info-breadcrumb {
+  margin-top: 0.35rem;
+  font-family: "ApercuPro";
+  font-weight: 500;
+  font-size: 1.5vw;
+  opacity: 0.95;
+}
+
+.info-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.4rem 1.6rem 3rem;
+  color: #222;
+  font-family: "ApercuPro";
+}
+
+.info-content h2,
+.info-content h3 {
+  margin: 1.3rem 0 0.6rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.info-content h2 {
+  font-size: 1.15rem;
+}
+
+.info-content h3 {
+  font-size: 1.05rem;
+}
+
+.info-content p {
+  margin: 0.6rem 0;
+  line-height: 1.55;
+  font-size: 0.98rem;
+}
+
+.info-content ul {
+  margin: 0.6rem 0 0.6rem 1.2rem;
+  padding: 0;
+}
+
+.info-content li {
+  margin: 0.35rem 0;
+  line-height: 1.5;
+  font-size: 0.98rem;
+}
+
+.info-content strong {
+  font-weight: 800;
+}
+
+.info-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 1.2rem 0;
+}
+
+
+$desktop-xl: 1500px;
+$laptop-max: 1400px;
+$laptop-min: 1100px;
+$tablet-min: 768px;
+$phone-max: 767px;
+$phone-min: 320px;
+
+@media (max-width: $laptop-max) and (min-width: $laptop-min) {
+ 
+}
+
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+   .info-title{
+    text-align: center;
+    font-size: 6.5vw;
+  }
+  .info-breadcrumb{
+    text-align: center;
+    font-size: 3vw;
+  }
+
+  .info-content{
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+    .info-title{
+    text-align: center;
+    font-size: 7vw;
+  }
+  .info-breadcrumb{
+    text-align: center;
+    font-size: 4vw;
+  }
+
+  .info-content{
+    padding: 1rem;
+  }
+  .info-content li{
+    font-size: 3.2vw;
+  }
+  .info-content p{
+    font-size: 3vw;
+  }
+  .info-content h2 {
+    font-size: 5vw;
+}
+}

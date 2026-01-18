@@ -10,6 +10,10 @@ import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
 import ScrollToTop from './ScrollToTop';
 import CartPage from './Cart/CartPage';
 import GiftCard from './GiftCard/GiftCard';
+import PaymentMethodsPage from "./InfoPage/PaymentMethodsPage";
+import TermsPage from "./InfoPage/TermsPage";
+import PrivacyPage from "./InfoPage/PrivacyPage";
+
 
 function App() {
 
@@ -27,6 +31,10 @@ function App() {
             <Route path='experiencie' element={<ExperiencieAndPrice/>}/>
             <Route path='/giftCard' element={<GiftCard/>}/>
             <Route path="/cart" element={<CartPage />} /> 
+            <Route path="/payment-methods" element={<PaymentMethodsPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+
         </Routes>
       </AppProvider>
       <Footer/>
