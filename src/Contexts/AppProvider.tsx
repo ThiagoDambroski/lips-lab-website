@@ -257,25 +257,25 @@ function AppProvider({ children }: appProviderProps) {
   const baseGloss: { id: BaseOptions, name: string, description: string }[] = [
     
     {
-      id: "mirror-shine",
+      id: "brilho intenso",
       name: "brilho intenso",
       description:
         "translúcido & alto brilho",
     },
     {
-      id: "balm",
+      id: "BÁLSAMO",
       name: "BÁLSAMO",
       description:
         "suave & nutritivo",
     },
     {
-      id: "vinyl",
+      id: "polish",
       name: "polish",
       description:
         "translúcido & reparador",
     },
     {
-      id: "vegan",
+      id: "NATURAL",
       name: "NATURAL",
       description:
         "hidratante & nutritivo",

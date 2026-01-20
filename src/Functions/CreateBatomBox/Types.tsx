@@ -48,6 +48,10 @@ export type BaseOptions =
   | "mirror-shine"
   | "balm"
   | "vinyl"
+  | "brilho intenso"
+  | "BÁLSAMO"
+  | "polish"
+  | "NATURAL"
 
 export type SmelltOptions =
   | "none"
