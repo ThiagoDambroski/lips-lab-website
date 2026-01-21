@@ -383,7 +383,7 @@ function GlitterBaseSelection({
               if (category === "Dusts") return null;
 
               if (category === "Foils") {
-                const mergedCategory = "Foils & Dusts";
+                const mergedCategory = "Foils";
 
                 return (
                   <div key={mergedCategory} className="glliter-selection-div">
@@ -418,7 +418,7 @@ function GlitterBaseSelection({
                           </li>
                         ))}
                     </ul>
-
+                    {/* 
                     <h3 className="glitter-subtitle">Dusts</h3>
                     <ul>
                       {glitterOptions
@@ -438,6 +438,8 @@ function GlitterBaseSelection({
                           </li>
                         ))}
                     </ul>
+                    */}
+                    
                   </div>
                 );
               }

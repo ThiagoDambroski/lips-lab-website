@@ -164,61 +164,58 @@ function AppProvider({ children }: appProviderProps) {
 
 
 
-  const glitterOptions: GlitterColor[] = [
-    // ======================
-    // FROSTS
-    // ======================
-    { id: 1, name: "Crystal", img: crystal, category: "Frosts" },
-    { id: 2, name: "Bronze", img: bronze, category: "Frosts" },
-    { id: 3, name: "Fuchsia", img: fuchsia, category: "Frosts" },
-    { id: 4, name: "Garnet", img: garnet, category: "Frosts" },
-    { id: 5, name: "Opal", img: opal, category: "Frosts" },
-    { id: 6, name: "Pink", img: pink, category: "Frosts" },
-    { id: 7, name: "Pink Diamond", img: pinkDiamond, category: "Frosts" },
-    { id: 8, name: "Russet", img: russet, category: "Frosts" },
-    { id: 9, name: "Silver", img: silver, category: "Frosts" },
-    { id: 10, name: "Star Ruby", img: starRuby, category: "Frosts" },
-    { id: 11, name: "Violet", img: violet, category: "Frosts" },
-    { id: 12, name: "Antique Gold", img: antiqueGold, category: "Frosts" },
-    { id: 13, name: "Brass", img: brass, category: "Frosts" },
-    { id: 14, name: "Copper", img: copper, category: "Frosts" },
-    { id: 15, name: "Coral", img: coral, category: "Frosts" },
-    { id: 16, name: "Fire Opal", img: fireOpal, category: "Frosts" },
-    { id: 17, name: "Gold", img: gold, category: "Frosts" },
-    { id: 18, name: "Sienna", img: sienna, category: "Frosts" },
-    { id: 19, name: "Sand", img: sand, category: "Frosts" },
-    { id: 20, name: "Carnelian", img: carnelian, category: "Frosts" },
-    { id: 21, name: "Champagne", img: champagne, category: "Frosts" },
-    { id: 22, name: "Pink Gold", img: pinkGold, category: "Frosts" },
-    { id: 23, name: "Rose Gold", img: roseGold, category: "Frosts" },
+const glitterOptions: GlitterColor[] = [
+  // ======================
+  // FROSTS
+  // ======================
+  { id: 1, name: "Crystal", img: crystal, category: "Frosts" },
+  { id: 2, name: "Bronze", img: bronze, category: "Frosts" },
+  { id: 3, name: "Fuchsia", img: fuchsia, category: "Frosts" },
+  { id: 4, name: "Garnet", img: garnet, category: "Frosts" },
+  { id: 5, name: "Opal", img: opal, category: "Frosts" },
+  { id: 6, name: "Pink", img: pink, category: "Frosts" },
+  { id: 7, name: "Pink Diamond", img: pinkDiamond, category: "Frosts" },
+  { id: 8, name: "Russet", img: russet, category: "Frosts" },
+  { id: 9, name: "Silver", img: silver, category: "Frosts" },
+  { id: 10, name: "Star Ruby", img: starRuby, category: "Frosts" },
+  { id: 11, name: "Violet", img: violet, category: "Frosts" },
+  { id: 12, name: "Antique Gold", img: antiqueGold, category: "Frosts" },
+  { id: 13, name: "Brass", img: brass, category: "Frosts" },
+  { id: 14, name: "Copper", img: copper, category: "Frosts" },
+  { id: 15, name: "Coral", img: coral, category: "Frosts" },
+  { id: 16, name: "Fire Opal", img: fireOpal, category: "Frosts" },
+  { id: 17, name: "Gold", img: gold, category: "Frosts" },
+  { id: 18, name: "Sienna", img: sienna, category: "Frosts" },
+  { id: 19, name: "Sand", img: sand, category: "Frosts" },
+  { id: 20, name: "Carnelian", img: carnelian, category: "Frosts" },
+  { id: 21, name: "Champagne", img: champagne, category: "Frosts" },
+  { id: 22, name: "Pink Gold", img: pinkGold, category: "Frosts" },
+  { id: 23, name: "Rose Gold", img: roseGold, category: "Frosts" },
 
-    // ======================
-    // MULTIDIMENSIONAL FROSTS
-    // ======================
-    { id: 24, name: "Alexandrite", img: alexandrite, category: "Multidimensional Frosts" },
-    { id: 25, name: "Azurite", img: azurite, category: "Multidimensional Frosts" },
-    { id: 26, name: "Chrysolite", img: chrysolite, category: "Multidimensional Frosts" },
-    { id: 27, name: "Morganite", img: morganite, category: "Multidimensional Frosts" },
-    { id: 28, name: "Indigolite", img: indigolite, category: "Multidimensional Frosts" },
+  // ======================
+  // MULTIDIMENSIONAL FROSTS
+  // ======================
+  { id: 24, name: "Alexandrite", img: alexandrite, category: "Multidimensional Frosts" },
+  { id: 25, name: "Azurite", img: azurite, category: "Multidimensional Frosts" },
+  { id: 26, name: "Chrysolite", img: chrysolite, category: "Multidimensional Frosts" },
+  { id: 27, name: "Morganite", img: morganite, category: "Multidimensional Frosts" },
+  { id: 28, name: "Indigolite", img: indigolite, category: "Multidimensional Frosts" },
 
-    // ======================
-    // FOILS
-    // ======================
-    { id: 29, name: "Pink", img: blush, category: "Foils" },
-    { id: 30, name: "Bronze", img: bronzed, category: "Foils" },
-    { id: 31, name: "Gold", img: nugget, category: "Foils" },
-    { id: 32, name: "Silver", img: platinum, category: "Foils" },
-    { id: 33, name: "Red", img: ruby, category: "Foils" },
-    { id: 34, name: "Rainbow", img: twinkle, category: "Foils" },
+  // ======================
+  // FOILS (RENAMED)
+  // ======================
+  { id: 29, name: "Blush", img: blush, category: "Foils" },
+  { id: 30, name: "Bronzed", img: bronzed, category: "Foils" },
+  { id: 31, name: "Nugget", img: nugget, category: "Foils" },
+  { id: 32, name: "Platinum", img: platinum, category: "Foils" },
+  { id: 33, name: "Ruby", img: ruby, category: "Foils" },
+  { id: 34, name: "Twinkle", img: twinkle, category: "Foils" },
 
-    // ======================
-    // DUSTS
-    // ======================
-    { id: 35, name: "Dazzle Dust", img: dazzleDust, category: "Dusts" },
-    { id: 36, name: "Gold Dust", img: goldDust, category: "Dusts" },
-    { id: 37, name: "Diamond Dust", img: diamondDust, category: "Dusts" },
+  // ======================
+  // DUSTS
+  // ======================
 
-  ];
+];
 
 
   const baseBatom: { id: BaseOptions, name: string, description: string }[] = [
