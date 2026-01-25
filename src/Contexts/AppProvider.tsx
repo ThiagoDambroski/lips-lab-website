@@ -53,10 +53,7 @@ import pinkDiamond from "../assets/glitter/pink diamond.png";
 import fireOpal from "../assets/glitter/fire opal.png";
 import carnelian from "../assets/glitter/carnelian.png";
 import starRuby from "../assets/glitter/star ruby.png";
-import goldDust from "../assets/glitter/gold dust.png";
 
-import diamondDust from "../assets/glitter/diamond dust.png";
-import dazzleDust from "../assets/glitter/dazzle dust.png";
 
 import alexandrite from "../assets/glitter/alexandrite.png";
 import azurite from "../assets/glitter/azurite.png";
