@@ -418,27 +418,7 @@ function GlitterBaseSelection({
                           </li>
                         ))}
                     </ul>
-                    {/* 
-                    <h3 className="glitter-subtitle">Dusts</h3>
-                    <ul>
-                      {glitterOptions
-                        .filter((g) => g.category === "Dusts")
-                        .map((g) => (
-                          <li
-                            key={g.id}
-                            onClick={() => openLightbox(g)}
-                            style={{
-                              border: glitterSelected === g.id ? "2px solid red" : "",
-                              cursor: "pointer",
-                              listStyle: "none",
-                            }}
-                          >
-                            <img src={g.img} alt={g.name} />
-                            <p>{g.name}</p>
-                          </li>
-                        ))}
-                    </ul>
-                    */}
+                    
                     
                   </div>
                 );
