@@ -100,6 +100,29 @@ function GlitterBaseSelection({
   const infoKeyForBase = (id: BaseOptions) => `base:${id}`;
   const infoKeyForGlitterCategory = (category: string) => `glitter:${category}`;
 
+  /**
+   * Your base ids coming from data are not stable (some are uppercase / accents / spaces).
+   * We normalize them to match the ids used in infoMap.
+   */
+  const normalizeBaseId = (id: BaseOptions): BaseOptions => {
+    const raw = String(id).trim();
+
+    // normalize accents + casing for comparison
+    const cleaned = raw
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    // map "data ids" -> "infoMap ids"
+    if (cleaned === "brilho intenso") return "mirror-shine" as BaseOptions;
+    if (cleaned === "balsamo") return "balm" as BaseOptions;
+    if (cleaned === "polish") return "vinyl" as BaseOptions;
+    if (cleaned === "natural") return "vegan" as BaseOptions;
+
+    // batom ids already match your infoMap keys (matte, matte liquido, cremoso, amanteigado, natural)
+    return id;
+  };
+
   const infoMap: Record<string, InfoContent> = {
     [infoKeyForGlitterCategory("Frosts")]: {
       title: "FROSTS",
@@ -125,7 +148,7 @@ function GlitterBaseSelection({
       ],
     },
 
-    [infoKeyForGlitterCategory("Foils & Dusts")]: {
+    [infoKeyForGlitterCategory("Foils")]: {
       title: "FOILS & DUSTS",
       paragraphs: [
         "Os Foils & Dusts são acabamentos focados exclusivamente no brilho intenso, com um efeito metálico espelhado.",
@@ -301,7 +324,7 @@ function GlitterBaseSelection({
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        openInfo(infoKeyForBase(b.id));
+                        openInfo(infoKeyForBase(normalizeBaseId(b.id)));
                       }}
                       aria-label={`Info about ${b.name}`}
                     >
@@ -335,7 +358,7 @@ function GlitterBaseSelection({
                       className="glitter-info-btn base-info-btn"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openInfo(infoKeyForBase(b.id));
+                        openInfo(infoKeyForBase(normalizeBaseId(b.id)));
                       }}
                       aria-label={`Info about ${b.name}`}
                     >
@@ -418,8 +441,6 @@ function GlitterBaseSelection({
                           </li>
                         ))}
                     </ul>
-                    
-                    
                   </div>
                 );
               }
