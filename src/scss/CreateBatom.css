@@ -3343,7 +3343,7 @@
   .automatic-color-container .automatic-color-bgk div img {
     width: 90%;
     height: 90%;
-    max-height: 20vh;
+    max-height: 40vw;
     -o-object-fit: cover;
        object-fit: cover;
     display: block;
