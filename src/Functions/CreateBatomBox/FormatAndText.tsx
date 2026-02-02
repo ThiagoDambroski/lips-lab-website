@@ -285,7 +285,7 @@ function FormatAndText({
                 type="text"
                 className="engraving-input"
                 value={boxText}
-                maxLength={10}
+                maxLength={5}
                 placeholder="ESCREVE AQUI O QUE QUERES GRAVAR NO TEU PRODUTO!"
                 onChange={handleTextChange}
                 style={{ fontFamily: selectedFont.cssFamily }}
