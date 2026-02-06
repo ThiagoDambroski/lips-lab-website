@@ -117,15 +117,13 @@ const GLITTER_LABELS: Record<number, string> = {
   26: "Chrysolite",
   27: "Morganite",
   28: "Indigolite",
-  29: "Pink (Foil)",
-  30: "Bronze (Foil)",
-  31: "Gold (Foil)",
-  32: "Silver (Foil)",
-  33: "Red (Foil)",
-  34: "Rainbow (Foil)",
-  35: "Dazzle Dust",
-  36: "Gold Dust",
-  37: "Diamond Dust",
+  29: "Blush",
+  30: "Bronzed",
+  31: "Nugget",
+  32: "Platinum",
+  33: "Ruby",
+  34: "Twinkle",
+
 };
 
 function safeString(value: unknown): string | null {
