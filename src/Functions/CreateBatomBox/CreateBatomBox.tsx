@@ -160,8 +160,10 @@ function buildShopifyPermalinkOrdered(
     smell: SmelltOptions;
     aditive: string; // comma separated
     esence: EsenceOptions;
+    boxText: string;
     boxFont: string;
     boxImage: string;
+    
   },
   selectedColorsSub: string,
   finalColorHex: string
@@ -184,6 +186,7 @@ function buildShopifyPermalinkOrdered(
   props["smell"] = safeString(product.smell) ?? "none";
   props["aditive"] = safeString(product.aditive) ?? "none";
   props["esence"] = safeString(product.esence) ?? "none";
+  props["boxText"] = safeString(product.boxText) ?? "none";
   props["boxImage"] = safeString(product.boxImage) ?? "none";
   props["boxFont"] = safeString(product.boxFont) ?? "none";
   props["lipslab_item_id"] = safeString(product.id) ?? "none";
