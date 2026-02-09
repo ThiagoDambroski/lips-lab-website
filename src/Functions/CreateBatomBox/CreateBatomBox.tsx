@@ -549,7 +549,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                         <img src={SYMBOLS.find((s) => s.id === boxImage)?.img} alt="" />
                       )}
 
-                      {boxText.trim() !== "" && <p>{boxText.trim()}</p>}
+                      {boxImage == "none" && boxText.trim() !== "" && <p>{boxText.trim()}</p>}
                     </div>
 
                     <p>PERSONALIZAÇÃO</p>

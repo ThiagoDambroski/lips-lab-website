@@ -207,8 +207,7 @@ function FormatAndText({
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBoxText(e.target.value);
-    setBoxImg("none");
-    setSelectedSymbol(null);
+    
   };
 
   const handleSymbolClick = (symbol: string) => {
@@ -219,7 +218,7 @@ function FormatAndText({
       setBoxImg(symbol);
       setSelectedSymbol(symbol);
     }
-    setBoxText("");
+   
   };
 
   const handleFontClick = (font: FontOption) => {
@@ -296,7 +295,7 @@ function FormatAndText({
               </button>
             </div>
 
-            <p className="engraving-subtitle">OU ESCOLHE UM SÍMBOLO</p>
+            <p className="engraving-subtitle">ESCOLHE UM SÍMBOLO</p>
 
             <div className="engraving-symbol-list">
               {SYMBOLS.map((symbol) => (
