@@ -1,139 +1,135 @@
-.gift-intro{
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    img{
-        width: 80%;
-    }
+.gift-intro {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
 
-    div{
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        h2{
-            font-size: 3rem;
-            color: #E9519C;
-            text-transform: uppercase;
-            font-style: italic;
-            font-family: "ApercuPro";
-        }
-        p{
-            max-width: 90%;
-            font-size: 20px;
-            white-space: pre-line;
-        }
-        .gift-radio-group {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        }
+  img {
+    width: 80%;
+  }
 
-        .gift-radio {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        cursor: pointer;
-        }
-
-        /* esconde o radio nativo */
-        .gift-radio input[type="radio"] {
-        appearance: none;
-        -webkit-appearance: none;
-
-        width: 16px;
-        height: 16px;
-        border: 1.8px solid #000;
-        border-radius: 50%;
-        background: transparent;
-
-        display: grid;
-        place-items: center;
-        }
-
-        /* bolinha interna */
-        .gift-radio input[type="radio"]::after {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #000;
-        transform: scale(0);
-        transition: transform 0.15s ease;
-        }
-
-        /* estado ativo */
-        .gift-radio input[type="radio"]:checked::after {
-        transform: scale(1);
-        }
-
-        .gift-radio__label {
-        font-weight: 800;
-        font-style: italic;
-        text-transform: uppercase;
-        font-size: 14px;
-        letter-spacing: 0.2px;
-        }
-
-        /* acessibilidade */
-        .gift-radio input[type="radio"]:focus-visible {
-        outline: 2px solid rgba(0, 0, 0, 0.25);
-        outline-offset: 3px;
-        }
-        .gift-buy-btn {
-          margin-top: 0.35rem;
-          width: 50%;
-          border: none;
-          border-radius: 999px;
-          padding: 1.15rem 1.2rem;
-
-          background: #b30e1f;
-          color: #ffffff;
-
-          font-family: "ApercuPro";
-          font-weight: 900;
-          font-style: italic;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-size: 1.05rem;
-
-          cursor: pointer;
-
-          transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.16s ease;
-
-          &:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.05);
-            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
-          }
-        }
-
-    }
-    
-}
-.gift-banner{
-       
-    background-color: #E9519C;
+  div {
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
 
-    justify-content: flex-end;
+    h2 {
+      font-size: 3rem;
+      color: #E9519C;
+      text-transform: uppercase;
+      font-style: italic;
+      font-family: "ApercuPro";
+    }
 
-    p{
-        align-self: center;
-        font-family: "ApercuPro";
-        text-transform: uppercase;
-        font-style: italic;
-        font-size: 2rem;
-        color: white;
+    p {
+      max-width: 90%;
+      font-size: 20px;
+      white-space: pre-line;
     }
-    img{
-        width: 50%;
+
+    .gift-radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
+
+    .gift-radio {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .gift-radio input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+
+      width: 16px;
+      height: 16px;
+      border: 1.8px solid #000;
+      border-radius: 50%;
+      background: transparent;
+
+      display: grid;
+      place-items: center;
+    }
+
+    .gift-radio input[type="radio"]::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #000;
+      transform: scale(0);
+      transition: transform 0.15s ease;
+    }
+
+    .gift-radio input[type="radio"]:checked::after {
+      transform: scale(1);
+    }
+
+    .gift-radio__label {
+      font-weight: 800;
+      font-style: italic;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .gift-radio input[type="radio"]:focus-visible {
+      outline: 2px solid rgba(0, 0, 0, 0.25);
+      outline-offset: 3px;
+    }
+
+    .gift-buy-btn {
+      margin-top: 0.35rem;
+      width: 50%;
+      border: none;
+      border-radius: 999px;
+      padding: 1.15rem 1.2rem;
+
+      background: #b30e1f;
+      color: #ffffff;
+
+      font-family: "ApercuPro";
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+
+      cursor: pointer;
+
+      transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.16s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+        box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+      }
+    }
+  }
 }
 
+.gift-banner {
+  background-color: #E9519C;
+  display: flex;
+  justify-content: flex-end;
 
+  p {
+    align-self: center;
+    font-family: "ApercuPro";
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 2rem;
+    color: white;
+  }
+
+  img {
+    width: 50%;
+  }
+}
 
 .gift-terms {
   width: 100%;
- 
   margin: 0 auto;
   padding: 32px 22px 48px;
   color: #111;
@@ -156,7 +152,6 @@
     font-style: italic;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    
   }
 
   &__text {
@@ -164,6 +159,7 @@
     font-size: 18px;
     line-height: 1.8;
     max-width: 50vw;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -210,56 +206,59 @@
   }
 }
 
-
-/* Responsive */
-
-
 $desktop-xl: 1500px;
-$laptop-max: 1400px; 
+$laptop-max: 1400px;
 $laptop-min: 1100px;
-$tablet-min: 768px;  
+$tablet-min: 768px;
 $phone-max: 767px;
 $phone-min: 320px;
 
 @media (min-width: $desktop-xl) {
   .gift-intro img {
-    width: 60%; 
-}
+    width: 60%;
+  }
 }
 
-/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
 @media (max-width: $laptop-min) and (min-width: $tablet-min) {
   .gift-intro {
     margin-bottom: 2rem;
   }
-  .gift-intro div h2{
+
+  .gift-intro div h2 {
     font-size: 4vw;
   }
-  .gift-intro div p{
+
+  .gift-intro div p {
     font-size: 2.5vw;
   }
-    .gift-banner p{
-      font-size: 1.4rem;
-      padding-left: 10px;
-    }
-  .gift-intro div .gift-radio__label{
+
+  .gift-banner p {
+    font-size: 1.4rem;
+    padding-left: 10px;
+  }
+
+  .gift-intro div .gift-radio__label {
     font-size: 1.5vw;
   }
-  .gift-terms__text{
+
+  .gift-terms__text {
     font-size: 2.5vw;
   }
-  .gift-terms__list li{
+
+  .gift-terms__list li {
     font-size: 2.5vw;
   }
-.gift-terms__values p{
-  font-size: 2.5vw;
-}
+
+  .gift-terms__values p {
+    font-size: 2.5vw;
+  }
+
   .gift-intro div .gift-buy-btn {
     width: 70%;
     padding: 1rem;
   }
-    
 }
+
 @media (min-width: $phone-min) and (max-width: $phone-max) {
   .gift-intro {
     display: flex;
@@ -268,54 +267,230 @@ $phone-min: 320px;
     align-items: center;
     margin-bottom: 2rem;
   }
-  .gift-intro div h2{
+
+  .gift-intro div h2 {
     font-size: 10vw;
     text-align: center;
   }
-  .gift-intro div p{
+
+  .gift-intro div p {
     justify-self: center;
     align-self: center;
     font-size: 5vw;
     text-align: center;
   }
-    
-  .gift-intro div .gift-radio{
+
+  .gift-intro div .gift-radio {
     padding-left: 30px;
   }
-  .gift-intro div .gift-radio__label{
+
+  .gift-intro div .gift-radio__label {
     font-size: 4vw;
   }
-  .gift-banner p{
-      font-size: 3vw;
-      padding-left: 10px;
-      
+
+  .gift-banner p {
+    font-size: 3vw;
+    padding-left: 10px;
   }
-  .gift-banner img{
+
+  .gift-banner img {
     width: 60%;
   }
-  .gift-terms__title{
+
+  .gift-terms__title {
     font-size: 7vw;
     text-align: center;
   }
-  .gift-terms__text{
+
+  .gift-terms__text {
     font-size: 4.5vw;
     max-width: 100%;
   }
-  
-  .gift-terms__list li{
+
+  .gift-terms__list li {
     font-size: 4.5vw;
   }
-    .gift-terms__values p{
-      font-size: 4.5vw;
-    }
-  .gift-terms__address p{
+
+  .gift-terms__values p {
     font-size: 4.5vw;
   }
+
+  .gift-terms__address p {
+    font-size: 4.5vw;
+  }
+
   .gift-intro div .gift-buy-btn {
     justify-self: center;
     align-self: center;
     text-align: center;
     width: 70%;
     padding: 1rem;
+  }
+}
+
+.gift-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.gift-modal__card {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+}
+
+.gift-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gift-modal__title {
+  margin: 0;
+  font-family: "ApercuPro";
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  color: #111;
+}
+
+.gift-modal__close {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.gift-modal__subtitle {
+  margin: 10px 0 14px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.gift-modal__form {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.gift-modal__field {
+  display: grid;
+  gap: 8px;
+
+  span {
+    font-family: "ApercuPro";
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    color: #111;
+  }
+
+  input {
+    width: 100%;
+    border-radius: 14px;
+    border: 1.6px solid rgba(0, 0, 0, 0.22);
+    padding: 12px 14px;
+
+    font-family: "ApercuPro";
+    font-size: 1rem;
+
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+
+    &:focus-visible {
+      border-color: rgba(233, 81, 156, 0.85);
+      box-shadow: 0 0 0 4px rgba(233, 81, 156, 0.18);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.gift-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.gift-modal__secondary,
+.gift-modal__primary {
+  border: none;
+  border-radius: 999px;
+  padding: 0.95rem 1.1rem;
+  cursor: pointer;
+
+  font-family: "ApercuPro";
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+
+  transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.16s ease;
+
+  &:disabled{
+    background-color: grey;
+    cursor: not-allowed;
+  }
+}
+
+.gift-modal__secondary {
+  background: rgba(0, 0, 0, 0.08);
+  color: #111;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.gift-modal__primary {
+  background: #b30e1f;
+  color: #fff;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .gift-modal__card {
+    border-radius: 18px;
+    padding: 16px 14px 14px;
+  }
+
+  .gift-modal__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .gift-modal__secondary,
+  .gift-modal__primary {
+    width: 100%;
   }
 }
