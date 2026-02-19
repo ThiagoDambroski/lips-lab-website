@@ -222,12 +222,7 @@ const glitterOptions: GlitterColor[] = [
       description:
         "duradouro & aveludado",
     },
-    {
-      id: "matte liquido",
-      name: "matte liquido",
-      description:
-        "alta fixação & confortável",
-    },
+
     {
       id: "cremoso",
       name: "CREMOSO",

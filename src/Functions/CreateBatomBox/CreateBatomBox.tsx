@@ -354,7 +354,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
             </div>
             <div className="gloss-or-batom-container-image">
               <img src={batomImage} alt="" />
-              <button onClick={() => handleTypeChange("batom")} disabled={true}>
+              <button onClick={() => handleTypeChange("batom")}>
                 Batom
               </button>
             </div>
