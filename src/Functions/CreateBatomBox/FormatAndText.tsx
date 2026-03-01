@@ -188,6 +188,13 @@ function FormatAndText({
 
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
   const [selectedFont, setSelectedFont] = useState<FontOption>(FONTS[0]);
+   const handleNextStep = () => {
+    if(type == "gloss"){
+      setStep(8);
+    }else{
+      setStep(7);
+    }
+  }
 
   // Font chooser modal state
   const [isFontsOpen, setIsFontsOpen] = useState(false);
@@ -232,7 +239,7 @@ function FormatAndText({
 
   return (
     <>
-      {step === 7 && (
+      {step === 8 && (
         <div className="formula-section">
           <h2>
             Na Lips Lab, cada fórmula começa com uma selecção rigorosa
@@ -262,7 +269,7 @@ function FormatAndText({
             })}
           </ul>
 
-          <button className="continue-button" onClick={() => setStep(8)}>
+          <button className="continue-button" onClick={() => setStep(9)}>
             Continuar!
           </button>
         </div>
@@ -317,7 +324,7 @@ function FormatAndText({
               className="engraving-continue"
               type="button"
               disabled={!canContinue && boxImg === "none"}
-              onClick={() => setStep(7)}
+              onClick={() => handleNextStep()}
             >
               CONTINUAR!
             </button>

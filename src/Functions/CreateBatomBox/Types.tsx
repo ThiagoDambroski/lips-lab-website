@@ -66,7 +66,8 @@ export type SmelltOptions =
   | "avela"
   | "Pêssego"
   | "mimosa"
-  | "sambuca";
+  | "sambuca"
+  | "Rosa Parisiense";
 
   export type AdditivesOptions =
   | "none"
@@ -78,7 +79,7 @@ export type SmelltOptions =
   | "VOLUME LABIAL";
 
 
-  export type EsenceOptions = 'none' | "Especiarias Exóticas" | "Baunilha" | "Cappuccino" | "Cítricos" | "Chocolate" | "Rosa Parisiense"
+  export type EsenceOptions = 'none' | "Especiarias Exóticas" | "Baunilha" | "Cappuccino" | "LARANJA E FLOR DE MIMOSA" | "Chocolate" | "Rosa Parisiense"
 
 
   //choose for u

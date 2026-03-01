@@ -25,6 +25,9 @@ import rosa from "../assets/rosa.png"
 
 
 //glitter
+
+import diamontDust from "../assets/glitter/diamond dust.png"
+import goldDust from "../assets/glitter/gold dust.png"
 import antiqueGold from "../assets/glitter/antique gold.png";
 import brass from "../assets/glitter/brass.png";
 import bronze from "../assets/glitter/bronze.png";
@@ -188,25 +191,27 @@ const glitterOptions: GlitterColor[] = [
   { id: 21, name: "Champagne", img: champagne, category: "Frosts" },
   { id: 22, name: "Pink Gold", img: pinkGold, category: "Frosts" },
   { id: 23, name: "Rose Gold", img: roseGold, category: "Frosts" },
+  {id: 24,name: "DIAMOND DUST", img: diamontDust,category: "Frosts"},
+  {id: 25,name: "Gold DUST", img: goldDust,category: "Frosts"},
 
   // ======================
   // MULTIDIMENSIONAL FROSTS
   // ======================
-  { id: 24, name: "Alexandrite", img: alexandrite, category: "Multidimensional Frosts" },
-  { id: 25, name: "Azurite", img: azurite, category: "Multidimensional Frosts" },
-  { id: 26, name: "Chrysolite", img: chrysolite, category: "Multidimensional Frosts" },
-  { id: 27, name: "Morganite", img: morganite, category: "Multidimensional Frosts" },
-  { id: 28, name: "Indigolite", img: indigolite, category: "Multidimensional Frosts" },
+  { id: 26, name: "Alexandrite", img: alexandrite, category: "Multidimensional Frosts" },
+  { id: 27, name: "Azurite", img: azurite, category: "Multidimensional Frosts" },
+  { id: 28, name: "Chrysolite", img: chrysolite, category: "Multidimensional Frosts" },
+  { id: 29, name: "Morganite", img: morganite, category: "Multidimensional Frosts" },
+  { id: 30, name: "Indigolite", img: indigolite, category: "Multidimensional Frosts" },
 
   // ======================
   // FOILS (RENAMED)
   // ======================
-  { id: 29, name: "Blush", img: blush, category: "Foils" },
-  { id: 30, name: "Bronzed", img: bronzed, category: "Foils" },
-  { id: 31, name: "Nugget", img: nugget, category: "Foils" },
-  { id: 32, name: "Platinum", img: platinum, category: "Foils" },
-  { id: 33, name: "Ruby", img: ruby, category: "Foils" },
-  { id: 34, name: "Twinkle", img: twinkle, category: "Foils" },
+  { id: 31, name: "Blush", img: blush, category: "Foils" },
+  { id: 32, name: "Bronzed", img: bronzed, category: "Foils" },
+  { id: 33, name: "Nugget", img: nugget, category: "Foils" },
+  { id: 34, name: "Platinum", img: platinum, category: "Foils" },
+  { id: 35, name: "Ruby", img: ruby, category: "Foils" },
+  { id: 36, name: "Twinkle", img: twinkle, category: "Foils" },
 
   // ======================
   // DUSTS
@@ -222,7 +227,6 @@ const glitterOptions: GlitterColor[] = [
       description:
         "duradouro & aveludado",
     },
-
     {
       id: "cremoso",
       name: "CREMOSO",
@@ -329,6 +333,11 @@ const glitterOptions: GlitterColor[] = [
       img:
         mimosa,
     },
+    {
+      id: "Rosa Parisiense",
+      name: "Rosa Parisiense",
+      img: rosa
+    },
   
   ]
   const additiveOptions: {
@@ -412,8 +421,8 @@ const glitterOptions: GlitterColor[] = [
     },
 
     {
-      id: "Cítricos",
-      name: "Cítricos",
+      id: "LARANJA E FLOR DE MIMOSA",
+      name: "LARANJA E FLOR DE MIMOSA",
       img: citri
     },
 
@@ -422,11 +431,7 @@ const glitterOptions: GlitterColor[] = [
       name: "Chocolate",
       img: choco
     },
-    {
-      id: "Rosa Parisiense",
-      name: "Rosa Parisiense",
-      img: rosa
-    },
+    
   ]
 
 

@@ -198,8 +198,8 @@ function SmellAndAditive({
         title: "CAPPUCCINO",
         paragraphs: ["Aroma rico a café, criado a partir de grãos naturais de café."],
       },
-      [infoKeyForEsence("Cítricos")]: {
-        title: "CÍTRICOS",
+      [infoKeyForEsence("LARANJA E FLOR DE MIMOSA")]: {
+        title: "LARANJA E FLOR DE MIMOSA",
         paragraphs: [
           "Mistura cítrica de laranja e flor de mimosa, ideal para clientes sensíveis a fragrâncias intensas.",
         ],

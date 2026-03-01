@@ -46,6 +46,7 @@ import aquarius from "../../assets/aquarius.svg";
 import peixe from "../../assets/peixe.svg";
 
 import editIcon from "../../assets/edit icon.svg";
+import BatomFormat from "./BatomFormat";
 
 type SymbolOption = {
   id: string;
@@ -162,7 +163,8 @@ function buildShopifyPermalinkOrdered(
     esence: EsenceOptions;
     boxText: string;
     boxFont: string;
-    boxImage: string;
+    boxImage: string,
+    batomFormat:string,
     
   },
   selectedColorsSub: string,
@@ -189,6 +191,7 @@ function buildShopifyPermalinkOrdered(
   props["boxText"] = safeString(product.boxText) ?? "none";
   props["boxImage"] = safeString(product.boxImage) ?? "none";
   props["boxFont"] = safeString(product.boxFont) ?? "none";
+  props["batomFormat"] = safeString(product.batomFormat) ?? "none";
   props["lipslab_item_id"] = safeString(product.id) ?? "none";
 
   const encoded = toBase64Url(JSON.stringify(props));
@@ -229,7 +232,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
   const [boxText, setBoxText] = useState<string>("");
   const [boxFont, setBoxFont] = useState<string>("century-gothic");
   const [boxImage, setBoxImage] = useState<string>("none");
-
+  const [batomFormat,setBatomFormat] = useState<string>("");
   const price = 35.0;
 
   const { additiveOptions, glitterOptions, smellOptions, allEsence, allColors } =
@@ -255,7 +258,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
     setBoxText("");
     setBoxFont("century-gothic");
     setBoxImage("none");
-
+    setBatomFormat("");
     setMixSelected([]);
     setMixWeights({});
 
@@ -278,6 +281,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
       boxFont,
       boxImage,
       price,
+      batomFormat
     };
   };
 
@@ -313,12 +317,23 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
         setType(undefined);
         return;
       }
-      if (step === 0) {
+      else if (step === 0) {
+        setStep(-1)
         setDoItYourSelf(undefined);
+        return
       }
-      if (step === 3) {
+      else  if(step === 8){
+        if(type === "gloss"){
+          setStep(6)
+        }else{
+          setStep(7)
+        }
+        return
+      }
+      else  if (step === 3) {
         setStep(1);
-      } else {
+      } 
+      else {
         setStep((prev) => Math.max(-1, prev - 1));
       }
     }
@@ -364,7 +379,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
 
       {type !== undefined && (
         <>
-          {step !== 8 && (
+          {step !== 9 && (
             <main className="main-color-selection" style={{ backgroundImage: `url(${libsbackg})` }}>
               <div className="main-color-back">
                 {doItYourSelf === undefined && (
@@ -392,7 +407,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   </div>
                 )}
 
-                {((step > 0 && step <= 4) || (step > 5 && step < 8)) && doItYourSelf === true && (
+                {((step > 0 && step <= 4) || (step > 5 && step < 7) || step==8) && doItYourSelf === true && (
                   <div className="item-display-2">
                     {type === "gloss" ? (
                       <div className="item-img-2-color-wrapper">
@@ -455,7 +470,13 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
                   esence={esence}
                   setEsence={setEsence}
                 />
-
+                 <BatomFormat
+                  type={type}
+                  step={step}
+                  setStep={setStep}
+                  setBatomFormat = {setBatomFormat}
+                  batomFormat={batomFormat}
+                />
                 <FormatAndText
                   step={step}
                   setStep={setStep}
@@ -471,7 +492,7 @@ function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
             </main>
           )}
 
-          {step === 8 && (
+          {step === 9 && (
             <div className="purchse-screen">
               <div className="purchse-screen-logo">
                 <img src={logoLibs} alt="Lips Lab logo" />
