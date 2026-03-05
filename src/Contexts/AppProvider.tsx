@@ -333,11 +333,7 @@ const glitterOptions: GlitterColor[] = [
       img:
         mimosa,
     },
-    {
-      id: "Rosa Parisiense",
-      name: "Rosa Parisiense",
-      img: rosa
-    },
+   
   
   ]
   const additiveOptions: {
@@ -430,6 +426,11 @@ const glitterOptions: GlitterColor[] = [
       id: "Chocolate",
       name: "Chocolate",
       img: choco
+    },
+     {
+      id: "Rosa Parisiense",
+      name: "Rosa Parisiense",
+      img: rosa
     },
     
   ]
