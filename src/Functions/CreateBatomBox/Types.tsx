@@ -67,7 +67,8 @@ export type SmelltOptions =
   | "Pêssego"
   | "mimosa"
   | "sambuca"
-  | "Rosa Parisiense";
+  | "Rosa Parisiense"
+  | "Pink Champanhe";
 
   export type AdditivesOptions =
   | "none"

@@ -166,6 +166,10 @@ function SmellAndAditive({
           "Sabor a lima espremida com coco, inspirado numa sobremesa tropical.",
         ],
       },
+      [infoKeyForSmell("Pink Champanhe")]: {
+        title: "Pink Champanhe",
+        paragraphs: ["Sabor de morangos em champanhe."],
+      },
       [infoKeyForSmell("avela")]: {
         title: "AVELÃ",
         paragraphs: ["Sabor a avelã torrada, ligeiramente adocicada."],

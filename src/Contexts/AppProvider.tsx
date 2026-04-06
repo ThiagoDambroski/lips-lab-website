@@ -23,6 +23,8 @@ import citri from "../assets/citricos.png"
 import choco from "../assets/chocolate.png"
 import rosa from "../assets/rosa.png"
 
+import pinkChamp from "../assets/pink cham.png"
+
 
 //glitter
 
@@ -311,7 +313,7 @@ const glitterOptions: GlitterColor[] = [
     },
     {
       id: "Lima com Coco",
-      name: "Lima com Coco",
+      name: "Lima e Coco",
       img:
         lima,
     },
@@ -333,7 +335,12 @@ const glitterOptions: GlitterColor[] = [
       img:
         mimosa,
     },
-   
+    {
+      id: "Pink Champanhe",
+      name: "Pink Champanhe",
+      img: pinkChamp
+    },
+    
   
   ]
   const additiveOptions: {
@@ -426,11 +433,6 @@ const glitterOptions: GlitterColor[] = [
       id: "Chocolate",
       name: "Chocolate",
       img: choco
-    },
-     {
-      id: "Rosa Parisiense",
-      name: "Rosa Parisiense",
-      img: rosa
     },
     
   ]
