@@ -341,7 +341,6 @@ const glitterOptions: GlitterColor[] = [
       img: pinkChamp
     },
     
-  
   ]
   const additiveOptions: {
     id: AdditivesOptions;
