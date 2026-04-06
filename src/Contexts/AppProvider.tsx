@@ -21,7 +21,6 @@ import bauni from "../assets/bauni.png"
 import cappu from "../assets/cappu.png"
 import citri from "../assets/citricos.png"
 import choco from "../assets/chocolate.png"
-import rosa from "../assets/rosa.png"
 
 import pinkChamp from "../assets/pink cham.png"
 
