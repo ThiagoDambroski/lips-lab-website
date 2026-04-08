@@ -268,12 +268,14 @@ const glitterOptions: GlitterColor[] = [
       description:
         "translúcido & reparador",
     },
+    /*
     {
       id: "NATURAL",
       name: "NATURAL",
       description:
         "hidratante & nutritivo",
     },
+    */
   ];
   const smellOptions: { id: SmelltOptions, name: string, img: string }[] = [
 
