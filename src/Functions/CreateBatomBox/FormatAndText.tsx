@@ -70,6 +70,13 @@ function FormatAndText({
         type: "gloss",
       },
       {
+        id: "BRILHO INTENSO",
+        question: "BRILHO INTENSO",
+        answers:
+          "Copernicia Cerifera (Carnauba) Wax, Euphorbia Cerifera (Candelilla) Wax, Organic Butyros- permum Parkii (Shea Butter), Organic Ricinus Communis (Castor) Seed Oil, Lilium Candidum Flower Extract (White Lily), Oenothera Biennis (Evening Primrose) Oil Organic, Tocopherol (Vitamin E).",
+        type: "oil",
+      },
+      {
         id: "BÁLSAMO",
         question: "BÁLSAMO",
         answers:
@@ -130,7 +137,7 @@ function FormatAndText({
   );
 
   const formulaItems = useMemo(() => {
-    const formulaType = type === "oil" ? "gloss" : type;
+    const formulaType = type;
 
     return formulaItemsUnfiltred.filter((f) => f.type === formulaType);
   }, [formulaItemsUnfiltred, type]);
