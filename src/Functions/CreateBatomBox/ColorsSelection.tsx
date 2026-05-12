@@ -27,6 +27,7 @@ type ColorsSelectionProps = {
 
   weights: Record<string, number>;
   setWeights: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+  type: string;
 };
 
 function ColorsSelection({
@@ -42,6 +43,8 @@ function ColorsSelection({
   setSelected,
   weights,
   setWeights,
+  type
+
 }: ColorsSelectionProps) {
   const { allColors } = useApp();
 
@@ -154,7 +157,12 @@ function ColorsSelection({
     setWeights({});
 
     setDoItYourSelf(true);
-    setStep(0);
+    if(type === "oil"){
+      setStep(1);
+    }else{
+      setStep(0);
+    }
+    
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
@@ -186,7 +194,11 @@ function ColorsSelection({
 
     setIsFromAutomatic(true);
     setDoItYourSelf(true);
-    setStep(0);
+    if(type === "oil"){
+      setStep(1);
+    }else{
+      setStep(0);
+    }
   };
 
   return (

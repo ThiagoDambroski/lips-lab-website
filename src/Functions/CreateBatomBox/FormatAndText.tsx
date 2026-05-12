@@ -129,10 +129,11 @@ function FormatAndText({
     []
   );
 
-  const formulaItems = useMemo(
-    () => formulaItemsUnfiltred.filter((f) => f.type === type),
-    [formulaItemsUnfiltred, type]
-  );
+  const formulaItems = useMemo(() => {
+    const formulaType = type === "oil" ? "gloss" : type;
+
+    return formulaItemsUnfiltred.filter((f) => f.type === formulaType);
+  }, [formulaItemsUnfiltred, type]);
 
   const [openFormulaId, setOpenFormulaId] = useState<string | null>(null);
   const toggleFormula = (id: string) => {
@@ -189,7 +190,7 @@ function FormatAndText({
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
   const [selectedFont, setSelectedFont] = useState<FontOption>(FONTS[0]);
    const handleNextStep = () => {
-    if(type == "gloss"){
+    if(type != "batom"){
       setStep(8);
     }else{
       setStep(7);

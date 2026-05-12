@@ -30,7 +30,7 @@ export type PaletteCombo = {
 };
 
 
-export type TypesOptions = undefined | "gloss" | "batom"
+export type TypesOptions = undefined | "gloss" | "batom" | "oil"
 
 export type GlittersOptions= "none" |"rosa" | "bronze" | "dourado" | "preateado" | "vermelho" | 
 "arco-iris" |"brilho-intenso"|"po-dourado"|"po diamante"

@@ -13,6 +13,7 @@ import normalBatom from "../assets/batom final.svg";
 import lipCombo from "../assets/lip combo.svg";
 import glossCombo from "../assets/gloss combo.svg";
 import batomCombo from "../assets/batom combo.svg";
+import lipOil from "../assets/lipOil.png";
 
 
 import holdingGloss from "../assets/dani holding gloss.png"
@@ -31,9 +32,10 @@ export type ProductItem = {
 const products: ProductItem[] = [
   { id: 1, title: "GLOSS LABIAL", price: "55€", imageUrl: normalGloss, alt: "Gloss labial rosa" },
   { id: 2, title: "BATOM", price: "55€", imageUrl: normalBatom, alt: "Batom branco com tampa rosa" },
-  { id: 3, title: "LIP COMBO", price: "99€", imageUrl: lipCombo, alt: "Lip combo" },
-  { id: 4, title: "GLOSS COMBO", price: "99€", imageUrl: glossCombo, alt: "Gloss combo" },
-  { id: 5, title: "BATOM COMBO", price: "99€", imageUrl: batomCombo, alt: "Batom combo" },
+  { id: 3, title: "LIP OIL", price: "55€", imageUrl: lipOil, alt: "Lip oil branco com tampa rosa" },
+  { id: 4, title: "LIP COMBO", price: "99€", imageUrl: lipCombo, alt: "Lip combo" },
+  { id: 5, title: "GLOSS COMBO", price: "99€", imageUrl: glossCombo, alt: "Gloss combo" },
+  { id: 6, title: "BATOM COMBO", price: "99€", imageUrl: batomCombo, alt: "Batom combo" },
 ];
 
 

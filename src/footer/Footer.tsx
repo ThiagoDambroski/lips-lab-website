@@ -26,6 +26,7 @@ function Footer() {
                         <a href="https://www.instagram.com/lipslab.co/">@lipslab.pt</a>
                         <span>CONTACTO</span>
                         <a onClick={() => window.location.href = "mailto:lipslab.co@gmail.com"}>lipslab.co@gmail.com</a>
+                        <a href="">+351 932 484 010</a>
                     </div>
                 </div>
                 

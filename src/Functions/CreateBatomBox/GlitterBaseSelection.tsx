@@ -383,7 +383,7 @@ function GlitterBaseSelection({
             <h2>
               {isMobile1100 ? (
                 <>
-                  Um toque de brilho faz toda a diferença. Pode optar por adicioná-lo ao seu gloss.
+                  Um toque de brilho faz toda a diferença. Pode optar por adicioná-lo ao seu {type}.
                 </>
               ) : (
                 <>
@@ -393,7 +393,7 @@ function GlitterBaseSelection({
                   <br />
                   pode optar por
                   <br /> adicioná-lo ao seu
-                  <br /> gloss.
+                  <br /> {type}.
                 </>
               )}
             </h2>

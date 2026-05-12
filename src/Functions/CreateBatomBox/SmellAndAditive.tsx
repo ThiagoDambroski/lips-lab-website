@@ -1,17 +1,23 @@
 import React, { useEffect, useMemo, useState } from "react";
-import type { AdditivesOptions, EsenceOptions, SmelltOptions } from "./Types";
+import type {
+  AdditivesOptions,
+  EsenceOptions,
+  SmelltOptions,
+  TypesOptions,
+} from "./Types";
 import { useApp } from "../../Contexts/AppProvider";
 import monthAditive from "../../assets/monthAditive.png";
 import infoCircle from "../../assets/info circle.svg";
 
 type SmellAndAditivePros = {
+  type: TypesOptions;
+
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 
   smell: SmelltOptions;
   setSmell: React.Dispatch<React.SetStateAction<SmelltOptions>>;
 
-  // ✅ NOW MULTI
   aditive: AdditivesOptions[];
   setAditive: React.Dispatch<React.SetStateAction<AdditivesOptions[]>>;
 
@@ -27,6 +33,7 @@ type InfoContent = {
 };
 
 function SmellAndAditive({
+  type,
   step,
   setStep,
   smell,
@@ -38,32 +45,27 @@ function SmellAndAditive({
 }: SmellAndAditivePros) {
   const { smellOptions, additiveOptions, allEsence } = useApp();
 
-  // ✅ multi-select toggle (Set-based, prevents duplicates)
   const handleStepAdtive = (adtiveId: AdditivesOptions) => {
     setAditive((prev) => {
       const set = new Set(prev);
-      if (set.has(adtiveId)) set.delete(adtiveId);
-      else set.add(adtiveId);
+
+      if (set.has(adtiveId)) {
+        set.delete(adtiveId);
+      } else {
+        set.add(adtiveId);
+      }
+
       return Array.from(set);
     });
   };
 
-  // ===========================
-  // INFO POPUP KEYS
-  // ===========================
   const infoKeyForAdditive = (id: AdditivesOptions) => `additive:${id}`;
   const infoKeyForSmell = (id: SmelltOptions) => `smell:${id}`;
   const infoKeyForEsence = (id: EsenceOptions) => `esence:${id}`;
   const infoKeyForCreative = () => `creative:combos`;
 
-  // ===========================
-  // INFO POPUP CONTENT
-  // ===========================
   const infoMap: Record<string, InfoContent> = useMemo(
     () => ({
-      // =========================
-      // ADDITIVES
-      // =========================
       [infoKeyForAdditive("HIDRATANTE")]: {
         title: "HIDRATANTE",
         paragraphs: [
@@ -125,95 +127,108 @@ function SmellAndAditive({
         ],
       },
 
-      // =========================
-      // AROMAS
-      // =========================
       [infoKeyForSmell("Canela")]: {
         title: "CANELA",
         paragraphs: ["Sabor adocicado e intenso, derivado de paus de canela."],
       },
+
       [infoKeyForSmell("Cereja jubilee")]: {
         title: "CEREJA JUBILEE",
         paragraphs: ["Sabor a cereja madura."],
       },
+
       [infoKeyForSmell("Trufa de framboesa")]: {
         title: "TRUFA DE FRAMBOESA",
         paragraphs: [
           "Sabor a bolo de mousse de chocolate com cobertura de framboesa.",
         ],
       },
+
       [infoKeyForSmell("Crème brûlée")]: {
         title: "CRÈME BRÛLÉE",
         paragraphs: [
           "Sabor a creme caramelizado, doce e com um delicado toque tostado.",
         ],
       },
+
       [infoKeyForSmell("Cenoura")]: {
         title: "CENOURA",
         paragraphs: [
           "Sabor quente e levemente picante, inspirado num bolo de cenoura acabado de fazer.",
         ],
       },
+
       [infoKeyForSmell("Menta")]: {
         title: "MENTA",
         paragraphs: [
           "Sabor fresco e revigorante de hortelã, semelhante a um mojito ou a uma tarte tropical de lima.",
         ],
       },
+
       [infoKeyForSmell("Lima com Coco")]: {
         title: "LIMA E COCO",
         paragraphs: [
           "Sabor a lima espremida com coco, inspirado numa sobremesa tropical.",
         ],
       },
+
       [infoKeyForSmell("Pink Champanhe")]: {
         title: "Pink Champanhe",
         paragraphs: ["Sabor de morangos em champanhe."],
       },
+
       [infoKeyForSmell("avela")]: {
         title: "AVELÃ",
         paragraphs: ["Sabor a avelã torrada, ligeiramente adocicada."],
       },
+
       [infoKeyForSmell("Pêssego")]: {
         title: "PÊSSEGO",
         paragraphs: ["Sabor a pêssego maduro, com notas refrescantes."],
       },
+
       [infoKeyForSmell("mimosa")]: {
         title: "MIMOSA",
-        paragraphs: ["Sabor cítrico e delicado, combinação de laranja e tangerina."],
+        paragraphs: [
+          "Sabor cítrico e delicado, combinação de laranja e tangerina.",
+        ],
       },
 
-      // =========================
-      // ESSÊNCIAS
-      // =========================
       [infoKeyForEsence("Especiarias Exóticas")]: {
         title: "ESPECIARIAS EXÓTICAS",
         paragraphs: [
           "Mistura quente e envolvente de lavanda, patchouli, coentros, ylang-ylang, rosa e outros botânicos.",
         ],
       },
+
       [infoKeyForEsence("Baunilha")]: {
         title: "BAUNILHA",
         paragraphs: [
           "Fragrância predominantemente de baunilha, indicada para clientes sensíveis a cheiros fortes.",
         ],
       },
+
       [infoKeyForEsence("Cappuccino")]: {
         title: "CAPPUCCINO",
-        paragraphs: ["Aroma rico a café, criado a partir de grãos naturais de café."],
+        paragraphs: [
+          "Aroma rico a café, criado a partir de grãos naturais de café.",
+        ],
       },
+
       [infoKeyForEsence("LARANJA E FLOR DE MIMOSA")]: {
         title: "LARANJA E FLOR DE MIMOSA",
         paragraphs: [
           "Mistura cítrica de laranja e flor de mimosa, ideal para clientes sensíveis a fragrâncias intensas.",
         ],
       },
+
       [infoKeyForEsence("Chocolate")]: {
         title: "CHOCOLATE",
         paragraphs: [
           "Aroma a chocolate de leite, delicioso e fácil de combinar com outros aromas.",
         ],
       },
+
       [infoKeyForEsence("Rosa Parisiense")]: {
         title: "ROSA PARISIENSE",
         paragraphs: [
@@ -221,9 +236,6 @@ function SmellAndAditive({
         ],
       },
 
-      // =========================
-      // CREATIVE COMBOS
-      // =========================
       ["creative:combos"]: {
         title: "EXEMPLOS DE COMBINAÇÕES CRIATIVAS",
         paragraphs: [
@@ -239,9 +251,6 @@ function SmellAndAditive({
     []
   );
 
-  // ===========================
-  // POPUP STATE + HELPERS
-  // ===========================
   const [infoKey, setInfoKey] = useState<string | null>(null);
 
   const openInfo = (key: string) => setInfoKey(key);
@@ -256,6 +265,7 @@ function SmellAndAditive({
     if (infoKey.startsWith("smell:")) {
       const id = infoKey.replace("smell:", "") as SmelltOptions;
       const s = smellOptions.find((x) => x.id === id);
+
       if (!s) return null;
 
       return {
@@ -267,6 +277,7 @@ function SmellAndAditive({
     if (infoKey.startsWith("esence:")) {
       const id = infoKey.replace("esence:", "") as EsenceOptions;
       const e = allEsence.find((x) => x.id === id);
+
       if (!e) return null;
 
       return {
@@ -278,7 +289,6 @@ function SmellAndAditive({
     return null;
   }, [infoKey, infoMap, smellOptions, allEsence]);
 
-  // Close with ESC
   useEffect(() => {
     if (!infoKey) return;
 
@@ -287,10 +297,10 @@ function SmellAndAditive({
     };
 
     window.addEventListener("keydown", onKeyDown);
+
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [infoKey]);
 
-  // Lock scroll while modal is open
   useEffect(() => {
     if (!infoKey) return;
 
@@ -302,7 +312,10 @@ function SmellAndAditive({
     const prevBodyPaddingRight = body.style.paddingRight;
 
     const scrollbarWidth = window.innerWidth - html.clientWidth;
-    if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
 
     body.style.overflow = "hidden";
     html.style.overflow = "hidden";
@@ -320,27 +333,44 @@ function SmellAndAditive({
   };
 
   const handleSetEsence = (esenceId: EsenceOptions) => {
-    esence === esenceId ? setEsence("none") : setEsence(esenceId);
+    const nextEsence = esence === esenceId ? "none" : esenceId;
+
+    setEsence(nextEsence);
+
+    if (type === "oil" && nextEsence !== "none") {
+      setSmell("none");
+    }
   };
 
   const handleSetSmell = (smellId: SmelltOptions) => {
-    smell === smellId ? setSmell("none") : setSmell(smellId);
+    const nextSmell = smell === smellId ? "none" : smellId;
+
+    setSmell(nextSmell);
+
+    if (type === "oil" && nextSmell !== "none") {
+      setEsence("none");
+    }
   };
 
   return (
     <>
-      {/* ================= STEP 4 (TASTE) ================= */}
       {step === 4 && (
         <div className="taste-section">
           <span className="title-button">ADICIONA O AROMA E a ESSÊNCIA</span>
 
           <div className="taste-container">
             <h3>AROMAS</h3>
+
             <ul>
               {smellOptions.map((s) => (
                 <li key={s.id} onClick={() => handleSetSmell(s.id)}>
-                  <div style={{ backgroundColor: s.id === smell ? "#c41123" : "" }}>
+                  <div
+                    style={{
+                      backgroundColor: s.id === smell ? "#c41123" : "",
+                    }}
+                  >
                     <img src={s.img} alt="" />
+
                     <img
                       src={infoCircle}
                       alt=""
@@ -359,12 +389,15 @@ function SmellAndAditive({
             </ul>
 
             <h3>ESSÊNCIAS</h3>
+
             <div className="esence-container">
               {allEsence.map((e) => (
                 <button
                   key={e.id}
                   onClick={() => handleSetEsence(e.id)}
-                  style={{ backgroundColor: esence === e.id ? "#c41123" : "" }}
+                  style={{
+                    backgroundColor: esence === e.id ? "#c41123" : "",
+                  }}
                 >
                   <img src={e.img} alt={e.name} />
                   <p>{e.name}</p>
@@ -415,13 +448,13 @@ function SmellAndAditive({
         </div>
       )}
 
-      {/* ================= STEP 5 (ADITIVE) ================= */}
       {step === 5 && (
         <section className="adtive-section">
           <img src={monthAditive} alt="" />
 
           <div className="adtive-container">
             <span className="title-button">escolhe o aditivo</span>
+
             <p>
               Os aditivos de hidratação e suavização
               <br /> alteram a textura do gloss.
@@ -434,7 +467,9 @@ function SmellAndAditive({
                 return (
                   <li
                     key={a.id}
-                    style={{ backgroundColor: isActive ? "#c41123" : "" }}
+                    style={{
+                      backgroundColor: isActive ? "#c41123" : "",
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -464,7 +499,6 @@ function SmellAndAditive({
         </section>
       )}
 
-      {/* ================= INFO POPUP ================= */}
       {activeInfo && (
         <div className="glitter-info-overlay" onClick={closeInfo}>
           <aside
@@ -491,7 +525,9 @@ function SmellAndAditive({
               ))}
 
               {activeInfo.noteTitle && (
-                <h4 className="glitter-info-note-title">{activeInfo.noteTitle}</h4>
+                <h4 className="glitter-info-note-title">
+                  {activeInfo.noteTitle}
+                </h4>
               )}
 
               {activeInfo.noteLines?.map((t, idx) => (
