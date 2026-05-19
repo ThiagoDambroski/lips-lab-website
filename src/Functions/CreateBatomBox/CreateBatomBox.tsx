@@ -90,6 +90,9 @@ const SHOPIFY_OIL_VARIANT_ID = 48760459821313;
 
 
 const GLITTER_LABELS: Record<number, string> = {
+  // ======================
+  // FROSTS
+  // ======================
   1: "Crystal",
   2: "Bronze",
   3: "Fuchsia",
@@ -113,17 +116,27 @@ const GLITTER_LABELS: Record<number, string> = {
   21: "Champagne",
   22: "Pink Gold",
   23: "Rose Gold",
-  24: "Alexandrite",
-  25: "Azurite",
-  26: "Chrysolite",
-  27: "Morganite",
-  28: "Indigolite",
-  29: "Blush",
-  30: "Bronzed",
-  31: "Nugget",
-  32: "Platinum",
-  33: "Ruby",
-  34: "Twinkle",
+  24: "DIAMOND DUST",
+  25: "Gold DUST",
+
+  // ======================
+  // MULTIDIMENSIONAL FROSTS
+  // ======================
+  26: "Alexandrite",
+  27: "Azurite",
+  28: "Chrysolite",
+  29: "Morganite",
+  30: "Indigolite",
+
+  // ======================
+  // FOILS
+  // ======================
+  31: "Blush",
+  32: "Bronzed",
+  33: "Nugget",
+  34: "Platinum",
+  35: "Ruby",
+  36: "Twinkle",
 };
 
 function safeString(value: unknown): string | null {
