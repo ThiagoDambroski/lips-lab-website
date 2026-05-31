@@ -262,12 +262,14 @@ const glitterOptions: GlitterColor[] = [
       description:
         "suave & nutritivo",
     },
+    /*
     {
       id: "polish",
       name: "polish",
       description:
         "translúcido & reparador",
     },
+    */
     /*
     {
       id: "NATURAL",
