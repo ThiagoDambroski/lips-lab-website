@@ -52,6 +52,7 @@ export type BaseOptions =
   | "BÁLSAMO"
   | "polish"
   | "NATURAL"
+  | "CLASSICO"
 
 export type SmelltOptions =
   | "none"

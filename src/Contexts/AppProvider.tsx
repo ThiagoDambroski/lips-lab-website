@@ -249,6 +249,12 @@ const glitterOptions: GlitterColor[] = [
   ];
 
   const baseGloss: { id: BaseOptions, name: string, description: string }[] = [
+    {
+      id: "CLASSICO",
+      name:"CLÁSSICO",
+      description:"cor tradicional & brilho confortável",
+
+    },
     
     {
       id: "brilho intenso",
