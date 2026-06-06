@@ -165,6 +165,13 @@ function GlitterBaseSelection({
         "Pode ser translúcido ou pigmentado, adaptando-se a diferentes preferências.",
       ],
     },
+    [infoKeyForBase("CLASSICO")]: {
+      title: "CLÁSSICO",
+      paragraphs: [
+        "Cria um gloss tradicional, mais espesso, com ótimo brilho e efeito hidratante.",
+        "Com ceras vegetais naturais (carnaúba e candelila) com manteiga de karité e extrato de aloé vera.",
+      ],
+    },
 
     [infoKeyForBase("mirror-shine")]: {
       title: "BRILHO INTENSO",
