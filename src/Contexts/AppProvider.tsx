@@ -252,7 +252,7 @@ const glitterOptions: GlitterColor[] = [
     {
       id: "CLASSICO",
       name:"CLÁSSICO",
-      description:"cor tradicional & brilho confortável",
+      description:"brilhante & hidratante",
 
     },
     
