@@ -16,8 +16,9 @@ const VARIANT_BY_OPTION: Record<GiftOption, number> = {
 
 const GIFT_OPTION_LABEL_BY_OPTION: Record<GiftOption, string> = {
   single: "CRIA O TEU BATOM OU GLOSS LABIAL (55€)",
-  pack: "PACK 2 PRODUTOS (99€)",
   experienceGiftBox: "EXPERIÊNCIA + CAIXA PRESENTE (60€)",
+  pack: "PACK 2 PRODUTOS (99€)",
+  
 };
 
 function goToShopifyAlways(url: string) {
@@ -159,6 +160,17 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
                 />
                 <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.single}</span>
               </label>
+              
+                <label className="gift-radio">
+                <input
+                  type="radio"
+                  name={groupName}
+                  value="experienceGiftBox"
+                  checked={selected === "experienceGiftBox"}
+                  onChange={() => setSelected("experienceGiftBox")}
+                />
+                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.experienceGiftBox}</span>
+              </label>
 
               <label className="gift-radio">
                 <input
@@ -171,16 +183,7 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
                 <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.pack}</span>
               </label>
 
-              <label className="gift-radio">
-                <input
-                  type="radio"
-                  name={groupName}
-                  value="experienceGiftBox"
-                  checked={selected === "experienceGiftBox"}
-                  onChange={() => setSelected("experienceGiftBox")}
-                />
-                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.experienceGiftBox}</span>
-              </label>
+              
 
               <button
                 type="button"
