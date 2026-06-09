@@ -4,13 +4,20 @@ import giftCardImg from "../assets/giftBox.png";
 import giftBanner from "../assets/giftBoxBanner.png";
 import "../scss/GiftCard.css";
 
-type GiftOption = "single" | "pack";
+type GiftOption = "single" | "pack" | "experienceGiftBox";
 
 const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
 
 const VARIANT_BY_OPTION: Record<GiftOption, number> = {
   single: 47047067336961,
   pack: 47047067369729,
+  experienceGiftBox: 49239901274369,
+};
+
+const GIFT_OPTION_LABEL_BY_OPTION: Record<GiftOption, string> = {
+  single: "CRIA O TEU BATOM OU GLOSS LABIAL (55€)",
+  pack: "PACK 2 PRODUTOS (99€)",
+  experienceGiftBox: "EXPERIÊNCIA + CAIXA PRESENTE (60€)",
 };
 
 function goToShopifyAlways(url: string) {
@@ -33,6 +40,7 @@ function toBase64Url(input: string): string {
     /%([0-9A-F]{2})/g,
     (_, hex) => String.fromCharCode(parseInt(hex, 16))
   );
+
   const b64 = btoa(utf8);
   return b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
 }
@@ -63,6 +71,7 @@ function GiftCard() {
   const confirmBtnRef = useRef<HTMLButtonElement | null>(null);
 
   const variantId = useMemo(() => VARIANT_BY_OPTION[selected], [selected]);
+  const selectedLabel = useMemo(() => GIFT_OPTION_LABEL_BY_OPTION[selected], [selected]);
 
   const cartUrl = useMemo(() => {
     return buildShopifyGiftPermalink(variantId, giftProps);
@@ -148,7 +157,7 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
                   checked={selected === "single"}
                   onChange={() => setSelected("single")}
                 />
-                <span className="gift-radio__label">CRIA O TEU BATOM OU GLOSS LABIAL (55€)</span>
+                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.single}</span>
               </label>
 
               <label className="gift-radio">
@@ -159,14 +168,25 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
                   checked={selected === "pack"}
                   onChange={() => setSelected("pack")}
                 />
-                <span className="gift-radio__label">PACK 2 PRODUTOS (99€)</span>
+                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.pack}</span>
+              </label>
+
+              <label className="gift-radio">
+                <input
+                  type="radio"
+                  name={groupName}
+                  value="experienceGiftBox"
+                  checked={selected === "experienceGiftBox"}
+                  onChange={() => setSelected("experienceGiftBox")}
+                />
+                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.experienceGiftBox}</span>
               </label>
 
               <button
                 type="button"
                 className="gift-buy-btn"
                 onClick={handleBuyClick}
-                aria-label={`Comprar ${selected === "single" ? "55€" : "99€"} e preencher dados do presente`}
+                aria-label={`Comprar ${selectedLabel} e preencher dados do presente`}
               >
                 Comprar
               </button>
@@ -218,6 +238,7 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
             <div className="gift-terms__values">
               <p>Os cartões-presente estão disponíveis nos seguintes valores:</p>
               <p>CRIE O SEU BATOM OU GLOSS — 55 €</p>
+              <p>EXPERIÊNCIA + CAIXA PRESENTE — 60 €</p>
               <p>PACK 2 PRODUTOS — 99 €</p>
             </div>
 
