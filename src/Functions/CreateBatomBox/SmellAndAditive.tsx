@@ -45,19 +45,15 @@ function SmellAndAditive({
 }: SmellAndAditivePros) {
   const { smellOptions, additiveOptions, allEsence } = useApp();
 
-  const handleStepAdtive = (adtiveId: AdditivesOptions) => {
-    setAditive((prev) => {
-      const set = new Set(prev);
+ const handleStepAdtive = (adtiveId: AdditivesOptions) => {
+  setAditive((prev) => {
+    if (prev.includes(adtiveId)) {
+      return [];
+    }
 
-      if (set.has(adtiveId)) {
-        set.delete(adtiveId);
-      } else {
-        set.add(adtiveId);
-      }
-
-      return Array.from(set);
-    });
-  };
+    return [adtiveId];
+  });
+};
 
   const infoKeyForAdditive = (id: AdditivesOptions) => `additive:${id}`;
   const infoKeyForSmell = (id: SmelltOptions) => `smell:${id}`;
