@@ -4,7 +4,7 @@ import giftCardImg from "../assets/giftBox.png";
 import giftBanner from "../assets/giftBoxBanner.png";
 import "../scss/GiftCard.css";
 
-type GiftOption = "single" | "pack" | "experienceGiftBox";
+type GiftOption = "single" | "pack" | "experienceGiftBox" | "packGiftBox";
 
 const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
 
@@ -12,13 +12,14 @@ const VARIANT_BY_OPTION: Record<GiftOption, number> = {
   single: 47047067336961,
   pack: 47047067369729,
   experienceGiftBox: 49239901274369,
+  packGiftBox: 49242760478977,
 };
 
 const GIFT_OPTION_LABEL_BY_OPTION: Record<GiftOption, string> = {
   single: "CRIA O TEU BATOM OU GLOSS LABIAL (55€)",
   experienceGiftBox: "EXPERIÊNCIA + CAIXA PRESENTE (60€)",
   pack: "PACK 2 PRODUTOS (99€)",
-  
+  packGiftBox: "PACK 2 PRODUTOS + CAIXA PRESENTE (104€)",
 };
 
 function goToShopifyAlways(url: string) {
@@ -32,7 +33,9 @@ type GiftProperties = {
 
 function safeString(value: unknown): string | null {
   if (value === null || value === undefined) return null;
+
   const v = String(value).trim();
+
   return v.length ? v : null;
 }
 
@@ -43,6 +46,7 @@ function toBase64Url(input: string): string {
   );
 
   const b64 = btoa(utf8);
+
   return b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
 }
 
@@ -53,6 +57,7 @@ function buildShopifyGiftPermalink(variantId: number, props: GiftProperties): st
   properties["Para"] = safeString(props.para) ?? " ";
 
   const encoded = toBase64Url(JSON.stringify(properties));
+
   return `${SHOPIFY_SHOP_URL}/cart/${variantId}:1?properties=${encoded}`;
 }
 
@@ -91,6 +96,7 @@ function GiftCard() {
 
   const handleConfirm = () => {
     if (isConfirmDisabled) return;
+
     goToShopifyAlways(cartUrl);
   };
 
@@ -160,8 +166,8 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
                 />
                 <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.single}</span>
               </label>
-              
-                <label className="gift-radio">
+
+              <label className="gift-radio">
                 <input
                   type="radio"
                   name={groupName}
@@ -183,7 +189,16 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
                 <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.pack}</span>
               </label>
 
-              
+              <label className="gift-radio">
+                <input
+                  type="radio"
+                  name={groupName}
+                  value="packGiftBox"
+                  checked={selected === "packGiftBox"}
+                  onChange={() => setSelected("packGiftBox")}
+                />
+                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.packGiftBox}</span>
+              </label>
 
               <button
                 type="button"
@@ -243,6 +258,7 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
               <p>CRIE O SEU BATOM OU GLOSS — 55 €</p>
               <p>EXPERIÊNCIA + CAIXA PRESENTE — 60 €</p>
               <p>PACK 2 PRODUTOS — 99 €</p>
+              <p>PACK 2 PRODUTOS + CAIXA PRESENTE — 104 €</p>
             </div>
 
             <p className="gift-terms__text">
