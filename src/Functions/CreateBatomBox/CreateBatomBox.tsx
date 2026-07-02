@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { TypesOptions } from "./Types";
-import "../../scss/CreateBatom.css";
+import "../../styles/CreateBatom.css";
 import { getProductConfig, type ProductKey } from "./constants/productConfig";
 import CreateBatomBackButton from "./components/CreateBatomBackButton";
 import CreationSteps from "./components/CreationSteps";

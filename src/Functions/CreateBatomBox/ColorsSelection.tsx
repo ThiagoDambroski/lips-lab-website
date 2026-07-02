@@ -5,7 +5,7 @@ import AutomaticColors from "./automatic/AutomaticColors";
 
 import virtual from "../../assets/virutal as.png";
 import cloud from "../../assets/cloud pens.png";
-import "../../scss/CreateBatom.css";
+import "../../styles/CreateBatom.css";
 import { allColors, type ColorOption } from "./data/builderOptions";
 
 type ColorsSelectionProps = {

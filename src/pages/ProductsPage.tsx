@@ -5,7 +5,7 @@ import { allColors, allEsence, additiveOptions, glitterOptions, smellOptions } f
 import type { AdditivesOptions, EsenceOptions, SmelltOptions } from "../Functions/CreateBatomBox/Types";
 import { productsPageItems, PRODUCT_EXTRA_PRICE, type ProductsPageProduct, type ProductsPageProductId } from "../data/productsPageItems";
 import { buildProductsCartUrl } from "../utils/productsShopifyCart";
-import "../scss/products-page/index.css";
+import "../styles/products-page/index.css";
 
 type ProductBuilderState = {
   selectedColorHexes: string[];

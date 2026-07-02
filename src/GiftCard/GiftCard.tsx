@@ -7,7 +7,7 @@ import GiftPersonalizationModal from "./components/GiftPersonalizationModal";
 import { GIFT_OPTION_LABEL_BY_OPTION, VARIANT_BY_GIFT_OPTION, type GiftOption } from "./constants/giftCardOptions";
 import { buildShopifyGiftPermalink, goToShopifyAlways, type GiftProperties } from "./utils/giftShopify";
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
-import "../scss/GiftCard.css";
+import "../styles/GiftCard.css";
 
 function GiftCard() {
   const groupName = useId();

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { mainNavigationLinks, ROUTES } from "../config/routes";
-import "../scss/NavBar.css";
+import "../styles/NavBar.css";
 
 type NavbarProps = {
   css?: number;

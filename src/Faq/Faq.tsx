@@ -6,7 +6,7 @@ import mockUp from "../assets/fqaImage.jpg";
 import bckLibs from "../assets/libs back.png";
 import ribbonImg from "../assets/perguntasFrequentes.svg";
 import { CONTACT_EMAIL } from "../config/site";
-import "../scss/Faq.css";
+import "../styles/Faq.css";
 
 function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

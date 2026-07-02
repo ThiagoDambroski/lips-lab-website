@@ -2,7 +2,7 @@ import Navbar from "../Navbar/Navbar";
 import ReserveImportantSection from "./components/ReserveImportantSection";
 import ReserveIntroSection from "./components/ReserveIntroSection";
 import back from "../assets/libs back.png";
-import "../scss/reserverNow.css";
+import "../styles/reserverNow.css";
 
 function ReserveNow() {
   return (

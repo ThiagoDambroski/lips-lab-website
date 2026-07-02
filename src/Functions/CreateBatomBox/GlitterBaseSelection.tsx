@@ -3,7 +3,7 @@ import type { BaseOptions } from "./Types";
 import { baseBatom, baseGloss, glitterOptions, type GlitterColor } from "./data/builderOptions";
 import monthBase from "../../assets/mouthBase.png";
 import infoCircle from "../../assets/info circle.svg";
-import "../../scss/CreateBatom.css";
+import "../../styles/CreateBatom.css";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
 
 type GlitterBaseType = {

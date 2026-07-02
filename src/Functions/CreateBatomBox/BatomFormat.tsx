@@ -4,7 +4,7 @@ import batomComeia from "../../assets/batomComeia.png";
 import batomFinal from "../../assets/final batom create.png";
 import comeiaTip from "../../assets/comeia tip.png";
 import lisaTip from "../../assets/lisa tip.png";
-import "../../scss/BatomFormat.css";
+import "../../styles/BatomFormat.css";
 
 type BatomFormatProps = {
   type: TypesOptions | undefined;
