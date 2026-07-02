@@ -363,9 +363,13 @@
 }
 
 .products-builder__option img {
-  max-width: 52px;
-  max-height: 52px;
+  width: 38px;
+  height: 38px;
+  max-width: 38px;
+  max-height: 38px;
   object-fit: contain;
+  flex: 0 0 auto;
+  filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(5650%) hue-rotate(349deg) brightness(83%) contrast(94%);
 }
 
 .products-builder__two-columns {
@@ -638,10 +642,18 @@
   .products-builder__option-grid,
   .products-builder__option-grid--glitter,
   .products-builder__option-grid--large {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .products-summary__badges {
     grid-template-columns: 1fr;
   }
+}
+
+.products-builder__option--active img {
+  filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(5650%) hue-rotate(349deg) brightness(83%) contrast(94%);
+}
+
+.products-builder__option:not(:has(img)) {
+  gap: 0;
 }

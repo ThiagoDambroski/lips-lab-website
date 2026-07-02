@@ -223,17 +223,17 @@ function ProductSelection({ onSelectProduct }: { onSelectProduct: (product: Prod
 
       <div className="products-page__grid" aria-label="Produtos Lips Lab">
         {productsPageItems.map((product) => (
-          <article key={product.id} className="products-page__card">
+          <article key={product.id} className="products-page__card" onClick={() => onSelectProduct(product)}>
             <div className="products-page__image-box">
               <img src={product.image} alt={product.imageAlt} className={`products-page__image products-page__image--${product.id}`} loading="lazy" decoding="async" />
             </div>
 
-            <div className="products-page__content">
+            <div className="products-page__content"  >
               <h2 className="products-page__product-title">{product.title}</h2>
               <span className="products-page__product-line" aria-hidden="true" />
               <p className="products-page__price">{formatPrice(product.basePrice).replace(",00", "")}</p>
 
-              <button type="button" className="products-page__button" onClick={() => onSelectProduct(product)}>
+              <button type="button" className="products-page__button">
                 <span>Personalizar</span>
                 <span className="products-page__button-arrow" aria-hidden="true">›</span>
               </button>
@@ -542,7 +542,7 @@ function ProductInfo({ product }: { product: ProductsPageProduct }) {
         <p key={paragraph} className="products-info__description">{paragraph}</p>
       ))}
 
-      <button type="button" className="products-info__learn-more">Saber mais</button>
+      
 
       <div className="products-info__accordion">
         <details className="products-info__details">
