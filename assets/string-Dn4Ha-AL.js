@@ -1,0 +1,1 @@
+function a(e){if(e==null)return null;const t=String(e).trim();return t.length?t:null}function l(e){const t=encodeURIComponent(e).replace(/%([0-9A-F]{2})/g,(o,n)=>String.fromCharCode(parseInt(n,16)));return btoa(t).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"")}export{a as s,l as t};

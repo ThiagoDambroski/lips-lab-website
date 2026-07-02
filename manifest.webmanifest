@@ -1,0 +1,41 @@
+{
+  "name": "Lips Lab",
+  "short_name": "Lips Lab",
+  "description": "Laboratório de batons, gloss labial e lip oil personalizados em Lisboa.",
+  "lang": "pt-PT",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff3f8",
+  "theme_color": "#d20a1e",
+  "categories": ["beauty", "shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "/libs-site.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reservar experiência",
+      "short_name": "Reservar",
+      "description": "Agenda a tua experiência Lips Lab.",
+      "url": "/reserve"
+    },
+    {
+      "name": "Experiência online",
+      "short_name": "Online",
+      "description": "Cria o teu produto Lips Lab online.",
+      "url": "/create"
+    },
+    {
+      "name": "Gift Card",
+      "short_name": "Gift Card",
+      "description": "Oferece uma experiência Lips Lab.",
+      "url": "/giftCard"
+    }
+  ]
+}
