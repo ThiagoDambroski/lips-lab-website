@@ -1,0 +1,112 @@
+@use "./tokens" as *;
+
+.pink-go-back-arrow {
+  position: absolute;
+  left: 30px;
+  cursor: pointer;
+}
+
+.main-create-box {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    color: #c41123;
+    font-family: "ApercuPro";
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 4.5rem;
+    align-self: center;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    align-self: center;
+    color: #c41123;
+    font-family: "ApercuPro";
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: bolder;
+  }
+}
+
+.gloss-or-batom-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  align-items: end;
+  justify-items: center;
+  padding-bottom: 2rem;
+  gap: 6rem;
+  z-index: 0;
+  background:
+    radial-gradient(
+      900px 420px at 50% 45%,
+      rgba(255, 220, 235, 0.55) 0%,
+      rgba(255, 220, 235, 0.3) 40%,
+      rgba(255, 220, 235, 0.12) 65%,
+      rgba(255, 220, 235, 0) 80%
+    ),
+    linear-gradient(
+      180deg,
+      #fff6fa00 0%,
+      #fde7f088 45%,
+      #f8c9dca8 100%
+    );
+
+  .gloss-or-batom-container-image {
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 480px;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+
+    button {
+      width: 200px;
+      padding: 1rem;
+      background-color: #c41123;
+      color: white;
+      text-transform: uppercase;
+      font-size: 2rem;
+      border-radius: 50px;
+      border: none;
+      font-family: "ApercuPro";
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+    }
+
+    button:disabled,
+    button[disabled] {
+      background-color: #b5b5b5;
+      color: #f0f0f0;
+      cursor: not-allowed;
+      opacity: 0.6;
+      transform: none;
+      box-shadow: none;
+      pointer-events: none;
+    }
+  }
+
+  .gloss-or-batom-container-image-oil img {
+    height: 480px;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+  }
+}

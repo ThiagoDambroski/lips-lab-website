@@ -1,41 +1,54 @@
-export type productType = null | {
-  id:number,
-  type:TypesOptions,
-  color:string | undefined,
-  glitter:string,
-  base:BaseOptions,
-  smell:SmelltOptions,
-  aditive:AdditivesOptions[],
-  esence:EsenceOptions,
-  boxText:string ,
-  boxFont:string,
-  boxImage:string,
-  price:number
+export type ProductType = null | {
+  id: number;
+  type: TypesOptions;
+  color: string | undefined;
+  glitter: string;
+  base: BaseOptions;
+  smell: SmelltOptions;
+  aditive: AdditivesOptions[];
+  esence: EsenceOptions;
+  boxText: string;
+  boxFont: string;
+  boxImage: string;
+  price: number;
+  selected_colors_sub?: string;
+  final_color_hex?: string;
+  charms?: string;
+  batomFormat?: string;
+};
 
-}
+export type productType = ProductType;
 
 export type Palette = {
-  id: string;        // "A".."H"
-  colors: string[];  // exactly 6
+  id: string;
+  colors: string[];
   primary: string;
 };
 
 export type PaletteCombo = {
-  id: string;                 // e.g. "A+B"
-  top: Palette;               // row 1
-  bottom: Palette;            // row 2
-  rows: [string[], string[]]; // [top.colors, bottom.colors]
-  colors: string[];           // flattened 12
-  primary: string;            // usually top.primary
+  id: string;
+  top: Palette;
+  bottom: Palette;
+  rows: [string[], string[]];
+  colors: string[];
+  primary: string;
 };
 
+export type TypesOptions = undefined | "gloss" | "batom" | "oil";
 
-export type TypesOptions = undefined | "gloss" | "batom" | "oil"
+export type GlittersOptions =
+  | "none"
+  | "rosa"
+  | "bronze"
+  | "dourado"
+  | "preateado"
+  | "vermelho"
+  | "arco-iris"
+  | "brilho-intenso"
+  | "po-dourado"
+  | "po diamante";
 
-export type GlittersOptions= "none" |"rosa" | "bronze" | "dourado" | "preateado" | "vermelho" | 
-"arco-iris" |"brilho-intenso"|"po-dourado"|"po diamante"
-
-export type BaseOptions = 
+export type BaseOptions =
   | "none"
   | "cremoso"
   | "matte"
@@ -52,7 +65,7 @@ export type BaseOptions =
   | "BÁLSAMO"
   | "polish"
   | "NATURAL"
-  | "CLASSICO"
+  | "CLASSICO";
 
 export type SmelltOptions =
   | "none"
@@ -71,7 +84,7 @@ export type SmelltOptions =
   | "Rosa Parisiense"
   | "Pink Champanhe";
 
-  export type AdditivesOptions =
+export type AdditivesOptions =
   | "none"
   | "HIDRATANTE"
   | "SUAVIZAÇÃO"
@@ -80,22 +93,25 @@ export type SmelltOptions =
   | "ANTI-IDADE & REGENERADOR"
   | "VOLUME LABIAL";
 
+export type EsenceOptions =
+  | "none"
+  | "Especiarias Exóticas"
+  | "Baunilha"
+  | "Cappuccino"
+  | "LARANJA E FLOR DE MIMOSA"
+  | "Chocolate"
+  | "Rosa Parisiense";
 
-  export type EsenceOptions = 'none' | "Especiarias Exóticas" | "Baunilha" | "Cappuccino" | "LARANJA E FLOR DE MIMOSA" | "Chocolate" | "Rosa Parisiense"
-
-
-  //choose for u
-  export type EyeColorOptions =
-  undefined
+export type EyeColorOptions =
+  | undefined
   | "azul"
   | "verde"
   | "verde-cinza"
   | "castanho"
   | "preto-castanho-escuro";
 
-
-  export type SkinToneOptions =
-  undefined
+export type SkinToneOptions =
+  | undefined
   | "muito-claro"
   | "rosado"
   | "oliva"
@@ -103,12 +119,11 @@ export type SmelltOptions =
   | "escuro"
   | "muito-escuro";
 
-  export type HairColorOptions =
-  undefined
+export type HairColorOptions =
+  | undefined
   | "preto"
   | "castanho-escuro"
   | "castanho-claro"
   | "cinzento"
   | "loiro"
   | "ruivo";
-

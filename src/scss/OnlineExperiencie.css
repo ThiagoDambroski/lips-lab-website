@@ -155,10 +155,10 @@
   cursor: pointer;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-  -webkit-transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
-  transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
-  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease;
-  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  -webkit-transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
 }
 
 .online-buy-section .frist-button-online:hover {
@@ -189,10 +189,10 @@
   cursor: pointer;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-  -webkit-transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
-  transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
-  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease;
-  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  -webkit-transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease;
+  transition: background-color 0.35s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.35s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.35s ease;
 }
 
 .online-buy-section .second-button-online:hover {

@@ -1,0 +1,214 @@
+@import "../OnlineExperiencie.css";
+.online-experience-builder-loader {
+  min-height: 60vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  color: #c41123;
+  font-family: "ApercuPro", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.online-experience-page .how-it-works-section {
+  padding: 0 0 0 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+}
+
+.online-experience-page .how-it-works-section h1 {
+  font-family: "ApercuPro", Arial, sans-serif;
+  font-style: italic;
+  padding-left: 1rem;
+  color: #c41123;
+  font-size: 60px;
+  font-weight: 700;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.online-experience-page .how-it-works-section .how-it-works-div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.45fr 0.55fr;
+      grid-template-columns: 0.45fr 0.55fr;
+  gap: 20px;
+}
+
+.online-experience-page .how-it-works-section .steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #c41123;
+  font-family: "ApercuPro", Arial, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+}
+
+.online-experience-page .how-it-works-section .step-item {
+  position: relative;
+  border-radius: 999px;
+  padding: 18px 20px;
+  --content-left: 110px;
+}
+
+.online-experience-page .how-it-works-section .step-badge {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+}
+
+.online-experience-page .how-it-works-section .step-badge img {
+  display: block;
+  width: 80px;
+  height: auto;
+}
+
+.online-experience-page .how-it-works-section .step-number {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -65%);
+          transform: translate(-50%, -65%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.online-experience-page .how-it-works-section .step-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 12px;
+  padding-left: var(--content-left);
+  padding-right: 10px;
+}
+
+.online-experience-page .how-it-works-section .step-title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.online-experience-page .how-it-works-section .step-toggle {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid #c41123;
+  background: transparent;
+  color: #c41123;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.online-experience-page .how-it-works-section .toggle-icon {
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: -webkit-transform 180ms ease;
+  transition: -webkit-transform 180ms ease;
+  transition: transform 180ms ease;
+  transition: transform 180ms ease, -webkit-transform 180ms ease;
+  display: inline-block;
+}
+
+.online-experience-page .how-it-works-section .step-panel {
+  display: none;
+  padding-left: var(--content-left);
+  padding-right: 10px;
+  padding-top: 8px;
+}
+
+.online-experience-page .how-it-works-section .step-panel p {
+  margin: 0 0 -2rem;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.online-experience-page .how-it-works-section .step-item.is-open .step-panel {
+  display: block;
+}
+
+.online-experience-page .how-it-works-section .step-item.is-open .toggle-icon {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.online-experience-page .how-it-works-section .how-it-works-video {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  top: -150px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.online-experience-page .how-it-works-section .how-it-works-video video {
+  width: 60%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .online-experience-page .how-it-works-section {
+    padding: 1.5rem;
+  }
+  .online-experience-page .how-it-works-section h1 {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+    padding-left: 0;
+  }
+  .online-experience-page .how-it-works-section .how-it-works-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .online-experience-page .how-it-works-section .how-it-works-video {
+    top: 0;
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+  }
+  .online-experience-page .how-it-works-section .how-it-works-video video {
+    width: min(100%, 520px);
+  }
+  .online-experience-page .how-it-works-section .step-item {
+    --content-left: 90px;
+  }
+}

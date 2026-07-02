@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import "../scss/Carrousel.css";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import "../scss/carousel/index.css";
 
 export type ProductItem = {
   id: string | number;
@@ -14,60 +14,51 @@ type ProductCarouselProps = {
   initialIndex?: number;
   autoplayMs?: number;
   cardRatio?: number;
-  onIndexChange?: (idx: number) => void;
+  onIndexChange?: (index: number) => void;
   className?: string;
 };
 
-const clamp = (n: number, min: number, max: number) =>
-  Math.max(min, Math.min(n, max));
+const MOBILE_MAX = 767;
 
-/**
- * Keep this in sync with your CSS breakpoint.
- * If <= 600px => 1 per view, else 2 per view (your original behavior).
- */
-const MOBILE_MAX =767;
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(value, max));
+}
 
 function getCardsPerView(): number {
   if (typeof window === "undefined") return 2;
   return window.innerWidth <= MOBILE_MAX ? 1 : 2;
 }
 
-export const ProductCarousel: React.FC<ProductCarouselProps> = ({
+export default function ProductCarousel({
   items,
   initialIndex = 0,
   autoplayMs = 0,
   cardRatio = 1.05,
   onIndexChange,
   className,
-}) => {
+}: ProductCarouselProps) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const autoplayRef = useRef<number | null>(null);
-
   const [cardsPerView, setCardsPerView] = useState<number>(() => getCardsPerView());
 
-  // Update cardsPerView on resize
   useEffect(() => {
-    const onResize = () => setCardsPerView(getCardsPerView());
-    window.addEventListener("resize", onResize, { passive: true });
-    return () => window.removeEventListener("resize", onResize);
+    const handleResize = () => setCardsPerView(getCardsPerView());
+
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const stepPct = useMemo(() => 100 / cardsPerView, [cardsPerView]);
-
-  const maxIndex = useMemo(() => {
-    return Math.max(0, items.length - cardsPerView);
-  }, [items.length, cardsPerView]);
-
+  const maxIndex = useMemo(() => Math.max(0, items.length - cardsPerView), [items.length, cardsPerView]);
   const [index, setIndex] = useState(() => clamp(initialIndex, 0, maxIndex));
 
-  // Keep index valid if items length or cardsPerView changes
   useEffect(() => {
-    setIndex((curr) => clamp(curr, 0, maxIndex));
+    setIndex((current) => clamp(current, 0, maxIndex));
   }, [maxIndex]);
 
   const goTo = useCallback(
-    (next: number) => {
-      const clamped = clamp(next, 0, maxIndex);
+    (nextIndex: number) => {
+      const clamped = clamp(nextIndex, 0, maxIndex);
       setIndex(clamped);
       onIndexChange?.(clamped);
     },
@@ -85,25 +76,24 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
     if (canNext) goTo(index + 1);
   }, [canNext, goTo, index]);
 
-  // Keyboard arrows when focused
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (!wrapRef.current?.contains(document.activeElement)) return;
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
+      if (event.key === "ArrowLeft") prev();
+      if (event.key === "ArrowRight") next();
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [prev, next]);
 
-  // Autoplay (loops back to 0)
   useEffect(() => {
     if (!autoplayMs || autoplayMs < 600) return;
 
     if (autoplayRef.current) window.clearInterval(autoplayRef.current);
 
     autoplayRef.current = window.setInterval(() => {
-      setIndex((curr) => (curr >= maxIndex ? 0 : curr + 1));
+      setIndex((current) => (current >= maxIndex ? 0 : current + 1));
     }, autoplayMs);
 
     return () => {
@@ -111,7 +101,6 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
     };
   }, [autoplayMs, maxIndex]);
 
-  // Translate by 1 "slot" where slot size depends on cardsPerView
   const translatePct = useMemo(() => -(index * stepPct), [index, stepPct]);
 
   return (
@@ -119,17 +108,11 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
       className={["pc-carousel", className].filter(Boolean).join(" ")}
       ref={wrapRef}
       role="region"
-      aria-label="Products carousel"
+      aria-label="Carrossel de produtos"
       tabIndex={0}
       data-cards-per-view={cardsPerView}
     >
-      <button
-        className="pc-nav"
-        aria-label="Previous"
-        onClick={prev}
-        disabled={!canPrev}
-        type="button"
-      >
+      <button className="pc-nav" aria-label="Produto anterior" onClick={prev} disabled={!canPrev} type="button">
         <span aria-hidden>‹</span>
       </button>
 
@@ -141,9 +124,9 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
             transition: "transform 320ms ease",
           }}
         >
-          {items.map((it) => (
+          {items.map((item) => (
             <li
-              key={it.id}
+              key={item.id}
               className="pc-card"
               style={{
                 aspectRatio: `${cardRatio}`,
@@ -152,13 +135,13 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
             >
               <article className="pc-cardInner">
                 <div className="pc-imageWrap">
-                  <img loading="lazy" src={it.imageUrl} alt={it.alt ?? it.title} />
+                  <img loading="lazy" src={item.imageUrl} alt={item.alt ?? item.title}  decoding="async" />
                 </div>
 
                 <div className="pc-meta">
-                  <h3 className="pc-title">{it.title}</h3>
+                  <h3 className="pc-title">{item.title}</h3>
                   <span className="pc-price">
-                    {typeof it.price === "number" ? `${it.price.toFixed(0)}€` : it.price}
+                    {typeof item.price === "number" ? `${item.price.toFixed(0)}€` : item.price}
                   </span>
                 </div>
               </article>
@@ -167,17 +150,9 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({
         </ul>
       </div>
 
-      <button
-        className="pc-nav"
-        aria-label="Next"
-        onClick={next}
-        disabled={!canNext}
-        type="button"
-      >
+      <button className="pc-nav" aria-label="Produto seguinte" onClick={next} disabled={!canNext} type="button">
         <span aria-hidden>›</span>
       </button>
     </div>
   );
-};
-
-export default ProductCarousel;
+}

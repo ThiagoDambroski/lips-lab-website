@@ -50,7 +50,7 @@ function FristStep({
                       type="button"
                       className="swatch"
                       disabled
-                      title={c.sub} // ✅ show name on hover
+                      title={c.sub}
                       style={{ backgroundColor: c.hex,opacity: 0.9 }}
                     >
                       <span className="hex">{c.hex}</span>
@@ -91,7 +91,7 @@ function FristStep({
                   cursor: "pointer",
                 }}
                 aria-pressed={active}
-                aria-label={`Select color ${c.sub}`}
+                aria-label={`Selecionar cor ${c.sub}`}
               />
               <p>{c.sub}</p>
             </div>
@@ -99,7 +99,7 @@ function FristStep({
         })}
       </div>
 
-      <button onClick={nextStep} disabled={selected.length === 0}>
+      <button type="button" onClick={nextStep} disabled={selected.length === 0}>
         Continuar
       </button>
     </section>

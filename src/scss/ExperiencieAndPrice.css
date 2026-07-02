@@ -1,66 +1,65 @@
-@charset "UTF-8";
-/* ----- ApercuPro Bold ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Bold.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Bold.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Bold Italic ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Italic ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Italic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Italic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Medium.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Medium.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium Italic ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-MediumItalic.ttf") format("truetype");
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Mono ----- */
 @font-face {
   font-family: "ApercuProMono";
   src: url("../assets/fonts/apercu/ApercuPro-Mono.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Mono.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Mono.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Regular (caso exista) ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ivy-prestio*/
 @font-face {
   font-family: "IvyPresto";
   src: url("../assets/fonts/ivy-presto-display/ivy-presto-display.otf") format("ptf");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 .how-it-works-section {
@@ -115,8 +114,6 @@
   border-radius: 999px;
   padding: 18px 20px;
   --content-left: 110px;
-  /* IMPORTANT: CLOSED STATE */
-  /* OPEN STATE */
 }
 
 .how-it-works-section .how-it-works-div .steps-list .step-item .step-badge {
@@ -258,7 +255,6 @@
   width: 60%;
 }
 
-/* Accessibility helper */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -332,7 +328,6 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 30px;
-  /* NEW: pills list like the reference */
 }
 
 .whats-include-section .whats-include-background .whats-include-div .img-include {
@@ -371,7 +366,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /* closed by default */
 }
 
 .whats-include-section .whats-include-background .whats-include-div .include-item .include-panel {
@@ -421,7 +415,6 @@
           box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   padding: 0 25px;
-  /* reset default button styles */
   outline: none;
 }
 
@@ -505,10 +498,10 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
-  transition: background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
-  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
-  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
+  -webkit-transition: background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease;
 }
 
 .reserve-now-section-experiencie button:hover {
@@ -527,11 +520,6 @@
   outline-offset: 4px;
 }
 
-/* ================================
-   RESPONSIVE ADJUSTMENTS (DESKTOP / TABLET)
-   – only additions, no changes to existing styles
-   – phones (< 768px) intentionally left out
-================================ */
 @media (min-width: 1500px) {
   .how-it-works-section .how-it-works-div .how-it-works-video video {
     width: 50%;

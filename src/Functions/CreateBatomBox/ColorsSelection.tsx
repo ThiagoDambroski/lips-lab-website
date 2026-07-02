@@ -1,14 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
 import FristStep from "./Steps/FristStep";
 import SecondStep from "./Steps/SecondStep";
-import { useApp } from "../../Contexts/AppProvider";
 import AutomaticColors from "./automatic/AutomaticColors";
 
 import virtual from "../../assets/virutal as.png";
 import cloud from "../../assets/cloud pens.png";
 import "../../scss/CreateBatom.css";
-
-type ColorOption = { hex: string; sub: string };
+import { allColors, type ColorOption } from "./data/builderOptions";
 
 type ColorsSelectionProps = {
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -19,8 +17,8 @@ type ColorsSelectionProps = {
 
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  doItYourSelf: Boolean | undefined;
-  setDoItYourSelf: React.Dispatch<React.SetStateAction<Boolean | undefined>>;
+  doItYourSelf: boolean | undefined;
+  setDoItYourSelf: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 
   selected: string[];
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
@@ -46,15 +44,9 @@ function ColorsSelection({
   type
 
 }: ColorsSelectionProps) {
-  const { allColors } = useApp();
-
   const hasSuggestedPalette = Boolean(paletteOptions && paletteOptions.length > 0);
   const [isFromAutomatic, setIsFromAutomatic] = useState<boolean>(() => hasSuggestedPalette);
-
-  // selectable colors are ALWAYS base pigments
   const [firstStepColors, setFirstStepColors] = useState<ColorOption[]>(() => allColors);
-
-  // ✅ allowed set (base pigments only)
   const allowedHexSet = useMemo(() => {
     return new Set(allColors.map((c) => c.hex.toLowerCase()));
   }, [allColors]);
@@ -66,8 +58,6 @@ function ColorsSelection({
   useEffect(() => {
     setIsFromAutomatic(hasSuggestedPalette);
   }, [hasSuggestedPalette]);
-
-  // ✅ IMPORTANT FIX: ignore any hex not in base pigments
   const toggleColor = (hex: string) => {
     const normalized = hex.toLowerCase();
     if (!allowedHexSet.has(normalized)) return;
@@ -83,8 +73,6 @@ function ColorsSelection({
       }
 
       if (prev.length >= 4) return prev;
-
-      // store weights using the exact hex from allColors (canonical casing)
       const canonicalHex =
         allColors.find((c) => c.hex.toLowerCase() === normalized)?.hex ?? hex;
 
@@ -177,8 +165,6 @@ function ColorsSelection({
     setStep(-1);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
-
-  // ✅ suggested palette is DISPLAY ONLY, but sub must come from base pigments if possible
   const continueFromAutomaticPalette = (paletteHexes: string[]) => {
     const uniqueHexes = Array.from(new Set(paletteHexes)).filter(Boolean);
 
@@ -209,13 +195,13 @@ function ColorsSelection({
             Escolhe como vais viver a <br /> tua experiência lips lab:
           </h3>
           <div>
-            <button onClick={startAutomaticFlow}>
-              <img src={virtual} alt="" />
+            <button type="button" onClick={startAutomaticFlow} aria-label="Começar com assistência virtual">
+              <img src={virtual} alt="" decoding="async" loading="lazy" aria-hidden="true" />
               assistência virtual
             </button>
 
-            <button onClick={startManualFromScratch}>
-              <img src={cloud} alt="" />
+            <button type="button" onClick={startManualFromScratch} aria-label="Criar a partir do zero">
+              <img src={cloud} alt="" decoding="async" loading="lazy" aria-hidden="true" />
               cria a partir do zero
             </button>
           </div>

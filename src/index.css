@@ -1,88 +1,184 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a{
-  color: white;
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+  background: #fff8fb;
+  color: #2b1014;
+  font-family: "ApercuPro", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
   text-decoration: none;
 }
 
-html, body { overflow-x: hidden; }   /* safety net */
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
 
-/* ----- ApercuPro Bold ----- */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(196, 17, 35, 0.45);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100000;
+  transform: translateY(-150%);
+  border-radius: 999px;
+  background: #c41123;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.route-loader {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  color: #c41123;
+  font-family: "ApercuPro", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.rolling-card-2 {
+  padding: 0.5rem;
+  background-color: #e55498;
+  color: white;
+  font-family: "ApercuPro", Arial, sans-serif;
+}
+
 @font-face {
   font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro-Bold.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Bold.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Bold.ttf") format("truetype");
-  font-weight: 700;
+  src: url("./assets/fonts/apercu/ApercuPro.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Bold Italic ----- */
 @font-face {
   font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-BoldItalic.ttf") format("truetype");
-  font-weight: 700;
-  font-style: italic;
-}
-
-/* ----- ApercuPro Italic ----- */
-@font-face {
-  font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro-Italic.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Italic.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Italic.ttf") format("truetype");
+  src: url("./assets/fonts/apercu/ApercuPro-Italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium ----- */
 @font-face {
   font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro-Medium.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Medium.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Medium.ttf") format("truetype");
+  src: url("./assets/fonts/apercu/ApercuPro-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium Italic ----- */
 @font-face {
   font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-MediumItalic.ttf") format("truetype");
+  src: url("./assets/fonts/apercu/ApercuPro-MediumItalic.woff2") format("woff2");
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Mono ----- */
+@font-face {
+  font-family: "ApercuPro";
+  src: url("./assets/fonts/apercu/ApercuPro-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ApercuPro";
+  src: url("./assets/fonts/apercu/ApercuPro-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "ApercuProMono";
-  src: url("../assets/fonts/apercu/ApercuPro-Mono.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro-Mono.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro-Mono.ttf") format("truetype");
+  src: url("./assets/fonts/apercu/ApercuPro-Mono.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Regular (caso exista) ----- */
 @font-face {
-  font-family: "ApercuPro";
-  src: url("../assets/fonts/apercu/ApercuPro.woff2") format("woff2"),
-       url("../assets/fonts/apercu/ApercuPro.woff") format("woff"),
-       url("../assets/fonts/apercu/ApercuPro.ttf") format("truetype");
+  font-family: "IvyPresto";
+  src: url("./assets/fonts/ivy-presto-display/ivy-presto-display.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-.rolling-card-2{
-    padding: 0.5rem;
-    background-color: #e55498;
-    color: white;
-    font-family: "ApercuPro";
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

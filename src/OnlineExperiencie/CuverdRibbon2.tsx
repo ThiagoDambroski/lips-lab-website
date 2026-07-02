@@ -17,11 +17,8 @@ export default function CurvedText({
   color = "#c41123",
   repeatCount = 20,
 }: Props) {
-  // linha base “virtual”
   const baseY = height * 0.7;
   const curveHeight = 45; // intensidade da curvatura
-
-  // curva: sobe bastante à esquerda, achata no meio e desce SUAVEMENTE à direita
   const d = `
     M 0 ${baseY}
     C ${width * 0.10} ${baseY - curveHeight * 1.5},

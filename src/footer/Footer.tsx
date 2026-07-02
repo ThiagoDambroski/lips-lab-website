@@ -1,40 +1,52 @@
-
-import "../scss/NavBar.css"
-import logo from "../assets/logo.png"
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";
+import { CLAIMS_BOOK_URL, CONTACT_EMAIL, CONTACT_PHONE, INSTAGRAM_URL } from "../config/site";
+import { footerNavigationLinks, legalNavigationLinks } from "../config/routes";
+import "../scss/navigation/index.css";
 
 function Footer() {
   return (
     <footer>
-        <div className='footer-div'>
-            <img src={logo} alt="logo" />
-                <div className="footer-sub-div">
-                    <ul>
-                    <li><NavLink to = "/reserve">reserva agora</NavLink></li>
-                    <li><NavLink to = "/create">experiência online</NavLink></li>
-                    <li><NavLink to = "/faq">perguntas frequentes</NavLink></li>
-                    </ul>
-                    <ul className="footer-legal">
-                        <li><NavLink to="/payment-methods">meios de pagamento</NavLink></li>
-                        <li><NavLink to="/terms">termos & condições</NavLink></li>
-                        <li><NavLink to="/privacy">política de privacidade</NavLink></li>
-                        <li><a href="https://www.livroreclamacoes.pt/Inicio/">livros de reclamações</a></li>
-                    </ul>
+      <div className="footer-div">
+        <img src={logo} alt="Lips Lab" loading="lazy"  decoding="async" />
+        <div className="footer-sub-div">
+          <nav aria-label="Links rápidos">
+            <ul>
+              {footerNavigationLinks.map((link) => (
+                <li key={link.path}>
+                  <NavLink to={link.path}>{link.label}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-                    <div className='footer-social'>
-                        <span>SOCIAL</span>
-                        <a href="https://www.instagram.com/lipslab.co/">@lipslab.pt</a>
-                        <span>CONTACTO</span>
-                        <a onClick={() => window.location.href = "mailto:lipslab.co@gmail.com"}>lipslab.co@gmail.com</a>
-                        <a href="">+351 933 554 001</a>
-                    </div>
-                </div>
-                
-            
+          <nav aria-label="Informação legal">
+            <ul className="footer-legal">
+              {legalNavigationLinks.map((link) => (
+                <li key={link.path}>
+                  <NavLink to={link.path}>{link.label}</NavLink>
+                </li>
+              ))}
+              <li>
+                <a href={CLAIMS_BOOK_URL} target="_blank" rel="noreferrer">
+                  livro de reclamações
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <address className="footer-social">
+            <span>SOCIAL</span>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">@lipslab.pt</a>
+            <span>CONTACTO</span>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}>{CONTACT_PHONE}</a>
+          </address>
         </div>
-        <p>© 2025 lips lab. All rights reserverd.</p>
+      </div>
+      <p>© 2025 Lips Lab. All rights reserved.</p>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

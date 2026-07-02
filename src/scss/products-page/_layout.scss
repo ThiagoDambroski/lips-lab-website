@@ -1,0 +1,113 @@
+.products-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 58px;
+  align-items: stretch;
+}
+
+.products-page__card {
+  min-height: 690px;
+  padding: 56px 70px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.11);
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.045);
+}
+
+.products-page__image-box {
+  height: 430px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.products-page__image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.products-page__image--gloss {
+  max-height: 405px;
+}
+
+.products-page__image--batom {
+  max-height: 410px;
+}
+
+.products-page__content {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.products-page__product-title {
+  margin: 0;
+  color: #151515;
+  font-size: clamp(1.65rem, 2vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.products-page__product-line {
+  width: 52px;
+  height: 2px;
+  margin: 14px 0 18px;
+  background: #e8428b;
+  border-radius: 999px;
+}
+
+.products-page__price {
+  margin: 0 0 30px;
+  color: #151515;
+  font-size: clamp(2rem, 2.45vw, 2.65rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.products-page__button {
+  width: min(100%, 352px);
+  min-height: 58px;
+  padding: 0 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border: 2px solid #e8428b;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #e8428b;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.products-page__button:hover {
+  background: #e8428b;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.products-page__button:focus-visible {
+  outline: 3px solid rgba(232, 66, 139, 0.32);
+  outline-offset: 4px;
+}
+
+.products-page__button-arrow {
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 0.8;
+}

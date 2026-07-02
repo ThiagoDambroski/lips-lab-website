@@ -1,4 +1,4 @@
-/* ----- ApercuPro Bold ----- */
+
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Bold.woff2") format("woff2"),
@@ -6,9 +6,10 @@
        url("../assets/fonts/apercu/ApercuPro-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Bold Italic ----- */
+
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff2") format("woff2"),
@@ -16,9 +17,10 @@
        url("../assets/fonts/apercu/ApercuPro-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Italic ----- */
+
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Italic.woff2") format("woff2"),
@@ -26,9 +28,10 @@
        url("../assets/fonts/apercu/ApercuPro-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium ----- */
+
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Medium.woff2") format("woff2"),
@@ -36,9 +39,10 @@
        url("../assets/fonts/apercu/ApercuPro-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium Italic ----- */
+
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff2") format("woff2"),
@@ -46,9 +50,10 @@
        url("../assets/fonts/apercu/ApercuPro-MediumItalic.ttf") format("truetype");
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Mono ----- */
+
 @font-face {
   font-family: "ApercuProMono";
   src: url("../assets/fonts/apercu/ApercuPro-Mono.woff2") format("woff2"),
@@ -56,9 +61,10 @@
        url("../assets/fonts/apercu/ApercuPro-Mono.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Regular (caso exista) ----- */
+
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro.woff2") format("woff2"),
@@ -66,14 +72,16 @@
        url("../assets/fonts/apercu/ApercuPro.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ivy-prestio*/
+
 @font-face {
   font-family: "IvyPresto";
   src: url("../assets/fonts/ivy-presto-display/ivy-presto-display.otf") format("ptf");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 .how-it-works-section {
@@ -194,7 +202,7 @@
           }
         }
 
-        /* IMPORTANT: CLOSED STATE */
+        
         .step-panel {
           display: none;
           padding-left: var(--content-left);
@@ -211,7 +219,7 @@
           }
         }
 
-        /* OPEN STATE */
+        
         &.is-open {
           border-radius: 50px;
 
@@ -242,7 +250,7 @@
 }
 
 
-/* Accessibility helper */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -305,7 +313,7 @@
         width: 200px;
       }
 
-      /* NEW: pills list like the reference */
+      
       .include-list {
         list-style: none;
         margin: 0;
@@ -324,7 +332,7 @@
         flex-direction: column;
         align-items: center;
 
-        /* closed by default */
+        
         .include-panel {
           display: none;
           width: 60%;
@@ -371,7 +379,7 @@
         cursor: pointer;
         padding: 0 25px;
 
-        /* reset default button styles */
+        
         outline: none;
 
         &:focus-visible {
@@ -471,11 +479,7 @@
 }
 
 
-/* ================================
-   RESPONSIVE ADJUSTMENTS (DESKTOP / TABLET)
-   – only additions, no changes to existing styles
-   – phones (< 768px) intentionally left out
-================================ */
+
 
 $desktop-xl: 1500px;
 $laptop-max: 1400px; 

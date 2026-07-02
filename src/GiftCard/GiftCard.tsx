@@ -1,65 +1,13 @@
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import giftCardImg from "../assets/giftBox.png";
 import giftBanner from "../assets/giftBoxBanner.png";
-import "../scss/GiftCard.css";
-
-type GiftOption = "single" | "pack" | "experienceGiftBox" | "packGiftBox";
-
-const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
-
-const VARIANT_BY_OPTION: Record<GiftOption, number> = {
-  single: 47047067336961,
-  pack: 47047067369729,
-  experienceGiftBox: 49239901274369,
-  packGiftBox: 49242760478977,
-};
-
-const GIFT_OPTION_LABEL_BY_OPTION: Record<GiftOption, string> = {
-  single: "CRIA O TEU BATOM OU GLOSS LABIAL (55€)",
-  experienceGiftBox: "EXPERIÊNCIA + CAIXA PRESENTE (60€)",
-  pack: "PACK 2 PRODUTOS (99€)",
-  packGiftBox: "PACK 2 PRODUTOS + CAIXA PRESENTE (104€)",
-};
-
-function goToShopifyAlways(url: string) {
-  window.location.assign(url);
-}
-
-type GiftProperties = {
-  de: string;
-  para: string;
-};
-
-function safeString(value: unknown): string | null {
-  if (value === null || value === undefined) return null;
-
-  const v = String(value).trim();
-
-  return v.length ? v : null;
-}
-
-function toBase64Url(input: string): string {
-  const utf8 = encodeURIComponent(input).replace(
-    /%([0-9A-F]{2})/g,
-    (_, hex) => String.fromCharCode(parseInt(hex, 16))
-  );
-
-  const b64 = btoa(utf8);
-
-  return b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
-}
-
-function buildShopifyGiftPermalink(variantId: number, props: GiftProperties): string {
-  const properties: Record<string, string> = {};
-
-  properties["De"] = safeString(props.de) ?? " ";
-  properties["Para"] = safeString(props.para) ?? " ";
-
-  const encoded = toBase64Url(JSON.stringify(properties));
-
-  return `${SHOPIFY_SHOP_URL}/cart/${variantId}:1?properties=${encoded}`;
-}
+import GiftOptionSelector from "./components/GiftOptionSelector";
+import GiftPersonalizationModal from "./components/GiftPersonalizationModal";
+import { GIFT_OPTION_LABEL_BY_OPTION, VARIANT_BY_GIFT_OPTION, type GiftOption } from "./constants/giftCardOptions";
+import { buildShopifyGiftPermalink, goToShopifyAlways, type GiftProperties } from "./utils/giftShopify";
+import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
+import "../scss/gift-card/index.css";
 
 function GiftCard() {
   const groupName = useId();
@@ -68,7 +16,6 @@ function GiftCard() {
 
   const [selected, setSelected] = useState<GiftOption>("single");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [giftProps, setGiftProps] = useState<GiftProperties>({
     de: "",
     para: "",
@@ -76,70 +23,36 @@ function GiftCard() {
 
   const confirmBtnRef = useRef<HTMLButtonElement | null>(null);
 
-  const variantId = useMemo(() => VARIANT_BY_OPTION[selected], [selected]);
+  const closeModal = useCallback(() => setIsModalOpen(false), []);
+  const openModal = useCallback(() => setIsModalOpen(true), []);
+
+  const variantId = useMemo(() => VARIANT_BY_GIFT_OPTION[selected], [selected]);
   const selectedLabel = useMemo(() => GIFT_OPTION_LABEL_BY_OPTION[selected], [selected]);
 
-  const cartUrl = useMemo(() => {
-    return buildShopifyGiftPermalink(variantId, giftProps);
-  }, [variantId, giftProps]);
-
+  const cartUrl = useMemo(() => buildShopifyGiftPermalink(variantId, giftProps), [variantId, giftProps]);
   const isDeFilled = useMemo(() => giftProps.de.trim().length > 0, [giftProps.de]);
   const isParaFilled = useMemo(() => giftProps.para.trim().length > 0, [giftProps.para]);
   const isConfirmDisabled = useMemo(() => isDeFilled !== isParaFilled, [isDeFilled, isParaFilled]);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  const handleBuyClick = () => {
-    openModal();
-  };
-
-  const handleConfirm = () => {
-    if (isConfirmDisabled) return;
-
-    goToShopifyAlways(cartUrl);
-  };
+  useBodyScrollLock(isModalOpen, closeModal);
 
   useEffect(() => {
     if (!isModalOpen) return;
-
-    const scrollY = window.scrollY;
-    const prevOverflow = document.body.style.overflow;
-    const prevPosition = document.body.style.position;
-    const prevTop = document.body.style.top;
-    const prevWidth = document.body.style.width;
-
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = "100%";
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeModal();
-    };
-
-    window.addEventListener("keydown", onKeyDown);
     confirmBtnRef.current?.focus();
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-
-      document.body.style.overflow = prevOverflow;
-      document.body.style.position = prevPosition;
-      document.body.style.top = prevTop;
-      document.body.style.width = prevWidth;
-
-      window.scrollTo(0, scrollY);
-    };
   }, [isModalOpen]);
+
+  const handleConfirm = () => {
+    if (isConfirmDisabled) return;
+    goToShopifyAlways(cartUrl);
+  };
 
   return (
     <>
       <Navbar css={1} />
 
-      <main>
+      <main id="main-content">
         <section className="gift-intro">
-          <img src={giftCardImg} alt="" />
+          <img src={giftCardImg} alt="Cartão-presente Lips Lab" loading="eager"  decoding="async" />
 
           <div>
             <h2>
@@ -155,60 +68,13 @@ Oferece uma experiência Lips Lab e permite que a pessoa presenteada viva o mome
 Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
             </p>
 
-            <div className="gift-radio-group" role="radiogroup" aria-label="Escolhe o cartão-presente">
-              <label className="gift-radio">
-                <input
-                  type="radio"
-                  name={groupName}
-                  value="single"
-                  checked={selected === "single"}
-                  onChange={() => setSelected("single")}
-                />
-                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.single}</span>
-              </label>
-
-              <label className="gift-radio">
-                <input
-                  type="radio"
-                  name={groupName}
-                  value="experienceGiftBox"
-                  checked={selected === "experienceGiftBox"}
-                  onChange={() => setSelected("experienceGiftBox")}
-                />
-                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.experienceGiftBox}</span>
-              </label>
-
-              <label className="gift-radio">
-                <input
-                  type="radio"
-                  name={groupName}
-                  value="pack"
-                  checked={selected === "pack"}
-                  onChange={() => setSelected("pack")}
-                />
-                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.pack}</span>
-              </label>
-
-              <label className="gift-radio">
-                <input
-                  type="radio"
-                  name={groupName}
-                  value="packGiftBox"
-                  checked={selected === "packGiftBox"}
-                  onChange={() => setSelected("packGiftBox")}
-                />
-                <span className="gift-radio__label">{GIFT_OPTION_LABEL_BY_OPTION.packGiftBox}</span>
-              </label>
-
-              <button
-                type="button"
-                className="gift-buy-btn"
-                onClick={handleBuyClick}
-                aria-label={`Comprar ${selectedLabel} e preencher dados do presente`}
-              >
-                Comprar
-              </button>
-            </div>
+            <GiftOptionSelector
+              groupName={groupName}
+              selected={selected}
+              selectedLabel={selectedLabel}
+              onChange={setSelected}
+              onBuyClick={openModal}
+            />
           </div>
         </section>
 
@@ -220,7 +86,7 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
             <br />
             única e memorável.
           </p>
-          <img src={giftBanner} alt="" />
+          <img src={giftBanner} alt="Oferta de experiência Lips Lab" loading="lazy"  decoding="async" />
         </section>
 
         <section className="gift-terms">
@@ -294,67 +160,16 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
         </section>
 
         {isModalOpen && (
-          <div
-            className="gift-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={modalTitleId}
-            aria-describedby={modalDescId}
-            onMouseDown={(e) => {
-              if (e.target === e.currentTarget) closeModal();
-            }}
-          >
-            <div className="gift-modal__card" onMouseDown={(e) => e.stopPropagation()}>
-              <div className="gift-modal__header">
-                <h3 id={modalTitleId} className="gift-modal__title">
-                  Dados do cartão-presente
-                </h3>
-                <button type="button" className="gift-modal__close" onClick={closeModal} aria-label="Fechar">
-                  ×
-                </button>
-              </div>
-
-              <div className="gift-modal__form">
-                <label className="gift-modal__field">
-                  <span>De</span>
-                  <input
-                    type="text"
-                    value={giftProps.de}
-                    onChange={(e) => setGiftProps((p) => ({ ...p, de: e.target.value }))}
-                    placeholder="Ex: Letícia"
-                    autoComplete="off"
-                  />
-                </label>
-
-                <label className="gift-modal__field">
-                  <span>Para</span>
-                  <input
-                    type="text"
-                    value={giftProps.para}
-                    onChange={(e) => setGiftProps((p) => ({ ...p, para: e.target.value }))}
-                    placeholder="Ex: Maria"
-                    autoComplete="off"
-                  />
-                </label>
-              </div>
-
-              <div className="gift-modal__actions">
-                <button type="button" className="gift-modal__secondary" onClick={closeModal}>
-                  Cancelar
-                </button>
-                <button
-                  ref={confirmBtnRef}
-                  type="button"
-                  className="gift-modal__primary"
-                  onClick={handleConfirm}
-                  aria-label="Confirmar e ir para o carrinho"
-                  disabled={isConfirmDisabled}
-                >
-                  Confirmar
-                </button>
-              </div>
-            </div>
-          </div>
+          <GiftPersonalizationModal
+            titleId={modalTitleId}
+            descriptionId={modalDescId}
+            giftProps={giftProps}
+            confirmBtnRef={confirmBtnRef}
+            isConfirmDisabled={isConfirmDisabled}
+            onChange={setGiftProps}
+            onClose={closeModal}
+            onConfirm={handleConfirm}
+          />
         )}
       </main>
     </>

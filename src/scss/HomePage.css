@@ -1,66 +1,65 @@
-@charset "UTF-8";
-/* ----- ApercuPro Bold ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Bold.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Bold.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Bold Italic ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-BoldItalic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Italic ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Italic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Italic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-Medium.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Medium.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Medium Italic ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-MediumItalic.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-MediumItalic.ttf") format("truetype");
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Mono ----- */
 @font-face {
   font-family: "ApercuProMono";
   src: url("../assets/fonts/apercu/ApercuPro-Mono.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro-Mono.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro-Mono.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ApercuPro Regular (caso exista) ----- */
 @font-face {
   font-family: "ApercuPro";
   src: url("../assets/fonts/apercu/ApercuPro.woff2") format("woff2"), url("../assets/fonts/apercu/ApercuPro.woff") format("woff"), url("../assets/fonts/apercu/ApercuPro.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ----- ivy-prestio*/
 @font-face {
   font-family: "IvyPresto";
   src: url("../assets/fonts/ivy-presto-display/ivy-presto-display.otf") format("ptf");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 .open-page-section {
@@ -543,26 +542,20 @@
   font-size: 1.8rem;
   border-radius: 45px;
   color: white;
-  -webkit-transition: background-color 0.25s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
-  transition: background-color 0.25s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
-  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  -webkit-transition: background-color 0.25s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
 }
 
 .home-end button:hover {
   background-color: #c4172a;
-  /* slightly lighter red */
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: 0 8px 20px rgba(179, 14, 31, 0.35);
           box-shadow: 0 8px 20px rgba(179, 14, 31, 0.35);
 }
 
-/* ==========================================================
-   LARGE DESKTOP RESPONSIVE FIXES
-   (keeps full-width design, prevents stretching)
-   Only additions — no changes to existing rules
-========================================================== */
 @media (min-width: 1500px) {
   .experiencie-libs-cards-container .libs-card .libs-card__title {
     font-size: 1.5rem;
@@ -627,27 +620,22 @@
     font-size: 15px;
     width: 30%;
   }
-  /* ✅ horizontal scroll that actually works */
   .experiencie-libs-cards-container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     gap: 18px;
     overflow-x: auto;
-    /* use auto, not scroll */
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     padding: 30px 16px 15px;
-    /* makes scrolling feel natural */
     -ms-scroll-snap-type: x mandatory;
         scroll-snap-type: x mandatory;
-    /* IMPORTANT: prevent cards from shrinking */
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
             align-items: stretch;
   }
   .experiencie-libs-cards-container .libs-card {
-    /* ✅ each card has a realistic width and does not shrink */
     -webkit-box-flex: 0;
         -ms-flex: 0 0 200px;
             flex: 0 0 200px;
@@ -738,27 +726,22 @@
   .experiencie-libs .experiencie-libs-intro div {
     margin-bottom: 1rem;
   }
-  /* ✅ horizontal scroll that actually works */
   .experiencie-libs-cards-container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     gap: 18px;
     overflow-x: auto;
-    /* use auto, not scroll */
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     padding: 30px 16px 15px;
-    /* makes scrolling feel natural */
     -ms-scroll-snap-type: x mandatory;
         scroll-snap-type: x mandatory;
-    /* IMPORTANT: prevent cards from shrinking */
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
             align-items: stretch;
   }
   .experiencie-libs-cards-container .libs-card {
-    /* ✅ each card has a realistic width and does not shrink */
     -webkit-box-flex: 0;
         -ms-flex: 0 0 200px;
             flex: 0 0 200px;
@@ -840,6 +823,87 @@
     margin-top: 2rem;
     font-size: 3vw;
     margin-left: 2rem;
+  }
+}
+
+.experiencie-libs .experiencie-libs-intro .home-step-link {
+  width: 25%;
+  min-height: 44px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 8px 24px;
+  border: 3px dashed #e45397;
+  border-radius: 50px;
+  background-color: #fff;
+  color: #e45397;
+  font-size: 20px;
+  font-family: "IvyPresto";
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin-bottom: 3rem;
+}
+
+.experiencie-libs .experiencie-libs-intro .home-step-link:hover {
+  background-color: #ffe4ef;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.home-end .home-end-button {
+  background-color: #b30e1f;
+  padding: 2.4rem;
+  margin-top: 6rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  border: none;
+  font-size: 1.8rem;
+  border-radius: 45px;
+  color: white;
+  -webkit-transition: background-color 0.25s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+
+.home-end .home-end-button:hover {
+  background-color: #c4172a;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 20px rgba(179, 14, 31, 0.35);
+          box-shadow: 0 8px 20px rgba(179, 14, 31, 0.35);
+}
+
+.home-banner-icons,
+.home-marca-ex div,
+.home-end {
+  content-visibility: auto;
+  contain-intrinsic-size: 700px;
+}
+
+@media (max-width: 1024px) {
+  .experiencie-libs .experiencie-libs-intro .home-step-link {
+    width: min(70%, 320px);
+  }
+}
+
+@media (max-width: 767px) {
+  .home-end .home-end-button {
+    padding: 1.4rem 1.75rem;
+    font-size: clamp(1rem, 5vw, 1.35rem);
+    margin-top: 2rem;
   }
 }
 /*# sourceMappingURL=HomePage.css.map */

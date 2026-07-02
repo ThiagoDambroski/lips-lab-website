@@ -38,12 +38,8 @@ function preloadImage(src: string): Promise<void> {
 export default function ToneCarousel({ slides, autoplayMs }: Props) {
   const [index, setIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-
-  // Avoid extra renders/interval resets by keeping "animating lock" in a ref too
   const animatingRef = useRef(false);
   const timerRef = useRef<number | null>(null);
-
-  // Defensive: keep index valid if slides length changes.
   useEffect(() => {
     setIndex((prev) => (slides.length === 0 ? 0 : Math.min(prev, slides.length - 1)));
   }, [slides.length]);
@@ -55,16 +51,11 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
     slides.forEach((s, i) => map.set(s.activePill, i));
     return map;
   }, [slides]);
-
-  // ✅ Preload ALL images once (mount / slides change)
   useEffect(() => {
     if (!slides.length) return;
 
     const all = slides.flatMap((s) => [s.circlesImageSrc, s.collageImageSrc]);
-
-    // Use idle time if available to avoid stealing main thread during first render
     const run = () => {
-      // unique
       const unique = Array.from(new Set(all));
       unique.forEach((src) => preloadImage(src));
     };
@@ -72,12 +63,9 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
     if ("requestIdleCallback" in window) {
       (window as any).requestIdleCallback(run);
     } else {
-      // fallback
       setTimeout(run, 0);
     }
   }, [slides]);
-
-  // ✅ Optional: “warm” neighbor slides whenever index changes (extra smooth)
   useEffect(() => {
     if (slides.length <= 1) return;
 
@@ -116,8 +104,6 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
     lockAnimation();
     setIndex((prev) => (prev + 1) % slides.length);
   };
-
-  // ✅ Autoplay: no dependency on animating (avoid interval thrash)
   useEffect(() => {
     if (!autoplayMs || slides.length <= 1) return;
 
@@ -126,10 +112,7 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
     }, autoplayMs);
 
     return () => window.clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoplayMs, slides.length]); // <-- keep it stable
-
-  // Cleanup timer on unmount
+  }, [autoplayMs, slides.length]);
   useEffect(() => {
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current);
@@ -141,7 +124,7 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
   return (
     <section className="tone-carousel">
       <div className="tone-carousel__slide" style={{ backgroundColor: current.bgColor }}>
-        {/* LEFT */}
+        
         <aside className="tone-carousel__left">
           <h2 className="tone-carousel__title">
             UMA TONALIDADE <br /> PARA CADA LADO TEU
@@ -150,7 +133,7 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
           <img
             className="tone-carousel__circles"
             src={current.circlesImageSrc}
-            alt=""
+            alt={`Paleta de tons ${current.activePill.toLowerCase()} Lips Lab`}
             decoding="async"
             loading="eager"
           />
@@ -181,12 +164,12 @@ export default function ToneCarousel({ slides, autoplayMs }: Props) {
           </div>
         </aside>
 
-        {/* RIGHT */}
+        
         <div className="tone-carousel__right">
           <div className={`tone-carousel__collage ${animating ? "is-animating" : ""}`}>
             <img
               src={current.collageImageSrc}
-              alt="Collage"
+              alt={`Inspiração visual para tons ${current.activePill.toLowerCase()}`}
               decoding="async"
               loading="eager"
               draggable={false}

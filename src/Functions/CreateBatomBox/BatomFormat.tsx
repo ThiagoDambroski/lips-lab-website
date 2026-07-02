@@ -4,7 +4,7 @@ import batomComeia from "../../assets/batomComeia.png";
 import batomFinal from "../../assets/final batom create.png";
 import comeiaTip from "../../assets/comeia tip.png";
 import lisaTip from "../../assets/lisa tip.png";
-import "../../scss/BatomFormat.css";
+import "../../scss/create-batom/batom-format.css";
 
 type BatomFormatProps = {
   type: TypesOptions | undefined;
@@ -28,15 +28,15 @@ function BatomFormat({
     value === batomFormat ? { backgroundColor: "#c41123" } : {};
 
   return (
-    <main className="batom-format-main">
-      <img src={batomComeia} alt="Batom com textura colmeia" />
+    <main className="create-batom-format batom-format-main">
+      <img src={batomComeia} alt="Batom com textura colmeia"  decoding="async"  loading="lazy" />
 
-      <div className="batom-format-container">
+      <div className="create-batom-format__content batom-format-container">
         <h1 className="title-button">Textura</h1>
 
-        <div className="batom-format-options">
+        <div className="create-batom-format__options batom-format-options">
           <div>
-            <img src={comeiaTip} alt="Textura colmeia" />
+            <img src={comeiaTip} alt="Textura colmeia"  decoding="async"  loading="lazy" />
             <button
               type="button"
               onClick={() => setBatomFormat("comeia")}
@@ -47,7 +47,7 @@ function BatomFormat({
           </div>
 
           <div>
-            <img src={lisaTip} alt="Textura lisa" />
+            <img src={lisaTip} alt="Textura lisa"  decoding="async"  loading="lazy" />
             <button
               type="button"
               onClick={() => setBatomFormat("liso")}
@@ -60,7 +60,7 @@ function BatomFormat({
 
         <button
           type="button"
-          className="engraving-continue"
+          className="create-batom-format__continue engraving-continue"
           onClick={() => setStep(8)}
           disabled={!batomFormat}
         >
@@ -68,7 +68,7 @@ function BatomFormat({
         </button>
       </div>
 
-      <img src={batomFinal} alt="Prévia do batom final" />
+      <img src={batomFinal} alt="Prévia do batom final"  decoding="async"  loading="lazy" />
     </main>
   );
 }

@@ -1,0 +1,875 @@
+@use "./tokens" as *;
+
+@media (min-width: $desktop-xl) {
+}
+
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+  .main-create-box h1 {
+    font-size: 6vw;
+  }
+
+  .main-create-box p {
+    font-size: 4vw;
+    margin-bottom: 4rem;
+  }
+
+  .gloss-or-batom-container {
+    gap: 4vw;
+  }
+
+  .item-display .item-display-container div h2 {
+    font-size: 3vw;
+  }
+
+  .main-color-selection-options {
+    gap: 0.5vw;
+  }
+
+  .main-color-selection-options h3 {
+    font-size: 3.5vw;
+  }
+
+  .item-display .item-display-container div .p-1 {
+    font-size: 2vw;
+  }
+
+  .item-display .item-display-container p {
+    font-size: 1.2vw;
+    padding-bottom: 10px;
+  }
+
+  .main-color-selection-options div button {
+    height: 24vh;
+    width: 20vw;
+    font-size: 2vw;
+  }
+
+  .item-display {
+    max-width: 50%;
+    margin-right: 1.5rem;
+  }
+
+  .main-color-selection-options div button img {
+    width: 6vw;
+  }
+
+  .automatic-color-container .automatic-color-bgk {
+    width: 90%;
+  }
+
+  .automatic-color-container .automatic-color-bgk h2 {
+    font-size: 4vw;
+  }
+
+  .automatic-color-container .automatic-color-bgk p {
+    font-size: 2vw;
+  }
+
+  .automatic-color-container .automatic-color-bgk button {
+    width: 40%;
+  }
+
+  .automatic-color-container .automatic-color-bgk div img {
+    width: 70%;
+  }
+
+  .palette-result .pallet-colors-container {
+    width: 70%;
+  }
+
+  .palette-result .continue-pallet-button {
+    width: 25%;
+  }
+
+  .title-button {
+    width: 50%;
+    font-size: 2.5vw;
+  }
+
+  .item-img-color-wrapper,
+  .item-img-2-color-wrapper {
+    width: 40vw;
+    height: auto;
+  }
+
+  .colors-selection .colors-containers.is-palette {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .colors-selection h3 {
+    font-size: 2.5vw;
+  }
+
+  .colors-selection .colors-section-div .colors-section {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .item-img-2-create {
+    width: 100%;
+  }
+
+  .colors-selection button {
+    width: 70%;
+    font-size: 2.5vw;
+  }
+
+  .color-swatch {
+    width: 70px;
+    height: 60px;
+  }
+
+  .continue-button {
+    width: 60%;
+  }
+
+  .add-color-btn {
+    width: 70px;
+    height: 70px;
+  }
+
+  .glitter-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .glitter-intro {
+    align-self: self-start;
+    justify-content: center;
+    align-items: self-start;
+    margin-bottom: 1rem;
+  }
+
+  .glitter-intro button {
+    position: absolute;
+    bottom: -90px;
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+
+  .glitter-intro h2 {
+    font-size: 3vw;
+    text-align: center;
+    align-self: center;
+    padding-left: 1rem;
+  }
+
+  .glliter-selection-div ul {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .texture-selection-section .texture-selection-section-button {
+    width: 45%;
+  }
+
+  .texture-selection-section ul {
+    width: 80%;
+  }
+
+  .texture-selection-section .texture-selection-section-button {
+    width: 50%;
+  }
+
+  .adtive-section .adtive-container ul li {
+    width: 15vw;
+    height: 15vw;
+  }
+
+  .adtive-section .adtive-container ul li p {
+    font-size: 1vw;
+  }
+
+  .adtive-section .adtive-container ul li .abs-img {
+    width: 3vw;
+  }
+
+  .engraving-span-title {
+    font-size: 2vw;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .engraving-fonts {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .engraving-title {
+    font-size: 2vw;
+    margin-bottom: 1rem;
+  }
+
+  .engraving-test-fonts {
+    font-size: 1vw;
+  }
+
+  .engraving-input-wrapper {
+    width: 50vw;
+  }
+
+  .engraving-symbol-list {
+    
+  }
+
+  .formula-section {
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .formula-section h2 {
+    font-size: 3vw;
+    margin-bottom: 0;
+  }
+
+  .formula-clean-header span:first-child {
+    font-size: 2vw;
+  }
+
+  .formula-clean-body p {
+    font-size: 1.5vw;
+  }
+
+  .purchse-screen-logo .purchase-summary {
+    gap: 50px;
+  }
+}
+
+@media (min-width: $tablet-min) and (max-width: 1238px) {
+  .taste-section .taste-container ul {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+  }
+
+  .taste-section .title-button {
+    width: 100%;
+  }
+
+  
+
+  .taste-section .taste-container {
+    width: 100%;
+  }
+
+  .esence-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .taste-section .taste-container li div .abs-img {
+    width: 2vw;
+    top: -15px;
+  }
+
+  .aditive-button-container div .creative {
+    font-size: 2vw;
+  }
+
+  .aditive-button-container div {
+    position: initial;
+    margin-bottom: 10px;
+  }
+
+  .aditive-button-container {
+    flex-direction: column-reverse;
+  }
+
+  .continue-button {
+    font-size: 3vw;
+    width: 100%;
+  }
+
+  .glitter-info-card {
+    width: 60%;
+  }
+}
+
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+  .engraving-continue{
+    width: 90%;
+  }
+  .pink-go-back-arrow {
+    left: 1vw;
+    width: 10vw;
+  }
+
+  .main-create-box {
+    background-size: 300vw;
+  }
+
+  .main-create-box h1 {
+    font-size: 6.5vw;
+    margin-bottom: 1rem;
+  }
+
+  .main-create-box p {
+    font-size: 4.5vw;
+    margin-bottom: 0;
+  }
+
+  .gloss-or-batom-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: end;
+    gap: 8vw;
+    padding: 1rem;
+    min-height: 65vh;
+    background:
+      radial-gradient(
+        900px 420px at 50% 45%,
+        rgba(255, 220, 235, 0.55) 0%,
+        rgba(255, 220, 235, 0.3) 0%,
+        rgba(255, 220, 235, 0.12) 5%,
+        rgba(255, 220, 235, 0) 80%
+      ),
+      linear-gradient(
+        180deg,
+        #fff6fa00 0%,
+        #fde7f000 45%,
+        #f8c9dca8 100%
+      );
+  }
+
+  .gloss-or-batom-container .gloss-or-batom-container-image {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .gloss-or-batom-container .gloss-or-batom-container-image img {
+    width: 100%;
+    height: 38vh;
+    object-fit: contain;
+    object-position: bottom center;
+  }
+
+  .gloss-or-batom-container .gloss-or-batom-container-image button {
+    width: 100%;
+    padding: 2vw;
+    font-size: 4vw;
+  }
+
+  .gloss-or-batom-container .gloss-or-batom-container-image-oil {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 45%;
+  }
+
+  .gloss-or-batom-container .gloss-or-batom-container-image-oil img {
+    height: 34vh;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+  }
+
+  .main-color-selection .main-color-back {
+    flex-direction: column;
+    min-height: 80vh;
+    justify-content: center;
+  }
+
+  .main-color-selection {
+    background-size: 250vw;
+  }
+
+  .item-display .item-display-container div h2 {
+    font-size: 5vw;
+    margin-bottom: 0.2vw;
+  }
+
+  .main-color-selection-options {
+    padding-top: 2rem;
+    gap: 0;
+  }
+
+  .main-color-selection-options h3 {
+    font-size: 6vw;
+  }
+
+  .item-display .item-display-container div .p-1 {
+    font-size: 3vw;
+    margin-bottom: 1vw;
+  }
+
+  .item-display .item-display-container div img {
+    margin-bottom: 3vw;
+    width: 100%;
+  }
+
+  .item-display .item-display-container p {
+    font-size: 2.5vw;
+    padding-bottom: 10px;
+  }
+
+  .item-display .pink-gloss {
+    top: -1rem;
+  }
+
+  .item-display .pink-gloss-oil {
+    width: 35%;
+    top: -1rem;
+    right: -2rem;
+  }
+
+  .main-color-selection-options div button {
+    height: 40vw;
+    width: 40vw;
+    font-size: 3vw;
+  }
+
+  .item-display {
+    max-width: 80%;
+    margin-right: 1.5rem;
+  }
+
+  .main-color-selection-options div button img {
+    
+  }
+
+  .automatic-color-container .automatic-color-bgk {
+    width: 90%;
+  }
+
+  .automatic-color-container .automatic-color-bgk h2 {
+    font-size: 5vw;
+  }
+
+  .automatic-color-container .automatic-color-bgk p {
+    font-size: 2.5vw;
+    margin-bottom: 1rem;
+  }
+
+  .automatic-color-container .automatic-color-bgk button {
+    width: 80%;
+    font-size: 4vw;
+  }
+
+  .automatic-color-container .automatic-color-bgk .go-back-arrow {
+    top: 0;
+    left: 10px;
+    width: 10vw;
+  }
+
+  .automatic-color-container .automatic-color-bgk div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10vw;
+    margin-bottom: 10vw;
+  }
+
+  .automatic-color-container .automatic-color-bgk div img {
+    max-width: 80%;
+    max-height: 90%;
+
+    object-fit: cover;
+    display: block;
+  }
+
+  .palette-result h2 {
+    font-size: 8vw;
+  }
+
+  .palette-result p {
+    font-size: 3vw;
+  }
+
+  .palette-result .palette-row {
+    gap: 5px;
+  }
+
+  .palette-result .swatch {
+    width: 13vw;
+    height: 13vw;
+  }
+
+  .palette-result .pallet-colors-container {
+    width: 100%;
+  }
+
+  .palette-result .continue-pallet-button {
+    width: 60%;
+    font-size: 5vw;
+  }
+
+  .colors-selection {
+    gap: 15px;
+  }
+
+  .title-button {
+    width: 60%;
+    font-size: 4vw;
+    padding: 0.5rem;
+  }
+
+  .item-display-2 {
+    background-color: #f6b7cf0c;
+  }
+
+  .colors-selection .colors-containers.is-palette .item-img-color-wrapper,
+  .item-img-2-color-wrapper {
+    align-self: center;
+    justify-self: center;
+    height: 580px;
+  }
+
+  .item-color-fill {
+    height: 51%;
+  }
+
+  .colors-selection .colors-containers.is-palette {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .colors-selection h3 {
+    font-size: 4vw;
+  }
+
+  .colors-selection .colors-containers {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .colors-selection .colors-section-div .colors-section {
+    width: 15vw;
+    height: 15vw;
+  }
+
+  .colors-selection .colors-section-div p {
+    font-size: 3vw;
+  }
+
+  .item-img-2-create {
+    height: 580px;
+  }
+
+  .colors-selection button {
+    width: 70%;
+    font-size: 3.5vw;
+    padding: 1rem;
+  }
+
+  .colors-selection h4 {
+    font-size: 3vw;
+  }
+
+  .colors-selection .colors-containers.is-palette {
+    padding: 1rem;
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+
+  .color-swatch {
+    width: 20vw;
+    height: 15vw;
+  }
+
+  .continue-button {
+    width: 70%;
+    font-size: 4vw;
+  }
+
+  .add-color-btn {
+    width: 65px;
+    height: 65px;
+  }
+
+  .second-step {
+    gap: 1rem;
+  }
+
+  .plus {
+    font-size: 10vw;
+  }
+
+  .add-color-text {
+    font-size: 6vw;
+  }
+
+  .glitter-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .glitter-intro {
+    align-self: self-start;
+    justify-content: center;
+    align-items: self-start;
+    margin-bottom: 1rem;
+  }
+
+  .glitter-intro button {
+    position: absolute;
+    bottom: -90px;
+    left: 15vw;
+    margin-bottom: 1rem;
+  }
+
+  .glitter-intro h2 {
+    width: 100%;
+    padding-left: 1rem;
+    font-size: 5vw;
+    align-self: center;
+    text-align: center;
+  }
+
+  .glliter-selection-div ul {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .glliter-selection-div ul li img {
+    width: 15vw;
+  }
+
+  .glitter-info-card {
+    width: 100vw;
+    border-radius: 0;
+  }
+
+  .texture-selection-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .texture-selection-section img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .texture-selection-section .texture-selection-section-button {
+    width: 45%;
+  }
+
+  .texture-selection-section ul {
+    width: 90%;
+  }
+
+  .texture-selection-section .texture-selection-section-button {
+    width: 90%;
+    font-size: 4vw;
+  }
+
+  .texture-selection-section div {
+    gap: 1rem;
+  }
+
+  .texture-selection-section ul strong {
+    font-size: 4vw;
+  }
+
+  .texture-selection-section ul p {
+    font-size: 3vw;
+  }
+
+  .adtive-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .adtive-section img {
+    width: 100%;
+  }
+
+  .adtive-section .adtive-container {
+    padding-top: 2rem;
+  }
+
+  .adtive-section .adtive-container ul {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .adtive-section .adtive-container ul li {
+  
+  }
+
+  .adtive-section .adtive-container ul li p {
+    font-size: 3vw;
+  }
+
+  .adtive-section .adtive-container ul li .abs-img {
+    width: 6vw;
+  }
+
+  .adtive-section .adtive-container ul {
+    padding: 1rem;
+  }
+
+  .adtive-section .adtive-container button {
+    width: 80%;
+    font-size: 5vw;
+  }
+
+  .esence-container button {
+    p {
+      font-size: 3.5vw;
+    }
+  }
+
+  .taste-section .taste-container ul {
+    align-self: center;
+    justify-self: center;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  .taste-section .title-button {
+    font-size: 5vw;
+    width: 100%;
+  }
+
+  .taste-section .taste-container li div{
+    width: 80px;
+    height: 80px;
+  }
+
+  .taste-section .taste-container h3 {
+    font-size: 7vw;
+    text-align: center;
+  }
+
+  .taste-section .taste-container {
+    width: 100%;
+  }
+
+  .esence-container {
+    justify-self: center;
+    grid-template-columns: 1fr;
+  }
+
+  .taste-section .taste-container li div .abs-img {
+    width: 5vw;
+    top: -20px;
+    right: 10px;
+  }
+
+  .aditive-button-container div .creative {
+    font-size: 3vw;
+  }
+
+  .aditive-button-container div {
+    position: initial;
+    justify-self: center;
+    align-self: center;
+    font-size: 3vw;
+    margin-bottom: 10px;
+  }
+
+  .aditive-button-container {
+    align-self: center;
+    flex-direction: column-reverse;
+  }
+
+  .taste-section .span-botom {
+    font-size: 4.5vw;
+    text-align: center;
+  }
+
+  .aditive-button-container div p {
+    font-size: 3.5vw;
+  }
+
+  .engraving-span-title {
+    font-size: 4vw;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .engraving-fonts {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .engraving {
+    gap: 0;
+  }
+
+  .engraving-title {
+    font-size: 3vw;
+    margin-bottom: 1rem;
+  }
+
+  .engraving-test-fonts {
+    font-size: 3vw;
+  }
+
+  .engraving-input-wrapper {
+    width: 90%;
+  }
+
+ 
+
+  .formula-section {
+    align-self: center;
+    padding: 1rem;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .formula-section h2 {
+    font-size: 4vw;
+    margin-bottom: 0;
+  }
+
+  .formula-clean-header span:first-child {
+    font-size: 3.5vw;
+  }
+
+  .formula-clean-body p {
+    font-size: 3vw;
+  }
+
+  .purchse-screen {
+    background-size: 250vw;
+    padding: 0;
+  }
+
+  .purchse-screen-logo > img {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+  .purchse-screen-logo .button-container button{
+    padding: 1rem;
+  }
+  .purchse-screen-logo .purchse-screen-logo-div h2 {
+    font-size: 5vw;
+  }
+
+  .purchse-screen-logo .purchse-screen-logo-div p {
+    margin-top: 1rem;
+    font-size: 3.5vw;
+  }
+
+  .purchse-screen-logo .purchase-summary > li > div {
+    justify-self: center;
+    align-self: center;
+  }
+
+  .purchse-screen-logo .purchase-summary .edit-icon {
+    width: 20px;
+    bottom: -10px;
+  }
+
+  .purchse-screen-logo .button-container span {
+    font-size: 5vw;
+  }
+
+  .purchse-screen-logo .button-container button p {
+    font-size: 5vw;
+    width: 70vw;
+  }
+}

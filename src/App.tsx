@@ -1,46 +1,49 @@
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import AppProvider from "./Contexts/AppProvider";
+import Footer from "./footer/Footer";
+import ScrollToTop from "./ScrollToTop";
+import PageSeo from "./components/PageSeo";
+import { ROUTES } from "./config/routes";
 
-import HomePage from './HomePage/HomePage'
-import Faq from './Faq/Faq';
-import OnlineExperiencie from './OnlineExperiencie/OnlineExperiencie';
-import ReserveNow from './ReserveNow/ReserveNow';
-import { Routes, Route } from 'react-router-dom';
-import AppProvider from './Contexts/AppProvider';
-import Footer from './footer/Footer';
-import ExperiencieAndPrice from './expereiencieAndPrice/ExperiencieAndPrice';
-import ScrollToTop from './ScrollToTop';
-import CartPage from './Cart/CartPage';
-import GiftCard from './GiftCard/GiftCard';
-import PaymentMethodsPage from "./InfoPage/PaymentMethodsPage";
-import TermsPage from "./InfoPage/TermsPage";
-import PrivacyPage from "./InfoPage/PrivacyPage";
-
+const HomePage = lazy(() => import("./HomePage/HomePage"));
+const ReserveNow = lazy(() => import("./ReserveNow/ReserveNow"));
+const OnlineExperiencie = lazy(() => import("./OnlineExperiencie/OnlineExperiencie"));
+const ExperiencieAndPrice = lazy(() => import("./expereiencieAndPrice/ExperiencieAndPrice"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
+const Faq = lazy(() => import("./Faq/Faq"));
+const GiftCard = lazy(() => import("./GiftCard/GiftCard"));
+const CartPage = lazy(() => import("./Cart/CartPage"));
+const PaymentMethodsPage = lazy(() => import("./InfoPage/PaymentMethodsPage"));
+const TermsPage = lazy(() => import("./InfoPage/TermsPage"));
+const PrivacyPage = lazy(() => import("./InfoPage/PrivacyPage"));
 
 function App() {
-
   return (
-    <>
-   
-      <AppProvider>
-        <ScrollToTop />
+    <AppProvider>
+      <PageSeo />
+      <ScrollToTop />
+      <a className="skip-link" href="#main-content">
+        Saltar para o conteúdo principal
+      </a>
+      <Suspense fallback={<main className="route-loader" aria-live="polite">A carregar...</main>}>
         <Routes>
-            
-            <Route path='/' element ={<HomePage/>}/>
-            <Route path='/reserve' element={<ReserveNow/>}/>
-            <Route path='/create' element = {<OnlineExperiencie/>}/>
-            <Route path='/faq' element={<Faq/>}/>
-            <Route path='experiencie' element={<ExperiencieAndPrice/>}/>
-            <Route path='/giftCard' element={<GiftCard/>}/>
-            <Route path="/cart" element={<CartPage />} /> 
-            <Route path="/payment-methods" element={<PaymentMethodsPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-
+          <Route path={ROUTES.home} element={<HomePage />} />
+          <Route path={ROUTES.reserve} element={<ReserveNow />} />
+          <Route path={ROUTES.onlineExperience} element={<OnlineExperiencie />} />
+          <Route path={ROUTES.experience} element={<ExperiencieAndPrice />} />
+          <Route path={ROUTES.products} element={<ProductsPage />} />
+          <Route path={ROUTES.faq} element={<Faq />} />
+          <Route path={ROUTES.giftCard} element={<GiftCard />} />
+          <Route path={ROUTES.cart} element={<CartPage />} />
+          <Route path={ROUTES.paymentMethods} element={<PaymentMethodsPage />} />
+          <Route path={ROUTES.terms} element={<TermsPage />} />
+          <Route path={ROUTES.privacy} element={<PrivacyPage />} />
         </Routes>
-      </AppProvider>
-      <Footer/>
-      
-    </>
-  )
+      </Suspense>
+      <Footer />
+    </AppProvider>
+  );
 }
 
-export default App
+export default App;

@@ -1,29 +1,15 @@
-import { useState, useRef } from "react";
+import { useRef, useState, type SyntheticEvent } from "react";
 import libs from "../assets/libs-display.png";
 import video from "../assets/experiencie video.mp4";
-import "../scss/ExperiencieAndPrice.css";
+import { howItWorksSteps } from "../data/experienceContent";
 
 function HowItWorksSection() {
-  type Step = {
-    id: number;
-    title: string;
-    description: string;
-  };
-
-  const steps: Step[] = [
-    { id: 1, title: "ESCOLHE A BASE", description: "Descobre as diferentes opções de acabamento e escolhe a que mais gostas." },
-    { id: 2, title: "CRIA A COR", description: "Trabalha com uma especialista em cores para encontrares a cor perfeita para ti" },
-    { id: 3, title: "ADICIONA O AROMA E A ESSÊNCIA", description: "Escolhe o aroma e a essência que dão uma personalidade única à tua criação." },
-    { id: 4, title: "ESCOLHE O ADITIVO", description: "Dá o toque final. São vários os aditivos que podes acrescentar à tua fórmula perfeita." },
-    { id: 5, title: "PERSONALIZA A EMBALAGEM", description: "Grava o teu nome na embalagem e adiciona charms para tornar o teu produto único" },
-  ];
-
   const [openId, setOpenId] = useState<number | null>(null);
   const toggle = (id: number) => setOpenId((prev) => (prev === id ? null : id));
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const blockPlay = (e: React.SyntheticEvent) => {
+  const blockPlay = (e: SyntheticEvent) => {
     e.preventDefault();
     e.stopPropagation();
     videoRef.current?.pause();
@@ -37,14 +23,14 @@ function HowItWorksSection() {
 
       <div className="how-it-works-div">
         <ul className="steps-list">
-          {steps.map((step) => {
+          {howItWorksSteps.map((step) => {
             const isOpen = openId === step.id;
             const panelId = `step-panel-${step.id}`;
 
             return (
               <li key={step.id} className={`step-item ${isOpen ? "is-open" : ""}`}>
                 <div className="step-badge">
-                  <img src={libs} alt="" aria-hidden="true" />
+                  <img src={libs} alt="" aria-hidden="true"  decoding="async"  loading="lazy" />
                   <span className="step-number">{step.id}</span>
                 </div>
 
@@ -62,7 +48,7 @@ function HowItWorksSection() {
                   >
                     <span className="toggle-icon" aria-hidden="true">+</span>
                     <span className="sr-only">
-                      {isOpen ? "Hide details" : "Show details"}
+                      {isOpen ? "Ocultar detalhes" : "Mostrar detalhes"}
                     </span>
                   </button>
                 </div>

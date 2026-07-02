@@ -1,0 +1,624 @@
+@use "./tokens" as *;
+
+.main-color-selection {
+  .main-color-back {
+    display: flex;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    background:
+      radial-gradient(
+        1200px 500px at 50% 55%,
+        rgba(255, 205, 225, 0.48) 0%,
+        rgba(255, 205, 225, 0.24) 45%,
+        rgba(255, 205, 225, 0) 72%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 245, 248, 0) 0%,
+        rgba(255, 230, 240, 0.22) 55%,
+        rgba(255, 205, 225, 0.36) 80%,
+        rgba(255, 180, 210, 0.5) 100%
+      );
+  }
+}
+
+.item-display {
+  max-width: 40%;
+  background-color: #ffe6ed;
+  border: 1px solid #c41123;
+  border-radius: 0 50px 50px 0;
+  display: flex;
+
+  .item-display-container {
+    padding-left: 1rem;
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h2 {
+        font-style: italic;
+        text-transform: uppercase;
+        font-family: "ApercuPro";
+        font-size: 2rem;
+        color: #c41123;
+        margin-bottom: 1.5rem;
+      }
+
+      .p-1 {
+        font-family: "ApercuPro";
+        color: #c41123;
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 2rem;
+      }
+
+      img {
+        width: 90%;
+        margin-bottom: 3rem;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-family: "ApercuPro";
+      color: #c41123;
+    }
+  }
+
+  .pink-gloss {
+    position: relative;
+    width: 40%;
+    top: -2rem;
+    right: -3rem;
+  }
+
+  .pink-gloss-oil {
+    width: 32%;
+    object-fit: contain;
+  }
+
+  .item-img {
+    width: 300px;
+    height: 500px;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.main-color-selection-options {
+  width: 100%;
+  display: flex;
+  padding-top: 5rem;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+
+  h3 {
+    text-align: center;
+    color: #c41123;
+    font-size: 3rem;
+    font-style: italic;
+    text-transform: uppercase;
+    font-family: "ApercuPro";
+    margin-bottom: 2rem;
+  }
+
+  div {
+    display: flex;
+    gap: 20px;
+
+    button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 230px;
+      background-color: #c41123;
+      border: none;
+      color: white;
+      font-family: "ApercuPro";
+      padding: 1rem;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      text-transform: uppercase;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+      cursor: pointer;
+
+      img {
+        width: 60px;
+        height: 70px;
+        margin-bottom: 20px;
+      }
+
+      &:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        filter: brightness(1.08);
+      }
+
+      &:disabled {
+        background-color: #b5b5b5;
+        color: #eeeeee;
+        cursor: not-allowed;
+        filter: grayscale(100%);
+        box-shadow: none;
+        transform: none;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.item-img-2-create {
+  width: 400px;
+  height: 700px;
+  position: relative;
+  z-index: 2;
+}
+
+.item-img-color-wrapper,
+.item-img-2-color-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 400px;
+  height: 700px;
+  padding: 0;
+}
+
+.item-img,
+.item-img-2 {
+  position: relative;
+  z-index: 2;
+}
+
+.item-color-fill {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 45%;
+  width: 36%;
+  height: 360px;
+  border-radius: 0 0 80px 80px;
+  overflow: hidden;
+  background-image:
+    linear-gradient(to top, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 40%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 60%);
+}
+
+.item-color-fill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 22%;
+  width: 22%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  pointer-events: none;
+}
+
+.item-color-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.item-batom-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 400px;
+  height: 700px;
+  padding: 0;
+  overflow: visible;
+}
+
+.item-batom-img {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.batom-color-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-mask-image: var(--batomMask);
+  mask-image: var(--batomMask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-image:
+    linear-gradient(to top, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 45%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 55%);
+}
+
+.batom-tip-shading {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 1;
+}
+
+.title-button {
+  font-family: "ApercuPro";
+  color: white;
+  width: 40%;
+  font-weight: bold;
+  font-size: 2rem;
+  border-radius: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+  padding: 1rem;
+  background-color: #c41123;
+}
+
+.colors-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 30px;
+  width: 100%;
+
+  .pallet-colors-container {
+    width: 92%;
+    max-width: 520px;
+    background: #ffffff;
+    border-radius: 9999px;
+    padding: 18px 22px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto;
+  }
+
+  .palette-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .swatch {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+    cursor: default;
+    position: relative;
+    outline: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow:
+        inset 0 2px 3px rgba(255, 255, 255, 0.35),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.12);
+    }
+
+    .hex {
+      display: none;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .pallet-colors-container {
+      padding: 14px 16px;
+      gap: 10px;
+    }
+
+    .palette-row {
+      gap: 12px;
+    }
+
+    .swatch {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  h3 {
+    font-style: italic;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: "ApercuPro";
+    width: 100%;
+    font-weight: bolder;
+    color: #c41123;
+  }
+
+  h4 {
+    font-style: italic;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.8rem;
+    font-family: "ApercuPro";
+    font-weight: bolder;
+    color: #c41123;
+  }
+
+  .colors-containers {
+    padding: 2rem;
+    border: 2px solid pink;
+    border-radius: 50px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+
+  .colors-containers.is-palette {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 18px;
+    row-gap: 18px;
+    padding: 2.5rem;
+  }
+
+  .colors-section-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    .colors-section {
+      width: 80px;
+      height: 80px;
+    }
+
+    p {
+      font-family: "ApercuPro";
+      text-align: center;
+      color: #c41123;
+      font-size: 0.7rem;
+    }
+  }
+
+  button {
+    background-color: #c41123;
+    border: none;
+    width: 45%;
+    border-radius: 50px;
+    color: white;
+    padding: 1rem;
+    font-size: 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    font-family: "ApercuPro";
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+
+  button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+  }
+
+  button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.second-step {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.color-row {
+  display: grid;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.color-row__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.color-swatch {
+  width: 90px;
+  height: 80px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+}
+
+.color-range {
+  --accent: #e55499;
+  --val: 0;
+  width: 100%;
+  height: 32px;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      var(--accent) 0%,
+      var(--accent) calc(var(--val) * 1%),
+      rgba(0, 0, 0, 0.15) calc(var(--val) * 1%),
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--accent);
+    margin-top: -8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+
+  &:active::-webkit-slider-thumb {
+    transform: scale(0.96);
+  }
+
+  &::-moz-range-track {
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  &::-moz-range-progress {
+    height: 12px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  &::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--accent);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.step-second-exclude-button {
+  font-family: "ApercuPro";
+  font-size: 12px;
+  font-weight: bold;
+  background: none;
+  border-radius: 50px;
+  width: 70%;
+  align-self: center;
+  justify-self: center;
+  border: 2px solid #e7549a;
+  margin-top: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+
+  &:hover {
+    background-color: #e7549a;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.add-color-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.add-color-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px dashed black;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: black;
+  }
+}
+
+.plus {
+  font-size: 3rem;
+  color: black;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.add-color-text {
+  font-family: "ApercuPro", serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.continue-button {
+  width: 40%;
+  background-color: #c41123;
+  border: none;
+  padding: 1rem;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+  }
+}

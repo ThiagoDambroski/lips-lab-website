@@ -1,0 +1,39 @@
+.products-page {
+  min-height: 60vh;
+  padding: 2rem 1rem 5rem;
+  background: #fff8fb;
+  color: #c41123;
+  font-family: "ApercuPro", Arial, sans-serif;
+}
+
+.products-page__hero {
+  width: unquote("min(900px, 92vw)");
+  margin: 0 auto;
+  padding: unquote("clamp(3rem, 8vw, 6rem)") unquote("clamp(1.5rem, 5vw, 4rem)");
+  border: 2px dashed rgba(196, 17, 35, 0.35);
+  border-radius: 32px;
+  background: #f9d1dc;
+  text-align: center;
+}
+
+.products-page__eyebrow {
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.products-page h1 {
+  margin-bottom: 1rem;
+  font-size: unquote("clamp(3rem, 10vw, 7rem)");
+  font-style: italic;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.products-page p {
+  max-width: 620px;
+  margin-inline: auto;
+  font-size: unquote("clamp(1rem, 2.2vw, 1.25rem)");
+  line-height: 1.5;
+}

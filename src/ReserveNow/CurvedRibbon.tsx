@@ -1,14 +1,11 @@
-
-import apercu from "../assets/fonts/apercu/ApercuPro-Bold.eot"
-
 type Props = {
   text?: string;
   width?: number;
   height?: number;
-  fontSize?: number;     // smaller by default
+  fontSize?: number;
   color?: string;
-  lineGap?: number;      // vertical distance between the two lines
-  repeatCount?: number;  // how many times to repeat the string
+  lineGap?: number;
+  repeatCount?: number
 };
 
 export default function CurvedText({
@@ -42,14 +39,14 @@ export default function CurvedText({
       </defs>
 
       
-      <text fontFamily={apercu} fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
+      <text fontFamily="ApercuPro" fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
         <textPath href="#curve-1" startOffset="0%">
           {repeat(text, repeatCount)}
         </textPath>
       </text>
 
       
-      <text fontFamily={apercu} fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
+      <text fontFamily="ApercuPro" fontSize={fontSize} fontWeight={500} fill={color} letterSpacing="1">
         <textPath href="#curve-2" startOffset="0%">
           {repeat(text, repeatCount)}
         </textPath>

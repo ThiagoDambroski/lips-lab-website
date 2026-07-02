@@ -1,0 +1,109 @@
+@use "./base" as *;
+@media (min-width: $desktop-xl) {
+  .online-how-it-works-section h1 {
+    width: 75%;
+  }
+
+  .online-how-it-works-section .online-how-it-works-section-div img {
+    max-height: 100vh;
+  }
+}
+
+@media (max-width: $laptop-min) and (min-width: $tablet-min) {
+  .online-buy-section .frist-button-online {
+    width: 80%;
+    font-size: 40px;
+  }
+
+  .online-buy-section .online-buy-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+  }
+
+  .online-buy-section .online-buy-container .online-buy-card {
+    width: 100%;
+    padding-bottom: 2rem;
+  }
+
+  .online-buy-section .online-buy-container .online-buy-card-oil {
+    grid-column: 1 / -1;
+    width: 50%;
+    justify-self: center;
+  }
+
+  .online-buy-section .second-button-online {
+    width: 70%;
+    font-size: 25px;
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: $phone-min) and (max-width: $phone-max) {
+  .online-buy-section {
+    padding: 2rem;
+  }
+
+  .online-experience-back-main {
+    background-size: 280vw;
+  }
+
+  .online-buy-section .frist-button-online {
+    width: 100%;
+    font-size: 5vw;
+    padding: 1.5rem;
+  }
+
+  .online-buy-section .online-buy-p {
+    font-size: 5vw;
+  }
+
+  .img-site {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .online-buy-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .online-buy-section .online-buy-container {
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .online-buy-section .online-buy-container .online-buy-card {
+    width: 100%;
+    padding-bottom: 1.5rem;
+  }
+
+  .online-buy-section .online-buy-container .online-buy-card .online-buy-card-img-wrapper {
+    height: 180px;
+  }
+
+  .online-buy-section .online-buy-container .online-buy-card img {
+    width: 20vw;
+    max-width: 90px;
+  }
+
+  .online-buy-section .online-buy-container .online-buy-card-oil img {
+  width: 32vw;
+  max-width: 120px;
+}
+
+  .online-buy-section .online-buy-container .online-buy-card h3 {
+    font-size: 4.5vw;
+  }
+
+  .online-buy-section .online-buy-container .online-buy-card span {
+    font-size: 3.5vw;
+  }
+
+  .online-buy-section .second-button-online {
+    width: 100%;
+    font-size: 5vw;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}

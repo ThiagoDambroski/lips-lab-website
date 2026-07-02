@@ -1,19 +1,19 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, type KeyboardEvent } from "react";
 import type {
   EyeColorOptions,
   HairColorOptions,
   SkinToneOptions,
   PaletteCombo,
 } from "../Types";
-import { useApp } from "../../../Contexts/AppProvider";
 import { getPaletteComboFor } from "./Rules";
 import goBackArrow from "../../../assets/goBackArrow.svg";
+import { allColors, eyesOptions, hairOptions, skinOptions } from "../data/builderOptions";
 
 type AutomaticColorsProps = {
   toggleColor: (hex: string) => void;
   selected: string[];
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
-  setDoItYourSelf: React.Dispatch<React.SetStateAction<Boolean | undefined>>;
+  setDoItYourSelf: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   onContinueToManual: (paletteHexes: string[]) => void;
 };
@@ -24,11 +24,9 @@ function AutomaticColors({
   setDoItYourSelf,
   onContinueToManual,
 }: AutomaticColorsProps) {
-  const { eyesOptions, skinOptions, hairOptions, allColors } = useApp();
-
   const allowedHexSet = useMemo(() => {
     return new Set(allColors.map((c) => c.hex.toLowerCase()));
-  }, [allColors]);
+  }, []);
 
   const [internalStep, setInternalStep] = useState(0);
   const [eyeColor, setEyeColor] = useState<EyeColorOptions>(undefined);
@@ -36,8 +34,7 @@ function AutomaticColors({
   const [hairColor, setHairColor] = useState<HairColorOptions>(undefined);
   const [paletteCombo, setPaletteCombo] = useState<PaletteCombo | undefined>(undefined);
 
-  const canFinish =
-    skinTone !== undefined && eyeColor !== undefined && hairColor !== undefined;
+  const canFinish = skinTone !== undefined && eyeColor !== undefined && hairColor !== undefined;
 
   const finish = () => {
     if (!canFinish) return;
@@ -47,8 +44,6 @@ function AutomaticColors({
 
     const combo = getPaletteComboFor(hairColor!, skinTone!, eyeColor!);
     setPaletteCombo(combo);
-
-    // ✅ FIX: only preselect if it's one of the 21 base pigments
     if (combo?.primary && allowedHexSet.has(combo.primary.toLowerCase())) {
       toggleColor(combo.primary);
     }
@@ -63,35 +58,64 @@ function AutomaticColors({
 
   const continueToManualFlow = () => {
     if (!paletteCombo) return;
-
-    // suggestions can include any hex (display-only)
     const paletteHexes = paletteCombo.rows.flat();
     onContinueToManual(paletteHexes);
   };
+
+  const handleKeyboardSelect = (event: KeyboardEvent<HTMLElement>, action: () => void) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+
+    event.preventDefault();
+    action();
+  };
+
+  const formatLabel = (value: string | undefined) => String(value ?? "").replaceAll("-", " ");
 
   return (
     <>
       {internalStep === 0 && (
         <div className="automatic-color-container">
           <div className="automatic-color-bgk">
-            <img className="go-back-arrow" src={goBackArrow} alt="" onClick={goBack} />
+            <img
+              className="go-back-arrow"
+              src={goBackArrow}
+              alt=""
+              role="button"
+              tabIndex={0}
+              aria-label="Voltar"
+              onClick={goBack}
+              onKeyDown={(event) => handleKeyboardSelect(event, goBack)}
+              decoding="async"
+              loading="lazy"
+            />
             <span>PASSO 1 DE 3</span>
             <h2>QUAL É O TOM DA TUA PELE?</h2>
             <p>Seleciona o tom que mais se aproxima do teu tom de pele.</p>
 
-            <div>
-              {skinOptions.map((s) => (
-                <img
-                  key={s.id}
-                  src={s.img}
-                  alt=""
-                  onClick={() => setSkinTone(s.id)}
-                  style={{ outline: skinTone === s.id ? "3px solid white" : "none" }}
-                />
-              ))}
+            <div role="group" aria-label="Tons de pele">
+              {skinOptions.map((s) => {
+                const isSelected = skinTone === s.id;
+
+                return (
+                  <img
+                    key={s.id}
+                    src={s.img}
+                    alt=""
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={isSelected}
+                    aria-label={`Selecionar tom de pele ${formatLabel(s.id)}`}
+                    onClick={() => setSkinTone(s.id)}
+                    onKeyDown={(event) => handleKeyboardSelect(event, () => setSkinTone(s.id))}
+                    style={{ outline: isSelected ? "3px solid white" : "none" }}
+                    decoding="async"
+                    loading="lazy"
+                  />
+                );
+              })}
             </div>
 
-            <button disabled={skinTone === undefined} onClick={() => setInternalStep(1)}>
+            <button type="button" disabled={skinTone === undefined} onClick={() => setInternalStep(1)}>
               CONTINUAR
             </button>
           </div>
@@ -101,24 +125,46 @@ function AutomaticColors({
       {internalStep === 1 && (
         <div className="automatic-color-container">
           <div className="automatic-color-bgk">
-            <img className="go-back-arrow" src={goBackArrow} alt="" onClick={goBack} />
+            <img
+              className="go-back-arrow"
+              src={goBackArrow}
+              alt=""
+              role="button"
+              tabIndex={0}
+              aria-label="Voltar"
+              onClick={goBack}
+              onKeyDown={(event) => handleKeyboardSelect(event, goBack)}
+              decoding="async"
+              loading="lazy"
+            />
             <span>PASSO 2 DE 3</span>
             <h2>QUAL É A COR DOS TEUS OLHOS?</h2>
             <p>Seleciona o tom que mais se aproxima da cor natural dos teus olhos.</p>
 
-            <div>
-              {eyesOptions.map((e) => (
-                <img
-                  key={e.id}
-                  src={e.img}
-                  alt=""
-                  onClick={() => setEyeColor(e.id)}
-                  style={{ outline: eyeColor === e.id ? "3px solid white" : "none" }}
-                />
-              ))}
+            <div role="group" aria-label="Cores dos olhos">
+              {eyesOptions.map((e) => {
+                const isSelected = eyeColor === e.id;
+
+                return (
+                  <img
+                    key={e.id}
+                    src={e.img}
+                    alt=""
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={isSelected}
+                    aria-label={`Selecionar cor dos olhos ${formatLabel(e.id)}`}
+                    onClick={() => setEyeColor(e.id)}
+                    onKeyDown={(event) => handleKeyboardSelect(event, () => setEyeColor(e.id))}
+                    style={{ outline: isSelected ? "3px solid white" : "none" }}
+                    decoding="async"
+                    loading="lazy"
+                  />
+                );
+              })}
             </div>
 
-            <button disabled={eyeColor === undefined} onClick={() => setInternalStep(2)}>
+            <button type="button" disabled={eyeColor === undefined} onClick={() => setInternalStep(2)}>
               CONTINUAR
             </button>
           </div>
@@ -128,24 +174,46 @@ function AutomaticColors({
       {internalStep === 2 && (
         <div className="automatic-color-container">
           <div className="automatic-color-bgk">
-            <img className="go-back-arrow" src={goBackArrow} alt="" onClick={goBack} />
+            <img
+              className="go-back-arrow"
+              src={goBackArrow}
+              alt=""
+              role="button"
+              tabIndex={0}
+              aria-label="Voltar"
+              onClick={goBack}
+              onKeyDown={(event) => handleKeyboardSelect(event, goBack)}
+              decoding="async"
+              loading="lazy"
+            />
             <span>PASSO 3 DE 3</span>
             <h2>QUAL É A COR DO TEU CABELO?</h2>
             <p>Seleciona o tom que mais se aproxima da cor atual do teu cabelo.</p>
 
-            <div>
-              {hairOptions.map((h) => (
-                <img
-                  key={h.id}
-                  src={h.img}
-                  alt=""
-                  onClick={() => setHairColor(h.id)}
-                  style={{ outline: hairColor === h.id ? "3px solid white" : "none" }}
-                />
-              ))}
+            <div role="group" aria-label="Cores do cabelo">
+              {hairOptions.map((h) => {
+                const isSelected = hairColor === h.id;
+
+                return (
+                  <img
+                    key={h.id}
+                    src={h.img}
+                    alt=""
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={isSelected}
+                    aria-label={`Selecionar cor do cabelo ${formatLabel(h.id)}`}
+                    onClick={() => setHairColor(h.id)}
+                    onKeyDown={(event) => handleKeyboardSelect(event, () => setHairColor(h.id))}
+                    style={{ outline: isSelected ? "3px solid white" : "none" }}
+                    decoding="async"
+                    loading="lazy"
+                  />
+                );
+              })}
             </div>
 
-            <button disabled={hairColor === undefined} onClick={finish}>
+            <button type="button" disabled={hairColor === undefined} onClick={finish}>
               CONTINUAR
             </button>
           </div>
@@ -161,7 +229,7 @@ function AutomaticColors({
             Podes ajustá-los, explorar diferentes opções e personalizá-los à tua maneira.
           </p>
 
-          <div className="pallet-colors-container">
+          <div className="pallet-colors-container" aria-label="Paleta de cores sugerida">
             {rows.map((row, rowIndex) => (
               <div className="palette-row" key={rowIndex}>
                 {row.map((hex) => (
@@ -172,6 +240,7 @@ function AutomaticColors({
                     disabled
                     title={hex}
                     style={{ backgroundColor: hex }}
+                    aria-label={`Cor sugerida ${hex}`}
                   >
                     <span className="hex">{hex}</span>
                   </button>

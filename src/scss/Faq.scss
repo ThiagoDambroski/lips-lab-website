@@ -186,7 +186,7 @@ color: #c41123;
         } 
         button:hover {
             transform: translateY(-5px) scale(1.03);
-            background-color: #f4c4d2; /* slightly darker pink for a premium effect */
+            background-color: #f4c4d2; 
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
         }
     }
@@ -204,7 +204,7 @@ $phone-min: 320px;
 
 }
 
-/* -------- Laptops & tablets (≈ 768px–1400px) -------- */
+
 @media (max-width: $laptop-min) and (min-width: $tablet-min)  {
 
     .faq-question{

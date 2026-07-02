@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
-import "../scss/NavBar.css";
-
-
+import { mainNavigationLinks, ROUTES } from "../config/routes";
+import "../scss/navigation/index.css";
 
 type NavbarProps = {
   css?: number;
@@ -12,73 +11,44 @@ type NavbarProps = {
 function Navbar({ css = 0 }: NavbarProps) {
   const className = css === 0 ? "nav-1" : "nav-2";
   const isNav2 = css !== 0;
-
   const [isOpen, setIsOpen] = useState(false);
 
   const closeMenu = () => setIsOpen(false);
-  const toggleMenu = () => setIsOpen((v) => !v);
+  const toggleMenu = () => setIsOpen((value) => !value);
 
   return (
-    <nav className={`${className} ${isNav2 && isOpen ? "is-open" : ""}`}>
-      <ul>
-        {/* LOGO */}
-        <li>
-          <NavLink to="/" onClick={closeMenu}>
-            <img src={logo} alt="Logo" className="nav-logo" />
+    <nav className={`${className} ${isNav2 && isOpen ? "is-open" : ""}`} aria-label="Navegação principal">
+      <ul className="nav-list">
+        <li className="nav-logo-item">
+          <NavLink to={ROUTES.home} onClick={closeMenu} aria-label="Ir para a página inicial Lips Lab">
+            <img src={logo} alt="Lips Lab" className="nav-logo"  decoding="async"  loading="eager" />
           </NavLink>
         </li>
 
-        {/* LINKS (hidden on mobile via CSS) */}
-        <div className="nav-links">
-          <li>
-            <NavLink
-              to="/reserve"
-              onClick={closeMenu}
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Reserva Agora
-            </NavLink>
-          </li>
+        <li className="nav-links-container">
+          <ul id="main-navigation-menu" className="nav-links">
+            {mainNavigationLinks.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  to={link.path}
+                  onClick={closeMenu}
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </li>
 
-          <li>
-            <NavLink
-              to="/experiencie"
-              onClick={closeMenu}
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Experiência e Preços
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/create"
-              onClick={closeMenu}
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Experiência Online
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/giftCard"
-              onClick={closeMenu}
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Gift Card
-            </NavLink>
-          </li>
-        </div>
-
-        {/* RIGHT SIDE: HAMBURGER + CART */}
-        <div className={css === 0 ? "" : "icon-nav-2"}>
+        <li className={css === 0 ? "nav-actions" : "nav-actions icon-nav-2"}>
           {isNav2 && (
             <button
               type="button"
               className="nav-toggle"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={isOpen}
+              aria-controls="main-navigation-menu"
               onClick={toggleMenu}
             >
               <span className="nav-toggle-bar" />
@@ -86,21 +56,7 @@ function Navbar({ css = 0 }: NavbarProps) {
               <span className="nav-toggle-bar" />
             </button>
           )}
-          {/* <NavLink
-          to="/cart"
-          onClick={closeMenu}
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          <img
-            src={css === 0 ? whiteShop : redShop}
-            alt="Cart"
-            className="nav-icon-img"
-          />
-        </NavLink>*/}
-          
-
-
-        </div>
+        </li>
       </ul>
     </nav>
   );

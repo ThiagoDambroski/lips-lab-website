@@ -1,668 +1,130 @@
-import { useState } from "react";
-import ColorsSelection from "./ColorsSelection";
-import GlitterBaseSelection from "./GlitterBaseSelection";
-import type {
-  AdditivesOptions,
-  BaseOptions,
-  EsenceOptions,
-  SmelltOptions,
-  TypesOptions,
-} from "./Types";
-import SmellAndAditive from "./SmellAndAditive";
-import FormatAndText from "./FormatAndText";
-import glossImage from "../../assets/gloss online exp.svg";
-import glossWhioutImage from "../../assets/gloss whiout.png";
-import batomBaseNoTip from "../../assets/batom_base_no_tip.png";
-import batomTipMaskAlpha from "../../assets/batom_tip_shading2.png";
-import batomTipShading from "../../assets/batom_tip_shading2.png";
-import lipOilImage from "../../assets/lipOil.png";
+import type { Dispatch, SetStateAction } from "react";
+import type { TypesOptions } from "./Types";
+import "../../scss/create-batom/index.css";
+import { getProductConfig, type ProductKey } from "./constants/productConfig";
+import CreateBatomBackButton from "./components/CreateBatomBackButton";
+import CreationSteps from "./components/CreationSteps";
+import ProductSelector from "./components/ProductSelector";
+import PurchaseSummary from "./components/PurchaseSummary";
+import { useCreateBatomState } from "./hooks/useCreateBatomState";
+import { buildShopifyPermalink, goToShopify, type ShopifyProductPayload } from "./utils/shopify";
+import { resolveSelectedSubLabels } from "./utils/colorSelection";
+import { additiveOptions, allColors, allEsence, glitterOptions, smellOptions } from "./data/builderOptions";
 
-import pinkGloss from "../../assets/gloss pink.svg";
-import finalBatom from "../../assets/final batom.svg";
-import batomImage from "../../assets/batom final exp.svg";
-import libsbackg from "../../assets/libs back.png";
-import logoLibs from "../../assets/logo.png";
-import "../../scss/CreateBatom.css";
-import pinkArrow from "../../assets/pink go back arrow.svg";
-
-import descVer from "../../assets/display icons exp.svg";
-import { useApp } from "../../Contexts/AppProvider";
-import sparks from "../../assets/sparks.svg";
-import star from "../../assets/star.svg";
-import heart from "../../assets/heart.svg";
-import flower from "../../assets/flower.svg";
-import lipsIcon from "../../assets/libs icon.svg";
-import infinity from "../../assets/inifity.svg";
-import aries from "../../assets/aries.svg";
-import taurus from "../../assets/taurus.svg";
-import gemini from "../../assets/gemini.svg";
-import cancer from "../../assets/cancer.svg";
-import leo from "../../assets/leo.svg";
-import virgo from "../../assets/virgo.svg";
-import libra from "../../assets/libra.svg";
-import scorpio from "../../assets/scorpio.svg";
-import sagittarius from "../../assets/sagittarius.svg";
-import capricornio from "../../assets/capricornio.svg";
-import aquarius from "../../assets/aquarius.svg";
-import peixe from "../../assets/peixe.svg";
-
-import editIcon from "../../assets/edit icon.svg";
-import BatomFormat from "./BatomFormat";
-
-type SymbolOption = {
-  id: string;
-  img: string;
-};
-
-const SYMBOLS: SymbolOption[] = [
-  { id: "sparks", img: sparks },
-  { id: "star", img: star },
-  { id: "heart", img: heart },
-  { id: "flower", img: flower },
-  { id: "lips", img: lipsIcon },
-  { id: "infinity", img: infinity },
-  { id: "aries", img: aries },
-  { id: "taurus", img: taurus },
-  { id: "gemini", img: gemini },
-  { id: "cancer", img: cancer },
-  { id: "leo", img: leo },
-  { id: "virgo", img: virgo },
-  { id: "libra", img: libra },
-  { id: "scorpio", img: scorpio },
-  { id: "sagittarius", img: sagittarius },
-  { id: "capricornio", img: capricornio },
-  { id: "aquarius", img: aquarius },
-  { id: "peixes", img: peixe },
-];
-
-type CreateBatomType = {
-  setCreateActive: React.Dispatch<React.SetStateAction<boolean>>;
+type CreateBatomBoxProps = {
+  setCreateActive: Dispatch<SetStateAction<boolean>>;
   typeInput: TypesOptions;
 };
 
-type ProductGlitterValue = number | string | null | undefined;
+function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomBoxProps) {
+  const { state, actions } = useCreateBatomState(typeInput);
+  const productConfig = getProductConfig(state.type);
 
-const SHOPIFY_SHOP_URL = "https://lips-lab.myshopify.com";
-
-const SHOPIFY_GLOSS_VARIANT_ID = 47048949006593;
-const SHOPIFY_BATOM_VARIANT_ID = 47049932833025;
-const SHOPIFY_OIL_VARIANT_ID = 48760459821313;
-
-
-const GLITTER_LABELS: Record<number, string> = {
-  // ======================
-  // FROSTS
-  // ======================
-  1: "Crystal",
-  2: "Bronze",
-  3: "Fuchsia",
-  4: "Garnet",
-  5: "Opal",
-  6: "Pink",
-  7: "Pink Diamond",
-  8: "Russet",
-  9: "Silver",
-  10: "Star Ruby",
-  11: "Violet",
-  12: "Antique Gold",
-  13: "Brass",
-  14: "Copper",
-  15: "Coral",
-  16: "Fire Opal",
-  17: "Gold",
-  18: "Sienna",
-  19: "Sand",
-  20: "Carnelian",
-  21: "Champagne",
-  22: "Pink Gold",
-  23: "Rose Gold",
-  24: "DIAMOND DUST",
-  25: "Gold DUST",
-
-  // ======================
-  // MULTIDIMENSIONAL FROSTS
-  // ======================
-  26: "Alexandrite",
-  27: "Azurite",
-  28: "Chrysolite",
-  29: "Morganite",
-  30: "Indigolite",
-
-  // ======================
-  // FOILS
-  // ======================
-  31: "Blush",
-  32: "Bronzed",
-  33: "Nugget",
-  34: "Platinum",
-  35: "Ruby",
-  36: "Twinkle",
-};
-
-function safeString(value: unknown): string | null {
-  if (value === null || value === undefined) return null;
-
-  const v = String(value).trim();
-
-  return v.length ? v : null;
-}
-
-function toBase64Url(input: string): string {
-  const utf8 = encodeURIComponent(input).replace(
-    /%([0-9A-F]{2})/g,
-    (_, hex) => String.fromCharCode(parseInt(hex, 16))
-  );
-  const b64 = btoa(utf8);
-
-  return b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
-}
-
-function resolveShopifyVariantId(type: TypesOptions): number {
-  const t = (type ?? "").toLowerCase();
-
-  if (t.includes("gloss")) return SHOPIFY_GLOSS_VARIANT_ID;
-  if (t.includes("batom")) return SHOPIFY_BATOM_VARIANT_ID;
-  if (t.includes("oil")) return SHOPIFY_OIL_VARIANT_ID;
-
-  return SHOPIFY_GLOSS_VARIANT_ID;
-}
-
-function buildShopifyPermalinkOrdered(
-  product: {
-    id: number;
-    type: TypesOptions;
-    glitter: ProductGlitterValue;
-    base: BaseOptions;
-    smell: SmelltOptions;
-    aditive: string;
-    esence: EsenceOptions;
-    boxText: string;
-    boxFont: string;
-    boxImage: string;
-    batomFormat: string;
-  },
-  selectedColorsSub: string,
-  finalColorHex: string
-): string {
-  const variantId = resolveShopifyVariantId(product.type);
-
-  const props: Record<string, string> = {};
-
-  props.type = safeString(product.type) ?? "none";
-  props.selected_colors_sub = safeString(selectedColorsSub) ?? "none";
-  props.final_color_hex = safeString(finalColorHex) ?? "none";
-
-  const glitterVal = product.glitter ?? "none";
-
-  props.glitter =
-    typeof glitterVal === "number"
-      ? GLITTER_LABELS[glitterVal] ?? String(glitterVal)
-      : String(glitterVal);
-
-  props.base = safeString(product.base) ?? "none";
-  props.smell = safeString(product.smell) ?? "none";
-  props.aditive = safeString(product.aditive) ?? "none";
-  props.esence = safeString(product.esence) ?? "none";
-  props.boxText = safeString(product.boxText) ?? "none";
-  props.boxImage = safeString(product.boxImage) ?? "none";
-  props.boxFont = safeString(product.boxFont) ?? "none";
-  props.batomFormat = safeString(product.batomFormat) ?? "none";
-  props.lipslab_item_id = safeString(product.id) ?? "none";
-
-  const encoded = toBase64Url(JSON.stringify(props));
-
-  return `${SHOPIFY_SHOP_URL}/cart/${variantId}:1?properties=${encoded}`;
-}
-
-function goToShopifyAlways(url: string) {
-  window.location.assign(url);
-}
-
-function CreateBatomBox({ setCreateActive, typeInput }: CreateBatomType) {
-  type ColorOption = { hex: string; sub: string };
-
-  const [paletteOptions, setPaletteOptions] = useState<ColorOption[] | null>(null);
-  const [step, setStep] = useState<number>(-1);
-
-  const [type, setType] = useState<TypesOptions | undefined>(typeInput);
-  const [doItYourSelf, setDoItYourSelf] = useState<Boolean | undefined>(undefined);
-
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
-
-  const [mixSelected, setMixSelected] = useState<string[]>([]);
-  const [mixWeights, setMixWeights] = useState<Record<string, number>>({});
-
-  const [glitterSelected, setGlitterSelected] = useState<number | null>(null);
-
-  const [baseSelected, setBaseSelected] = useState<BaseOptions>("none");
-  const [smell, setSmell] = useState<SmelltOptions>("none");
-
-  const [aditive, setAditive] = useState<AdditivesOptions[]>([]);
-
-  const [esence, setEsence] = useState<EsenceOptions>("none");
-
-  const [boxText, setBoxText] = useState<string>("");
-  const [boxFont, setBoxFont] = useState<string>("century-gothic");
-  const [boxImage, setBoxImage] = useState<string>("none");
-  const [batomFormat, setBatomFormat] = useState<string>("");
-  const price = 35.0;
-
-  const { additiveOptions, glitterOptions, smellOptions, allEsence, allColors } =
-    useApp();
-
-  const getProductLabel = () => {
-    if (type === "gloss") return "GLOSS";
-    if (type === "batom") return "BATOM";
-    if (type === "oil") return "LIP OIL";
-
-    return "";
-  };
-
-  const getProductImage = () => {
-    if (type === "gloss") return pinkGloss;
-    if (type === "batom") return finalBatom;
-    if (type === "oil") return pinkGloss;
-
-    return pinkGloss;
-  };
-
-  const selectedGlitterObj =
-    glitterSelected !== null
-      ? glitterOptions.find((g) => g.id === glitterSelected)
-      : undefined;
-
-  const handleTypeChange = (typeInput: TypesOptions) => {
-    setType(typeInput);
-    setSelectedColor(undefined);
-    setStep(-1);
-    setSmell("none");
-    setDoItYourSelf(undefined);
-    setGlitterSelected(null);
-    setBaseSelected("none");
-    setAditive([]);
-    setEsence("none");
-    setBoxText("");
-    setBoxFont("century-gothic");
-    setBoxImage("none");
-    setBatomFormat("");
-    setMixSelected([]);
-    setMixWeights({});
-
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const buildProductFromState = () => {
-    const additiveValue = aditive.length ? aditive.join(", ") : "none";
-
-    return {
-      id: Date.now(),
-      type: type!,
-      color: selectedColor,
-      glitter: glitterSelected ?? "none",
-      base: baseSelected,
-      smell,
-      aditive: additiveValue,
-      esence,
-      boxText,
-      boxFont,
-      boxImage,
-      price,
-      batomFormat,
-    };
+  const handleTypeChange = (nextType: ProductKey) => {
+    actions.resetProductState(nextType);
+    scrollToTop();
   };
 
-  const resolveSelectedSubLabels = (): string[] => {
-    const allowedHexSet = new Set(allColors.map((c) => c.hex.toLowerCase()));
-
-    return mixSelected
-      .filter((hex) => allowedHexSet.has(hex.toLowerCase()))
-      .map((hex) => {
-        const found = allColors.find(
-          (c) => c.hex.toLowerCase() === hex.toLowerCase()
-        );
-
-        return (found?.sub ?? hex).toUpperCase();
-      });
-  };
+  const buildProductFromState = (): ShopifyProductPayload => ({
+    id: Date.now(),
+    type: state.type,
+    glitter: state.glitterSelected ?? "none",
+    base: state.baseSelected,
+    smell: state.smell,
+    aditive: state.aditive.length ? state.aditive.join(", ") : "none",
+    esence: state.esence,
+    boxText: state.boxText,
+    boxFont: state.boxFont,
+    boxImage: state.boxImage,
+    batomFormat: state.batomFormat,
+  });
 
   const handleFinishPurchase = () => {
     const product = buildProductFromState();
+    const selectedSubLabels = resolveSelectedSubLabels(state.mixSelected, allColors);
+    const selectedSubLabelsText = selectedSubLabels.length ? selectedSubLabels.join(", ") : "none";
+    const finalHex = state.selectedColor ?? "none";
+    const url = buildShopifyPermalink(product, selectedSubLabelsText, finalHex);
 
-    const selectedSubs = resolveSelectedSubLabels();
-    const selectedSubsJoined = selectedSubs.length ? selectedSubs.join(", ") : "none";
-
-    const finalHex = selectedColor ?? "none";
-
-    const url = buildShopifyPermalinkOrdered(product, selectedSubsJoined, finalHex);
-    goToShopifyAlways(url);
+    goToShopify(url);
   };
 
   const goBackFunction = () => {
-    if (type === undefined) {
+    if (state.type === undefined) {
       setCreateActive(false);
-    } else {
-      if (step === -1) {
-        setType(undefined);
-        return;
-      }
-
-      if (step === 0) {
-        setStep(-1);
-        setDoItYourSelf(undefined);
-        return;
-      }
-
-      if (step === 1 && type === "oil") {
-        setStep(-1);
-        setDoItYourSelf(undefined);
-        return;
-      }
-
-      if (step === 8) {
-        if (type === "gloss") {
-          setStep(6);
-        } else {
-          setStep(7);
-        }
-
-        return;
-      }
-
-      if (step === 3) {
-        setStep(1);
-      } else {
-        setStep((prev) => Math.max(-1, prev - 1));
-      }
+      return;
     }
 
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    if (state.step === -1) {
+      actions.setType(undefined);
+      return;
+    }
+
+    if (state.step === 0) {
+      actions.setStep(-1);
+      actions.setDoItYourSelf(undefined);
+      return;
+    }
+
+    if (state.step === 1 && state.type === "oil") {
+      actions.setStep(-1);
+      actions.setDoItYourSelf(undefined);
+      return;
+    }
+
+    if (state.step === 8) {
+      actions.setStep(state.type === "gloss" ? 6 : 7);
+      return;
+    }
+
+    if (state.step === 3) {
+      actions.setStep(1);
+    } else {
+      actions.setStep((previousStep) => Math.max(-1, previousStep - 1));
+    }
+
+    scrollToTop();
   };
 
-  const firstAdditive = aditive.length ? aditive[0] : null;
-
-  const firstAdditiveObj = firstAdditive
-    ? additiveOptions.find((a) => a.id === firstAdditive)
-    : undefined;
+  const handleEditColor = () => {
+    actions.setDoItYourSelf(true);
+    actions.setStep(1);
+  };
 
   return (
     <div>
-      {doItYourSelf !== false && (
-        <img
-          src={pinkArrow}
-          alt=""
-          className="pink-go-back-arrow"
-          onClick={() => goBackFunction()}
-        />
-      )}
+      <CreateBatomBackButton isVisible={state.doItYourSelf !== false} onBack={goBackFunction} />
 
-      {type === undefined && (
-        <main
-          style={{ backgroundImage: `url(${libsbackg})` }}
-          className="main-create-box"
-        >
-          <h1>Inicia a tua experiência</h1>
-          <p>escolhe o teu produto:</p>
+      {state.type === undefined && <ProductSelector onSelectProduct={handleTypeChange} />}
 
-          <div className="gloss-or-batom-container">
-            <div className="gloss-or-batom-container-image">
-              <img src={glossImage} alt="Gloss" />
-              <button onClick={() => handleTypeChange("gloss")}>GLOSS</button>
-            </div>
-
-            <div className="gloss-or-batom-container-image">
-              <img src={batomImage} alt="Batom" />
-              <button onClick={() => handleTypeChange("batom")}>BATOM</button>
-            </div>
-
-            <div className="gloss-or-batom-container-image gloss-or-batom-container-image-oil">
-              <img src={lipOilImage} alt="Lip Oil" />
-              <button onClick={() => handleTypeChange("oil")}>LIP OIL</button>
-            </div>
-          </div>
-        </main>
-      )}
-
-      {type !== undefined && (
-        <>
-          {step !== 9 && (
-            <main
-              className="main-color-selection"
-              style={{ backgroundImage: `url(${libsbackg})` }}
-            >
-              <div className="main-color-back">
-                {doItYourSelf === undefined && (
-                  <div className="item-display">
-                    <div className="item-display-container">
-                      <div>
-                        <h2>Prepara-te para criares o teu {getProductLabel()} de sonho!</h2>
-
-                        <p className="p-1">
-                          Segue os próximos passos e dá vida ao teu{" "}
-                          {getProductLabel().toLowerCase()} labial.
-                        </p>
-
-                        <img src={descVer} alt="" />
-                      </div>
-
-                      <p>
-                        *As cores podem variar dependendo do tipo de ecrã Para obter melhores
-                        resultados, certifique-se de que o brilho do ecrã está no máximo
-                      </p>
-                    </div>
-
-                    <img
-                      src={getProductImage()}
-                      alt=""
-                      className={`pink-gloss ${type === "oil" ? "pink-gloss-oil" : ""}`}
-                    />
-                  </div>
-                )}
-
-                {((step > 0 && step <= 4) || (step > 5 && step < 7) || step === 8) &&
-                  doItYourSelf === true && (
-                    <div className="item-display-2">
-                      {type === "gloss" || type === "oil" ? (
-                        <div className="item-img-2-color-wrapper">
-                          <div
-                            className="item-color-fill item-color-fill-2 is-tip"
-                            style={{ backgroundColor: selectedColor || "transparent" }}
-                          />
-                          <img src={glossWhioutImage} alt="" className="item-img-2-create" />
-                        </div>
-                      ) : (
-                        <div className="item-batom-wrapper">
-                          <div
-                            className="batom-color-fill"
-                            style={
-                              {
-                                backgroundColor: selectedColor || "transparent",
-                                ["--batomMask" as any]: `url(${batomTipMaskAlpha})`,
-                              } as React.CSSProperties
-                            }
-                          />
-                          <img src={batomTipShading} alt="" className="batom-tip-shading" />
-                          <img src={batomBaseNoTip} alt="" className="item-batom-img" />
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                <ColorsSelection
-                  setSelectedColor={setSelectedColor}
-                  currentSelectedColor={selectedColor}
-                  paletteOptions={paletteOptions}
-                  setPaletteOptions={setPaletteOptions}
-                  step={step}
-                  setStep={setStep}
-                  doItYourSelf={doItYourSelf}
-                  setDoItYourSelf={setDoItYourSelf}
-                  selected={mixSelected}
-                  setSelected={setMixSelected}
-                  weights={mixWeights}
-                  setWeights={setMixWeights}
-                  type={type}
-                />
-
-                <GlitterBaseSelection
-                  step={step}
-                  setStep={setStep}
-                  glitterSelected={glitterSelected}
-                  setGlitterSelected={setGlitterSelected}
-                  type={type}
-                  baseSelected={baseSelected}
-                  setBaseSelected={setBaseSelected}
-                />
-
-                <SmellAndAditive
-                  type={type}
-                  step={step}
-                  setStep={setStep}
-                  smell={smell}
-                  setSmell={setSmell}
-                  aditive={aditive}
-                  setAditive={setAditive}
-                  esence={esence}
-                  setEsence={setEsence}
-                />
-
-                <BatomFormat
-                  type={type}
-                  step={step}
-                  setStep={setStep}
-                  setBatomFormat={setBatomFormat}
-                  batomFormat={batomFormat}
-                />
-
-                <FormatAndText
-                  step={step}
-                  setStep={setStep}
-                  type={type}
-                  boxText={boxText}
-                  setBoxText={setBoxText}
-                  boxImg={boxImage}
-                  setBoxImg={setBoxImage}
-                  boxFont={boxFont}
-                  setBoxFont={setBoxFont}
-                />
-              </div>
-            </main>
-          )}
-
-          {step === 9 && (
-            <div className="purchse-screen">
-              <div className="purchse-screen-logo">
-                <img src={logoLibs} alt="Lips Lab logo" />
-
-                <div className="purchse-screen-logo-div">
-                  <h2>
-                    CRIASTE O TEU próprio{" "}
-                    {type === "oil" ? "LIP OIL" : type === "gloss" ? "GLOSS LABIAL" : "BATOM"}!
-                  </h2>
-
-                  <p>Antes de adicionares ao carrinho, confirma se está tudo correto.</p>
-                </div>
-
-                <ul className={`purchase-summary ${type === "oil" ? "purchase-summary-oil" : ""}`}>
-                  {type !== "oil" && (
-                    <li>
-                      <div onClick={() => setStep(0)}>
-                        <p>{baseSelected === "none" ? "none" : baseSelected}</p>
-                      </div>
-                      <p>base</p>
-                      <img src={editIcon} alt="" className="edit-icon" />
-                    </li>
-                  )}
-
-                  <li>
-                    <div
-                      style={{ ["--swatch" as string]: selectedColor } as React.CSSProperties}
-                      onClick={() => {
-                        setDoItYourSelf(true);
-                        setStep(1);
-                      }}
-                    />
-                    <p>cor</p>
-                    <img src={editIcon} alt="" className="edit-icon" />
-                  </li>
-
-                  <li>
-                    <div onClick={() => setStep(3)}>
-                      {selectedGlitterObj ? (
-                        <img src={selectedGlitterObj.img} alt="" />
-                      ) : (
-                        <p>none</p>
-                      )}
-                    </div>
-                    <p>pigmento</p>
-                    <img src={editIcon} alt="" className="edit-icon" />
-                  </li>
-
-                  <li>
-                    <div onClick={() => setStep(4)}>
-                      <div className="smell-esence">
-                        {smell !== "none" ? (
-                          <img src={smellOptions.find((a) => a.id === smell)?.img} alt="" />
-                        ) : (
-                          <p>none</p>
-                        )}
-                      </div>
-                    </div>
-                    <p>SABOR</p>
-                    <img src={editIcon} alt="" className="edit-icon" />
-                  </li>
-
-                  <li onClick={() => setStep(4)}>
-                    <div>
-                      <div className="smell-esence">
-                        {esence !== "none" ? (
-                          <img src={allEsence.find((a) => a.id === esence)?.img} alt="" />
-                        ) : (
-                          <p>none</p>
-                        )}
-                      </div>
-                    </div>
-                    <p>ESSÊNCIA</p>
-                    <img src={editIcon} alt="" className="edit-icon" />
-                  </li>
-
-                  <li>
-                    <div onClick={() => setStep(5)}>
-                      {firstAdditiveObj ? (
-                        <img src={firstAdditiveObj.img} alt="" />
-                      ) : (
-                        <p>none</p>
-                      )}
-                    </div>
-                    <p>aditivo</p>
-                    <img src={editIcon} alt="" className="edit-icon" />
-                  </li>
-
-                  <li>
-                    <div onClick={() => setStep(6)} className="last-step">
-                      {boxImage !== "none" && (
-                        <img src={SYMBOLS.find((s) => s.id === boxImage)?.img} alt="" />
-                      )}
-
-                      {boxImage === "none" && boxText.trim() !== "" && <p>{boxText.trim()}</p>}
-                    </div>
-
-                    <p>PERSONALIZAÇÃO</p>
-                    <img src={editIcon} alt="" className="edit-icon" />
-                  </li>
-                </ul>
-
-                <div className="button-container">
-                  <span>35,00€</span>
-
-                  <button onClick={handleFinishPurchase}>
-                    <p>ADICIONAR AO CARRINHO</p>
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </>
-      )}
+      {state.type !== undefined &&
+        (state.step === 9 ? (
+          <PurchaseSummary
+            type={state.type}
+            productConfig={productConfig}
+            selectedColor={state.selectedColor}
+            glitterSelected={state.glitterSelected}
+            baseSelected={state.baseSelected}
+            smell={state.smell}
+            aditive={state.aditive}
+            esence={state.esence}
+            boxText={state.boxText}
+            boxImage={state.boxImage}
+            glitterOptions={glitterOptions}
+            additiveOptions={additiveOptions}
+            smellOptions={smellOptions}
+            allEsence={allEsence}
+            onEditStep={actions.setStep}
+            onEditColor={handleEditColor}
+            onFinishPurchase={handleFinishPurchase}
+          />
+        ) : (
+          <CreationSteps state={state} actions={actions} productConfig={productConfig} />
+        ))}
     </div>
   );
 }

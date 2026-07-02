@@ -1,0 +1,162 @@
+@use "./tokens" as *;
+
+.automatic-color-container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  .automatic-color-bgk {
+    position: relative;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: #e55499;
+    min-height: 70vh;
+    padding: 2rem;
+    color: white;
+    border-radius: 30px;
+
+    .go-back-arrow {
+      position: absolute;
+      top: 65px;
+    }
+
+    span {
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      font-family: "ApercuPro";
+      font-weight: bold;
+      font-style: italic;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 4rem;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 6rem;
+
+      img {
+        cursor: pointer;
+      }
+    }
+
+    button {
+      font-family: "ApercuPro";
+      font-weight: bold;
+      text-transform: uppercase;
+      font-style: italic;
+      color: white;
+      background-color: #c41123;
+      padding: 1rem;
+      border: none;
+      border-radius: 50px;
+      width: 25%;
+      align-self: center;
+      justify-self: end;
+      font-size: 1.6rem;
+
+      &:disabled {
+        background-color: #f1a5b3;
+        color: rgba(255, 255, 255, 0.75);
+        cursor: not-allowed;
+        opacity: 0.85;
+        box-shadow: none;
+        transform: none;
+      }
+    }
+  }
+}
+
+.palette-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  h2 {
+    font-family: "ApercuPro";
+    color: #c41123;
+    font-style: italic;
+    font-size: 3rem;
+  }
+
+  p {
+    font-family: "ApercuPro";
+    color: #c41123;
+    font-style: italic;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  .pallet-colors-container {
+    width: 50%;
+    padding: 32px;
+    background-color: #ffffff;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .palette-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .swatch {
+    appearance: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    .hex {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+  }
+
+  .continue-pallet-button {
+    font-family: "ApercuPro";
+    background-color: #c41123;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-style: italic;
+    font-size: 1.7rem;
+    font-weight: bold;
+    width: 20%;
+    padding: 1rem;
+    cursor: pointer;
+  }
+}

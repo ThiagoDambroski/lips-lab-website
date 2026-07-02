@@ -46,7 +46,7 @@ function SecondStep({
             <div
               className="color-swatch"
               style={{ backgroundColor: color }}
-              aria-label={`Selected color ${color}`}
+              aria-label={`Cor selecionada ${color}`}
             />
 
             <input
@@ -57,7 +57,7 @@ function SecondStep({
               value={weights[color] ?? 0}
               onChange={onWeightChange(color)}
               className="color-range"
-              aria-label={`Intensity for ${color}`}
+              aria-label={`Intensidade da cor ${color}`}
               style={{
                 ["--accent" as any]: color,
                 ["--val" as any]: weights[color] ?? 0,
@@ -66,8 +66,10 @@ function SecondStep({
           </div>
 
           <button
+            type="button"
             className="step-second-exclude-button"
             onClick={() => toggleColor(color)}
+            aria-label={`Excluir cor ${color}`}
           >
             EXCLUIR
           </button>
@@ -77,9 +79,10 @@ function SecondStep({
       {selected.length !== 4 && (
         <div className="add-color-wrapper">
           <button
+            type="button"
             className="add-color-btn"
             onClick={() => setStep(1)}
-            aria-label="Add another color"
+            aria-label="Adicionar outra cor"
           >
             <span className="plus">+</span>
           </button>
@@ -87,7 +90,7 @@ function SecondStep({
         </div>
       )}
 
-      <button className="continue-button" onClick={() => nexStep()}>
+      <button type="button" className="continue-button" onClick={() => nexStep()}>
         Continuar!
       </button>
     </div>
