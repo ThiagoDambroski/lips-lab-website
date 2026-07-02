@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import "../scss/carousel/index.css";
+import "../scss/Carrousel.css";
 
 export type ProductItem = {
   id: string | number;

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { CLAIMS_BOOK_URL, CONTACT_EMAIL, CONTACT_PHONE, INSTAGRAM_URL } from "../config/site";
 import { footerNavigationLinks, legalNavigationLinks } from "../config/routes";
-import "../scss/navigation/index.css";
+import "../scss/NavBar.css";
 
 function Footer() {
   return (

@@ -6,7 +6,7 @@ import HomeExperienceSection from "./components/HomeExperienceSection";
 import HomeOnlineSection from "./components/HomeOnlineSection";
 import HomeProductsBanner from "./components/HomeProductsBanner";
 import { toneSlides } from "../data/homeContent";
-import "../scss/home/index.css";
+import "../scss/HomePage.css";
 
 function HomePage() {
   return (

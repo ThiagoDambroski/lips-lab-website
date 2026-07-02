@@ -7,7 +7,7 @@ import type { TypesOptions } from "../Functions/CreateBatomBox/Types";
 import libsBackground from "../assets/libs back.png";
 import agoraImg from "../assets/agora ribbon.png";
 import libsSite from "../assets/libsDisplaySite.svg";
-import "../scss/online-experience/index.css";
+import "../scss/OnlineExperiencie.css";
 
 const CreateBatomBox = lazy(() => import("../Functions/CreateBatomBox/CreateBatomBox"));
 

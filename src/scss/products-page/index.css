@@ -16,7 +16,8 @@
 }
 
 .products-page__selection {
-  width: min(1160px, calc(100% - 48px));
+  width: calc(100% - 48px);
+  max-width: 1160px;
   margin: 0 auto;
   padding: 128px 0 90px;
 }
@@ -130,7 +131,8 @@
 }
 
 .products-page__button {
-  width: min(100%, 352px);
+  width: 100%;
+  max-width: 352px;
   min-height: 58px;
   padding: 0 30px;
   display: inline-flex;
@@ -160,7 +162,8 @@
 }
 
 .products-builder {
-  width: min(1400px, calc(100% - 36px));
+  width: calc(100% - 36px);
+  max-width: 1400px;
   margin: 0 auto;
   padding: 120px 0 90px;
 }
@@ -362,14 +365,37 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.products-builder__option img {
-  width: 38px;
-  height: 38px;
-  max-width: 38px;
-  max-height: 38px;
-  object-fit: contain;
+
+.products-builder__option-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  background: #b30e1f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
-  filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(5650%) hue-rotate(349deg) brightness(83%) contrast(94%);
+  box-shadow: 0 8px 18px rgba(179, 14, 31, 0.14);
+}
+
+.products-builder__option-icon img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  object-fit: contain;
+  filter: none;
+}
+
+.products-builder__option--active .products-builder__option-icon {
+  background: #e8428b;
+  box-shadow: 0 8px 18px rgba(232, 66, 139, 0.2);
+}
+
+.products-builder__option:focus-visible {
+  outline: 3px solid rgba(179, 14, 31, 0.28);
+  outline-offset: 3px;
 }
 
 .products-builder__two-columns {
@@ -585,7 +611,8 @@
 @media (max-width: 1100px) {
   .products-page__selection,
   .products-builder {
-    width: min(760px, calc(100% - 32px));
+    width: calc(100% - 32px);
+    max-width: 760px;
   }
 
   .products-page__grid,
@@ -642,62 +669,31 @@
   .products-builder__option-grid,
   .products-builder__option-grid--glitter,
   .products-builder__option-grid--large {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .products-summary__badges {
     grid-template-columns: 1fr;
   }
 }
-.products-customizer__option-card img,
-.products-customizer__option-icon img,
-.products-customizer__glitter-option img,
-.products-customizer__additive-option img,
-.products-customizer__aroma-option img,
-.products-customizer__essence-option img {
-  display: block;
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(10%) sepia(96%)
-    saturate(5650%) hue-rotate(349deg) brightness(83%) contrast(94%);
+
+.products-builder__option-grid--glitter .products-builder__option-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-.products-customizer__option-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 10px;
-  border-radius: 999px;
-  background: rgba(179, 14, 31, 0.08);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.products-builder__option-grid--glitter .products-builder__option-icon img {
+  width: 46px;
+  height: 46px;
+  max-width: 46px;
+  max-height: 46px;
+  filter: none;
 }
 
-.products-customizer__option-card--selected img,
-.products-customizer__glitter-option--selected img,
-.products-customizer__additive-option--selected img,
-.products-customizer__aroma-option--selected img,
-.products-customizer__essence-option--selected img {
-  filter: brightness(0) saturate(100%) invert(10%) sepia(96%)
-    saturate(5650%) hue-rotate(349deg) brightness(83%) contrast(94%);
-}
-
-.products-customizer__option-card--selected .products-customizer__option-icon {
-  background: rgba(179, 14, 31, 0.14);
-}
-
-.products-customizer__option-card:has(img),
-.products-customizer__glitter-option:has(img),
-.products-customizer__additive-option:has(img),
-.products-customizer__aroma-option:has(img),
-.products-customizer__essence-option:has(img) {
-  gap: 12px;
-}
-.products-builder__option--active img {
-  filter: brightness(0) saturate(100%) invert(10%) sepia(96%) saturate(5650%) hue-rotate(349deg) brightness(83%) contrast(94%);
-}
-
-.products-builder__option:not(:has(img)) {
-  gap: 0;
+.products-builder__option-grid--glitter .products-builder__option--active .products-builder__option-icon {
+  background: transparent;
+  box-shadow: none;
 }

@@ -1,4 +1,4 @@
-@import "../OnlineExperiencie.css";
+@use "../OnlineExperiencie";
 .online-experience-builder-loader {
   min-height: 60vh;
   display: -ms-grid;
@@ -206,7 +206,8 @@
             order: -1;
   }
   .online-experience-page .how-it-works-section .how-it-works-video video {
-    width: min(100%, 520px);
+    width: 100%;
+    max-width: 520px;
   }
   .online-experience-page .how-it-works-section .step-item {
     --content-left: 90px;

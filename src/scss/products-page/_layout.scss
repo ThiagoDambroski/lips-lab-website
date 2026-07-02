@@ -75,7 +75,8 @@
 }
 
 .products-page__button {
-  width: min(100%, 352px);
+  width: 100%;
+  max-width: 352px;
   min-height: 58px;
   padding: 0 30px;
   display: inline-flex;

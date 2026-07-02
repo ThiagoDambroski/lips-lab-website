@@ -7,7 +7,8 @@
 }
 
 .products-page__hero {
-  width: min(900px, 92vw);
+  width: 92vw;
+  max-width: 900px;
   margin: 0 auto;
   padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
   border: 2px dashed rgba(196, 17, 35, 0.35);

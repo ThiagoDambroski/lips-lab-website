@@ -9,7 +9,7 @@ import libsIncluso from "../assets/incuido-libs.svg";
 import ribbonImg from "../assets/ribbon experiencie.png";
 import libsBackground from "../assets/libs back.png";
 import holdingGloss from "../assets/dani holding gloss.png";
-import "../scss/experience-price/index.css";
+import "../scss/ExperiencieAndPrice.css";
 
 function ExperiencieAndPrice() {
   const [openIncludeId, setOpenIncludeId] = useState<number | null>(null);

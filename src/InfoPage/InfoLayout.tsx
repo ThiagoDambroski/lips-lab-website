@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Navbar from "../Navbar/Navbar";
-import "../scss/info-page/index.css";
+import "../scss/InfoPage.css";
 
 type InfoLayoutProps = {
   title: string;

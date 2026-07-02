@@ -7,7 +7,7 @@ import { buildCartPermalinkForSingleItem } from "./utils/cartShopify";
 import type { CartProduct } from "./utils/cartTypes";
 import { saveQueue, shiftQueue } from "./utils/shopifyQueue";
 import { readJsonStorage, writeJsonStorage } from "../utils/storage";
-import "../scss/cart/index.css";
+import "../scss/Cart.css";
 
 function CartPage() {
   const [items, setItems] = useState<CartProduct[]>([]);
