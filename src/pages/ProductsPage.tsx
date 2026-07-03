@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Navbar from "../Navbar/Navbar";
 import PageSeo from "../components/PageSeo";
 import { allColors, allEsence, additiveOptions, glitterOptions, smellOptions } from "../Functions/CreateBatomBox/data/builderOptions";
@@ -28,7 +28,7 @@ const MAX_COLOR_SELECTIONS = 4;
 
 const DEFAULT_COLOR_HEX = allColors[0]?.hex ?? "#d13c72";
 
-const DEFAULT_STATE: ProductBuilderState = {
+const getDefaultState = (): ProductBuilderState => ({
   selectedColorHexes: [DEFAULT_COLOR_HEX],
   glitterId: null,
   smell: "none",
@@ -36,7 +36,7 @@ const DEFAULT_STATE: ProductBuilderState = {
   additive: "none",
   engraving: "",
   hasCharms: false,
-};
+});
 
 const productInfoCopy: Record<ProductsPageProductId, ProductInfoCopy> = {
   gloss: {
@@ -80,9 +80,11 @@ function getAdditiveName(additive: AdditivesOptions) {
 }
 
 function getSelectedColors(colorHexes: string[]) {
-  return colorHexes
+  const selectedColors = colorHexes
     .map((hex) => allColors.find((color) => color.hex.toLowerCase() === hex.toLowerCase()))
     .filter((color): color is (typeof allColors)[number] => Boolean(color));
+
+  return selectedColors.length > 0 ? selectedColors : allColors.slice(0, 1);
 }
 
 function getActiveExtrasCount(state: ProductBuilderState) {
@@ -152,7 +154,7 @@ function mixHexColors(colors: string[]) {
 function ProductsPage() {
   const [selectedProductId, setSelectedProductId] = useState<ProductsPageProductId | null>(null);
   const [activeSection, setActiveSection] = useState<ExtraKey | null>(null);
-  const [state, setState] = useState<ProductBuilderState>(DEFAULT_STATE);
+  const [state, setState] = useState<ProductBuilderState>(() => getDefaultState());
 
   const selectedProduct = useMemo(() => {
     return productsPageItems.find((product) => product.id === selectedProductId) ?? null;
@@ -173,9 +175,18 @@ function ProductsPage() {
 
   const selectedColors = useMemo(() => getSelectedColors(state.selectedColorHexes), [state.selectedColorHexes]);
 
+  useEffect(() => {
+    if (state.selectedColorHexes.length > 0) return;
+
+    setState((previousState) => ({
+      ...previousState,
+      selectedColorHexes: [DEFAULT_COLOR_HEX],
+    }));
+  }, [state.selectedColorHexes.length]);
+
   const handleSelectProduct = (product: ProductsPageProduct) => {
     setSelectedProductId(product.id);
-    setState(DEFAULT_STATE);
+    setState(getDefaultState());
     setActiveSection(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -192,6 +203,10 @@ function ProductsPage() {
       const isSelected = currentHexes.some((hex) => hex.toLowerCase() === normalizedHex);
 
       if (isSelected) {
+        if (currentHexes.length <= 1) {
+          return previousState;
+        }
+
         return {
           ...previousState,
           selectedColorHexes: currentHexes.filter((hex) => hex.toLowerCase() !== normalizedHex),
@@ -536,7 +551,6 @@ function ColorCombinationPreview({ colors }: { colors: string[] }) {
   const mixedColor = mixHexColors(previewColors);
   const colorLabel = previewColors.length === 1 ? "cor" : "cores";
 
-  
   return (
     <div className="products-builder__combination" aria-label={`Mistura final com ${previewColors.length} ${colorLabel}`}>
       <span
