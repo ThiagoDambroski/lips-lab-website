@@ -486,8 +486,6 @@ function ProductCustomizer({
               <span>Adicionar charms</span>
             </label>
           </AccordionSection>
-
-          <ProductInfo product={product} />
         </div>
 
         <aside className="products-summary" aria-label="Resumo do pedido">
@@ -526,6 +524,8 @@ function ProductCustomizer({
             <p className="products-summary__secure">Compra 100% segura</p>
           </div>
         </aside>
+
+        <ProductInfo product={product} />
       </div>
     </section>
   );
@@ -536,6 +536,7 @@ function ColorCombinationPreview({ colors }: { colors: string[] }) {
   const mixedColor = mixHexColors(previewColors);
   const colorLabel = previewColors.length === 1 ? "cor" : "cores";
 
+  
   return (
     <div className="products-builder__combination" aria-label={`Mistura final com ${previewColors.length} ${colorLabel}`}>
       <span
