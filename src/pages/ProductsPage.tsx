@@ -95,6 +95,60 @@ function getActiveExtrasCount(state: ProductBuilderState) {
   ].filter(Boolean).length;
 }
 
+
+function normalizeHexColor(hex: string) {
+  const cleanHex = hex.trim().replace("#", "");
+
+  if (cleanHex.length === 3) {
+    return cleanHex
+      .split("")
+      .map((character) => character + character)
+      .join("");
+  }
+
+  return cleanHex.padEnd(6, "0").slice(0, 6);
+}
+
+function hexToRgb(hex: string) {
+  const normalizedHex = normalizeHexColor(hex);
+  const numericColor = Number.parseInt(normalizedHex, 16);
+
+  return {
+    r: (numericColor >> 16) & 255,
+    g: (numericColor >> 8) & 255,
+    b: numericColor & 255,
+  };
+}
+
+function rgbToHex(r: number, g: number, b: number) {
+  return `#${[r, g, b]
+    .map((channel) => Math.round(channel).toString(16).padStart(2, "0"))
+    .join("")}`;
+}
+
+function mixHexColors(colors: string[]) {
+  if (colors.length === 0) return DEFAULT_COLOR_HEX;
+
+  const mixedColor = colors.reduce(
+    (accumulator, color) => {
+      const rgb = hexToRgb(color);
+
+      return {
+        r: accumulator.r + rgb.r,
+        g: accumulator.g + rgb.g,
+        b: accumulator.b + rgb.b,
+      };
+    },
+    { r: 0, g: 0, b: 0 }
+  );
+
+  return rgbToHex(
+    mixedColor.r / colors.length,
+    mixedColor.g / colors.length,
+    mixedColor.b / colors.length
+  );
+}
+
 function ProductsPage() {
   const [selectedProductId, setSelectedProductId] = useState<ProductsPageProductId | null>(null);
   const [activeSection, setActiveSection] = useState<ExtraKey | null>(null);
@@ -301,6 +355,7 @@ function ProductCustomizer({
                 <strong id="products-color-title">Escolhe a cor</strong>
                 <small>{`Seleciona até ${MAX_COLOR_SELECTIONS} cores para o produto.`}</small>
               </span>
+              <ColorCombinationPreview colors={selectedColors.map((color) => color.hex)} />
             </div>
 
             <div className="products-builder__panel products-builder__panel--static">
@@ -343,6 +398,7 @@ function ProductCustomizer({
                   key={glitter.id}
                   label={glitter.name}
                   image={glitter.img}
+                  variant="glitter"
                   isSelected={state.glitterId === glitter.id}
                   onClick={() => onUpdateState({ glitterId: glitter.id })}
                 />
@@ -475,6 +531,26 @@ function ProductCustomizer({
   );
 }
 
+function ColorCombinationPreview({ colors }: { colors: string[] }) {
+  const previewColors = colors.length > 0 ? colors : [DEFAULT_COLOR_HEX];
+  const mixedColor = mixHexColors(previewColors);
+  const colorLabel = previewColors.length === 1 ? "cor" : "cores";
+
+  return (
+    <div className="products-builder__combination" aria-label={`Mistura final com ${previewColors.length} ${colorLabel}`}>
+      <span
+        className="products-builder__combination-ball"
+        style={{ backgroundColor: mixedColor }}
+        aria-hidden="true"
+      />
+      <span className="products-builder__combination-copy">
+        <strong>Combinação</strong>
+        <small>{`${previewColors.length}/${MAX_COLOR_SELECTIONS}`}</small>
+      </span>
+    </div>
+  );
+}
+
 type AccordionSectionProps = {
   id: ExtraKey;
   title: string;
@@ -506,9 +582,31 @@ function AccordionSection({ id, title, subtitle, priceLabel, isActive, onToggle,
   );
 }
 
-function OptionButton({ label, image, isSelected, onClick }: { label: string; image?: string; isSelected: boolean; onClick: () => void }) {
+function OptionButton({
+  label,
+  image,
+  variant = "cosmetic",
+  isSelected,
+  onClick,
+}: {
+  label: string;
+  image?: string;
+  variant?: "cosmetic" | "glitter";
+  isSelected: boolean;
+  onClick: () => void;
+}) {
+  const buttonClassName = [
+    "products-builder__option",
+    image ? "products-builder__option--with-icon" : "",
+    image && variant === "glitter" ? "products-builder__option--glitter" : "",
+    image && variant === "cosmetic" ? "products-builder__option--cosmetic" : "",
+    isSelected ? "products-builder__option--active" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <button type="button" className={`products-builder__option ${isSelected ? "products-builder__option--active" : ""}`} onClick={onClick} aria-pressed={isSelected}>
+    <button type="button" className={buttonClassName} onClick={onClick} aria-pressed={isSelected}>
       {image && (
         <span className="products-builder__option-icon" aria-hidden="true">
           <img src={image} alt="" loading="lazy" decoding="async" />
