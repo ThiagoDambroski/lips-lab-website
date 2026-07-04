@@ -600,7 +600,7 @@ function ExtrasBox({
               maxLength={MAX_ENGRAVING_LENGTH}
               value={state.engraving}
               onChange={(event) => onUpdateState({ engraving: event.target.value })}
-              placeholder="Ex.: Daniela"
+              placeholder="Ex.: Leticia"
               aria-label="Texto para gravação na embalagem"
             />
             <span>{state.engraving.length}/{MAX_ENGRAVING_LENGTH}</span>
