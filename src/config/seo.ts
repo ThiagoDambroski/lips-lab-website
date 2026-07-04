@@ -28,7 +28,7 @@ export const seoByPath: Record<string, SeoConfig> = {
   },
   [ROUTES.products]: {
     title: `Produtos | ${SITE_NAME}`,
-    description: "Página de produtos Lips Lab em preparação para venda de batons, lip gloss e extras personalizados.",
+    description: "Compra produtos Lips Lab personalizados, incluindo batons, lip gloss e extras para criares uma fórmula única.",
     path: ROUTES.products,
   },
   [ROUTES.onlineExperience]: {

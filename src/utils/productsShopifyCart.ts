@@ -15,6 +15,7 @@ export type ProductsCartInput = {
   essence?: string;
   additive?: string;
   engravingText?: string;
+  engravingSymbol?: string;
   hasCharms: boolean;
   totalPrice: number;
 };
@@ -49,6 +50,7 @@ const countSelectedExtras = ({
   essence,
   additive,
   engravingText,
+  engravingSymbol,
   hasCharms,
 }: ProductsCartInput): ProductExtraCount => {
   let count = 0;
@@ -56,7 +58,7 @@ const countSelectedExtras = ({
   if (hasRealValue(glitter)) count += 1;
   if (hasRealValue(aroma) || hasRealValue(essence)) count += 1;
   if (hasRealValue(additive)) count += 1;
-  if (engravingText?.trim()) count += 1;
+  if (engravingText?.trim() || hasRealValue(engravingSymbol)) count += 1;
   if (hasCharms) count += 1;
 
   return Math.min(count, 5) as ProductExtraCount;
@@ -95,6 +97,7 @@ export const buildProductsCartUrl = (input: ProductsCartInput) => {
     essencia: input.essence || "Sem essência",
     aditivo: input.additive || "Pré-opção",
     gravacao: input.engravingText?.trim() || "Sem gravação",
+    simbolo_gravacao: input.engravingSymbol || "Sem símbolo",
     charms: input.hasCharms ? "Sim" : "Não",
     total_esperado: `${input.totalPrice.toFixed(2)}€`,
     origem: "Página Produtos Lips Lab",
