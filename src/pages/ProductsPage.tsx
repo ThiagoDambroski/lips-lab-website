@@ -42,7 +42,7 @@ type AromaEssenceOption =
     };
 
 const MAX_COLOR_SELECTIONS = 4;
-const MAX_ENGRAVING_LENGTH = 12;
+const MAX_ENGRAVING_LENGTH = 7;
 
 const DEFAULT_COLOR_HEX = allColors[0]?.hex ?? "#d13c72";
 
@@ -102,7 +102,7 @@ const productInfoCopy: Record<ProductsPageProductId, ProductInfoCopy> = {
     moreDescription:
       "Formulado com ceras vegetais naturais, chá verde e vitamina E, ajuda a nutrir, reparar e cuidar dos lábios, proporcionando conforto imediato e um acabamento luminoso.",
     ingredients:
-      "Fórmula com ceras vegetais naturais, chá verde e vitamina E. A composição final pode variar conforme a personalização escolhida.",
+      "Fórmula com ceras vegetais naturais, chá verde e vitamina E. A composição final pode variar conforme a personalização escolhida. Polibuteno hidrogenado, triglicerídeo caprílico/cáprico, óleo de semente de Vitis vinifera (uva), óleo de semente de Simmondsia chinensis (jojoba), óleo de semente de Macadamia ternifolia (macadâmia), caprilil glicol, extrato de Lonicera caprifolium (madressilva), extrato de Lonicera japonica (madressilva), tocoferol (vitamina E).",
   },
   batom: {
     shortDescription:
@@ -110,7 +110,7 @@ const productInfoCopy: Record<ProductsPageProductId, ProductInfoCopy> = {
     moreDescription:
       "A textura foi pensada para oferecer conforto nos lábios e um acabamento bonito, com a possibilidade de adicionar extras que tornam cada produto único.",
     ingredients:
-      "Fórmula cosmética labial com ingredientes de cuidado e acabamento personalizável. A composição final pode variar conforme a personalização escolhida.",
+      "Fórmula cosmética labial com ingredientes de cuidado e acabamento personalizável. A composição final pode variar conforme a personalização escolhida. Cetyl Acetate, Acetylated Lanolin Alcohol, Lanolin Oil, Euphorbia Cerifera (Candelilla) Wax, Ethylhexyl Palmitate, Ozokerite Wax, Ricinus Communis (Castor) Seed Oil, Stearalkonium Hectorite, Propylene Carbonate, Cetyl Ricinolate, Caprylic/Capric Triglyceride, Silica, Polymethyl Methacrylate, Copernicia Cerifera (Carnauba) Wax, Lanolin, Cera Microcristallina (Microcrystalline) Wax, Propylene Glycol Dicaprylate/Dicaprate, Paraffin Wax, Myristyl Lactate, Polyethylene, Caprylyl Glycol, Lonicera Caprifolium (Honeysuckle) Extract, Lonicera Japonica (Honeysuckle) Extract, Tocopherol (Vitamin E).",
   },
 };
 
@@ -156,10 +156,11 @@ function getSymbolName(symbolId: string) {
 function getEngravingSummary(text: string, symbolId: string) {
   const engravingText = text.trim();
   const symbolName = getSymbolName(symbolId);
+  const symbolSummary = symbolName ? `${symbolName} (símbolo)` : undefined;
 
-  if (engravingText && symbolName) return `${engravingText} + ${symbolName}`;
+  if (engravingText && symbolSummary) return `${engravingText} + ${symbolSummary}`;
   if (engravingText) return engravingText;
-  if (symbolName) return symbolName;
+  if (symbolSummary) return symbolSummary;
 
   return "none";
 }
