@@ -16,6 +16,7 @@ export type ProductsCartInput = {
   additive?: string;
   engravingText?: string;
   engravingSymbol?: string;
+  batomFormat?: string;
   hasCharms: boolean;
   totalPrice: number;
 };
@@ -98,6 +99,7 @@ export const buildProductsCartUrl = (input: ProductsCartInput) => {
     aditivo: input.additive || "Pré-opção",
     gravacao: input.engravingText?.trim() || "Sem gravação",
     simbolo_gravacao: input.engravingSymbol || "Sem símbolo",
+    formato_molde: input.batomFormat || "Não aplicável",
     charms: input.hasCharms ? "Sim" : "Não",
     total_esperado: `${input.totalPrice.toFixed(2)}€`,
     origem: "Página Produtos Lips Lab",

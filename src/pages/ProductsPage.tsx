@@ -1,6 +1,12 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
 import Navbar from "../Navbar/Navbar";
 import PageSeo from "../components/PageSeo";
+import glossWithoutImage from "../assets/gloss whiout.png";
+import batomBaseNoTip from "../assets/batom_base_no_tip.png";
+import batomTipMaskAlpha from "../assets/batom_tip_shading2.png";
+import batomTipShading from "../assets/batom_tip_shading2.png";
+import lisaTip from "../assets/lisa tip.png";
+import comeiaTip from "../assets/comeia tip.png";
 import { SYMBOL_OPTIONS, type SymbolOption } from "../Functions/CreateBatomBox/constants/symbolOptions";
 import { allColors, allEsence, additiveOptions, glitterOptions, smellOptions } from "../Functions/CreateBatomBox/data/builderOptions";
 import type { AdditivesOptions, EsenceOptions, SmelltOptions } from "../Functions/CreateBatomBox/Types";
@@ -9,6 +15,8 @@ import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { buildProductsCartUrl } from "../utils/productsShopifyCart";
 import "../styles/products-page/index.css";
+
+type BatomFormatOption = "liso" | "comeia";
 
 type ProductBuilderState = {
   selectedColorHexes: string[];
@@ -19,6 +27,7 @@ type ProductBuilderState = {
   engraving: string;
   engravingSymbol: string;
   hasCharms: boolean;
+  batomFormat: BatomFormatOption;
 };
 
 type ProductInfoCopy = {
@@ -93,6 +102,7 @@ const getDefaultState = (): ProductBuilderState => ({
   engraving: "",
   engravingSymbol: "none",
   hasCharms: false,
+  batomFormat: "liso",
 });
 
 const productInfoCopy: Record<ProductsPageProductId, ProductInfoCopy> = {
@@ -163,6 +173,10 @@ function getEngravingSummary(text: string, symbolId: string) {
   if (symbolSummary) return symbolSummary;
 
   return "none";
+}
+
+function getBatomFormatName(format: BatomFormatOption) {
+  return format === "comeia" ? "Colmeia" : "Liso";
 }
 
 function getSelectedColors(colorHexes: string[]) {
@@ -339,6 +353,7 @@ function ProductsPage() {
       additive: selectedAdditiveName,
       engravingText: state.engraving,
       engravingSymbol: getSymbolName(state.engravingSymbol),
+      batomFormat: selectedProduct.id === "batom" ? getBatomFormatName(state.batomFormat) : undefined,
       hasCharms: state.hasCharms,
       totalPrice,
     });
@@ -454,7 +469,7 @@ function ProductCustomizer({
           </header>
 
           <div className="products-summary products-summary--mobile-preview" aria-label={`Pré-visualização do ${product.title}`}>
-            <ProductPreviewCard product={product} />
+            <ProductPreviewCard product={product} selectedColors={selectedColors} batomFormat={state.batomFormat} />
           </div>
 
           <section className="products-builder__accordion products-builder__accordion--always-open" aria-labelledby="products-color-title">
@@ -463,7 +478,7 @@ function ProductCustomizer({
                 <strong id="products-color-title">Escolhe a cor</strong>
                 <small>{`Seleciona até ${MAX_COLOR_SELECTIONS} cores para o produto.`}</small>
               </span>
-              <ColorCombinationPreview colors={selectedColors.map((color) => color.hex)} />
+              
             </div>
 
             <div className="products-builder__panel products-builder__panel--static">
@@ -491,16 +506,24 @@ function ProductCustomizer({
             </div>
           </section>
 
+          {product.id === "batom" && (
+            <BatomTipSelector
+              selectedFormat={state.batomFormat}
+              onSelectFormat={(batomFormat) => onUpdateState({ batomFormat })}
+            />
+          )}
+
           <ExtrasBox state={state} onUpdateState={onUpdateState} />
         </div>
 
         <aside className="products-summary" aria-label="Resumo do pedido">
-          <ProductPreviewCard product={product} className="products-summary__card--desktop-preview" />
+          <ProductPreviewCard product={product} selectedColors={selectedColors} batomFormat={state.batomFormat} className="products-summary__card--desktop-preview" />
 
           <div className="products-summary__card products-summary__card--order">
             <h2>Resumo do pedido</h2>
             <SummaryRow label={`${product.title} Base`} value={formatPrice(product.basePrice)} />
             <SummaryRow label={`Cores: ${selectedColorNames || "none"}`} value="+0,00€" colors={selectedColors.map((color) => color.hex)} />
+            {product.id === "batom" && <SummaryRow label={`Formato: ${getBatomFormatName(state.batomFormat)}`} value="+0,00€" />}
             <SummaryRow label={`Glitter: ${selectedGlitter ? getGlitterDisplayName(selectedGlitter) : "none"}`} value={state.glitterId ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
             <SummaryRow label={`Aroma/Essência: ${selectedAromaEssenceName}`} value={state.smell !== "none" || state.essence !== "none" ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
             <SummaryRow label={`Aditivo: ${selectedAdditive?.name ?? "none"}`} value={state.additive !== "none" ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
@@ -525,6 +548,52 @@ function ProductCustomizer({
         </aside>
 
         <ProductInfo product={product} />
+      </div>
+    </section>
+  );
+}
+
+function BatomTipSelector({
+  selectedFormat,
+  onSelectFormat,
+}: {
+  selectedFormat: BatomFormatOption;
+  onSelectFormat: (format: BatomFormatOption) => void;
+}) {
+  const options: { id: BatomFormatOption; label: string; image: string; imageAlt: string }[] = [
+    { id: "liso", label: "Liso", image: lisaTip, imageAlt: "Molde de batom liso" },
+    { id: "comeia", label: "Colmeia", image: comeiaTip, imageAlt: "Molde de batom com textura colmeia" },
+  ];
+
+  return (
+    <section className="products-builder__mold" aria-labelledby="products-mold-title">
+      <div className="products-builder__mold-copy">
+        <div className="products-builder__mold-title-line">
+          <h2 id="products-mold-title">Escolhe o formato do molde</h2>
+         
+        </div>
+        <p>Dá um toque único ao formato da ponta do teu batom.</p>
+      </div>
+
+      <div className="products-builder__mold-options" role="radiogroup" aria-label="Formato do molde do batom">
+        {options.map((option) => {
+          const isSelected = selectedFormat === option.id;
+
+          return (
+            <button
+              key={option.id}
+              type="button"
+              className={`products-builder__mold-option ${isSelected ? "products-builder__mold-option--active" : ""}`}
+              onClick={() => onSelectFormat(option.id)}
+              role="radio"
+              aria-checked={isSelected}
+            >
+              <span className="products-builder__mold-check" aria-hidden="true" />
+              <img src={option.image} alt={option.imageAlt} loading="lazy" decoding="async" />
+              <strong>{option.label}</strong>
+            </button>
+          );
+        })}
       </div>
     </section>
   );
@@ -1160,49 +1229,100 @@ function MoreOptionsButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-function ColorCombinationPreview({ colors }: { colors: string[] }) {
-  const previewColors = colors.length > 0 ? colors : [DEFAULT_COLOR_HEX];
-  const mixedColor = mixHexColors(previewColors);
-  const colorLabel = previewColors.length === 1 ? "cor" : "cores";
-
-  return (
-    <div className="products-builder__combination" aria-label={`Mistura final com ${previewColors.length} ${colorLabel}`}>
-      <span
-        className="products-builder__combination-ball"
-        style={{ backgroundColor: mixedColor }}
-        aria-hidden="true"
-      />
-      <span className="products-builder__combination-copy">
-        <strong>Combinação</strong>
-        <small>{`${previewColors.length}/${MAX_COLOR_SELECTIONS}`}</small>
-      </span>
-    </div>
-  );
-}
 
 
 function ProductPreviewCard({
   product,
+  selectedColors,
+  batomFormat,
   className = "",
 }: {
   product: ProductsPageProduct;
+  selectedColors: (typeof allColors)[number][];
+  batomFormat: BatomFormatOption;
   className?: string;
 }) {
   const cardClassName = ["products-summary__card", className].filter(Boolean).join(" ");
+  const selectedPreviewColor = mixHexColors(selectedColors.map((color) => color.hex));
 
   return (
     <div className={cardClassName}>
       <h2>O teu {product.title}</h2>
       <div className="products-summary__image-wrap">
-        <img
-          src={product.image}
-          alt={product.imageAlt}
-          className={`products-summary__image products-summary__image--${product.id}`}
-          loading="lazy"
-          decoding="async"
+        <ProductColorPreviewImage
+          product={product}
+          selectedColor={selectedPreviewColor}
+          batomFormat={batomFormat}
         />
       </div>
       <p className="products-summary__note">A imagem é apenas uma representação do resultado.</p>
+    </div>
+  );
+}
+
+function ProductColorPreviewImage({
+  product,
+  selectedColor,
+  batomFormat,
+}: {
+  product: ProductsPageProduct;
+  selectedColor: string;
+  batomFormat: BatomFormatOption;
+}) {
+  if (product.id === "gloss") {
+    return (
+      <div
+        className="products-summary__color-preview products-summary__color-preview--gloss"
+        aria-label={product.imageAlt}
+      >
+        <div
+          className="products-summary__gloss-color"
+          style={{ backgroundColor: selectedColor }}
+          aria-hidden="true"
+        />
+        <img
+          src={glossWithoutImage}
+          alt=""
+          className="products-summary__gloss-image"
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`products-summary__color-preview products-summary__color-preview--batom products-summary__color-preview--batom-${batomFormat}`}
+      aria-label={product.imageAlt}
+    >
+      <div
+        className="products-summary__batom-color"
+        style={
+          {
+            backgroundColor: selectedColor,
+            "--productsBatomMask": `url(${batomTipMaskAlpha})`,
+          } as CSSProperties
+        }
+        aria-hidden="true"
+      />
+      <img
+        src={batomTipShading}
+        alt=""
+        className="products-summary__batom-shading"
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+      />
+      <img
+        src={batomBaseNoTip}
+        alt=""
+        className="products-summary__batom-image"
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+      />
     </div>
   );
 }
