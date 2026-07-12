@@ -289,13 +289,14 @@ export const additiveOptions: {
   description: string;
   img: string;
 }[] = [
+  /*
     {
       id: "SUAVIZAÇÃO",
       name: "SUAVIZAÇÃO",
       description:
         "Proporciona um efeito de lábios mais preenchidos e hidratados.",
       img: suav
-    },
+    },*/
     {
       id: "PROTEÇÃO SOLAR",
       name: "PROTEÇÃO SOLAR",

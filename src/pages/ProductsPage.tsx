@@ -250,14 +250,15 @@ function mixHexColors(colors: string[]) {
   );
 }
 
-function getAromaEssenceKey(smell: SmelltOptions, essence: EsenceOptions) {
-  if (smell !== "none") return `smell:${smell}`;
-  if (essence !== "none") return `essence:${essence}`;
-  return "none";
-}
-
 function getAromaEssenceDisplayName(smell: SmelltOptions, essence: EsenceOptions) {
-  return getSmellName(smell) ?? getEssenceName(essence) ?? "none";
+  const smellName = getSmellName(smell);
+  const essenceName = getEssenceName(essence);
+
+  if (smellName && essenceName) return `Aroma: ${smellName} / Essência: ${essenceName}`;
+  if (smellName) return `Aroma: ${smellName}`;
+  if (essenceName) return `Essência: ${essenceName}`;
+
+  return "none";
 }
 
 function ProductsPage() {
@@ -626,16 +627,16 @@ function ExtrasBox({
       </ExtraRow>
 
       <ExtraRow
-        title="Aroma ou essência"
+        title="Aroma e essência"
         priceLabel={`+${formatPrice(PRODUCT_EXTRA_PRICE)}`}
-        subtitle="Escolhe o aroma que mais gostas."
+        subtitle="Escolhe até um aroma e uma essência."
       >
         <AromaEssencePicker
           selectedSmell={state.smell}
           selectedEssence={state.essence}
           onSelectNone={() => onUpdateState({ smell: "none", essence: "none" })}
-          onSelectSmell={(smell) => onUpdateState({ smell, essence: "none" })}
-          onSelectEssence={(essence) => onUpdateState({ smell: "none", essence })}
+          onSelectSmell={(smell) => onUpdateState({ smell })}
+          onSelectEssence={(essence) => onUpdateState({ essence })}
         />
       </ExtraRow>
 
@@ -852,7 +853,7 @@ function AromaEssencePicker({
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
-  const selectedKey = getAromaEssenceKey(selectedSmell, selectedEssence);
+  const hasNoAromaEssence = selectedSmell === "none" && selectedEssence === "none";
 
   const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
@@ -873,44 +874,44 @@ function AromaEssencePicker({
       .map((essence) => ({ kind: "essence" as const, id: essence.id, name: essence.name, img: essence.img }));
 
     const featured = [...smellItems, ...essenceItems];
-    const selectedOption = getSelectedAromaEssenceOption(selectedSmell, selectedEssence);
+    const selectedOptions = getSelectedAromaEssenceOptions(selectedSmell, selectedEssence);
+    const optionsByKey = new Map<string, AromaEssenceOption>();
 
-    if (!selectedOption || featured.some((option) => getAromaEssenceOptionKey(option) === getAromaEssenceOptionKey(selectedOption))) {
-      return featured;
-    }
+    [...featured, ...selectedOptions].forEach((option) => {
+      optionsByKey.set(getAromaEssenceOptionKey(option), option);
+    });
 
-    return [...featured.slice(0, 4), selectedOption];
+    return Array.from(optionsByKey.values());
   }, [selectedEssence, selectedSmell]);
 
   const selectOption = (option: AromaEssenceOption) => {
     if (option.kind === "smell") {
       onSelectSmell(option.id);
-    } else {
-      onSelectEssence(option.id);
+      return;
     }
 
-    setIsLightboxOpen(false);
+    onSelectEssence(option.id);
   };
 
   const selectNone = () => {
     onSelectNone();
-    setIsLightboxOpen(false);
   };
 
   return (
     <>
-      <div className="products-builder__extra-options" aria-label="Opções rápidas de aroma ou essência">
-        <ExtraOptionButton label="Nenhum" isSelected={selectedKey === "none"} onClick={onSelectNone} variant="none" />
+      <div className="products-builder__extra-options" aria-label="Opções rápidas de aroma e essência">
+        <ExtraOptionButton label="Nenhum" isSelected={hasNoAromaEssence} onClick={onSelectNone} variant="none" />
 
         {featuredOptions.map((option) => {
           const optionKey = getAromaEssenceOptionKey(option);
+          const isSelected = isAromaEssenceOptionSelected(option, selectedSmell, selectedEssence);
 
           return (
             <ExtraOptionButton
               key={optionKey}
               label={option.name}
               image={option.img}
-              isSelected={selectedKey === optionKey}
+              isSelected={isSelected}
               onClick={() => option.kind === "smell" ? onSelectSmell(option.id) : onSelectEssence(option.id)}
             />
           );
@@ -921,7 +922,7 @@ function AromaEssencePicker({
 
       {isLightboxOpen && (
         <LightboxShell
-          title="Escolhe o aroma ou essência"
+          title="Escolhe o aroma e a essência"
           labelId="products-aroma-lightbox-title"
           dialogRef={dialogRef}
           closeButtonRef={closeButtonRef}
@@ -929,9 +930,9 @@ function AromaEssencePicker({
         >
           <button
             type="button"
-            className={`products-builder__lightbox-none ${selectedKey === "none" ? "products-builder__lightbox-none--active" : ""}`}
+            className={`products-builder__lightbox-none ${hasNoAromaEssence ? "products-builder__lightbox-none--active" : ""}`}
             onClick={selectNone}
-            aria-pressed={selectedKey === "none"}
+            aria-pressed={hasNoAromaEssence}
           >
             Sem aroma ou essência
           </button>
@@ -943,14 +944,15 @@ function AromaEssencePicker({
                 {smellOptions.map((smell) => {
                   const option: AromaEssenceOption = { kind: "smell", id: smell.id, name: getSmellName(smell.id) ?? smell.name, img: smell.img };
                   const optionKey = getAromaEssenceOptionKey(option);
+                  const isSelected = selectedSmell === smell.id;
 
                   return (
                     <button
                       key={optionKey}
                       type="button"
-                      className={`products-builder__lightbox-option products-builder__lightbox-option--cosmetic ${selectedKey === optionKey ? "products-builder__lightbox-option--active" : ""}`}
+                      className={`products-builder__lightbox-option products-builder__lightbox-option--cosmetic ${isSelected ? "products-builder__lightbox-option--active" : ""}`}
                       onClick={() => selectOption(option)}
-                      aria-pressed={selectedKey === optionKey}
+                      aria-pressed={isSelected}
                     >
                       <span className="products-builder__lightbox-image products-builder__lightbox-image--cosmetic" aria-hidden="true">
                         <img src={smell.img} alt="" loading="lazy" decoding="async" />
@@ -968,14 +970,15 @@ function AromaEssencePicker({
                 {allEsence.map((essence) => {
                   const option: AromaEssenceOption = { kind: "essence", id: essence.id, name: essence.name, img: essence.img };
                   const optionKey = getAromaEssenceOptionKey(option);
+                  const isSelected = selectedEssence === essence.id;
 
                   return (
                     <button
                       key={optionKey}
                       type="button"
-                      className={`products-builder__lightbox-option products-builder__lightbox-option--cosmetic ${selectedKey === optionKey ? "products-builder__lightbox-option--active" : ""}`}
+                      className={`products-builder__lightbox-option products-builder__lightbox-option--cosmetic ${isSelected ? "products-builder__lightbox-option--active" : ""}`}
                       onClick={() => selectOption(option)}
-                      aria-pressed={selectedKey === optionKey}
+                      aria-pressed={isSelected}
                     >
                       <span className="products-builder__lightbox-image products-builder__lightbox-image--cosmetic" aria-hidden="true">
                         <img src={essence.img} alt="" loading="lazy" decoding="async" />
@@ -993,24 +996,44 @@ function AromaEssencePicker({
   );
 }
 
-function getSelectedAromaEssenceOption(smell: SmelltOptions, essence: EsenceOptions): AromaEssenceOption | null {
+function getSelectedAromaEssenceOptions(smell: SmelltOptions, essence: EsenceOptions): AromaEssenceOption[] {
+  const selectedOptions: AromaEssenceOption[] = [];
+
   if (smell !== "none") {
     const selectedSmell = smellOptions.find((item) => item.id === smell);
 
-    return selectedSmell ? { kind: "smell", id: selectedSmell.id, name: getSmellName(selectedSmell.id) ?? selectedSmell.name, img: selectedSmell.img } : null;
+    if (selectedSmell) {
+      selectedOptions.push({
+        kind: "smell",
+        id: selectedSmell.id,
+        name: getSmellName(selectedSmell.id) ?? selectedSmell.name,
+        img: selectedSmell.img,
+      });
+    }
   }
 
   if (essence !== "none") {
     const selectedEssence = allEsence.find((item) => item.id === essence);
 
-    return selectedEssence ? { kind: "essence", id: selectedEssence.id, name: selectedEssence.name, img: selectedEssence.img } : null;
+    if (selectedEssence) {
+      selectedOptions.push({
+        kind: "essence",
+        id: selectedEssence.id,
+        name: selectedEssence.name,
+        img: selectedEssence.img,
+      });
+    }
   }
 
-  return null;
+  return selectedOptions;
 }
 
 function getAromaEssenceOptionKey(option: AromaEssenceOption) {
   return `${option.kind}:${option.id}`;
+}
+
+function isAromaEssenceOptionSelected(option: AromaEssenceOption, smell: SmelltOptions, essence: EsenceOptions) {
+  return option.kind === "smell" ? smell === option.id : essence === option.id;
 }
 
 function SymbolPicker({
