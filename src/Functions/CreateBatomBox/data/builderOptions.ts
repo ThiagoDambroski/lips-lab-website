@@ -1,5 +1,5 @@
 import type { AdditivesOptions, BaseOptions, EsenceOptions, EyeColorOptions, HairColorOptions, SkinToneOptions, SmelltOptions } from '../Types';
-import suav from "../../../assets/sua.png"
+
 import prot from "../../../assets/prot.png"
 import vol from "../../../assets/vol.png"
 import anti from "../../../assets/anti.png"
