@@ -201,13 +201,13 @@ export const baseGloss: { id: BaseOptions, name: string, description: string }[]
     description:"brilhante & hidratante",
 
   },
-  
+  /*
   {
     id: "brilho intenso",
     name: "brilho intenso",
     description:
       "translúcido & alto brilho",
-  },
+  },*/
   {
     id: "BÁLSAMO",
     name: "BÁLSAMO",
