@@ -2,6 +2,7 @@ import gloss from "../assets/gloss final.svg";
 import batom from "../assets/batom final.svg";
 import oil from "../assets/lipOil.png";
 import type { TypesOptions } from "../Functions/CreateBatomBox/Types";
+import { PRODUCT_VISIBILITY } from "../config/productVisibility";
 
 export type OnlineExperienceProduct = {
   id: Exclude<TypesOptions, undefined>;
@@ -30,13 +31,17 @@ export const onlineExperienceProducts: OnlineExperienceProduct[] = [
     imageAlt: "Batom personalizado Lips Lab",
     ariaLabel: "Criar batom personalizado",
   },
-  {
-    id: "oil",
-    title: "LIP OIL",
-    priceText: "Cria o teu lip oil / 35€",
-    imageSrc: oil,
-    imageAlt: "Lip oil personalizado Lips Lab",
-    className: "online-buy-card-oil",
-    ariaLabel: "Criar lip oil personalizado",
-  },
+  ...(PRODUCT_VISIBILITY.lipOil
+    ? [
+        {
+          id: "oil" as const,
+          title: "LIP OIL",
+          priceText: "Cria o teu lip oil / 35€",
+          imageSrc: oil,
+          imageAlt: "Lip oil personalizado Lips Lab",
+          className: "online-buy-card-oil",
+          ariaLabel: "Criar lip oil personalizado",
+        },
+      ]
+    : []),
 ];

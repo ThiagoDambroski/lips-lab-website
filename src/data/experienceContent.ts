@@ -5,6 +5,7 @@ import glossCombo from "../assets/gloss combo.svg";
 import batomCombo from "../assets/batom combo.svg";
 import lipOil from "../assets/lipOil.png";
 import type { ProductItem } from "../ReserveNow/ProductCarouselProps";
+import { PRODUCT_VISIBILITY } from "../config/productVisibility";
 
 export type IncludeItem = {
   id: number;
@@ -15,7 +16,9 @@ export type IncludeItem = {
 export const experienceProducts: ProductItem[] = [
   { id: 1, title: "GLOSS LABIAL", price: "55€", imageUrl: normalGloss, alt: "Gloss labial rosa Lips Lab" },
   { id: 2, title: "BATOM", price: "55€", imageUrl: normalBatom, alt: "Batom branco com tampa rosa Lips Lab" },
-  { id: 3, title: "LIP OIL", price: "55€", imageUrl: lipOil, alt: "Lip oil Lips Lab" },
+  ...(PRODUCT_VISIBILITY.lipOil
+    ? [{ id: 3, title: "LIP OIL", price: "55€", imageUrl: lipOil, alt: "Lip oil Lips Lab" }]
+    : []),
   { id: 4, title: "LIP COMBO", price: "99€", imageUrl: lipCombo, alt: "Lip combo Lips Lab" },
   { id: 5, title: "GLOSS COMBO", price: "99€", imageUrl: glossCombo, alt: "Gloss combo Lips Lab" },
   { id: 6, title: "BATOM COMBO", price: "99€", imageUrl: batomCombo, alt: "Batom combo Lips Lab" },
