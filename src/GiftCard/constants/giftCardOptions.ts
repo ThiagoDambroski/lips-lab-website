@@ -7,6 +7,14 @@ export const VARIANT_BY_GIFT_OPTION: Record<GiftOption, number> = {
   packGiftBox: 49242760478977,
 };
 
+
+export const PRICE_BY_GIFT_OPTION: Record<GiftOption, number> = {
+  single: 55,
+  pack: 99,
+  experienceGiftBox: 60,
+  packGiftBox: 104,
+};
+
 export const GIFT_OPTION_LABEL_BY_OPTION: Record<GiftOption, string> = {
   single: "CRIA O TEU BATOM OU GLOSS LABIAL (55€)",
   experienceGiftBox: "EXPERIÊNCIA + CAIXA PRESENTE (60€)",

@@ -627,6 +627,70 @@ footer .footer-sub-div {
       justify-self: end;
 }
 
+.nav-1 .nav-actions,
+.nav-2 .nav-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 4px;
+}
+
+.nav-2 .nav-list {
+  -ms-grid-columns: 1fr 3fr auto;
+      grid-template-columns: 1fr 3fr auto;
+}
+
+.nav-cart-link {
+  width: 44px;
+  height: 44px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 999px;
+  text-decoration: none;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.nav-1 .nav-cart-link {
+  color: white;
+}
+
+.nav-2 .nav-cart-link {
+  color: #c41123;
+}
+
+.nav-2 .nav-cart-link.active {
+  background-color: white;
+}
+
+.nav-cart-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.nav-cart-link:focus-visible {
+  outline: 3px solid rgba(196, 17, 35, 0.35);
+  outline-offset: 2px;
+}
+
+.nav-1 .nav-cart-link:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.75);
+}
+
 .nav-2 .nav-links a:focus-visible,
 .nav-1 .nav-links a:focus-visible,
 footer a:focus-visible {

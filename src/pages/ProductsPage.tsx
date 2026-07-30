@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import PageSeo from "../components/PageSeo";
 import glossWithoutImage from "../assets/gloss whiout.png";
@@ -13,7 +14,10 @@ import type { AdditivesOptions, EsenceOptions, SmelltOptions } from "../Function
 import { productsPageItems, PRODUCT_EXTRA_PRICE, type ProductsPageProduct, type ProductsPageProductId } from "../data/productsPageItems";
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
 import { useFocusTrap } from "../hooks/useFocusTrap";
-import { buildProductsCartUrl } from "../utils/productsShopifyCart";
+import { addCartItem } from "../Cart/utils/cartStorage";
+import { buildCartDescription } from "../Cart/utils/cartItems";
+import { PRODUCTS_VARIANT_IDS, type ProductExtraCount } from "../config/productsShopify";
+import { ROUTES } from "../config/routes";
 import "../styles/products-page/index.css";
 
 type BatomFormatOption = "liso" | "comeia";
@@ -262,6 +266,7 @@ function getAromaEssenceDisplayName(smell: SmelltOptions, essence: EsenceOptions
 }
 
 function ProductsPage() {
+  const navigate = useNavigate();
   const [selectedProductId, setSelectedProductId] = useState<ProductsPageProductId | null>(null);
   const [state, setState] = useState<ProductBuilderState>(() => getDefaultState());
 
@@ -337,29 +342,39 @@ function ProductsPage() {
 
     const selectedColorNamesArray = selectedColors.map((color) => color.sub);
     const selectedColorHexesArray = selectedColors.map((color) => color.hex);
-    const selectedGlitterName = state.glitterId ? getGlitterName(state.glitterId) : undefined;
-    const selectedSmellName = getSmellName(state.smell);
-    const selectedEssenceName = getEssenceName(state.essence);
-    const selectedAdditiveName = getAdditiveName(state.additive);
+    const selectedGlitterName = state.glitterId ? getGlitterName(state.glitterId) : "Sem glitter";
+    const selectedSmellName = getSmellName(state.smell) ?? "Sem aroma";
+    const selectedEssenceName = getEssenceName(state.essence) ?? "Sem essência";
+    const selectedAdditiveName = getAdditiveName(state.additive) ?? "Sem aditivo";
+    const engravingText = state.engraving.trim() || "Sem gravação";
+    const engravingSymbol = getSymbolName(state.engravingSymbol) ?? "Sem símbolo";
+    const extraCount = Math.min(getActiveExtrasCount(state), 5) as ProductExtraCount;
+    const details = [
+      { label: "Cores", value: selectedColorNamesArray.join(", ") || "Sem cor selecionada" },
+      { label: "Cores HEX", value: selectedColorHexesArray.join(", ") || "Sem cor selecionada" },
+      { label: "Glitter", value: selectedGlitterName },
+      { label: "Aroma", value: selectedSmellName },
+      { label: "Essência", value: selectedEssenceName },
+      { label: "Aditivo", value: selectedAdditiveName },
+      { label: "Gravação", value: engravingText },
+      { label: "Símbolo", value: engravingSymbol },
+      ...(selectedProduct.id === "batom"
+        ? [{ label: "Formato", value: getBatomFormatName(state.batomFormat) }]
+        : []),
+      { label: "Charms", value: state.hasCharms ? "Sim" : "Não" },
+    ];
 
-    if (selectedProduct.id !== "gloss" && selectedProduct.id !== "batom") return;
-
-    const cartUrl = buildProductsCartUrl({
-      productType: selectedProduct.id,
-      selectedColors: selectedColorNamesArray,
-      selectedColorHexes: selectedColorHexesArray,
-      glitter: selectedGlitterName,
-      aroma: selectedSmellName,
-      essence: selectedEssenceName,
-      additive: selectedAdditiveName,
-      engravingText: state.engraving,
-      engravingSymbol: getSymbolName(state.engravingSymbol),
-      batomFormat: selectedProduct.id === "batom" ? getBatomFormatName(state.batomFormat) : undefined,
-      hasCharms: state.hasCharms,
-      totalPrice,
+    addCartItem({
+      source: "products",
+      name: selectedProduct.title,
+      quantity: 1,
+      unitPrice: totalPrice,
+      shopifyVariantId: PRODUCTS_VARIANT_IDS[selectedProduct.id][extraCount],
+      details,
+      description: buildCartDescription(details),
     });
 
-    window.location.href = cartUrl;
+    navigate(ROUTES.cart);
   };
 
   return (

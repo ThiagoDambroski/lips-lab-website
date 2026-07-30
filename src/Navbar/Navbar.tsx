@@ -42,6 +42,31 @@ function Navbar({ css = 0 }: NavbarProps) {
         </li>
 
         <li className={css === 0 ? "nav-actions" : "nav-actions icon-nav-2"}>
+          <NavLink
+            to={ROUTES.cart}
+            onClick={closeMenu}
+            className={({ isActive }) => `nav-cart-link${isActive ? " active" : ""}`}
+            aria-label="Abrir carrinho"
+          >
+            <svg
+              className="nav-cart-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 4H5L7.2 14.2C7.3 14.7 7.8 15 8.3 15H17.2C17.7 15 18.1 14.7 18.3 14.2L20 8H6"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle cx="9" cy="19" r="1.4" fill="currentColor" />
+              <circle cx="17" cy="19" r="1.4" fill="currentColor" />
+            </svg>
+          </NavLink>
+
           {isNav2 && (
             <button
               type="button"

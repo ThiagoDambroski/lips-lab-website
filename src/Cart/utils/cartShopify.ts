@@ -1,55 +1,101 @@
 import { SHOPIFY_SHOP_URL } from "../../config/site";
-import { safeString, toBase64Url } from "../../utils/string";
-import { GLITTER_LABELS, SHOPIFY_BATOM_VARIANT_ID, SHOPIFY_GLOSS_VARIANT_ID } from "../constants/cartConfig";
-import type { CartProduct } from "./cartTypes";
+import type { CartItem } from "./cartTypes";
 
-function buildLineItemProperties(item: CartProduct): Record<string, string> {
-  const props: Record<string, string> = {};
+const STOREFRONT_API_VERSION = "2026-07";
 
-  const put = (key: string, value: unknown) => {
-    const normalized = safeString(value);
-    if (!normalized) return;
-    props[key] = normalized;
+const CART_CREATE_MUTATION = `
+  mutation CartCreate($input: CartInput!) {
+    cartCreate(input: $input) {
+      cart {
+        checkoutUrl
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+type CartCreateResponse = {
+  data?: {
+    cartCreate?: {
+      cart?: {
+        checkoutUrl?: string;
+      } | null;
+      userErrors?: Array<{
+        field?: string[] | null;
+        message: string;
+      }>;
+    };
   };
+  errors?: Array<{
+    message: string;
+  }>;
+};
 
-  put("type", item.type);
-  put("color", item.color);
-  put("selected_colors_sub", (item as any).selected_colors_sub);
-  put("final_color_hex", (item as any).final_color_hex);
+function buildLineAttributes(item: CartItem) {
+  return [
+    { key: "Descrição", value: item.description },
+    ...item.details.map((detail) => ({ key: detail.label, value: detail.value })),
+    { key: "Lips Lab item", value: item.id },
+  ];
+}
 
-  if (typeof (item as any).glitter === "number") {
-    const glitter = (item as any).glitter as number;
-    put("glitter", GLITTER_LABELS[glitter] ?? String(glitter));
-  } else {
-    put("glitter", (item as any).glitter);
+export async function createShopifyCheckoutUrl(items: CartItem[]) {
+  const response = await fetch(`${SHOPIFY_SHOP_URL}/api/${STOREFRONT_API_VERSION}/graphql.json`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      query: CART_CREATE_MUTATION,
+      variables: {
+        input: {
+          lines: items.map((item) => ({
+            merchandiseId: `gid://shopify/ProductVariant/${item.shopifyVariantId}`,
+            quantity: item.quantity,
+            attributes: buildLineAttributes(item),
+          })),
+        },
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Não foi possível criar o carrinho no Shopify.");
   }
 
-  put("base", item.base);
-  put("smell", item.smell);
-  put("aditive", item.aditive);
-  put("esence", item.esence);
-  put("boxImage", item.boxImage);
-  put("boxText", item.boxText);
-  put("boxFont", item.boxFont);
-  put("batomFormat", (item as any).batomFormat);
-  put("charms", (item as any).charms);
-  put("price_site", (item as any).price);
-  put("lipslab_item_id", item.id);
+  const payload = (await response.json()) as CartCreateResponse;
+  const graphQlError = payload.errors?.[0]?.message;
+  const userError = payload.data?.cartCreate?.userErrors?.[0]?.message;
+  const checkoutUrl = payload.data?.cartCreate?.cart?.checkoutUrl;
 
-  return props;
+  if (graphQlError) {
+    throw new Error(graphQlError);
+  }
+
+  if (userError) {
+    throw new Error(userError);
+  }
+
+  if (!checkoutUrl) {
+    throw new Error("O Shopify não devolveu um checkout válido.");
+  }
+
+  return checkoutUrl;
 }
 
-function resolveVariantIdForItem(item: CartProduct): number {
-  const type = (item.type ?? "").toLowerCase();
-  if (type.includes("gloss")) return SHOPIFY_GLOSS_VARIANT_ID;
-  if (type.includes("batom")) return SHOPIFY_BATOM_VARIANT_ID;
-  return SHOPIFY_GLOSS_VARIANT_ID;
-}
+export function buildShopifyCartFallbackUrl(items: CartItem[]) {
+  const variants = items.map((item) => `${item.shopifyVariantId}:${item.quantity}`).join(",");
+  const params = new URLSearchParams();
 
-export function buildCartPermalinkForSingleItem(item: CartProduct): string {
-  const variantId = resolveVariantIdForItem(item);
-  const props = buildLineItemProperties(item);
-  const encoded = toBase64Url(JSON.stringify(props));
+  params.set("storefront", "true");
 
-  return `${SHOPIFY_SHOP_URL}/cart/${variantId}:1?properties=${encoded}`;
+  items.forEach((item, index) => {
+    params.set(`attributes[Produto ${index + 1}]`, `${item.name} — ${item.description}`);
+  });
+
+  return `${SHOPIFY_SHOP_URL}/cart/${variants}?${params.toString()}`;
 }

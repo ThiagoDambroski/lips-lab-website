@@ -44,7 +44,7 @@ function Footer() {
           </address>
         </div>
       </div>
-      <p>© 2025 Lips Lab. All rights reserved.</p>
+      <p>© 2026 Lips Lab. All rights reserved.</p>
     </footer>
   );
 }

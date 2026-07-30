@@ -2,69 +2,50 @@ import { useEffect, useMemo, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import CartActions from "./components/CartActions";
 import CartItemCard from "./components/CartItemCard";
-import { CART_STORAGE_KEY } from "./constants/cartConfig";
-import { buildCartPermalinkForSingleItem } from "./utils/cartShopify";
-import type { CartProduct } from "./utils/cartTypes";
-import { saveQueue, shiftQueue } from "./utils/shopifyQueue";
-import { readJsonStorage, writeJsonStorage } from "../utils/storage";
+import { clearCartItems, readCartItems, removeCartItem } from "./utils/cartStorage";
+import { buildShopifyCartFallbackUrl, createShopifyCheckoutUrl } from "./utils/cartShopify";
+import type { CartItem } from "./utils/cartTypes";
 import "../styles/Cart.css";
 
 function CartPage() {
-  const [items, setItems] = useState<CartProduct[]>([]);
+  const [items, setItems] = useState<CartItem[]>([]);
   const [isBuying, setIsBuying] = useState(false);
   const [buyError, setBuyError] = useState<string | null>(null);
 
   useEffect(() => {
-    setItems(readJsonStorage<CartProduct[]>(localStorage, CART_STORAGE_KEY, []));
+    setItems(readCartItems());
   }, []);
 
-  const handleRemove = (id: number) => {
-    const updated = items.filter((item) => item.id !== id);
-    setItems(updated);
-    writeJsonStorage(localStorage, CART_STORAGE_KEY, updated);
+  const handleRemove = (id: string) => {
+    setItems(removeCartItem(id));
   };
 
   const handleClear = () => {
+    clearCartItems();
     setItems([]);
-    localStorage.removeItem(CART_STORAGE_KEY);
   };
 
   const total = useMemo(() => {
-    return items.reduce((sum, item) => {
-      const price = typeof (item as any).price === "number" ? (item as any).price : 0;
-      return sum + price;
-    }, 0);
+    return items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
   }, [items]);
 
-  const handleBuyNow = () => {
+  const handleBuyNow = async () => {
+    if (!items.length || isBuying) return;
+
     setBuyError(null);
+    setIsBuying(true);
 
     try {
-      if (!items.length) return;
-
-      const urls = items.map(buildCartPermalinkForSingleItem);
-      saveQueue(urls);
-
-      const first = shiftQueue();
-      if (!first) return;
-
-      setIsBuying(true);
-      window.location.assign(first);
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Falha ao iniciar o checkout no Shopify.";
-      setBuyError(message);
-      setIsBuying(false);
+      const checkoutUrl = await createShopifyCheckoutUrl(items);
+      window.location.assign(checkoutUrl);
+    } catch {
+      try {
+        window.location.assign(buildShopifyCartFallbackUrl(items));
+      } catch {
+        setBuyError("Não foi possível enviar o carrinho para o Shopify. Tenta novamente.");
+        setIsBuying(false);
+      }
     }
-  };
-
-  const handleAddNextToShopify = () => {
-    const next = shiftQueue();
-    if (!next) {
-      setBuyError("Não há mais itens na fila para enviar ao Shopify.");
-      return;
-    }
-
-    window.location.assign(next);
   };
 
   if (items.length === 0) {
@@ -95,12 +76,7 @@ function CartPage() {
           <span>€{total.toFixed(2)}</span>
         </div>
 
-        <CartActions
-          isBuying={isBuying}
-          onClear={handleClear}
-          onBuyNow={handleBuyNow}
-          onAddNext={handleAddNextToShopify}
-        />
+        <CartActions isBuying={isBuying} onClear={handleClear} onBuyNow={handleBuyNow} />
 
         {buyError && <p className="cart-error">{buyError}</p>}
       </main>

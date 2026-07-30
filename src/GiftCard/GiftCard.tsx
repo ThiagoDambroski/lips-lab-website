@@ -1,15 +1,20 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import giftCardImg from "../assets/giftBox.png";
 import giftBanner from "../assets/giftBoxBanner.png";
 import GiftOptionSelector from "./components/GiftOptionSelector";
 import GiftPersonalizationModal from "./components/GiftPersonalizationModal";
-import { GIFT_OPTION_LABEL_BY_OPTION, VARIANT_BY_GIFT_OPTION, type GiftOption } from "./constants/giftCardOptions";
-import { buildShopifyGiftPermalink, goToShopifyAlways, type GiftProperties } from "./utils/giftShopify";
+import { GIFT_OPTION_LABEL_BY_OPTION, PRICE_BY_GIFT_OPTION, VARIANT_BY_GIFT_OPTION, type GiftOption } from "./constants/giftCardOptions";
+import type { GiftProperties } from "./utils/giftShopify";
+import { addCartItem } from "../Cart/utils/cartStorage";
+import { buildCartDescription } from "../Cart/utils/cartItems";
+import { ROUTES } from "../config/routes";
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
 import "../styles/GiftCard.css";
 
 function GiftCard() {
+  const navigate = useNavigate();
   const groupName = useId();
   const modalTitleId = useId();
   const modalDescId = useId();
@@ -29,7 +34,6 @@ function GiftCard() {
   const variantId = useMemo(() => VARIANT_BY_GIFT_OPTION[selected], [selected]);
   const selectedLabel = useMemo(() => GIFT_OPTION_LABEL_BY_OPTION[selected], [selected]);
 
-  const cartUrl = useMemo(() => buildShopifyGiftPermalink(variantId, giftProps), [variantId, giftProps]);
   const isDeFilled = useMemo(() => giftProps.de.trim().length > 0, [giftProps.de]);
   const isParaFilled = useMemo(() => giftProps.para.trim().length > 0, [giftProps.para]);
   const isConfirmDisabled = useMemo(() => isDeFilled !== isParaFilled, [isDeFilled, isParaFilled]);
@@ -43,7 +47,25 @@ function GiftCard() {
 
   const handleConfirm = () => {
     if (isConfirmDisabled) return;
-    goToShopifyAlways(cartUrl);
+
+    const details = [
+      { label: "Opção", value: selectedLabel },
+      { label: "De", value: giftProps.de.trim() || "Não preenchido" },
+      { label: "Para", value: giftProps.para.trim() || "Não preenchido" },
+    ];
+
+    addCartItem({
+      source: "gift-card",
+      name: "Cartão-presente Lips Lab",
+      quantity: 1,
+      unitPrice: PRICE_BY_GIFT_OPTION[selected],
+      shopifyVariantId: String(variantId),
+      details,
+      description: buildCartDescription(details),
+    });
+
+    closeModal();
+    navigate(ROUTES.cart);
   };
 
   return (
