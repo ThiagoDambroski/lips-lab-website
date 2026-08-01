@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import PageSeo from "../components/PageSeo";
 import glossWithoutImage from "../assets/gloss whiout.png";
+import infoCircleIcon from "../assets/info circle.svg";
 import batomBaseNoTip from "../assets/batom_base_no_tip.png";
 import batomTipMaskAlpha from "../assets/batom_tip_shading2.png";
 import batomTipShading from "../assets/batom_tip_shading2.png";
@@ -25,6 +26,7 @@ type BatomFormatOption = "liso" | "comeia";
 type ProductBuilderState = {
   selectedColorHexes: string[];
   glitterId: number | null;
+  isGlitterOnly: boolean;
   smell: SmelltOptions;
   essence: EsenceOptions;
   additive: AdditivesOptions;
@@ -64,6 +66,23 @@ const FEATURED_SMELL_IDS: SmelltOptions[] = ["Cereja jubilee", "Pêssego"];
 const FEATURED_ESSENCE_IDS: EsenceOptions[] = ["Baunilha", "Chocolate", "Cappuccino"];
 const FEATURED_SYMBOL_IDS = ["heart", "star", "sparks", "flower", "infinity", "lips"];
 
+const GLITTER_CATEGORY_DETAILS: Record<string, { title: string; lines: string[] }> = {
+  Frosts: {
+    title: "Frosts",
+    lines: ["Cria um efeito cintilante", "Altera ligeiramente a cor final"],
+  },
+  "Multidimensional Frosts": {
+    title: "Multidimensional Frosts",
+    lines: ["Cria um efeito holográfico", "Muda conforme a luz"],
+  },
+  Foils: {
+    title: "Foils",
+    lines: ["Apenas brilho"],
+  },
+};
+
+const GLITTER_CATEGORY_ORDER = ["Frosts", "Multidimensional Frosts", "Foils"];
+
 const PRODUCT_GLITTER_LABELS: Record<number, string> = {
   7: "Diamante Rosa",
   9: "Prata",
@@ -100,6 +119,7 @@ const SYMBOL_LABELS: Record<string, string> = {
 const getDefaultState = (): ProductBuilderState => ({
   selectedColorHexes: [DEFAULT_COLOR_HEX],
   glitterId: null,
+  isGlitterOnly: false,
   smell: "none",
   essence: "none",
   additive: "none",
@@ -134,6 +154,10 @@ function formatPrice(value: number) {
 
 function getGlitterDisplayName(glitter: (typeof glitterOptions)[number]) {
   return PRODUCT_GLITTER_LABELS[glitter.id] ?? glitter.name;
+}
+
+function getGlitterDisplayNameForMode(glitter: (typeof glitterOptions)[number], isGlitterOnly: boolean) {
+  return isGlitterOnly ? glitter.name : getGlitterDisplayName(glitter);
 }
 
 function getGlitterName(glitterId: number | null) {
@@ -193,7 +217,7 @@ function getSelectedColors(colorHexes: string[]) {
 
 function getActiveExtrasCount(state: ProductBuilderState) {
   return [
-    state.glitterId !== null,
+    state.glitterId !== null && !state.isGlitterOnly,
     state.smell !== "none" || state.essence !== "none",
     state.additive !== "none",
     state.engraving.trim().length > 0 || state.engravingSymbol !== "none",
@@ -340,9 +364,15 @@ function ProductsPage() {
   const handleAddToCart = () => {
     if (!selectedProduct) return;
 
-    const selectedColorNamesArray = selectedColors.map((color) => color.sub);
-    const selectedColorHexesArray = selectedColors.map((color) => color.hex);
-    const selectedGlitterName = state.glitterId ? getGlitterName(state.glitterId) : "Sem glitter";
+    const isGlitterOnly = selectedProduct.id === "gloss" && state.isGlitterOnly;
+
+    if (isGlitterOnly && state.glitterId === null) return;
+
+    const selectedColorNamesArray = isGlitterOnly ? ["Transparente"] : selectedColors.map((color) => color.sub);
+    const selectedColorHexesArray = isGlitterOnly ? ["Transparente"] : selectedColors.map((color) => color.hex);
+    const selectedGlitterName = selectedGlitter
+      ? getGlitterDisplayNameForMode(selectedGlitter, isGlitterOnly)
+      : "Sem glitter";
     const selectedSmellName = getSmellName(state.smell) ?? "Sem aroma";
     const selectedEssenceName = getEssenceName(state.essence) ?? "Sem essência";
     const selectedAdditiveName = getAdditiveName(state.additive) ?? "Sem aditivo";
@@ -350,6 +380,9 @@ function ProductsPage() {
     const engravingSymbol = getSymbolName(state.engravingSymbol) ?? "Sem símbolo";
     const extraCount = Math.min(getActiveExtrasCount(state), 5) as ProductExtraCount;
     const details = [
+      ...(selectedProduct.id === "gloss"
+        ? [{ label: "Opção", value: isGlitterOnly ? "Apenas glitter" : "Com cor" }]
+        : []),
       { label: "Cores", value: selectedColorNamesArray.join(", ") || "Sem cor selecionada" },
       { label: "Cores HEX", value: selectedColorHexesArray.join(", ") || "Sem cor selecionada" },
       { label: "Glitter", value: selectedGlitterName },
@@ -464,6 +497,8 @@ function ProductCustomizer({
 }: ProductCustomizerProps) {
   const selectedColorNames = selectedColors.map((color) => color.sub).join(", ");
   const selectedAromaEssenceName = getAromaEssenceDisplayName(state.smell, state.essence);
+  const isGlitterOnly = product.id === "gloss" && state.isGlitterOnly;
+  const requiresGlitterSelection = isGlitterOnly && state.glitterId === null;
 
   return (
     <section className="products-builder" aria-labelledby="products-builder-title">
@@ -485,42 +520,61 @@ function ProductCustomizer({
           </header>
 
           <div className="products-summary products-summary--mobile-preview" aria-label={`Pré-visualização do ${product.title}`}>
-            <ProductPreviewCard product={product} selectedColors={selectedColors} batomFormat={state.batomFormat} />
+            <ProductPreviewCard
+              product={product}
+              selectedColors={selectedColors}
+              batomFormat={state.batomFormat}
+              isGlitterOnly={isGlitterOnly}
+            />
           </div>
 
-          <section className="products-builder__accordion products-builder__accordion--always-open" aria-labelledby="products-color-title">
-            <div className="products-builder__accordion-button products-builder__accordion-button--static">
-              <span className="products-builder__accordion-text">
-                <strong id="products-color-title">Escolhe a cor</strong>
-                <small>{`Seleciona até ${MAX_COLOR_SELECTIONS} cores para o produto.`}</small>
-              </span>
-              
-            </div>
+          {product.id === "gloss" && (
+            <GlossModeSelector
+              isGlitterOnly={isGlitterOnly}
+              onSelectColor={() => onUpdateState({ isGlitterOnly: false })}
+              onSelectGlitterOnly={() => onUpdateState({ isGlitterOnly: true })}
+            />
+          )}
 
-            <div className="products-builder__panel products-builder__panel--static">
-              <div className="products-builder__colors">
-                {allColors.map((color) => {
-                  const isSelected = state.selectedColorHexes.some((hex) => hex.toLowerCase() === color.hex.toLowerCase());
-                  const isDisabled = state.selectedColorHexes.length >= MAX_COLOR_SELECTIONS && !isSelected;
-
-                  return (
-                    <button
-                      key={color.hex}
-                      type="button"
-                      className={`products-builder__color ${isSelected ? "products-builder__color--active" : ""}`}
-                      onClick={() => onToggleColor(color.hex)}
-                      aria-pressed={isSelected}
-                      aria-label={`Selecionar cor ${color.sub}`}
-                      disabled={isDisabled}
-                    >
-                      <span className="products-builder__swatch" style={{ backgroundColor: color.hex }} aria-hidden="true" />
-                      <span>{color.sub}</span>
-                    </button>
-                  );
-                })}
+          {isGlitterOnly ? (
+            <GlitterOnlySelector
+              selectedGlitterId={state.glitterId}
+              onSelectGlitter={(glitterId) => onUpdateState({ glitterId })}
+            />
+          ) : (
+            <section className="products-builder__accordion products-builder__accordion--always-open" aria-labelledby="products-color-title">
+              <div className="products-builder__accordion-button products-builder__accordion-button--static">
+                <span className="products-builder__accordion-text">
+                  <strong id="products-color-title">Escolhe a cor</strong>
+                  <small>{`Seleciona até ${MAX_COLOR_SELECTIONS} cores para o produto.`}</small>
+                </span>
               </div>
-            </div>
-          </section>
+
+              <div className="products-builder__panel products-builder__panel--static">
+                <div className="products-builder__colors">
+                  {allColors.map((color) => {
+                    const isSelected = state.selectedColorHexes.some((hex) => hex.toLowerCase() === color.hex.toLowerCase());
+                    const isDisabled = state.selectedColorHexes.length >= MAX_COLOR_SELECTIONS && !isSelected;
+
+                    return (
+                      <button
+                        key={color.hex}
+                        type="button"
+                        className={`products-builder__color ${isSelected ? "products-builder__color--active" : ""}`}
+                        onClick={() => onToggleColor(color.hex)}
+                        aria-pressed={isSelected}
+                        aria-label={`Selecionar cor ${color.sub}`}
+                        disabled={isDisabled}
+                      >
+                        <span className="products-builder__swatch" style={{ backgroundColor: color.hex }} aria-hidden="true" />
+                        <span>{color.sub}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          )}
 
           {product.id === "batom" && (
             <BatomTipSelector
@@ -529,18 +583,31 @@ function ProductCustomizer({
             />
           )}
 
-          <ExtrasBox state={state} onUpdateState={onUpdateState} />
+          <ExtrasBox state={state} hideGlitter={isGlitterOnly} onUpdateState={onUpdateState} />
         </div>
 
         <aside className="products-summary" aria-label="Resumo do pedido">
-          <ProductPreviewCard product={product} selectedColors={selectedColors} batomFormat={state.batomFormat} className="products-summary__card--desktop-preview" />
+          <ProductPreviewCard
+            product={product}
+            selectedColors={selectedColors}
+            batomFormat={state.batomFormat}
+            isGlitterOnly={isGlitterOnly}
+            className="products-summary__card--desktop-preview"
+          />
 
           <div className="products-summary__card products-summary__card--order">
             <h2>Resumo do pedido</h2>
             <SummaryRow label={`${product.title} Base`} value={formatPrice(product.basePrice)} />
-            <SummaryRow label={`Cores: ${selectedColorNames || "none"}`} value="+0,00€" colors={selectedColors.map((color) => color.hex)} />
+            <SummaryRow
+              label={isGlitterOnly ? "Cor: Transparente" : `Cores: ${selectedColorNames || "none"}`}
+              value="+0,00€"
+              colors={isGlitterOnly ? undefined : selectedColors.map((color) => color.hex)}
+            />
             {product.id === "batom" && <SummaryRow label={`Formato: ${getBatomFormatName(state.batomFormat)}`} value="+0,00€" />}
-            <SummaryRow label={`Glitter: ${selectedGlitter ? getGlitterDisplayName(selectedGlitter) : "none"}`} value={state.glitterId ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
+            <SummaryRow
+              label={`Glitter: ${selectedGlitter ? getGlitterDisplayNameForMode(selectedGlitter, isGlitterOnly) : isGlitterOnly ? "Seleciona um glitter" : "none"}`}
+              value={state.glitterId && !isGlitterOnly ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"}
+            />
             <SummaryRow label={`Aroma/Essência: ${selectedAromaEssenceName}`} value={state.smell !== "none" || state.essence !== "none" ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
             <SummaryRow label={`Aditivo: ${selectedAdditive?.name ?? "none"}`} value={state.additive !== "none" ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
             <SummaryRow label={`Gravação: ${getEngravingSummary(state.engraving, state.engravingSymbol)}`} value={state.engraving.trim() || state.engravingSymbol !== "none" ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
@@ -558,12 +625,133 @@ function ProductCustomizer({
               <span>Ingredientes de qualidade</span>
             </div>
 
-            <button type="button" className="products-summary__cart" onClick={onAddToCart}>Adicionar ao carrinho</button>
+            <button
+              type="button"
+              className="products-summary__cart"
+              onClick={onAddToCart}
+              disabled={requiresGlitterSelection}
+            >
+              {requiresGlitterSelection ? "Seleciona um glitter" : "Adicionar ao carrinho"}
+            </button>
             <p className="products-summary__secure">Compra 100% segura</p>
           </div>
         </aside>
 
         <ProductInfo product={product} />
+      </div>
+    </section>
+  );
+}
+
+function GlossModeSelector({
+  isGlitterOnly,
+  onSelectColor,
+  onSelectGlitterOnly,
+}: {
+  isGlitterOnly: boolean;
+  onSelectColor: () => void;
+  onSelectGlitterOnly: () => void;
+}) {
+  return (
+    <div className="products-builder__gloss-mode" role="radiogroup" aria-label="Tipo de gloss">
+      <button
+        type="button"
+        className={`products-builder__gloss-mode-option ${!isGlitterOnly ? "products-builder__gloss-mode-option--active" : ""}`}
+        onClick={onSelectColor}
+        role="radio"
+        aria-checked={!isGlitterOnly}
+      >
+        <span className="products-builder__gloss-mode-icon products-builder__gloss-mode-icon--color" aria-hidden="true">
+          <span />
+        </span>
+        <span className="products-builder__gloss-mode-copy">
+          <strong>Com cor</strong>
+          <small>Escolhe a cor do teu gloss e adiciona glitter, se quiseres.</small>
+        </span>
+        <span className="products-builder__gloss-mode-check" aria-hidden="true" />
+      </button>
+
+      <button
+        type="button"
+        className={`products-builder__gloss-mode-option ${isGlitterOnly ? "products-builder__gloss-mode-option--active" : ""}`}
+        onClick={onSelectGlitterOnly}
+        role="radio"
+        aria-checked={isGlitterOnly}
+      >
+        <span className="products-builder__gloss-mode-icon products-builder__gloss-mode-icon--glitter" aria-hidden="true">
+          <span />
+        </span>
+        <span className="products-builder__gloss-mode-copy">
+          <strong>Apenas glitter</strong>
+          <small>Gloss transparente com brilho.</small>
+        </span>
+        <span className="products-builder__gloss-mode-check" aria-hidden="true" />
+      </button>
+    </div>
+  );
+}
+
+function GlitterOnlySelector({
+  selectedGlitterId,
+  onSelectGlitter,
+}: {
+  selectedGlitterId: number | null;
+  onSelectGlitter: (glitterId: number) => void;
+}) {
+  const glittersByCategory = useMemo(() => {
+    return GLITTER_CATEGORY_ORDER.map((category) => ({
+      category,
+      glitters: glitterOptions.filter((glitter) => glitter.category === category),
+    }));
+  }, []);
+
+  return (
+    <section className="products-builder__glitter-only" aria-labelledby="products-glitter-only-title">
+      <header className="products-builder__glitter-only-header">
+        <div>
+          <h2 id="products-glitter-only-title">Escolhe o glitter</h2>
+          <p>Seleciona um glitter para o teu gloss transparente.</p>
+        </div>
+        <span className="products-builder__glitter-only-counter">
+          {selectedGlitterId === null ? "0/1 selecionado" : "1/1 selecionado"}
+        </span>
+      </header>
+
+      <div className="products-builder__glitter-categories">
+        {glittersByCategory.map(({ category, glitters }) => {
+          const details = GLITTER_CATEGORY_DETAILS[category];
+
+          return (
+            <section key={category} className="products-builder__glitter-category" aria-labelledby={`products-glitter-category-${category.replaceAll(" ", "-").toLowerCase()}`}>
+              <div className="products-builder__glitter-category-heading">
+                <h3 id={`products-glitter-category-${category.replaceAll(" ", "-").toLowerCase()}`}>{details.title}</h3>
+                <span className="products-builder__glitter-arrow" aria-hidden="true" />
+                <p>
+                  {details.lines.map((line) => <span key={line}>{line}</span>)}
+                </p>
+              </div>
+
+              <div className="products-builder__glitter-grid">
+                {glitters.map((glitter) => {
+                  const isSelected = selectedGlitterId === glitter.id;
+
+                  return (
+                    <button
+                      key={glitter.id}
+                      type="button"
+                      className={`products-builder__glitter-option ${isSelected ? "products-builder__glitter-option--active" : ""}`}
+                      onClick={() => onSelectGlitter(glitter.id)}
+                      aria-pressed={isSelected}
+                    >
+                      <img src={glitter.img} alt="" loading="lazy" decoding="async" aria-hidden="true" />
+                      <span>{glitter.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
       </div>
     </section>
   );
@@ -617,9 +805,11 @@ function BatomTipSelector({
 
 function ExtrasBox({
   state,
+  hideGlitter,
   onUpdateState,
 }: {
   state: ProductBuilderState;
+  hideGlitter: boolean;
   onUpdateState: (partial: Partial<ProductBuilderState>) => void;
 }) {
   return (
@@ -630,16 +820,18 @@ function ExtrasBox({
         <span aria-hidden="true" />
       </header>
 
-      <ExtraRow
-        title="Glitter"
-        priceLabel={`+${formatPrice(PRODUCT_EXTRA_PRICE)}`}
-        subtitle="Adiciona brilho ao teu gloss."
-      >
-        <GlitterPicker
-          selectedGlitterId={state.glitterId}
-          onSelectGlitter={(glitterId) => onUpdateState({ glitterId })}
-        />
-      </ExtraRow>
+      {!hideGlitter && (
+        <ExtraRow
+          title="Glitter"
+          priceLabel={`+${formatPrice(PRODUCT_EXTRA_PRICE)}`}
+          subtitle="Adiciona brilho ao teu gloss."
+        >
+          <GlitterPicker
+            selectedGlitterId={state.glitterId}
+            onSelectGlitter={(glitterId) => onUpdateState({ glitterId })}
+          />
+        </ExtraRow>
+      )}
 
       <ExtraRow
         title="Aroma e essência"
@@ -1273,11 +1465,13 @@ function ProductPreviewCard({
   product,
   selectedColors,
   batomFormat,
+  isGlitterOnly,
   className = "",
 }: {
   product: ProductsPageProduct;
   selectedColors: (typeof allColors)[number][];
   batomFormat: BatomFormatOption;
+  isGlitterOnly: boolean;
   className?: string;
 }) {
   const cardClassName = ["products-summary__card", className].filter(Boolean).join(" ");
@@ -1286,14 +1480,26 @@ function ProductPreviewCard({
   return (
     <div className={cardClassName}>
       <h2>O teu {product.title}</h2>
-      <div className="products-summary__image-wrap">
-        <ProductColorPreviewImage
-          product={product}
-          selectedColor={selectedPreviewColor}
-          batomFormat={batomFormat}
-        />
-      </div>
-      <p className="products-summary__note">A imagem é apenas uma representação do resultado.</p>
+      {isGlitterOnly ? (
+        <div className="products-summary__glitter-notice" role="note">
+          <img src={infoCircleIcon} alt="" aria-hidden="true" />
+          <div>
+            <strong>O gloss será transparente.</strong>
+            <p>Esta opção não dispõe de pré-visualização, uma vez que a transparência do gloss e o efeito do glitter não podem ser representados de forma real.</p>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="products-summary__image-wrap">
+            <ProductColorPreviewImage
+              product={product}
+              selectedColor={selectedPreviewColor}
+              batomFormat={batomFormat}
+            />
+          </div>
+          <p className="products-summary__note">A imagem é apenas uma representação do resultado.</p>
+        </>
+      )}
     </div>
   );
 }
