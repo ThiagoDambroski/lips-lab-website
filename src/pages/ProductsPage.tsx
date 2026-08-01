@@ -160,13 +160,7 @@ function getGlitterDisplayNameForMode(glitter: (typeof glitterOptions)[number], 
   return isGlitterOnly ? glitter.name : getGlitterDisplayName(glitter);
 }
 
-function getGlitterName(glitterId: number | null) {
-  if (!glitterId) return "none";
 
-  const glitter = glitterOptions.find((item) => item.id === glitterId);
-
-  return glitter ? getGlitterDisplayName(glitter) : String(glitterId);
-}
 
 function getSmellName(smell: SmelltOptions) {
   if (smell === "none") return undefined;
