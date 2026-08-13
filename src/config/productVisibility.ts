@@ -1,3 +1,3 @@
 export const PRODUCT_VISIBILITY = {
-  lipOil: false,
+  lipOil: true,
 } as const;

@@ -3,6 +3,7 @@ import type { AdditivesOptions, BaseOptions, EsenceOptions, EyeColorOptions, Hai
 import prot from "../../../assets/prot.png"
 import vol from "../../../assets/vol.png"
 import anti from "../../../assets/anti.png"
+import suav from "../../../assets/sua.png"
 
 import canela from "../../../assets/canela.png"
 import cereja from "../../../assets/cereja.png"
@@ -201,13 +202,13 @@ export const baseGloss: { id: BaseOptions, name: string, description: string }[]
     description:"brilhante & hidratante",
 
   },
-  /*
+  
   {
     id: "brilho intenso",
     name: "brilho intenso",
     description:
       "translúcido & alto brilho",
-  },*/
+  },
   {
     id: "BÁLSAMO",
     name: "BÁLSAMO",
@@ -289,14 +290,14 @@ export const additiveOptions: {
   description: string;
   img: string;
 }[] = [
-  /*
+  
     {
       id: "SUAVIZAÇÃO",
       name: "SUAVIZAÇÃO",
       description:
         "Proporciona um efeito de lábios mais preenchidos e hidratados.",
       img: suav
-    },*/
+    },
     {
       id: "PROTEÇÃO SOLAR",
       name: "PROTEÇÃO SOLAR",
