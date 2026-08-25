@@ -25,7 +25,7 @@ type BatomFormatOption = "liso" | "comeia";
 
 type ProductBuilderState = {
   selectedColorHexes: string[];
-  glitterId: number | null;
+  glitterIds: number[];
   isGlitterOnly: boolean;
   smell: SmelltOptions;
   essence: EsenceOptions;
@@ -57,6 +57,7 @@ type AromaEssenceOption =
     };
 
 const MAX_COLOR_SELECTIONS = 4;
+const MAX_GLITTER_ONLY_SELECTIONS = 3;
 const MAX_ENGRAVING_LENGTH = 7;
 
 const DEFAULT_COLOR_HEX = allColors[0]?.hex ?? "#d13c72";
@@ -118,7 +119,7 @@ const SYMBOL_LABELS: Record<string, string> = {
 
 const getDefaultState = (): ProductBuilderState => ({
   selectedColorHexes: [DEFAULT_COLOR_HEX],
-  glitterId: null,
+  glitterIds: [],
   isGlitterOnly: false,
   smell: "none",
   essence: "none",
@@ -211,7 +212,7 @@ function getSelectedColors(colorHexes: string[]) {
 
 function getActiveExtrasCount(state: ProductBuilderState) {
   return [
-    state.glitterId !== null && !state.isGlitterOnly,
+    state.glitterIds.length > 0 && !state.isGlitterOnly,
     state.smell !== "none" || state.essence !== "none",
     state.additive !== "none",
     state.engraving.trim().length > 0 || state.engravingSymbol !== "none",
@@ -297,9 +298,11 @@ function ProductsPage() {
     return selectedProduct.basePrice + getActiveExtrasCount(state) * PRODUCT_EXTRA_PRICE;
   }, [selectedProduct, state]);
 
-  const selectedGlitter = useMemo(() => {
-    return glitterOptions.find((item) => item.id === state.glitterId) ?? null;
-  }, [state.glitterId]);
+  const selectedGlitters = useMemo(() => {
+    return state.glitterIds
+      .map((glitterId) => glitterOptions.find((item) => item.id === glitterId))
+      .filter((glitter): glitter is (typeof glitterOptions)[number] => Boolean(glitter));
+  }, [state.glitterIds]);
 
   const selectedAdditive = useMemo(() => {
     return additiveOptions.find((item) => item.id === state.additive) ?? null;
@@ -360,13 +363,14 @@ function ProductsPage() {
 
     const isGlitterOnly = selectedProduct.id === "gloss" && state.isGlitterOnly;
 
-    if (isGlitterOnly && state.glitterId === null) return;
+    if (isGlitterOnly && state.glitterIds.length === 0) return;
 
     const selectedColorNamesArray = isGlitterOnly ? ["Transparente"] : selectedColors.map((color) => color.sub);
     const selectedColorHexesArray = isGlitterOnly ? ["Transparente"] : selectedColors.map((color) => color.hex);
-    const selectedGlitterName = selectedGlitter
-      ? getGlitterDisplayNameForMode(selectedGlitter, isGlitterOnly)
-      : "Sem glitter";
+    const selectedGlitterNames = selectedGlitters.map((glitter) =>
+      getGlitterDisplayNameForMode(glitter, isGlitterOnly)
+    );
+    const selectedGlitterName = selectedGlitterNames[0] ?? "Sem glitter";
     const selectedSmellName = getSmellName(state.smell) ?? "Sem aroma";
     const selectedEssenceName = getEssenceName(state.essence) ?? "Sem essência";
     const selectedAdditiveName = getAdditiveName(state.additive) ?? "Sem aditivo";
@@ -379,7 +383,12 @@ function ProductsPage() {
         : []),
       { label: "Cores", value: selectedColorNamesArray.join(", ") || "Sem cor selecionada" },
       { label: "Cores HEX", value: selectedColorHexesArray.join(", ") || "Sem cor selecionada" },
-      { label: "Glitter", value: selectedGlitterName },
+      ...(isGlitterOnly
+        ? selectedGlitterNames.map((glitterName, index) => ({
+            label: `Glitter ${index + 1}`,
+            value: glitterName,
+          }))
+        : [{ label: "Glitter", value: selectedGlitterName }]),
       { label: "Aroma", value: selectedSmellName },
       { label: "Essência", value: selectedEssenceName },
       { label: "Aditivo", value: selectedAdditiveName },
@@ -417,7 +426,7 @@ function ProductsPage() {
             product={selectedProduct}
             state={state}
             totalPrice={totalPrice}
-            selectedGlitter={selectedGlitter}
+            selectedGlitters={selectedGlitters}
             selectedAdditive={selectedAdditive}
             selectedColors={selectedColors}
             onBack={() => setSelectedProductId(null)}
@@ -468,7 +477,7 @@ type ProductCustomizerProps = {
   product: ProductsPageProduct;
   state: ProductBuilderState;
   totalPrice: number;
-  selectedGlitter: (typeof glitterOptions)[number] | null;
+  selectedGlitters: (typeof glitterOptions)[number][];
   selectedAdditive: (typeof additiveOptions)[number] | null;
   selectedColors: (typeof allColors)[number][];
   onBack: () => void;
@@ -481,7 +490,7 @@ function ProductCustomizer({
   product,
   state,
   totalPrice,
-  selectedGlitter,
+  selectedGlitters,
   selectedAdditive,
   selectedColors,
   onBack,
@@ -492,7 +501,7 @@ function ProductCustomizer({
   const selectedColorNames = selectedColors.map((color) => color.sub).join(", ");
   const selectedAromaEssenceName = getAromaEssenceDisplayName(state.smell, state.essence);
   const isGlitterOnly = product.id === "gloss" && state.isGlitterOnly;
-  const requiresGlitterSelection = isGlitterOnly && state.glitterId === null;
+  const requiresGlitterSelection = isGlitterOnly && state.glitterIds.length === 0;
 
   return (
     <section className="products-builder" aria-labelledby="products-builder-title">
@@ -525,15 +534,20 @@ function ProductCustomizer({
           {product.id === "gloss" && (
             <GlossModeSelector
               isGlitterOnly={isGlitterOnly}
-              onSelectColor={() => onUpdateState({ isGlitterOnly: false })}
+              onSelectColor={() =>
+                onUpdateState({
+                  isGlitterOnly: false,
+                  glitterIds: state.glitterIds.slice(0, 1),
+                })
+              }
               onSelectGlitterOnly={() => onUpdateState({ isGlitterOnly: true })}
             />
           )}
 
           {isGlitterOnly ? (
             <GlitterOnlySelector
-              selectedGlitterId={state.glitterId}
-              onSelectGlitter={(glitterId) => onUpdateState({ glitterId })}
+              selectedGlitterIds={state.glitterIds}
+              onSelectGlitters={(glitterIds) => onUpdateState({ glitterIds })}
             />
           ) : (
             <section className="products-builder__accordion products-builder__accordion--always-open" aria-labelledby="products-color-title">
@@ -599,8 +613,16 @@ function ProductCustomizer({
             />
             {product.id === "batom" && <SummaryRow label={`Formato: ${getBatomFormatName(state.batomFormat)}`} value="+0,00€" />}
             <SummaryRow
-              label={`Glitter: ${selectedGlitter ? getGlitterDisplayNameForMode(selectedGlitter, isGlitterOnly) : isGlitterOnly ? "Seleciona um glitter" : "none"}`}
-              value={state.glitterId && !isGlitterOnly ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"}
+              label={`${isGlitterOnly ? "Glitters" : "Glitter"}: ${
+                selectedGlitters.length > 0
+                  ? selectedGlitters
+                      .map((glitter) => getGlitterDisplayNameForMode(glitter, isGlitterOnly))
+                      .join(", ")
+                  : isGlitterOnly
+                    ? "Seleciona pelo menos um glitter"
+                    : "none"
+              }`}
+              value={state.glitterIds.length > 0 && !isGlitterOnly ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"}
             />
             <SummaryRow label={`Aroma/Essência: ${selectedAromaEssenceName}`} value={state.smell !== "none" || state.essence !== "none" ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
             <SummaryRow label={`Aditivo: ${selectedAdditive?.name ?? "none"}`} value={state.additive !== "none" ? `+${formatPrice(PRODUCT_EXTRA_PRICE)}` : "+0,00€"} />
@@ -625,7 +647,7 @@ function ProductCustomizer({
               onClick={onAddToCart}
               disabled={requiresGlitterSelection}
             >
-              {requiresGlitterSelection ? "Seleciona um glitter" : "Adicionar ao carrinho"}
+              {requiresGlitterSelection ? "Seleciona pelo menos um glitter" : "Adicionar ao carrinho"}
             </button>
             <p className="products-summary__secure">Compra 100% segura</p>
           </div>
@@ -686,11 +708,11 @@ function GlossModeSelector({
 }
 
 function GlitterOnlySelector({
-  selectedGlitterId,
-  onSelectGlitter,
+  selectedGlitterIds,
+  onSelectGlitters,
 }: {
-  selectedGlitterId: number | null;
-  onSelectGlitter: (glitterId: number) => void;
+  selectedGlitterIds: number[];
+  onSelectGlitters: (glitterIds: number[]) => void;
 }) {
   const glittersByCategory = useMemo(() => {
     return GLITTER_CATEGORY_ORDER.map((category) => ({
@@ -699,15 +721,31 @@ function GlitterOnlySelector({
     }));
   }, []);
 
+  const toggleGlitter = (glitterId: number) => {
+    const isSelected = selectedGlitterIds.includes(glitterId);
+
+    if (isSelected) {
+      onSelectGlitters(selectedGlitterIds.filter((id) => id !== glitterId));
+      return;
+    }
+
+    if (selectedGlitterIds.length >= MAX_GLITTER_ONLY_SELECTIONS) return;
+
+    onSelectGlitters([...selectedGlitterIds, glitterId]);
+  };
+
+  const selectedCount = selectedGlitterIds.length;
+  const isLimitReached = selectedCount >= MAX_GLITTER_ONLY_SELECTIONS;
+
   return (
     <section className="products-builder__glitter-only" aria-labelledby="products-glitter-only-title">
       <header className="products-builder__glitter-only-header">
         <div>
           <h2 id="products-glitter-only-title">Escolhe o glitter</h2>
-          <p>Seleciona um glitter para o teu gloss transparente.</p>
+          <p>Seleciona até {MAX_GLITTER_ONLY_SELECTIONS} glitters para o teu gloss transparente.</p>
         </div>
-        <span className="products-builder__glitter-only-counter">
-          {selectedGlitterId === null ? "0/1 selecionado" : "1/1 selecionado"}
+        <span className="products-builder__glitter-only-counter" aria-live="polite">
+          {selectedCount}/{MAX_GLITTER_ONLY_SELECTIONS} {selectedCount === 1 ? "selecionado" : "selecionados"}
         </span>
       </header>
 
@@ -727,15 +765,17 @@ function GlitterOnlySelector({
 
               <div className="products-builder__glitter-grid">
                 {glitters.map((glitter) => {
-                  const isSelected = selectedGlitterId === glitter.id;
+                  const isSelected = selectedGlitterIds.includes(glitter.id);
+                  const isDisabled = isLimitReached && !isSelected;
 
                   return (
                     <button
                       key={glitter.id}
                       type="button"
                       className={`products-builder__glitter-option ${isSelected ? "products-builder__glitter-option--active" : ""}`}
-                      onClick={() => onSelectGlitter(glitter.id)}
+                      onClick={() => toggleGlitter(glitter.id)}
                       aria-pressed={isSelected}
+                      disabled={isDisabled}
                     >
                       <img src={glitter.img} alt="" loading="lazy" decoding="async" aria-hidden="true" />
                       <span>{glitter.name}</span>
@@ -821,8 +861,8 @@ function ExtrasBox({
           subtitle="Adiciona brilho ao teu gloss."
         >
           <GlitterPicker
-            selectedGlitterId={state.glitterId}
-            onSelectGlitter={(glitterId) => onUpdateState({ glitterId })}
+            selectedGlitterId={state.glitterIds[0] ?? null}
+            onSelectGlitter={(glitterId) => onUpdateState({ glitterIds: glitterId === null ? [] : [glitterId] })}
           />
         </ExtraRow>
       )}

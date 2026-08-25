@@ -4,6 +4,7 @@ import AppProvider from "./Contexts/AppProvider";
 import Footer from "./footer/Footer";
 import ScrollToTop from "./ScrollToTop";
 import PageSeo from "./components/PageSeo";
+import SiteLoader from "./components/SiteLoader";
 import { ROUTES } from "./config/routes";
 
 const HomePage = lazy(() => import("./HomePage/HomePage"));
@@ -26,7 +27,7 @@ function App() {
       <a className="skip-link" href="#main-content">
         Saltar para o conteúdo principal
       </a>
-      <Suspense fallback={<main className="route-loader" aria-live="polite">A carregar...</main>}>
+      <Suspense fallback={<SiteLoader variant="route" label="A preparar a página..." />}>
         <Routes>
           <Route path={ROUTES.home} element={<HomePage />} />
           <Route path={ROUTES.reserve} element={<ReserveNow />} />

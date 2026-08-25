@@ -11,6 +11,8 @@ export type ProductsCartInput = {
   selectedColors: string[];
   selectedColorHexes: string[];
   glitter?: string;
+  glitters?: string[];
+  isGlitterOnly?: boolean;
   aroma?: string;
   essence?: string;
   additive?: string;
@@ -47,6 +49,8 @@ const hasRealValue = (value?: string) => {
 
 const countSelectedExtras = ({
   glitter,
+  glitters,
+  isGlitterOnly,
   aroma,
   essence,
   additive,
@@ -56,7 +60,7 @@ const countSelectedExtras = ({
 }: ProductsCartInput): ProductExtraCount => {
   let count = 0;
 
-  if (hasRealValue(glitter)) count += 1;
+  if (!isGlitterOnly && ((glitters?.some((value) => hasRealValue(value)) ?? false) || hasRealValue(glitter))) count += 1;
   if (hasRealValue(aroma) || hasRealValue(essence)) count += 1;
   if (hasRealValue(additive)) count += 1;
   if (engravingText?.trim() || hasRealValue(engravingSymbol)) count += 1;
@@ -87,13 +91,20 @@ const encodeProperties = (properties: Record<string, string>) => {
 export const buildProductsCartUrl = (input: ProductsCartInput) => {
   const extraCount = countSelectedExtras(input);
   const variantId = PRODUCTS_VARIANT_IDS[input.productType][extraCount];
+  const selectedGlitters = (input.glitters ?? []).filter((value) => hasRealValue(value));
+  const normalizedGlitters = selectedGlitters.length > 0
+    ? selectedGlitters
+    : hasRealValue(input.glitter)
+      ? [input.glitter as string]
+      : [];
 
   const properties = encodeProperties({
     produto: productLabels[input.productType],
+    opcao: input.isGlitterOnly ? "Apenas glitter" : "Com cor",
     extras: String(extraCount),
     cores: input.selectedColors.join(", ") || "Sem cor selecionada",
     cores_hex: input.selectedColorHexes.join(", ") || "Sem cor selecionada",
-    glitter: input.glitter || "Sem glitter",
+    glitter: normalizedGlitters.join(", ") || "Sem glitter",
     aroma: input.aroma || "Sem aroma",
     essencia: input.essence || "Sem essência",
     aditivo: input.additive || "Pré-opção",

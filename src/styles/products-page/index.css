@@ -3933,3 +3933,20 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.products-builder__glitter-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+  transform: none;
+}
+
+.products-builder__glitter-option:disabled:hover {
+  border-color: transparent;
+  transform: none;
+}
+
+.products-summary__row > span {
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+}
