@@ -13,12 +13,14 @@ import { SYMBOL_OPTIONS, type SymbolOption } from "../Functions/CreateBatomBox/c
 import { allColors, allEsence, additiveOptions, glitterOptions, smellOptions } from "../Functions/CreateBatomBox/data/builderOptions";
 import type { AdditivesOptions, EsenceOptions, SmelltOptions } from "../Functions/CreateBatomBox/Types";
 import { productsPageItems, PRODUCT_EXTRA_PRICE, type ProductsPageProduct, type ProductsPageProductId } from "../data/productsPageItems";
+import { mirandaProducts, type MirandaProduct } from "../data/mirandaProducts";
+import tirondsLogo from "../assets/lipslab-x-tironds-logo.png";
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { addCartItem } from "../Cart/utils/cartStorage";
 import { buildCartDescription } from "../Cart/utils/cartItems";
-import { PRODUCTS_VARIANT_IDS, type ProductExtraCount } from "../config/productsShopify";
-import { ROUTES } from "../config/routes";
+import { PRODUCTS_VARIANT_IDS, getTirondsShopifyCartTarget, type ProductExtraCount } from "../config/productsShopify";
+import { ROUTES, getMirandaProductPath } from "../config/routes";
 import "../styles/products-page/index.css";
 
 type BatomFormatOption = "liso" | "comeia";
@@ -325,6 +327,40 @@ function ProductsPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleAddMirandaProductToCart = (product: MirandaProduct) => {
+    const details = [
+      { label: "Edição", value: "Lips Lab x Tiironds" },
+      { label: "Produto", value: product.collectionName.replace(/[“”]/g, "") },
+      ...(product.id === "pack"
+        ? [
+            { label: "Batom", value: "Nude Perseguição" },
+            { label: "Lip Gloss", value: "Beijinhos à Prima" },
+            { label: "Charms no Lip Gloss", value: "Não" },
+          ]
+        : product.id === "gloss"
+          ? [{ label: "Charms", value: "Não" }]
+          : []),
+    ];
+
+    const shopifyTarget = getTirondsShopifyCartTarget(product.id);
+
+    addCartItem({
+      source: "products",
+      name: product.id === "batom"
+        ? "Nude Perseguição — Batom"
+        : product.id === "gloss"
+          ? "Beijinhos à Prima — Lip Gloss"
+          : "Combo Nude Perseguição + Beijinhos à Prima",
+      quantity: 1,
+      unitPrice: product.price,
+      ...shopifyTarget,
+      details,
+      description: buildCartDescription(details),
+    });
+
+    navigate(ROUTES.cart);
+  };
+
   const updateState = (partial: Partial<ProductBuilderState>) => {
     setState((previousState) => ({ ...previousState, ...partial }));
   };
@@ -419,7 +455,13 @@ function ProductsPage() {
       <Navbar css={1} />
 
       <main id="main-content" className="products-page" aria-labelledby="products-page-title">
-        {!selectedProduct && <ProductSelection onSelectProduct={handleSelectProduct} />}
+        {!selectedProduct && (
+          <ProductSelection
+            onSelectProduct={handleSelectProduct}
+            onSelectMirandaProduct={(productId) => navigate(getMirandaProductPath(productId))}
+            onAddMirandaProductToCart={handleAddMirandaProductToCart}
+          />
+        )}
 
         {selectedProduct && (
           <ProductCustomizer
@@ -440,7 +482,15 @@ function ProductsPage() {
   );
 }
 
-function ProductSelection({ onSelectProduct }: { onSelectProduct: (product: ProductsPageProduct) => void }) {
+function ProductSelection({
+  onSelectProduct,
+  onSelectMirandaProduct,
+  onAddMirandaProductToCart,
+}: {
+  onSelectProduct: (product: ProductsPageProduct) => void;
+  onSelectMirandaProduct: (productId: string) => void;
+  onAddMirandaProductToCart: (product: MirandaProduct) => void;
+}) {
   return (
     <section className="products-page__selection" aria-labelledby="products-page-title">
       <header className="products-page__header">
@@ -469,6 +519,68 @@ function ProductSelection({ onSelectProduct }: { onSelectProduct: (product: Prod
           </article>
         ))}
       </div>
+
+      <section className="products-page__miranda-section" aria-label="Edição Lips Lab x Tiironds">
+        <img
+          src={tirondsLogo}
+          alt="Lips Lab x Tiironds"
+          className="products-page__miranda-logo"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <div className="products-page__miranda-grid">
+          {mirandaProducts.map((product) => (
+            <article
+              key={product.id}
+              className="products-page__miranda-card"
+              role="link"
+              tabIndex={0}
+              aria-label={`Ver ${product.collectionName} ${product.title}`}
+              onClick={() => onSelectMirandaProduct(product.id)}
+              onKeyDown={(event) => {
+                if (event.target !== event.currentTarget) return;
+
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  onSelectMirandaProduct(product.id);
+                }
+              }}
+            >
+              <div className="products-page__miranda-image-box">
+                <img
+                  src={product.image}
+                  alt={product.imageAlt}
+                  className="products-page__miranda-image"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="products-page__miranda-content">
+                <h2 className="products-page__miranda-title">
+                  <span>{product.collectionName}</span>
+                  <span>{product.title}</span>
+                </h2>
+                <span className="products-page__miranda-line" aria-hidden="true" />
+                <p className="products-page__miranda-price">{formatPrice(product.price).replace(",00", "")}</p>
+
+                <button
+                  type="button"
+                  className="products-page__button products-page__miranda-button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onAddMirandaProductToCart(product);
+                  }}
+                >
+                  <span>Adicionar ao carrinho</span>
+                  <span className="products-page__button-arrow" aria-hidden="true">›</span>
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </section>
   );
 }

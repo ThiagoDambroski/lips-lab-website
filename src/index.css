@@ -211,22 +211,12 @@ button:not(:disabled) {
   text-align: center;
 }
 
-.site-loader__wordmark {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #e34a93;
-  font-family: "IvyPresto", Georgia, serif;
-  font-size: clamp(3rem, 8vw, 5.2rem);
-  font-weight: 400;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
-}
-
-.site-loader__heart {
-  font-family: Georgia, serif;
-  font-size: 0.72em;
-  transform: translateY(0.04em);
+.site-loader__logo {
+  width: min(350px, 78vw);
+  aspect-ratio: 564 / 153;
+  background: #e8428b;
+  -webkit-mask: url("./assets/logo.png") center / contain no-repeat;
+  mask: url("./assets/logo.png") center / contain no-repeat;
 }
 
 .site-loader__progress {

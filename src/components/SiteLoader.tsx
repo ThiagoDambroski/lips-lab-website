@@ -26,11 +26,7 @@ export default function SiteLoader({
       aria-busy={!hasError}
     >
       <div className="site-loader__content">
-        <div className="site-loader__wordmark" aria-label="Lips Lab">
-          <span>lips</span>
-          <span className="site-loader__heart" aria-hidden="true">♡</span>
-          <span>lab</span>
-        </div>
+        <div className="site-loader__logo" role="img" aria-label="Lips Lab" />
 
         {!hasError && (
           <div className="site-loader__progress" aria-hidden="true">

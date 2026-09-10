@@ -20,7 +20,11 @@ function isCartItem(value: unknown): value is CartItem {
     typeof item.name === "string" &&
     typeof item.quantity === "number" &&
     typeof item.unitPrice === "number" &&
-    typeof item.shopifyVariantId === "string" &&
+    (typeof item.shopifyVariantId === "string" || item.shopifyVariantId === null) &&
+    (item.shopifyProductId === undefined || item.shopifyProductId === null || typeof item.shopifyProductId === "string") &&
+    (item.shopifyExcludedVariantIds === undefined ||
+      (Array.isArray(item.shopifyExcludedVariantIds) &&
+        item.shopifyExcludedVariantIds.every((variantId) => typeof variantId === "string"))) &&
     typeof item.description === "string" &&
     Array.isArray(item.details)
   );

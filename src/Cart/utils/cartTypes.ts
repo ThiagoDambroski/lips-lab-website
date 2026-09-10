@@ -11,7 +11,9 @@ export type CartItem = {
   name: string;
   quantity: number;
   unitPrice: number;
-  shopifyVariantId: string;
+  shopifyVariantId: string | null;
+  shopifyProductId?: string | null;
+  shopifyExcludedVariantIds?: string[];
   description: string;
   details: CartItemDetail[];
 };

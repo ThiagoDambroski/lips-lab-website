@@ -3950,3 +3950,317 @@
   flex: 1 1 auto;
   flex-wrap: wrap;
 }
+
+.products-page__miranda-section {
+  margin-top: 62px;
+  padding: 42px 0 0;
+  border-top: 1px solid rgba(232, 66, 139, 0.08);
+}
+
+.products-page__miranda-logo {
+  display: block;
+  width: min(440px, 62vw);
+  height: auto;
+  margin: 0 auto 44px;
+}
+
+.products-page__miranda-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.products-page__miranda-card {
+  min-width: 0;
+  padding: 20px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 0;
+  border-radius: 42px;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.products-page__miranda-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(56, 20, 35, 0.07);
+}
+
+.products-page__miranda-card:focus-visible {
+  outline: 2px solid #e8428b;
+  outline-offset: 4px;
+}
+
+.products-page__miranda-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 26px;
+}
+
+.products-page__miranda-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.products-page__miranda-content {
+  flex: 1;
+  padding: 20px 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.products-page__miranda-title {
+  min-height: 48px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #1a1a1a;
+  font-size: clamp(0.92rem, 1.2vw, 1.08rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.products-page__miranda-title span {
+  display: block;
+}
+
+.products-page__miranda-line {
+  width: 96px;
+  height: 1px;
+  margin: 14px 0 13px;
+  background: #e8428b;
+}
+
+.products-page__miranda-price {
+  margin: 0 0 18px;
+  color: #151515;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.products-page__miranda-button {
+  min-height: 42px;
+  max-width: none;
+  margin-top: auto;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+}
+
+.products-page__miranda-button .products-page__button-arrow {
+  font-size: 1.35rem;
+}
+
+.miranda-product-page {
+  min-height: 100vh;
+  padding: 128px 24px 90px;
+  background: #fff8fb;
+  color: #151515;
+}
+
+.miranda-product-page__container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.miranda-product-page__back {
+  margin: 0 0 26px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #d20f4f;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.miranda-product-page__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  gap: 54px;
+  align-items: center;
+}
+
+.miranda-product-page__visual {
+  min-height: 570px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f7d7dc 0%, #f2bfc8 45%, #f8e7e1 100%);
+}
+
+.miranda-product-page__visual img {
+  display: block;
+  width: auto;
+  max-width: 80%;
+  max-height: 480px;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 24px rgba(73, 35, 42, 0.16));
+}
+
+.miranda-product-page__collection {
+  margin: 0 0 12px;
+  color: #e8428b;
+  font-family: "Brush Script MT", "Segoe Script", "Lucida Handwriting", cursive;
+  font-size: clamp(2.1rem, 3.4vw, 3.5rem);
+  line-height: 1;
+}
+
+.miranda-product-page__content h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 4.6vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.miranda-product-page__price {
+  margin: 24px 0;
+  color: #e8428b;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+}
+
+.miranda-product-page__description {
+  max-width: 520px;
+  margin: 0 0 26px;
+  color: #444444;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.miranda-product-page__notice {
+  max-width: 520px;
+  padding: 18px 20px;
+  border: 1px solid rgba(232, 66, 139, 0.25);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #555555;
+  line-height: 1.45;
+}
+
+@media (max-width: 1100px) {
+  .products-page__miranda-grid {
+    gap: 18px;
+  }
+
+  .miranda-product-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .miranda-product-page__visual {
+    min-height: 470px;
+  }
+}
+
+@media (max-width: 700px) {
+  .products-page__miranda-section {
+    margin-top: 44px;
+    padding-top: 34px;
+  }
+
+  .products-page__miranda-logo {
+    width: min(380px, 76vw);
+    margin-bottom: 30px;
+  }
+
+  .products-page__miranda-grid {
+    display: flex;
+    gap: 16px;
+    margin-inline: -10px;
+    padding: 0 10px 14px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .products-page__miranda-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .products-page__miranda-card {
+    width: auto;
+    flex: 0 0 84%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .miranda-product-page {
+    padding: 96px 16px 60px;
+  }
+
+  .miranda-product-page__layout {
+    gap: 28px;
+  }
+
+  .miranda-product-page__visual {
+    min-height: 390px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 460px) {
+  .products-page__miranda-section {
+    margin-top: 34px;
+    padding-top: 28px;
+  }
+
+  .products-page__miranda-logo {
+    width: 82vw;
+    margin-bottom: 24px;
+  }
+
+  .products-page__miranda-grid {
+    gap: 14px;
+  }
+
+  .products-page__miranda-card {
+    flex-basis: 88%;
+    padding: 14px 14px 20px;
+    border-radius: 30px;
+  }
+
+  .products-page__miranda-image-box {
+    border-radius: 20px;
+  }
+
+  .products-page__miranda-content {
+    padding-top: 16px;
+  }
+
+  .products-page__miranda-title {
+    min-height: 44px;
+    font-size: 0.94rem;
+  }
+
+  .products-page__miranda-line {
+    margin: 12px 0;
+  }
+
+  .products-page__miranda-price {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+  }
+
+  .miranda-product-page__visual {
+    min-height: 320px;
+    padding: 22px;
+  }
+}

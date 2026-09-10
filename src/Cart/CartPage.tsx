@@ -40,9 +40,13 @@ function CartPage() {
       window.location.assign(checkoutUrl);
     } catch {
       try {
-        window.location.assign(buildShopifyCartFallbackUrl(items));
-      } catch {
-        setBuyError("Não foi possível enviar o carrinho para o Shopify. Tenta novamente.");
+        window.location.assign(await buildShopifyCartFallbackUrl(items));
+      } catch (error) {
+        setBuyError(
+          error instanceof Error
+            ? error.message
+            : "Não foi possível enviar o carrinho para o Shopify. Tenta novamente.",
+        );
         setIsBuying(false);
       }
     }
@@ -62,6 +66,7 @@ function CartPage() {
   return (
     <>
       <Navbar css={1} />
+    
       <main id="main-content" className="cart-page">
         <h1>O teu carrinho</h1>
 

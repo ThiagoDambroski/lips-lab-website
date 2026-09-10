@@ -2,16 +2,17 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import AppProvider from "./Contexts/AppProvider";
 import Footer from "./footer/Footer";
+import HomePage from "./HomePage/HomePage";
 import ScrollToTop from "./ScrollToTop";
 import PageSeo from "./components/PageSeo";
 import SiteLoader from "./components/SiteLoader";
 import { ROUTES } from "./config/routes";
 
-const HomePage = lazy(() => import("./HomePage/HomePage"));
 const ReserveNow = lazy(() => import("./ReserveNow/ReserveNow"));
 const OnlineExperiencie = lazy(() => import("./OnlineExperiencie/OnlineExperiencie"));
 const ExperiencieAndPrice = lazy(() => import("./expereiencieAndPrice/ExperiencieAndPrice"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage"));
+const MirandaProductPage = lazy(() => import("./pages/MirandaProductPage"));
 const Faq = lazy(() => import("./Faq/Faq"));
 const GiftCard = lazy(() => import("./GiftCard/GiftCard"));
 const CartPage = lazy(() => import("./Cart/CartPage"));
@@ -24,9 +25,6 @@ function App() {
     <AppProvider>
       <PageSeo />
       <ScrollToTop />
-      <a className="skip-link" href="#main-content">
-        Saltar para o conteúdo principal
-      </a>
       <Suspense fallback={<SiteLoader variant="route" label="A preparar a página..." />}>
         <Routes>
           <Route path={ROUTES.home} element={<HomePage />} />
@@ -34,6 +32,7 @@ function App() {
           <Route path={ROUTES.onlineExperience} element={<OnlineExperiencie />} />
           <Route path={ROUTES.experience} element={<ExperiencieAndPrice />} />
           <Route path={ROUTES.products} element={<ProductsPage />} />
+          <Route path={ROUTES.mirandaProduct} element={<MirandaProductPage />} />
           <Route path={ROUTES.faq} element={<Faq />} />
           <Route path={ROUTES.giftCard} element={<GiftCard />} />
           <Route path={ROUTES.cart} element={<CartPage />} />

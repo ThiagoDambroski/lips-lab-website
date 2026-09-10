@@ -3,6 +3,7 @@ export const ROUTES = {
   reserve: "/reserve",
   experience: "/experiencie",
   products: "/products",
+  mirandaProduct: "/products/miranda/:productId",
   onlineExperience: "/create",
   giftCard: "/giftCard",
   faq: "/faq",
@@ -31,3 +32,7 @@ export const legalNavigationLinks = [
   { label: "termos & condições", path: ROUTES.terms },
   { label: "política de privacidade", path: ROUTES.privacy },
 ] as const;
+
+export function getMirandaProductPath(productId: string) {
+  return `/products/miranda/${productId}`;
+}
