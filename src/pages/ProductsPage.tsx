@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import PageSeo from "../components/PageSeo";
 import glossWithoutImage from "../assets/gloss whiout.png";
@@ -288,6 +288,7 @@ function getAromaEssenceDisplayName(smell: SmelltOptions, essence: EsenceOptions
 
 function ProductsPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedProductId, setSelectedProductId] = useState<ProductsPageProductId | null>(null);
   const [state, setState] = useState<ProductBuilderState>(() => getDefaultState());
 
@@ -320,6 +321,19 @@ function ProductsPage() {
       selectedColorHexes: [DEFAULT_COLOR_HEX],
     }));
   }, [state.selectedColorHexes.length]);
+
+  useEffect(() => {
+    if (selectedProduct || location.hash !== "#tironds-products") return;
+
+    const frameId = window.requestAnimationFrame(() => {
+      document.getElementById("tironds-products")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [location.hash, selectedProduct]);
 
   const handleSelectProduct = (product: ProductsPageProduct) => {
     setSelectedProductId(product.id);
@@ -520,7 +534,7 @@ function ProductSelection({
         ))}
       </div>
 
-      <section className="products-page__miranda-section" aria-label="Edição Lips Lab x Tiironds">
+      <section id="tironds-products" className="products-page__miranda-section" aria-label="Edição Lips Lab x Tiironds">
         <img
           src={tirondsLogo}
           alt="Lips Lab x Tiironds"

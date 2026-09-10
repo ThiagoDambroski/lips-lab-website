@@ -7,7 +7,7 @@ import collaborationLogo from "../../assets/lipslab-tironds-logo.png";
 
 export default function HomeLimitedEditionSection() {
   return (
-    <section className="home-limited-edition" aria-label="Edição limitada Lips Lab x miranda">
+    <section className="home-limited-edition" aria-label="Edição limitada Lips Lab x Tironds">
       <div
         className="home-limited-edition__pattern"
         style={{ backgroundImage: `url(${lipsPattern})` }}
@@ -19,11 +19,11 @@ export default function HomeLimitedEditionSection() {
           <img
             className="home-limited-edition__logo"
             src={collaborationLogo}
-            alt="Lips Lab x miranda"
+            alt="Lips Lab x Tironds"
             loading="lazy"
             decoding="async"
           />
-          <NavLink className="home-limited-edition__button" to={ROUTES.products}>
+          <NavLink className="home-limited-edition__button" to={`${ROUTES.products}#tironds-products`}>
             GARANTIR EDIÇÃO LIMITADA
           </NavLink>
         </div>

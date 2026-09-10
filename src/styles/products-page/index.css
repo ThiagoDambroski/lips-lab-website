@@ -721,22 +721,41 @@
   }
 
   .products-page__grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
 
   .products-page__card {
+    min-width: 0;
     min-height: auto;
-    padding: 38px 26px 32px;
+    padding: 26px 16px 22px;
+  }
+
+  .products-page__grid .products-page__button {
+    width: min(88%, 150px);
+    min-height: 36px;
+    margin-inline: auto;
+    padding-inline: 10px;
+    gap: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.01em;
+  }
+
+  .products-page__grid .products-page__button-arrow {
+    font-size: 1rem;
   }
 
   .products-page__image-box {
-    height: 310px;
+    height: 220px;
   }
 
   .products-page__image--gloss,
   .products-page__image--batom {
-    max-height: 300px;
+    max-height: 210px;
   }
 
   .products-builder__title {
@@ -1205,41 +1224,57 @@
   }
 
   .products-page__grid {
-    gap: 14px;
+    gap: 10px;
   }
 
   .products-page__card {
     min-height: auto;
-    padding: 20px 16px 18px;
+    padding: 16px 8px 14px;
     border-radius: 14px;
   }
 
   .products-page__image-box {
-    height: 190px;
+    height: 145px;
   }
 
   .products-page__image--gloss,
   .products-page__image--batom {
-    max-height: 185px;
+    max-height: 138px;
   }
 
   .products-page__content {
-    margin-top: 14px;
+    margin-top: 10px;
   }
 
   .products-page__product-title {
-    font-size: 1.35rem;
+    font-size: 1rem;
+    line-height: 1.08;
+  }
+
+  .products-page__product-line {
+    width: 38px;
+    margin: 9px 0 10px;
   }
 
   .products-page__price {
-    margin-bottom: 16px;
-    font-size: 1.65rem;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    line-height: 1;
   }
 
-  .products-page__button {
-    min-height: 48px;
-    max-width: none;
-    font-size: 0.84rem;
+  .products-page__grid .products-page__button {
+    width: min(82%, 108px);
+    min-height: 31px;
+    max-width: 108px;
+    margin-inline: auto;
+    padding: 0 7px;
+    gap: 4px;
+    font-size: 0.61rem;
+    line-height: 1;
+  }
+
+  .products-page__grid .products-page__button-arrow {
+    font-size: 0.9rem;
   }
 
   .products-builder__accordion-button--static {
@@ -3953,6 +3988,7 @@
 
 .products-page__miranda-section {
   margin-top: 62px;
+  scroll-margin-top: 110px;
   padding: 42px 0 0;
   border-top: 1px solid rgba(232, 66, 139, 0.08);
 }
