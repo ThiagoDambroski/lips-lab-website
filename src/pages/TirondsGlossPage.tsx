@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import PageSeo from "../components/PageSeo";
@@ -13,7 +13,6 @@ import gallery6472 from "../assets/tironds-campaign/tironds-6472.webp";
 import gallery6323 from "../assets/tironds-campaign/tironds-6323.webp";
 import gallery6196 from "../assets/tironds-campaign/tironds-6196.webp";
 import gallery6382 from "../assets/tironds-campaign/tironds-6382.webp";
-import glossVideo from "../assets/tironds-campaign/tironds-gloss-video.mp4";
 import "../styles/TirondsGlossPage.css";
 
 const BASE_PRICE = 19;
@@ -26,7 +25,6 @@ const gallery = [
   { type: "image", src: gallery6323, alt: "Tiironds apresenta a edição limitada Lips Lab x Tiironds" },
   { type: "image", src: gallery6196, alt: "Preparação da edição limitada Lips Lab x Tiironds no laboratório" },
   { type: "image", src: gallery6382, alt: "Tiironds com os produtos da edição limitada Lips Lab x Tiironds" },
-  { type: "video", src: glossVideo, alt: "Vídeo da edição limitada Lip Gloss Beijinhos à Prima" },
 ] as const;
 
 function formatPrice(value: number) {
@@ -35,17 +33,15 @@ function formatPrice(value: number) {
 
 export default function TirondsGlossPage() {
   const navigate = useNavigate();
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
-  const [isVideoPlaybackBlocked, setIsVideoPlaybackBlocked] = useState(false);
   const [hasCharms, setHasCharms] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
   const totalPrice = useMemo(() => BASE_PRICE + (hasCharms ? CHARMS_PRICE : 0), [hasCharms]);
 
   useEffect(() => {
-    if (isCarouselPaused || gallery.length < 2 || gallery[activeImageIndex].type === "video") return;
+    if (isCarouselPaused || gallery.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = window.setTimeout(() => {
@@ -59,28 +55,10 @@ export default function TirondsGlossPage() {
     const nextIndex = (activeImageIndex + 1) % gallery.length;
     const nextMedia = gallery[nextIndex];
 
-    if (nextMedia.type !== "image") return;
-
     const image = new Image();
     image.src = nextMedia.src;
   }, [activeImageIndex]);
 
-  useEffect(() => {
-    if (gallery[activeImageIndex].type !== "video") {
-      setIsVideoPlaybackBlocked(false);
-      return;
-    }
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.currentTime = 0;
-    video.muted = false;
-    void video
-      .play()
-      .then(() => setIsVideoPlaybackBlocked(false))
-      .catch(() => setIsVideoPlaybackBlocked(true));
-  }, [activeImageIndex]);
 
   const showPreviousImage = () => {
     setActiveImageIndex((current) => (current - 1 + gallery.length) % gallery.length);
@@ -148,47 +126,14 @@ export default function TirondsGlossPage() {
             onMouseLeave={() => setIsCarouselPaused(false)}
           >
             <div className="tironds-gloss-carousel__viewport">
-              {gallery[activeImageIndex].type === "video" ? (
-                <video
-                  ref={videoRef}
-                  key={gallery[activeImageIndex].src}
-                  className="tironds-gloss-carousel__video"
-                  src={gallery[activeImageIndex].src}
-                  aria-label={gallery[activeImageIndex].alt}
-                  autoPlay
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-              ) : (
-                <img
-                  key={gallery[activeImageIndex].src}
-                  className="tironds-gloss-carousel__image"
-                  src={gallery[activeImageIndex].src}
-                  alt={gallery[activeImageIndex].alt}
-                  loading={activeImageIndex === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
-              )}
-
-              {gallery[activeImageIndex].type === "video" && isVideoPlaybackBlocked && (
-                <button
-                  type="button"
-                  className="tironds-gloss-carousel__sound-button"
-                  onClick={() => {
-                    const video = videoRef.current;
-                    if (!video) return;
-
-                    video.muted = false;
-                    void video
-                      .play()
-                      .then(() => setIsVideoPlaybackBlocked(false))
-                      .catch(() => setIsVideoPlaybackBlocked(true));
-                  }}
-                >
-                  REPRODUZIR COM SOM
-                </button>
-              )}
+              <img
+                key={gallery[activeImageIndex].src}
+                className="tironds-gloss-carousel__image"
+                src={gallery[activeImageIndex].src}
+                alt={gallery[activeImageIndex].alt}
+                loading={activeImageIndex === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
 
               <button
                 type="button"
@@ -215,7 +160,7 @@ export default function TirondsGlossPage() {
                   type="button"
                   className={`tironds-gloss-carousel__dot${index === activeImageIndex ? " is-active" : ""}`}
                   onClick={() => setActiveImageIndex(index)}
-                  aria-label={`Mostrar ${image.type === "video" ? "vídeo" : "fotografia"} ${index + 1}`}
+                  aria-label={`Mostrar fotografia ${index + 1}`}
                   aria-current={index === activeImageIndex ? "true" : undefined}
                 />
               ))}

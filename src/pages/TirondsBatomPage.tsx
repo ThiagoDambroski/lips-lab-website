@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import PageSeo from "../components/PageSeo";
@@ -13,7 +13,6 @@ import gallery6439 from "../assets/tironds-campaign/tironds-6439.webp";
 import gallery6459 from "../assets/tironds-campaign/tironds-6459.webp";
 import gallery6147 from "../assets/tironds-campaign/tironds-6147.webp";
 import gallery6213 from "../assets/tironds-campaign/tironds-6213.webp";
-import batomVideo from "../assets/tironds-campaign/tironds-batom-video.mp4";
 import "../styles/TirondsGlossPage.css";
 
 const BASE_PRICE = 22;
@@ -25,7 +24,6 @@ const gallery = [
   { type: "image", src: gallery6459, alt: "Batom Nude Perseguição fechado sobre fundo rosa" },
   { type: "image", src: gallery6147, alt: "Tiironds aplica o batom Nude Perseguição" },
   { type: "image", src: gallery6213, alt: "Preparação do batom Nude Perseguição no laboratório Lips Lab" },
-  { type: "video", src: batomVideo, alt: "Vídeo da edição limitada do batom Nude Perseguição" },
 ] as const;
 
 function formatPrice(value: number) {
@@ -34,14 +32,12 @@ function formatPrice(value: number) {
 
 export default function TirondsBatomPage() {
   const navigate = useNavigate();
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
-  const [isVideoPlaybackBlocked, setIsVideoPlaybackBlocked] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    if (isCarouselPaused || gallery.length < 2 || gallery[activeImageIndex].type === "video") return;
+    if (isCarouselPaused || gallery.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = window.setTimeout(() => {
@@ -55,28 +51,11 @@ export default function TirondsBatomPage() {
     const nextIndex = (activeImageIndex + 1) % gallery.length;
     const nextMedia = gallery[nextIndex];
 
-    if (nextMedia.type !== "image") return;
 
     const image = new Image();
     image.src = nextMedia.src;
   }, [activeImageIndex]);
 
-  useEffect(() => {
-    if (gallery[activeImageIndex].type !== "video") {
-      setIsVideoPlaybackBlocked(false);
-      return;
-    }
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.currentTime = 0;
-    video.muted = false;
-    void video
-      .play()
-      .then(() => setIsVideoPlaybackBlocked(false))
-      .catch(() => setIsVideoPlaybackBlocked(true));
-  }, [activeImageIndex]);
 
   const showPreviousImage = () => {
     setActiveImageIndex((current) => (current - 1 + gallery.length) % gallery.length);
@@ -142,47 +121,14 @@ export default function TirondsBatomPage() {
             onMouseLeave={() => setIsCarouselPaused(false)}
           >
             <div className="tironds-gloss-carousel__viewport">
-              {gallery[activeImageIndex].type === "video" ? (
-                <video
-                  ref={videoRef}
-                  key={gallery[activeImageIndex].src}
-                  className="tironds-gloss-carousel__video"
-                  src={gallery[activeImageIndex].src}
-                  aria-label={gallery[activeImageIndex].alt}
-                  autoPlay
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-              ) : (
-                <img
-                  key={gallery[activeImageIndex].src}
-                  className="tironds-gloss-carousel__image"
-                  src={gallery[activeImageIndex].src}
-                  alt={gallery[activeImageIndex].alt}
-                  loading={activeImageIndex === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
-              )}
-
-              {gallery[activeImageIndex].type === "video" && isVideoPlaybackBlocked && (
-                <button
-                  type="button"
-                  className="tironds-gloss-carousel__sound-button"
-                  onClick={() => {
-                    const video = videoRef.current;
-                    if (!video) return;
-
-                    video.muted = false;
-                    void video
-                      .play()
-                      .then(() => setIsVideoPlaybackBlocked(false))
-                      .catch(() => setIsVideoPlaybackBlocked(true));
-                  }}
-                >
-                  REPRODUZIR COM SOM
-                </button>
-              )}
+              <img
+                key={gallery[activeImageIndex].src}
+                className="tironds-gloss-carousel__image"
+                src={gallery[activeImageIndex].src}
+                alt={gallery[activeImageIndex].alt}
+                loading={activeImageIndex === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
 
               <button
                 type="button"
@@ -209,7 +155,7 @@ export default function TirondsBatomPage() {
                   type="button"
                   className={`tironds-gloss-carousel__dot${index === activeImageIndex ? " is-active" : ""}`}
                   onClick={() => setActiveImageIndex(index)}
-                  aria-label={`Mostrar ${image.type === "video" ? "vídeo" : "fotografia"} ${index + 1}`}
+                  aria-label={`Mostrar fotografia ${index + 1}`}
                   aria-current={index === activeImageIndex ? "true" : undefined}
                 />
               ))}
