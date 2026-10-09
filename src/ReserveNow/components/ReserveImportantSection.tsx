@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../config/routes";
 import secondImage from "../../assets/friends reserve now.png";
-import { reserveImportantItems, reserveToleranceDetail, reserveToleranceText } from "../../data/reserveContent";
+import { reserveImportantItems, reserveToleranceText } from "../../data/reserveContent";
 
 export default function ReserveImportantSection() {
   return (
@@ -14,8 +14,7 @@ export default function ReserveImportantSection() {
           ))}
           <li>
             {reserveToleranceText}
-            <br />
-            {reserveToleranceDetail}
+           
           </li>
         </ul>
         <NavLink className="reserve-now-price-link" to={ROUTES.experience}>
