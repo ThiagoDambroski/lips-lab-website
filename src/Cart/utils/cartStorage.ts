@@ -1,4 +1,6 @@
 import { CART_STORAGE_KEY } from "../constants/cartConfig";
+import { GIFT_OPTION_LABEL_BY_OPTION, PRICE_BY_GIFT_OPTION, VARIANT_BY_GIFT_OPTION, giftOptions } from "../../GiftCard/constants/giftCardOptions";
+import { buildCartDescription } from "./cartItems";
 import { readJsonStorage, writeJsonStorage } from "../../utils/storage";
 import type { CartItem, CartItemInput } from "./cartTypes";
 
@@ -30,12 +32,42 @@ function isCartItem(value: unknown): value is CartItem {
   );
 }
 
+function synchronizeGiftPrice(item: CartItem): CartItem {
+  if (item.source !== "gift-card") return item;
+
+  const option = giftOptions.find((giftOption) =>
+    String(VARIANT_BY_GIFT_OPTION[giftOption]) === item.shopifyVariantId,
+  );
+
+  if (!option) return item;
+
+  const unitPrice = PRICE_BY_GIFT_OPTION[option];
+  const label = GIFT_OPTION_LABEL_BY_OPTION[option];
+  const details = item.details.map((detail) =>
+    detail.label === "Opção" && detail.value !== label
+      ? { ...detail, value: label }
+      : detail,
+  );
+  const description = buildCartDescription(details);
+
+  if (item.unitPrice === unitPrice && description === item.description) return item;
+
+  return { ...item, unitPrice, details, description };
+}
+
 export function readCartItems() {
   const storedItems = readJsonStorage<unknown>(localStorage, CART_STORAGE_KEY, []);
 
   if (!Array.isArray(storedItems)) return [];
 
-  return storedItems.filter(isCartItem);
+  const storedCartItems = storedItems.filter(isCartItem);
+  const currentCartItems = storedCartItems.map(synchronizeGiftPrice);
+
+  if (currentCartItems.some((item, index) => item !== storedCartItems[index])) {
+    writeJsonStorage(localStorage, CART_STORAGE_KEY, currentCartItems);
+  }
+
+  return currentCartItems;
 }
 
 export function saveCartItems(items: CartItem[]) {

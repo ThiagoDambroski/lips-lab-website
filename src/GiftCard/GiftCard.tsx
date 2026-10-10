@@ -5,7 +5,7 @@ import giftCardImg from "../assets/giftBox.png";
 import giftBanner from "../assets/giftBoxBanner.png";
 import GiftOptionSelector from "./components/GiftOptionSelector";
 import GiftPersonalizationModal from "./components/GiftPersonalizationModal";
-import { GIFT_OPTION_LABEL_BY_OPTION, PRICE_BY_GIFT_OPTION, VARIANT_BY_GIFT_OPTION, type GiftOption } from "./constants/giftCardOptions";
+import { formatGiftPrice, GIFT_OPTION_LABEL_BY_OPTION, PRICE_BY_GIFT_OPTION, VARIANT_BY_GIFT_OPTION, type GiftOption } from "./constants/giftCardOptions";
 import type { GiftProperties } from "./utils/giftShopify";
 import { addCartItem } from "../Cart/utils/cartStorage";
 import { buildCartDescription } from "../Cart/utils/cartItems";
@@ -143,10 +143,10 @@ Os cartões-presente só podem ser utilizados na nossa loja física em Lisboa.`}
 
             <div className="gift-terms__values">
               <p>Os cartões-presente estão disponíveis nos seguintes valores:</p>
-              <p>CRIE O SEU BATOM OU GLOSS — 55 €</p>
-              <p>EXPERIÊNCIA + CAIXA PRESENTE — 60 €</p>
-              <p>PACK 2 PRODUTOS — 99 €</p>
-              <p>PACK 2 PRODUTOS + CAIXA PRESENTE — 104 €</p>
+              <p>CRIE O SEU BATOM OU GLOSS — {formatGiftPrice(PRICE_BY_GIFT_OPTION.single)}</p>
+              <p>EXPERIÊNCIA + CAIXA PRESENTE — {formatGiftPrice(PRICE_BY_GIFT_OPTION.experienceGiftBox)}</p>
+              <p>PACK 2 PRODUTOS — {formatGiftPrice(PRICE_BY_GIFT_OPTION.pack)}</p>
+              <p>PACK 2 PRODUTOS + CAIXA PRESENTE — {formatGiftPrice(PRICE_BY_GIFT_OPTION.packGiftBox)}</p>
             </div>
 
             <p className="gift-terms__text">
