@@ -50,7 +50,7 @@ export const faqItems: FaqItem[] = [
     answers: [
       "Os nossos produtos são feitos com ceras vegetais puras e ingredientes botânicos e minerais cuidadosamente selecionados.",
       "As fórmulas incluem óleos de jojoba, macadâmia e abacate, manteiga de karité, aloe vera e vitamina E, ingredientes que ajudam a manter os lábios bonitos, saudáveis e protegidos.",
-      "Todas as bases contêm FPS e vitamina E, são vegan, cruelty-free e sem glúten, garantindo qualidade, segurança e cuidado em cada criação.",
+      "Todas as bases contêm FPS e vitamina E, são cruelty-free, sem glúten e sem parabenos, garantindo qualidade, segurança e cuidado em cada criação.",
     ],
   },
   {

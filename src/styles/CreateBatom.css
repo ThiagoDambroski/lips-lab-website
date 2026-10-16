@@ -3911,7 +3911,6 @@
 
 .adtive-section .adtive-container ul {
   max-width: 560px;
-  width: min(100%, 560px);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }

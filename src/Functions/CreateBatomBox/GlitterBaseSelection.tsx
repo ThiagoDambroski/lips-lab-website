@@ -124,7 +124,7 @@ function GlitterBaseSelection({
     if (cleaned === "brilho intenso") return "mirror-shine" as BaseOptions;
     if (cleaned === "balsamo") return "balm" as BaseOptions;
     if (cleaned === "polish") return "vinyl" as BaseOptions;
-    if (cleaned === "natural") return "vegan" as BaseOptions;
+    if (cleaned === "natural") return "natural" as BaseOptions;
 
     return id;
   };
@@ -197,7 +197,7 @@ function GlitterBaseSelection({
         "Altamente resistente à água.",
       ],
     },
-    [infoKeyForBase("vegan")]: {
+    [infoKeyForBase("natural")]: {
       title: "NATURAL",
       paragraphs: [
         "Formulação com ceras vegetais naturais e manteiga de karité (carnaúba e candelila), enriquecida com extrato de lírio-branco e óleo de onagra.",
@@ -233,13 +233,6 @@ function GlitterBaseSelection({
         "Ceras vegetais naturais (carnaúba e candelila) enriquecidas com óleo de jojoba.",
         "Cria um batom de textura suave e brilhante, proporcionando conforto imediato.",
         "O óleo de jojoba contribui para a hidratação, luminosidade e maciez dos lábios.",
-      ],
-    },
-    [infoKeyForBase("natural")]: {
-      title: "NATURAL",
-      paragraphs: [
-        "Formulação com ceras vegetais naturais (carnaúba e candelila), manteiga de karité e óleos orgânicos.",
-        "Cria um batom cremoso e hidratante, com cobertura leve ou total, ideal para quem procura conforto e cuidado diário.",
       ],
     },
   };

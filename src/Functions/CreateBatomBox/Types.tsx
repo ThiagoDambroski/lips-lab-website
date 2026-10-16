@@ -55,7 +55,6 @@ export type BaseOptions =
   | "amanteigado"
   | "natural"
   | "matte liquido"
-  | "vegan"
   | "liquid-matte"
   | "classic"
   | "mirror-shine"
